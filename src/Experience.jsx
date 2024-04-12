@@ -26,7 +26,7 @@ const Experience = () => {
                 <Environments />
                 <Physics
                     gravity={[0, -9, 0]}
-                    debug={true}
+                    debug={false}
                 >
                     <World />
                     <Suspense fallback={null}>
