@@ -1,7 +1,6 @@
-
 {
-  "name": "squid-games",
-  "version": "1.0.0",
+  "name": "t-dev-game",
+  "version": "0.1",
   "description": "",
   "main": "index.js",
   "scripts": {

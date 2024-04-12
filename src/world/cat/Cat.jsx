@@ -11,7 +11,7 @@ export function Cat({ onJump, ...props }) {
 
   useEffect(() => {
     console.log(actions)
-    actions.BasicJumpAnimation.play();
+    actions.DanceHipHopWaveAnimation.play();
   }, [])
 
   const catPosition = [0, 1, 0]
