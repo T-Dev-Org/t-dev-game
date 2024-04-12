@@ -1,0 +1,5 @@
+# Exclusiones Node
+node_modules
+
+# Exclusiones blender
+*.blend1
