@@ -15,7 +15,7 @@ import { Cat } from "./world/cat/Cat";
 const Experience = () => {
     return (
         <>
-            <Perf position="top-left" />
+            {/* <Perf position="top-left" /> */}
             <OrbitControls
                 target={[0, 1, 0]}
                 enableZoom={true}
@@ -26,7 +26,7 @@ const Experience = () => {
                 <Environments />
                 <Physics
                     gravity={[0, -9, 0]}
-                    debug={true}
+                    debug={false}
                 >
                     <World />
                     <Suspense fallback={null}>
