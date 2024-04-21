@@ -1,5 +1,5 @@
 import { Perf } from "r3f-perf";
-import { KeyboardControls, OrbitControls } from "@react-three/drei";
+import { KeyboardControls, Loader, OrbitControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import { Suspense } from "react";
 import Text from "./abstractions/Text";
@@ -11,6 +11,7 @@ import Controls from "./controls/Controls";
 import Avatar from "./characters/avatar/Avatar";
 import useMovements from "../../utils/key-movements";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
+import Instructive from "./instructive/Instructive";
 
 export default function Level2() {
     const map = useMovements();
@@ -20,8 +21,9 @@ export default function Level2() {
             <Canvas
                 shadows={true}
             >
-                <Perf position="top-left" />
-                <Suspense fallback={null}>
+                <Suspense fallback={<Instructive />}>
+                    <Perf position="top-left" />
+
                     <Lights />
                     <Environments />
                     <Physics debug={false}>
