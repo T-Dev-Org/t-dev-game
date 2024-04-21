@@ -6,7 +6,7 @@ import WelcomeText from "./abstractions/WelcomeText";
 import Lights from "./lights/Lights";
 import Environments from "./staging/Environments";
 import { Canvas } from "@react-three/fiber";
-import World from "./world/World";
+import Level2World from "./world/Level2World";
 import Controls from "./controls/Controls";
 import Avatar from "./characters/avatar/Avatar";
 import useMovements from "../../utils/key-movements";
@@ -25,12 +25,12 @@ export default function Level2() {
                     <Lights />
                     <Environments />
                     <Physics debug={false}>
-                        <World />
+                        <Level2World />
                         <Ecctrl
                             camInitDis={-2}
                             camMaxDis={-2}
-                            maxVelLimit={5}
-                            jumpVel={4}
+                            maxVelLimit={4}
+                            jumpVel={3}
                             position={[0, 2, 0]}
                         >
                             <Avatar />
