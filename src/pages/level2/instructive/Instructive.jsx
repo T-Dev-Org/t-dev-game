@@ -8,7 +8,7 @@ const Instructive = () => {
 
   const textOptions = [
     "Tip: Mientras camines te moverás más lento que si corres.",
-    "Tip: Los NPC tienen una vida muy corta gracias a ti, te has preguntado que piensa su familia?",
+    "Tip: Los NPC tienen una vida muy corta gracias a ti.",
     "Tip: Evita los obstáculos para llegar más lejos.",
     "Tip: Mientras saltas no puedes bailar.",
     "Tip: No te preocupes, este gato también cae parado.",

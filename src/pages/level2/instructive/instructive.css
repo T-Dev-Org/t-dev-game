@@ -13,11 +13,13 @@
     rgba(162, 71, 158, 1) 35%,
     rgba(231, 147, 227, 1) 100%
   );
+  user-select: none;
 }
 
 .container-instructive img {
   max-width: 150%;
   max-height: 150%;
+  user-select: none;
 }
 
 .superior-left-text {
@@ -30,6 +32,7 @@
   font-size: 50px;
   font-family: Arial, sans-serif;
   font-weight: bold;
+  user-select: none;
 }
 
 .inferior-right-text {
@@ -42,4 +45,5 @@
   font-size: 40px;
   font-family: Arial, sans-serif;
   font-weight: bold;
+  user-select: none;
 }
