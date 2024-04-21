@@ -12,9 +12,8 @@ export default function Level3World(props) {
   return (
     <RigidBody type='fixed' colliders='trimesh'>
       <group {...props} dispose={null}>
-        {/*<mesh geometry={nodes.Walls.geometry} material={nodes.Walls.material} position={[0, 5, 100]} scale={[20, 5, 100]} />*/}
-        <mesh geometry={nodes.Maze_Walls.geometry} material={nodes.Maze_Walls.material} position={[-13.095, 0.194, -4.615]} />
-        <mesh geometry={nodes.Floor.geometry} material={nodes.Floor.material} position={[-13.095, 0.194, -4.615]} />
+        <mesh geometry={nodes.Maze_Walls.geometry} material={materials.Walls} />
+        <mesh geometry={nodes.Floor.geometry} material={materials.Floor} />
       </group>
     </RigidBody>
   )
