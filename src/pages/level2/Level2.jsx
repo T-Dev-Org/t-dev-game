@@ -2,7 +2,7 @@ import { Perf } from "r3f-perf";
 import { KeyboardControls, OrbitControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import { Suspense } from "react";
-import WelcomeText from "./abstractions/WelcomeText";
+import Text from "./abstractions/Text";
 import Lights from "./lights/Lights";
 import Environments from "./staging/Environments";
 import { Canvas } from "@react-three/fiber";
@@ -24,7 +24,7 @@ export default function Level2() {
                 <Suspense fallback={null}>
                     <Lights />
                     <Environments />
-                    <Physics debug={false}>
+                    <Physics debug={true}>
                         <Level2World />
                         <Ecctrl
                             camInitDis={-2}
@@ -36,7 +36,11 @@ export default function Level2() {
                             <Avatar />
                         </Ecctrl>
                     </Physics>
-                    <WelcomeText position={[0, 1, -2]} />
+                    <Text
+                        size={1}
+                        position={[2.5, 3, 8]}
+                        rotation={[0, Math.PI / -1.2, 0]}
+                        text="Nivel 2" />
                 </Suspense>
                 <Controls />
             </Canvas>
