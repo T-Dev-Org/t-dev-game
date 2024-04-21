@@ -24,7 +24,7 @@ export default function Level2() {
                 <Suspense fallback={null}>
                     <Lights />
                     <Environments />
-                    <Physics debug={true}>
+                    <Physics debug={false}>
                         <Level2World />
                         <Ecctrl
                             camInitDis={-2}
