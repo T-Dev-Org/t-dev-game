@@ -12,12 +12,8 @@ export default function Level2World(props) {
   return (
     <RigidBody type='fixed' colliders="trimesh">
       <group {...props} dispose={null}>
-        <mesh geometry={nodes.Terrain.geometry} material={materials.Green} />
-        <mesh geometry={nodes.Platforms001.geometry} material={materials.Rock} />
-        <mesh geometry={nodes.Platforms002.geometry} material={materials.Rock} />
-        <mesh geometry={nodes.Platforms003.geometry} material={materials.Rock} />
-        <mesh geometry={nodes.Platforms004.geometry} material={materials.Rock} />
-        <mesh geometry={nodes.Platforms005.geometry} material={materials.Rock} />
+        <mesh geometry={nodes.Terrain.geometry} material={materials.Material} />
+        <mesh geometry={nodes.Platforms.geometry} material={materials.Rock} />
       </group>
     </RigidBody>
   )
