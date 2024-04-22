@@ -34,6 +34,7 @@ export default function Level2() {
                             maxVelLimit={4}
                             jumpVel={3}
                             position={[0, 2, 0]}
+                            slopeMaxAngle={Math.PI / 5.5}
                         >
                             <Avatar />
                         </Ecctrl>

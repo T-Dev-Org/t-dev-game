@@ -12,7 +12,7 @@ export default function Level2World(props) {
   return (
     <RigidBody type='fixed' colliders="trimesh">
       <group {...props} dispose={null}>
-        <mesh geometry={nodes.Terrain.geometry} material={materials.Material} />
+        <mesh geometry={nodes.Terrain.geometry} material={materials.Rock} />
         <mesh geometry={nodes.Platforms.geometry} material={materials.Rock} />
       </group>
     </RigidBody>
