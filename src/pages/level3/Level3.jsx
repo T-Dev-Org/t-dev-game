@@ -11,6 +11,7 @@ import Controls from "./controls/Controls";
 import Avatar from "./characters/avatar/Avatar";
 import useMovements from "../../utils/key-movements";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
+import { Html } from "@react-three/drei";
 
 export default function Level3() {
     const map = useMovements();
@@ -20,8 +21,8 @@ export default function Level3() {
             <Canvas
                 shadows={true}
             >
+                <Suspense fallback={<Html><h1>Lodign</h1></Html>}>
                 <Perf position="top-left" />
-                <Suspense fallback={null}>
                     <Lights />
                     <Environments />
                     <Physics debug={false}>
