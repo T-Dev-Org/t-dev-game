@@ -14,15 +14,18 @@ export default function Controls() {
       (state) => ({ movement: state.forward || state.backward || state.leftward || state.rightward, running: state.run, jumping: state.jump, dancing: state.dance }), // Devolver un objeto con los estados relevantes
       ({ movement, running, jumping, dancing }) => { // Recibir los estados relevantes como parámetros del callback
         if (jumping) {
-          setAvatar({ ...avatar, animation: "Jumping" });
-        } else if (dancing) {
+          setAvatar({ ...avatar, animation: "Jump" });
+        }
+        else if (!movement && dancing) {
           setAvatar({ ...avatar, animation: "Dance" });
         }
-        else if (running) {
+        else if (running && movement) {
           setAvatar({ ...avatar, animation: "Running" });
-        } else if (movement) {
+        }
+        else if (movement) {
           setAvatar({ ...avatar, animation: "Walk" });
-        } else {
+        }
+        else {
           setAvatar({ ...avatar, animation: "Idle" });
         }
       }

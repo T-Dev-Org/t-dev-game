@@ -1,7 +1,7 @@
 import { Center, Float, Text3D } from "@react-three/drei";
 
-const WelcomeText = (props) => {
-    const text = "Bienvenido";
+const Text = (props) => {
+    const text = "" + props.text;
 
     return (
         <Float
@@ -19,9 +19,10 @@ const WelcomeText = (props) => {
                     bevelEnabled
                     bevelSize={0.005}
                     bevelThickness={0.01}
-                    height={0.1}
+                    height={0.2}
                     letterSpacing={0.05}
-                    size={0.2}
+                    size={props.size}
+                    rotation={props.rotation}
                 >
                     <meshNormalMaterial />
                     {text}
@@ -30,4 +31,4 @@ const WelcomeText = (props) => {
         </Float>
     )
 }
-export default WelcomeText;
+export default Text;
