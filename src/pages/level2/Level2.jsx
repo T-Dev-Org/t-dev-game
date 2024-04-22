@@ -11,7 +11,7 @@ import Controls from "./controls/Controls";
 import Avatar from "./characters/avatar/Avatar";
 import useMovements from "../../utils/key-movements";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
-import Instructive from "./instructive/Instructive";
+import Instructive from "../../utils/instructive/Instructive";
 
 export default function Level2() {
     const map = useMovements();
