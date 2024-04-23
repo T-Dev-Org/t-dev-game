@@ -8,7 +8,11 @@ const Lights = () => {
 
     const ambientLightRef = useRef();
     const directionalLightRef = useRef();
-    useHelper(directionalLightRef, DirectionalLightHelper);
+    const showHelpers = false
+
+    if (showHelpers) {
+        useHelper(directionalLightRef, DirectionalLightHelper);
+    }
 
     const optionsAmbientLight = useMemo(() => {
         return {

@@ -1,6 +1,6 @@
 import { Center, Float, Text3D } from "@react-three/drei";
 
-const Text = (props) => {
+const CustomText3D = (props) => {
     const text = "" + props.text;
 
     return (
@@ -31,4 +31,4 @@ const Text = (props) => {
         </Float>
     )
 }
-export default Text;
+export default CustomText3D;
