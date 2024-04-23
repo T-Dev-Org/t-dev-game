@@ -11,33 +11,11 @@ import { RigidBody } from '@react-three/rapier'
 export default function Level2World(props) {
   const { nodes, materials } = useGLTF('/assets/models/world/Level2World.glb')
 
-  const pbrTexturesPath = "/assets/textures/pbr/"
-  const types = ["diff", "disp", "nor_gl", "rough"]
-  const ext = ".jpg"
-
-  const terrainName = "coast_sand_rocks_02"
-
-  const terrainTextures = types.reduce((acc, type) => {
-    acc[type] = useTexture(`${pbrTexturesPath}${terrainName}/${terrainName}_${type}_2k${ext}`)
-    return acc
-  }, {})
-
-  terrainTextures.diff.wrapS = terrainTextures.diff.wrapT = terrainTextures.disp.wrapS = terrainTextures.disp.wrapT = THREE.RepeatWrapping;
-  terrainTextures.diff.repeat.set(4, 4);
-  terrainTextures.disp.repeat.set(4, 4);
-
   return (
     <RigidBody type='fixed' colliders="trimesh">
       <group {...props} dispose={null}>
-        <mesh geometry={nodes.Terrain.geometry}>
-          <meshStandardMaterial
-            map={terrainTextures.diff}
-            displacementMap={terrainTextures.disp}
-            normalMap={terrainTextures.norm}
-            roughnessMap={terrainTextures.rough}
-          />
-        </mesh>
-        <mesh geometry={nodes.Platforms.geometry} />
+        <mesh geometry={nodes.Platforms.geometry} material={materials.hept32} />
+        <mesh geometry={nodes.Terrain.geometry} material={materials.hept32} />
       </group>
     </RigidBody>
   )
