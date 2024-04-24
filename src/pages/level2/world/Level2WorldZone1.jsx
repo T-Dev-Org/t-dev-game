@@ -45,6 +45,15 @@ export default function Level2WorldZone1(props) {
         </RigidBody>
         <mesh geometry={nodes.non_collider_shrubs.geometry} material={materials.hept32} />
         <mesh geometry={nodes.tree.geometry} material={materials.hept32} castShadow={true} />
+        <RigidBody type='dynamic' colliders='cuboid'>
+          <mesh geometry={nodes.dynamic_wooden_fence001.geometry} material={materials.Material} />
+        </RigidBody>
+        <RigidBody type='dynamic' colliders='cuboid'>
+          <mesh geometry={nodes.dynamic_wooden_fence002.geometry} material={materials.Material} />
+        </RigidBody>
+        <RigidBody type='dynamic' colliders='cuboid'>
+          <mesh geometry={nodes.dynamic_wooden_fence003.geometry} material={materials.Material} />
+        </RigidBody>
       </group>
     </RigidBody>
   )

@@ -30,6 +30,9 @@ export function Model(props) {
       <mesh geometry={nodes.Trunk_3009.geometry} material={materials.hept32} />
       <mesh geometry={nodes.Trunk_3010.geometry} material={materials.hept32} />
       <mesh geometry={nodes.tree.geometry} material={materials.hept32} />
+      <mesh geometry={nodes.dynamic_wooden_fence001.geometry} material={materials.Material} />
+      <mesh geometry={nodes.dynamic_wooden_fence002.geometry} material={materials.Material} />
+      <mesh geometry={nodes.dynamic_wooden_fence003.geometry} material={materials.Material} />
     </group>
   )
 }
