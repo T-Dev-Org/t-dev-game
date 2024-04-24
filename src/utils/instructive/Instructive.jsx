@@ -8,21 +8,36 @@ const Instructive = () => {
 
   const pathImagenes = "./assets/images/instructives/";
 
+
+  const teclaSalto = "'Espacio'"
+  const teclaCorrer = "'Shift'"
+  const teclaDance = "'Q'"
+
   const textOptions = [
-    "Tip: Mientras camines te moverás más lento que si corres.",
-    "Tip: Los NPC tienen una vida muy corta gracias a ti.",
-    "Tip: Evita los obstáculos para llegar más lejos.",
-    "Tip: Mientras saltas no puedes bailar.",
-    "Tip: No te preocupes, este gato también cae parado.",
-    "Tip: Si no golpeas no harás daño.",
-    "Tip: Si te golpean te harán daño, no dejes que te golpeen",
+    `Tip: Presiona ${teclaCorrer} mientras te mueves para correr o no correras`,
+    `Tip: Manten presionado ${teclaSalto} para saltar más alto`,
+    `Tip: Mientras camines te moverás más lento que si corres.`,
+    `Tip: Los NPC tienen una vida muy corta gracias a ti.`,
+    `Tip: Evita los obstáculos para llegar más lejos.`,
+    `Tip: Presiona ${teclaCorrer} mientras te mueves para correr o no correras`,
+    `Tip: Manten presionado ${teclaSalto} para saltar más alto`,
+    `Tip: Mientras saltas no puedes bailar.`,
+    `Tip: No te preocupes, este gato también cae parado.`,
+    `Tip: Presiona ${teclaCorrer} mientras te mueves para correr o no correras`,
+    `Tip: Manten presionado ${teclaSalto} para saltar más alto`,
+    `Tip: Si no golpeas no harás daño.`,
+    `Tip: Si te golpean te harán daño, no dejes que te golpeen`,
+    `Tip: Manten presionado ${teclaDance} para celebrar`,
   ];
 
   const imageOptions = [
     "level2_1",
     "level2_2",
+    "level2_3",
     "level2_4",
     "level2_5",
+    "level2_6",
+    "level2_7",
   ]
 
   const randomIndex = Math.floor(Math.random() * imageOptions.length);
