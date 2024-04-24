@@ -5,7 +5,7 @@ Command: npx gltfjsx@6.2.16 public/assets/models/world/Level2World_zone1.glb
 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
-import { RigidBody } from '@react-three/rapier'
+import { CuboidCollider, RigidBody } from '@react-three/rapier'
 
 
 export default function Level2WorldZone1(props) {
@@ -13,6 +13,14 @@ export default function Level2WorldZone1(props) {
   return (
     <RigidBody type='fixed' colliders={false}>
       <group {...props} dispose={null}>
+        {/* Zona 1 */}
+        <CuboidCollider position={[-6, 2, -63]} args={[6.6, 2, 1]} rotation={[0, Math.PI / -1.15, 0]} />
+        <CuboidCollider position={[-20.2, 2, -60]} args={[8.2, 2, 1]} rotation={[0, Math.PI / 0.98, 0]} />
+
+        {/* Zona Checkpoint 3 */}
+        <CuboidCollider position={[40.6, 2, -28]} args={[12, 2, 1]} rotation={[0, 0, 0]} />
+        <CuboidCollider position={[17.6, 2, -31.8]} args={[12, 2, 1]} rotation={[0, Math.PI / -9.6, 0]} />
+        <CuboidCollider position={[5.8, 2, -36]} args={[1, 2, 1]} rotation={[0, Math.PI / 2.8, 0]} />
         <mesh geometry={nodes.barrier_group_6.geometry} material={materials.hept32} />
         <mesh geometry={nodes.barrier_group_2.geometry} material={materials.hept32} />
         <mesh geometry={nodes.barrier_group_3.geometry} material={materials.hept32} />
@@ -26,15 +34,19 @@ export default function Level2WorldZone1(props) {
         <mesh geometry={nodes.barrier_group_5001.geometry} material={materials.hept32} />
         <mesh geometry={nodes.barrier_group_6001.geometry} material={materials.hept32} />
         <mesh geometry={nodes.barrier_group_7.geometry} material={materials.hept32} />
-        <mesh geometry={nodes.Trunk_1003.geometry} material={materials.hept32} />
+        <RigidBody type='fixed' colliders='hull'>
+          <mesh geometry={nodes.Trunk_1003.geometry} material={materials.hept32} />
+        </RigidBody>
         <mesh geometry={nodes.shrub.geometry} material={materials.hept32} />
         <mesh geometry={nodes.Shurb_3012.geometry} material={materials.hept32} />
         <mesh geometry={nodes.Shurb_3013.geometry} material={materials.hept32} />
         <mesh geometry={nodes.Shurb_3014.geometry} material={materials.hept32} />
-        <mesh geometry={nodes.Trunk_3004.geometry} material={materials.hept32} />
-        <mesh geometry={nodes.Trunk_3008.geometry} material={materials.hept32} />
-        <mesh geometry={nodes.Trunk_3009.geometry} material={materials.hept32} />
-        <mesh geometry={nodes.Trunk_3010.geometry} material={materials.hept32} />
+        <RigidBody type='fixed' colliders='hull'>
+          <mesh geometry={nodes.Trunk_3004.geometry} material={materials.hept32} />
+          <mesh geometry={nodes.Trunk_3008.geometry} material={materials.hept32} />
+          <mesh geometry={nodes.Trunk_3009.geometry} material={materials.hept32} />
+          <mesh geometry={nodes.Trunk_3010.geometry} material={materials.hept32} />
+        </RigidBody>
         <mesh geometry={nodes.tree.geometry} material={materials.hept32} />
       </group>
     </RigidBody>
