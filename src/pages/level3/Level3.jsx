@@ -12,6 +12,7 @@ import Avatar from "./characters/avatar/Avatar";
 import useMovements from "../../utils/key-movements";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 import { Html } from "@react-three/drei";
+import Instructive from "../../utils/instructive/Instructive";
 
 export default function Level3() {
     const map = useMovements();
@@ -21,7 +22,7 @@ export default function Level3() {
             <Canvas
                 shadows={true}
             >
-                <Suspense fallback={<Html><h1>Lodign</h1></Html>}>
+                <Suspense fallback={<Instructive/>}>
                 <Perf position="top-left" />
                     <Lights />
                     <Environments />
