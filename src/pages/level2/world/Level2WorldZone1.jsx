@@ -20,7 +20,7 @@ export default function Level2WorldZone1(props) {
         <CuboidCollider position={[17.6, 1.5, -31.8]} args={[12, 2, 1]} rotation={[0, Math.PI / -9.6, 0]} />
         <CuboidCollider position={[19, 3, -33.3]} args={[13, 3, 1]} rotation={[Math.PI / -3.6, Math.PI / -17, Math.PI / -16]} />
 
-        <CuboidCollider position={[5.8, 2, -36]} args={[1, 2, 1]} rotation={[0, Math.PI / 2.8, 0]} />
+        <CuboidCollider position={[6, 2, -36]} args={[1.6, 2, 1]} rotation={[0, Math.PI / 4, 0]} />
         <mesh geometry={nodes.barrier_group_6.geometry} material={materials.hept32} castShadow={true} />
         <mesh geometry={nodes.barrier_group_2.geometry} material={materials.hept32} castShadow={true} />
         <mesh geometry={nodes.barrier_group_3.geometry} material={materials.hept32} castShadow={true} />
@@ -37,16 +37,13 @@ export default function Level2WorldZone1(props) {
         <RigidBody type='fixed' colliders='hull'>
           <mesh geometry={nodes.Trunk_1003.geometry} material={materials.hept32} castShadow={true} />
         </RigidBody>
-        <mesh geometry={nodes.shrub.geometry} material={materials.hept32} />
-        <mesh geometry={nodes.Shurb_3012.geometry} material={materials.hept32} castShadow={true} />
-        <mesh geometry={nodes.Shurb_3013.geometry} material={materials.hept32} castShadow={true} />
-        <mesh geometry={nodes.Shurb_3014.geometry} material={materials.hept32} castShadow={true} />
         <RigidBody type='fixed' colliders='hull'>castShadow={true} receiveShadow
           <mesh geometry={nodes.Trunk_3004.geometry} material={materials.hept32} castShadow={true} />
           <mesh geometry={nodes.Trunk_3008.geometry} material={materials.hept32} castShadow={true} />
           <mesh geometry={nodes.Trunk_3009.geometry} material={materials.hept32} castShadow={true} />
           <mesh geometry={nodes.Trunk_3010.geometry} material={materials.hept32} castShadow={true} />
         </RigidBody>
+        <mesh geometry={nodes.non_collider_shrubs.geometry} material={materials.hept32} />
         <mesh geometry={nodes.tree.geometry} material={materials.hept32} castShadow={true} />
       </group>
     </RigidBody>
