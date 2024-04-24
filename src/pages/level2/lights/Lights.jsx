@@ -9,7 +9,7 @@ const Lights = () => {
 
     const ambientLightRef = useRef();
     const directionalLightRef = useRef();
-    const showHelpers = true
+    const showHelpers = false
 
     if (showHelpers) {
         useHelper(directionalLightRef, DirectionalLightHelper);
