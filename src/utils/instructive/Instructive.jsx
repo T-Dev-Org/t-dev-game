@@ -37,7 +37,6 @@ const Instructive = () => {
     "level2_4",
     "level2_5",
     "level2_6",
-    "level2_7",
   ]
 
   const randomIndex = Math.floor(Math.random() * imageOptions.length);
