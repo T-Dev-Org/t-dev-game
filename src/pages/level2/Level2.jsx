@@ -31,7 +31,7 @@ export default function Level2() {
 
                     <Lights />
                     <Environments />
-                    <Physics debug={true}>
+                    <Physics debug={false}>
                         <Level2World />
                         <Level2WorldZone1 />
                         <Ecctrl
