@@ -35,8 +35,8 @@ export default function Level3World(props) {
     <RigidBody type='fixed' colliders='trimesh'>
       <group {...props} dispose={null}>
         <mesh geometry={nodes.Maze_Walls.geometry} material={materials.Walls}>
-          <meshToonMaterial /*{...propsTexture}*/ />          
-        </mesh>          
+          <meshToonMaterial {...propsTexture} /> 
+        </mesh>
         <mesh geometry={nodes.Floor.geometry} material={materials.Floor} />
       </group>
     </RigidBody>

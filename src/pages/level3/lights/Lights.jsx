@@ -3,7 +3,9 @@ import { Color } from "three";
 const Lights = () => {
     return <>
         <ambientLight
-            intensity={0}
+            color={new Color("#FF5421")}
+            intensity={3}
+            position={[0,0,100]}            
         />
         {/*<directionalLight
             castShadow={true}
@@ -16,10 +18,10 @@ const Lights = () => {
             shadow-camera-right = {10}
             shadow-camera-top = {10}
             shadow-camera-bottom = {-100}
-        />*/}
+        />*/}{/*
         <ambientLight
             color={new Color("#FF0000")}
-            intensity={1}   
+            intensity={0.5}   
         />
         <pointLight
             color={new Color("#FFF700")}
@@ -30,7 +32,7 @@ const Lights = () => {
             color={new Color("#00FF2A")}
             intensity={100}
             position={[-1, 0, 0]}
-        />        
+    />   */}     
 
     </>
 }
