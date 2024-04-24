@@ -33,6 +33,8 @@ export function Model(props) {
       <mesh geometry={nodes.dynamic_wooden_fence001.geometry} material={materials.Material} />
       <mesh geometry={nodes.dynamic_wooden_fence002.geometry} material={materials.Material} />
       <mesh geometry={nodes.dynamic_wooden_fence003.geometry} material={materials.Material} />
+      <mesh geometry={nodes.dynamic_wooden_fence004.geometry} material={materials.Material} />
+      <mesh geometry={nodes.dynamic_ball.geometry} material={materials.hept32} />
     </group>
   )
 }

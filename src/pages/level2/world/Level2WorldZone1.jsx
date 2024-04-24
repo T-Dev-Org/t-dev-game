@@ -6,9 +6,12 @@ import { CuboidCollider, RigidBody } from '@react-three/rapier'
 
 export default function Level2WorldZone1(props) {
   const { nodes, materials } = useGLTF('/assets/models/world//Level2WorldZone1.glb')
-  return (
-    <RigidBody type='fixed' colliders={false}>
-      <group {...props} dispose={null}>
+  return (<>
+    <group {...props} dispose={null}>
+      <RigidBody type='fixed' colliders={false}>
+        {/* Friendly colliders */}
+        <CuboidCollider position={[0, -1, -10.6]} args={[3, 1, 1]} />
+
         {/* Zona 1 */}
         <CuboidCollider position={[-6, 2, -63]} args={[6.6, 2, 1]} rotation={[0, Math.PI / -1.15, 0]} />
         <CuboidCollider position={[-20.2, 2, -60]} args={[8.2, 2, 1]} rotation={[0, Math.PI / 0.98, 0]} />
@@ -45,17 +48,24 @@ export default function Level2WorldZone1(props) {
         </RigidBody>
         <mesh geometry={nodes.non_collider_shrubs.geometry} material={materials.hept32} />
         <mesh geometry={nodes.tree.geometry} material={materials.hept32} castShadow={true} />
-        <RigidBody type='dynamic' colliders='cuboid'>
-          <mesh geometry={nodes.dynamic_wooden_fence001.geometry} material={materials.Material} />
-        </RigidBody>
-        <RigidBody type='dynamic' colliders='cuboid'>
-          <mesh geometry={nodes.dynamic_wooden_fence002.geometry} material={materials.Material} />
-        </RigidBody>
-        <RigidBody type='dynamic' colliders='cuboid'>
-          <mesh geometry={nodes.dynamic_wooden_fence003.geometry} material={materials.Material} />
-        </RigidBody>
-      </group>
-    </RigidBody>
+      </RigidBody>
+      <RigidBody type='dynamic' colliders='cuboid'>
+        <mesh geometry={nodes.dynamic_wooden_fence001.geometry} material={materials.Material} />
+      </RigidBody>
+      <RigidBody type='dynamic' colliders='cuboid'>
+        <mesh geometry={nodes.dynamic_wooden_fence002.geometry} material={materials.Material} />
+      </RigidBody>
+      <RigidBody type='dynamic' colliders='cuboid'>
+        <mesh geometry={nodes.dynamic_wooden_fence003.geometry} material={materials.Material} />
+      </RigidBody>
+      <RigidBody type='dynamic' colliders='cuboid' mass={0.01}>
+        <mesh geometry={nodes.dynamic_wooden_fence004.geometry} material={materials.Material} />
+      </RigidBody>
+      <RigidBody type='dynamic' colliders='hull' mass={0.001}>
+        <mesh geometry={nodes.dynamic_ball.geometry} material={materials.hept32} />
+      </RigidBody>
+    </group>
+  </>
   )
 }
 
