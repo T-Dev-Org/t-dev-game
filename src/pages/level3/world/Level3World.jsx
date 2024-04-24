@@ -4,15 +4,39 @@ Command: npx gltfjsx@6.2.16 .\public\assets\models\world\Level3World.glb
 */
 
 import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import { useGLTF, useTexture } from '@react-three/drei'
 import { RigidBody } from '@react-three/rapier'
+import { RepeatWrapping } from "three";
 
 export default function Level3World(props) {
   const { nodes, materials } = useGLTF('assets/models/world/Level3World.glb')
+  const path = "/assets/textures/floors/coast_sand_01_";
+
+  const propsTexture = useTexture({
+    map: path + "diff_1k.jpg",
+    normalMap : path + "nor_gl_1k.jpg",
+    roughnessMap: path + "rough_1k.jpg",
+    displacementMap: path + "rough_1k.jpg"
+  });
+
+  propsTexture.map.repeat.set(4, 64);
+  propsTexture.map.wrapS = propsTexture.map.wrapT = RepeatWrapping
+
+  propsTexture.normalMap.repeat.set(4, 64);
+  propsTexture.normalMap.wrapS = propsTexture.normalMap.wrapT = RepeatWrapping
+  
+  propsTexture.roughnessMap.repeat.set(4, 64);
+  propsTexture.roughnessMap.wrapS = propsTexture.roughnessMap.wrapT = RepeatWrapping
+  
+  propsTexture.displacementMap.repeat.set(4, 64);
+  propsTexture.displacementMap.wrapS = propsTexture.displacementMap.wrapT = RepeatWrapping   
+
   return (
     <RigidBody type='fixed' colliders='trimesh'>
       <group {...props} dispose={null}>
-        <mesh geometry={nodes.Maze_Walls.geometry} material={materials.Walls} />
+        <mesh geometry={nodes.Maze_Walls.geometry} material={materials.Walls}>
+          <meshToonMaterial /*{...propsTexture}*/ />          
+        </mesh>          
         <mesh geometry={nodes.Floor.geometry} material={materials.Floor} />
       </group>
     </RigidBody>
