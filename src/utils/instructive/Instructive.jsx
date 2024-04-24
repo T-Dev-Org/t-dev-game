@@ -17,10 +17,16 @@ const Instructive = () => {
     "Tip: Si no golpeas no harás daño.",
     "Tip: Si te golpean te harán daño, no dejes que te golpeen",
   ];
-  const imagenesDisponibles = 3;
 
-  const randomIndex = Math.floor(Math.random() * imagenesDisponibles) + 1;
-  const randomIndexText = Math.floor(Math.random() * textOptions.length) + 1;
+  const imageOptions = [
+    "level2_1",
+    "level2_2",
+    "level2_4",
+    "level2_5",
+  ]
+
+  const randomIndex = Math.floor(Math.random() * imageOptions.length);
+  const randomIndexText = Math.floor(Math.random() * textOptions.length);
 
   const selectedText = textOptions[randomIndexText];
 
@@ -30,7 +36,7 @@ const Instructive = () => {
         <h1 className="superior-left-text">Cargando...</h1>
         <img
           ref={imgRef}
-          src={`${pathImagenes}instructive${randomIndex}.png`}
+          src={`${pathImagenes}${imageOptions[randomIndex]}.png`}
           alt="Instructive"
         />
         <h1 className="inferior-right-text">{selectedText}</h1>
