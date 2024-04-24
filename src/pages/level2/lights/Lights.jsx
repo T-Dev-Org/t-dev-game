@@ -1,3 +1,4 @@
+// [Lights.jsx]
 import { useHelper } from "@react-three/drei";
 import { useControls } from "leva";
 import { useEffect, useMemo, useRef } from "react";
@@ -8,7 +9,7 @@ const Lights = () => {
 
     const ambientLightRef = useRef();
     const directionalLightRef = useRef();
-    const showHelpers = false
+    const showHelpers = true
 
     if (showHelpers) {
         useHelper(directionalLightRef, DirectionalLightHelper);
@@ -23,9 +24,9 @@ const Lights = () => {
     const optionsDirectionalLight = useMemo(() => {
         return {
             castShadowDL: true,
-            intensityDL: { value: 1.4, min: 0, max: 6, step: 0.1 },
+            intensityDL: { value: 1.6, min: 0, max: 6, step: 0.1 },
             positionDL: { value: [40, 20, 80] },
-            targetPositionDL: { value: [30, 12, -40] }
+            targetPositionDL: { value: [30, 2, -40] }
         }
     })
 
@@ -50,6 +51,12 @@ const Lights = () => {
             position={positionDL}
             color={new Color("#FFF700")}
             intensity={intensityDL}
+        // shadow-mapSize={[2048, 2048]}
+        // shadow-camera-far={100}
+        // shadow-camera-left={-10}
+        // shadow-camera-right={10}
+        // shadow-camera-top={10}
+        // shadow-camera-bottom={-100}
         />
     </>
 }
