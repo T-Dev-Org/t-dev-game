@@ -7,6 +7,7 @@ import Environments from "./staging/Environments";
 
 import { Canvas } from "@react-three/fiber";
 import Level2World from "./world/Level2World";
+import Level2WorldZone1 from "./world/Level2WorldZone1";
 import Controls from "./controls/Controls";
 import Avatar from "./characters/avatar/Avatar";
 import useMovements from "../../utils/key-movements";
@@ -31,6 +32,7 @@ export default function Level2() {
                     <Environments />
                     <Physics debug={false}>
                         <Level2World />
+                        <Level2WorldZone1 />
                         <Ecctrl
                             camInitDis={-2}
                             camMaxDis={-2}
