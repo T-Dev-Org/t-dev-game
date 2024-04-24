@@ -14,7 +14,7 @@ export default function Level2WorldZone1(props) {
         <CuboidCollider position={[-20.2, 2, -60]} args={[8.2, 2, 1]} rotation={[0, Math.PI / 0.98, 0]} />
 
         {/* Zona Checkpoint 3 */}
-        <CuboidCollider position={[40.6, 2, -28]} args={[12, 2, 1]} rotation={[0, 0, 0]} />
+        <CuboidCollider position={[38.6, 2, -28]} args={[10, 2, 1]} rotation={[0, 0, 0]} />
         <CuboidCollider position={[36.6, 5, -32]} args={[12, 4, 1]} rotation={[Math.PI / -3.6, Math.PI / -0.988, 0]} />
 
         <CuboidCollider position={[17.6, 1.5, -31.8]} args={[12, 2, 1]} rotation={[0, Math.PI / -9.6, 0]} />
