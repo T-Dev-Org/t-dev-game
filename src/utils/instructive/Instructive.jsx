@@ -19,11 +19,10 @@ const Instructive = () => {
   ];
 
   const imageOptions = [
-    "instructive_goku_1",
-    "instructive_regular_show_1",
-    "instructive_regular_show_2",
-    "instructive_thanos_1",
-    "instructive_thanos_2",
+    "level2_1",
+    "level2_2",
+    "level2_4",
+    "level2_5",
   ]
 
   const randomIndex = Math.floor(Math.random() * imageOptions.length);
