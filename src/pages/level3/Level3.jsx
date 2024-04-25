@@ -15,34 +15,31 @@ import { Html } from "@react-three/drei";
 import Instructive from "../../utils/instructive/Instructive";
 
 export default function Level3() {
-    const map = useMovements();
+  const map = useMovements();
 
-    return (
-        <KeyboardControls map={map} >
-            <Canvas
-                shadows={true}
+  return (
+    <KeyboardControls map={map}>
+      <Canvas shadows={true}>
+        <Suspense fallback={<Instructive />}>
+          <Perf position="top-left" />
+          <Lights />
+          <Environments />
+          <Physics debug={false}>
+            <Level3World />
+            <Ecctrl
+              camInitDis={-2}
+              camMaxDis={-2}
+              maxVelLimit={5}
+              jumpVel={4}
+              position={[0, 2, 0]}
             >
-                <Suspense fallback={<Instructive/>}>
-                <Perf position="top-left" />
-                    <Lights />
-                    <Environments />
-                    <Physics debug={false}>
-                        <Level3World />
-                        <Ecctrl
-                            camInitDis={-2}
-                            camMaxDis={-2}
-                            maxVelLimit={5}
-                            jumpVel={4}
-                            position={[0, 2, 0]}
-                        >
-                            <Avatar />
-                        </Ecctrl>
-                    </Physics>
-                    <WelcomeText position={[0, 1, -2]} />
-                </Suspense>
-                <Controls />
-            </Canvas>
-        </KeyboardControls>
-
-    )
+              <Avatar />
+            </Ecctrl>
+          </Physics>
+          <WelcomeText position={[0, 2, 1]} />
+        </Suspense>
+        <Controls />
+      </Canvas>
+    </KeyboardControls>
+  );
 }
