@@ -28,7 +28,7 @@
     text-align: center;
 }
 
-.button-start > button {
+.button-start > .button {
     color: white;
     background-color: red;
     font-weight: bold;
@@ -41,15 +41,19 @@
     margin-top: 4rem;
 }
 
-.button-start > button:hover {
+.button-start > .button:hover {
     background-color: #FF5757;
 }
 
-.button-start > button:active {
+.button-start > .button:active {
     background-color: #920A0A; 
 }
 
-.button-start > button:disabled {
+.button-start > .button:disabled {
     background-color: #fde6e7;
     cursor: not-allowed;
+}
+
+.button{
+    text-decoration: none;
 }
