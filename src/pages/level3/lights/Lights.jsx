@@ -24,9 +24,9 @@ const Lights = () => {
     const optionsDirectionalLight = useMemo(() => {
         return {
             castShadowDL: true,
-            intensityDL: { value: 1.6, min: 0, max: 6, step: 0.1 },
+            intensityDL: { value: 0.1, min: 0, max: 6, step: 0.1 },
             positionDL: { value: [40, 20, 80] },
-            targetPositionDL: { value: [30, 2, -40] }
+            targetPositionDL: { value: [-8, 2, -213] }
         }
     })    
 
@@ -42,14 +42,14 @@ const Lights = () => {
 
     return <>
         <ambientLight
-            color={new Color("#FF5421")}
-            intensity={3}
+            color={new Color("#e51a4c")}
+            intensity={intensityAL}
             position={[0,0,100]}            
         />
         
         <spotLight
-            color={new Color("#FFF700")}
-            intensity={3}
+            color={new Color("#FFFfff")}
+            intensity={0.6}
             position={[0, 1, 0]}
             angle = {Math.PI}
         />
@@ -58,7 +58,7 @@ const Lights = () => {
             ref={directionalLightRef}
             castShadow={castShadowDL}
             position={positionDL}
-            color={new Color("#FFF700")}
+            color={new Color("#00FF00")}
             intensity={intensityDL}
         // shadow-mapSize={[2048, 2048]}
         // shadow-camera-far={100}
