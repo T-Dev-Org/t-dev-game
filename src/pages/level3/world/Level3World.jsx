@@ -10,34 +10,42 @@ import { RepeatWrapping } from "three";
 
 export default function Level3World(props) {
   const { nodes, materials } = useGLTF('assets/models/world/Level3World.glb')
-  const path = "/assets/textures/floors/coast_sand_01_";
+  const path = "/assets/textures/floors/dark_brick_wall_";
 
   const propsTexture = useTexture({
     map: path + "diff_1k.jpg",
-    normalMap : path + "nor_gl_1k.jpg",
-    roughnessMap: path + "rough_1k.jpg",
-    displacementMap: path + "rough_1k.jpg"
+    //normalMap : path + "nor_gl_1k.exr",
+    //roughnessMap: path + "rough_1k.exr",
+    displacementMap: path + "disp_1k.png"
   });
 
-  propsTexture.map.repeat.set(4, 64);
+  propsTexture.map.repeat.set(8, 4);
   propsTexture.map.wrapS = propsTexture.map.wrapT = RepeatWrapping
 
-  propsTexture.normalMap.repeat.set(4, 64);
-  propsTexture.normalMap.wrapS = propsTexture.normalMap.wrapT = RepeatWrapping
+  //propsTexture.normalMap.repeat.set(4, 64);
+  //propsTexture.normalMap.wrapS = propsTexture.normalMap.wrapT = RepeatWrapping
   
-  propsTexture.roughnessMap.repeat.set(4, 64);
-  propsTexture.roughnessMap.wrapS = propsTexture.roughnessMap.wrapT = RepeatWrapping
+  //propsTexture.roughnessMap.repeat.set(4, 64);
+  //propsTexture.roughnessMap.wrapS = propsTexture.roughnessMap.wrapT = RepeatWrapping
   
-  propsTexture.displacementMap.repeat.set(4, 64);
-  propsTexture.displacementMap.wrapS = propsTexture.displacementMap.wrapT = RepeatWrapping   
+  propsTexture.displacementMap.repeat.set(8, 2);
+  propsTexture.displacementMap.wrapS = propsTexture.displacementMap.wrapT = RepeatWrapping     
 
   return (
     <RigidBody type='fixed' colliders='trimesh'>
       <group {...props} dispose={null}>
-        <mesh geometry={nodes.Maze_Walls.geometry} material={materials.Walls} castShadow={true} recieveShadow={true}>
+        <mesh geometry={nodes.Maze_Inside_Walls.geometry} material={nodes.Maze_Inside_Walls} castShadow={true} recieveShadow={true}>
           <meshToonMaterial {...propsTexture} /> 
         </mesh>
-        <mesh geometry={nodes.Floor.geometry} material={materials.Floor} castShadow={true} receiveShadow={true}/>
+        <mesh geometry={nodes.Floor.geometry} material={materials.Floor} castShadow={true} receiveShadow={true}>
+        </mesh>
+        <mesh geometry={nodes.Miniroom.geometry} material={nodes.Miniroom.material} castShadow={true} receiveShadow={true}>
+          <meshToonMaterial {...propsTexture} /> 
+        </mesh>
+        <mesh geometry={nodes.Miniroom_Floor.geometry} material={materials.Floor} castShadow={true} receiveShadow={true}/>
+        <mesh geometry={nodes.Maze__Outside_Walls.geometry} material={nodes.Maze__Outside_Walls.material}>
+          <meshToonMaterial {...propsTexture} /> 
+        </mesh>
       </group>
     </RigidBody>
   )

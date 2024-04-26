@@ -58,7 +58,7 @@ const Lights = () => {
             ref={directionalLightRef}
             castShadow={castShadowDL}
             position={positionDL}
-            color={new Color("#00FF00")}
+            color={new Color("#FFFF00")}
             intensity={intensityDL}
         // shadow-mapSize={[2048, 2048]}
         // shadow-camera-far={100}

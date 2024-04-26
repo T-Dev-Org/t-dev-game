@@ -1,7 +1,7 @@
 import { Center, Float, Text3D } from "@react-three/drei";
 
 const WelcomeText = (props) => {
-    const text = "Bienvenido";
+    const welcome = "Welcome to hell";
 
     return (
         <Float
@@ -24,8 +24,8 @@ const WelcomeText = (props) => {
                     size={0.2} 
                     rotation={[0, Math.PI, 0]}                                      
                 >
-                    <meshNormalMaterial />
-                    {text}
+                    <meshPhongMaterial />
+                    {welcome}
                 </Text3D>
             </Center>
         </Float>
