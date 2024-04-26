@@ -27,7 +27,7 @@ export default function Level2() {
                 shadows={true}
             >
                 <Suspense fallback={<Instructive />}>
-                    <Perf position="top-left" />
+                    {/* <Perf position="top-left" /> */}
 
                     <Lights />
                     <Environments />
@@ -39,7 +39,7 @@ export default function Level2() {
                             camMaxDis={-2}
                             maxVelLimit={4}
                             jumpVel={3}
-                            position={[0, 2, 0]}
+                            position={[40, 20, -40]}
                             slopeMaxAngle={Math.PI / 5.5}
                         >
                             <Avatar />
