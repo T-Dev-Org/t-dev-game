@@ -43,12 +43,28 @@ export function WorldLevel4(props) {
   propsTextureTemple.displacementMap.repeat.set(4, 64);
   propsTextureTemple.displacementMap.wrapS = propsTextureTemple.displacementMap.wrapT = RepeatWrapping;
 
+  const PATH_WALLS = "/assets/textures/pbr/painted_plaster_wall/";
+  const propsTextureWalls = useTexture({
+    map: PATH_WALLS + "painted_plaster_wall_diff_1k.jpg",
+    normalMap: PATH_WALLS + "painted_plaster_wall_nor_gl_1k.jpg",
+    roughnessMap: PATH_WALLS + "painted_plaster_wall_rough_1k.jpg",
+    displacementMap: PATH_WALLS + "painted_plaster_wall_disp_1k.png",
+  });
+  propsTextureWalls.map.repeat.set(4, 64);
+  propsTextureWalls.map.wrapS = propsTextureWalls.map.wrapT = RepeatWrapping;
+  propsTextureWalls.normalMap.repeat.set(4, 64);
+  propsTextureWalls.normalMap.wrapS = propsTextureWalls.normalMap.wrapT = RepeatWrapping;
+  propsTextureWalls.roughnessMap.repeat.set(4, 64);
+  propsTextureWalls.roughnessMap.wrapS = propsTextureWalls.roughnessMap.wrapT = RepeatWrapping;
+  propsTextureWalls.displacementMap.repeat.set(4, 64);
+  propsTextureWalls.displacementMap.wrapS = propsTextureWalls.displacementMap.wrapT = RepeatWrapping;
+
 
   return (
     <group {...props} dispose={null}>
       <RigidBody type='fixed' colliders='trimesh'>
         <mesh geometry={nodes.Walls.geometry} material={materials.Material}>
-          <meshStandardMaterial/>
+          <meshStandardMaterial {...propsTextureWalls}/>
         </mesh>
       </RigidBody>
       <RigidBody type='fixed' colliders='trimesh'>
