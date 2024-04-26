@@ -5,6 +5,12 @@ import Avatar from "./characters/avatar/Avatar";
 import { KeyboardControls, OrbitControls  } from "@react-three/drei";
 import useMovements from "../../utils/key-movements";
 import { WorldLevel4 } from "./world/Level4World";
+import { Perf } from "r3f-perf";
+import { Suspense } from "react";
+import WelcomeText from "./abstractions/WelcomeText";
+import Lights from "../level1/lights/Lights";
+import Environments from "./staging/Environments";
+
 
 export default function Level4() {
     const map = useMovements();
@@ -12,26 +18,25 @@ export default function Level4() {
     return (
         <KeyboardControls map={map} >
 
-            <Canvas>
-                <ambientLight
-                    intensity={0.4}
-                />
-                <directionalLight
-                    intensity={0.6}
-                    position={[0, 12, -14]} />
-                <OrbitControls makeDefault />
+            <Canvas shadows={true}>
+            <Perf position="top-left" />
+            <Suspense fallback={null}>
+            <Environments />
+                <Lights/>
                 <Physics>
                     <WorldLevel4 />
                     <Ecctrl
                         camInitDis={-2}
                         camMaxDis={-2}
-                        maxVelLimit={3}
-                        jumpVel={3}
-                        position={[0, 0, 15]}
+                        maxVelLimit={5}
+                        jumpVel={6}
+                        position={[0, 9, 115]}
                     >
                         <Avatar />
                     </Ecctrl>
                 </Physics>
+                <WelcomeText position={[0,0,110]}/>
+                </Suspense>
             </Canvas>
         </KeyboardControls>
     )

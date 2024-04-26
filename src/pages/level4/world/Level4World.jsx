@@ -8,88 +8,93 @@ import { useGLTF, useTexture } from '@react-three/drei'
 import { RigidBody } from '@react-three/rapier'
 import { RepeatWrapping } from "three";
 
-
 export function WorldLevel4(props) {
   const { nodes, materials } = useGLTF('/assets/models/world/Level4World.glb')
   const PATH = "/assets/textures/pbr/coast_sand_rocks_02/";
 
-    const propsTexture = useTexture({
-        map: PATH + "coast_sand_rocks_02_diff_2k.jpg",
-        normalMap: PATH + "coast_sand_rocks_02_disp_2k.jpg",
-        roughnessMap: PATH + "coast_sand_rocks_02_nor_gl_2k.jpg",
-        displacementMap: PATH + "coast_sand_rocks_02_rough_2k.jpg",
-    });
+  const propsTexture = useTexture({
+    map: PATH + "coast_sand_rocks_02_diff_2k.jpg",
+    normalMap: PATH + "coast_sand_rocks_02_nor_gl_2k.jpg",
+    roughnessMap: PATH + "coast_sand_rocks_02_rough_2k.jpg",
+    displacementMap: PATH + "coast_sand_rocks_02_disp_2k.jpg",
+  });
 
-    propsTexture.map.repeat.set(4, 64);
-    propsTexture.map.wrapS = propsTexture.map.wrapT = RepeatWrapping;
+  propsTexture.map.repeat.set(4, 64);
+  propsTexture.map.wrapS = propsTexture.map.wrapT = RepeatWrapping;
 
-    propsTexture.normalMap.repeat.set(4, 64);
-    propsTexture.normalMap.wrapS = propsTexture.normalMap.wrapT = RepeatWrapping;
+  propsTexture.normalMap.repeat.set(4, 64);
+  propsTexture.normalMap.wrapS = propsTexture.normalMap.wrapT = RepeatWrapping;
 
-    propsTexture.roughnessMap.repeat.set(4, 64);
-    propsTexture.roughnessMap.wrapS = propsTexture.roughnessMap.wrapT = RepeatWrapping;
+  propsTexture.roughnessMap.repeat.set(4, 64);
+  propsTexture.roughnessMap.wrapS = propsTexture.roughnessMap.wrapT = RepeatWrapping;
 
-    propsTexture.displacementMap.repeat.set(4, 64);
-    propsTexture.displacementMap.wrapS = propsTexture.displacementMap.wrapT = RepeatWrapping;
+  propsTexture.displacementMap.repeat.set(4, 64);
+  propsTexture.displacementMap.wrapS = propsTexture.displacementMap.wrapT = RepeatWrapping;
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.group5316731.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group57623791.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group68204262.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group108361139.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group270233654.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group406425657.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group435217147.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group448090791.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group478880195.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group576674587.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group655853705.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group709032757.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group713469602.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group776444818.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group783017327.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group846612166.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group852367843.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group906655627.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group933043720.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1041435347.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1050217761.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1106760722.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1203818417.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1214360105.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1230537508.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1254558891.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1257734071.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1279285962.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1455864846.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.Stairs.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1488492870.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1492611372.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1633463244.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.Stairs2.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1710678154.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1725596970.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1750121367.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1853385032.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group1880926500.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group2027099646.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group9434332.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group2048605253.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.group2078116070.geometry} material={materials.mat21} />
       <RigidBody type='fixed' colliders='trimesh'>
-      <mesh geometry={nodes.Superface.geometry} material={materials.mat21} >
-        <meshStandardMaterial {...propsTexture}/>
-      </mesh>
+        <mesh geometry={nodes.Walls.geometry} material={materials.Material}>
+          <meshStandardMaterial/>
+        </mesh>
       </RigidBody>
-      <mesh geometry={nodes.group2105698197.geometry} material={materials.mat21} />
-      <mesh geometry={nodes.Resource_PineTree_Group_Cut_1.geometry} material={materials.Wood} />
-      <mesh geometry={nodes.Resource_PineTree_Group_Cut_2.geometry} material={materials.Wood_Light} />
-      <mesh geometry={nodes['Node-Mesh001'].geometry} material={materials['lambert4SG.001']} />
-      <mesh geometry={nodes['Node-Mesh001_1'].geometry} material={materials['lambert2SG.001']} />
-      <mesh geometry={nodes['Node-Mesh001_2'].geometry} material={materials['lambert3SG.001']} />
-      <mesh geometry={nodes['Node-Mesh002'].geometry} material={materials['lambert4SG.002']} />
-      <mesh geometry={nodes['Node-Mesh002_1'].geometry} material={materials['lambert2SG.002']} />
-      <mesh geometry={nodes['Node-Mesh002_2'].geometry} material={materials['lambert3SG.002']} />
+      <RigidBody type='fixed' colliders='trimesh'>
+        <mesh geometry={nodes.Floor.geometry} material={materials.Material} >
+          <meshStandardMaterial {...propsTexture} />
+        </mesh>
+      </RigidBody>
+      <RigidBody type='fixed' colliders='trimesh'>
+        <mesh geometry={nodes.group5316731.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group57623791.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group68204262.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group108361139.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group270233654.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group406425657.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group435217147.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group448090791.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group478880195.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group576674587.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group655853705.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group709032757.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group713469602.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group776444818.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group783017327.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group846612166.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group852367843.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group906655627.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group933043720.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1041435347.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1050217761.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1106760722.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1203818417.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1214360105.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1230537508.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1254558891.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1257734071.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1279285962.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1455864846.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1482531229.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1488492870.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1492611372.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1633463244.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1652644692.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1710678154.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1725596970.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1750121367.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1853385032.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group1880926500.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group2027099646.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group2037057429.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group2048605253.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group2078116070.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group2093052201.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.group2105698197.geometry} material={materials.mat21} />
+        <mesh geometry={nodes.Lamp1_1.geometry} material={materials['lambert4SG.001']} />
+        <mesh geometry={nodes.Lamp1_2.geometry} material={materials['lambert2SG.001']} />
+        <mesh geometry={nodes.Lamp1_3.geometry} material={materials['lambert3SG.001']} />
+        <mesh geometry={nodes.Lamp2_1.geometry} material={materials['lambert4SG.002']} />
+        <mesh geometry={nodes.Lamp2_2.geometry} material={materials['lambert2SG.002']} />
+        <mesh geometry={nodes.Lamp2_3.geometry} material={materials['lambert3SG.002']} />
+      </RigidBody>
     </group>
   )
 }
