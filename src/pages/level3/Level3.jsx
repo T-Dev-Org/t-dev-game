@@ -13,6 +13,7 @@ import useMovements from "../../utils/key-movements";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 import { Html } from "@react-three/drei";
 import Instructive from "../../utils/instructive/Instructive";
+import Texts from "./abstractions/Texts";
 
 export default function Level3() {
   const map = useMovements();
@@ -37,6 +38,7 @@ export default function Level3() {
             </Ecctrl>
           </Physics>
           <WelcomeText position={[0, 2, 1]} />
+          <Texts/>
         </Suspense>
         <Controls />
       </Canvas>

@@ -19,7 +19,7 @@ export default function Level3World(props) {
     displacementMap: path + "disp_1k.png"
   });
 
-  propsTexture.map.repeat.set(8, 4);
+  propsTexture.map.repeat.set(8, 1);
   propsTexture.map.wrapS = propsTexture.map.wrapT = RepeatWrapping
 
   //propsTexture.normalMap.repeat.set(4, 64);
