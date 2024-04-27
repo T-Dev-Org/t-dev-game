@@ -27,7 +27,7 @@ export default function Level2() {
                 shadows={true}
             >
                 <Suspense fallback={<Instructive />}>
-                    <Perf position="top-left" />
+                    {/* <Perf position="top-left" /> */}
                     <Lights />
                     <Environments />
                     <Physics debug={false}>

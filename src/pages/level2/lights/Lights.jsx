@@ -10,7 +10,7 @@ import { DirectionalLightHelper } from "three/src/Three.js";
 const Lights = () => {
 
     // Debug
-    const showHelpers = true
+    const showHelpers = false
 
     // Specific Refs
     const mainAmbientLightRef = useRef();

@@ -21,7 +21,7 @@ export default function Level4() {
         <KeyboardControls map={map} >
 
             <Canvas shadows={true}>
-                <Perf position="top-left" />
+                {/* <Perf position="top-left" /> */}
                 <Suspense fallback={<Instructive />}>
                     <Environments />
                     <Lights />
