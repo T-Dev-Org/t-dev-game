@@ -13,6 +13,7 @@ import useMovements from "../../utils/key-movements";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 import { Html } from "@react-three/drei";
 import Instructive from "../../utils/instructive/Instructive";
+import Button from "../../utils/components/Button";
 import Texts from "./abstractions/Texts";
 
 export default function Level3() {
@@ -42,6 +43,7 @@ export default function Level3() {
         </Suspense>
         <Controls />
       </Canvas>
+      <Button to="/level4" />
     </KeyboardControls>
   );
 }
