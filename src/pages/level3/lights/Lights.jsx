@@ -84,10 +84,11 @@ const Lights = () => {
         />        
         {/** Recompensa especial (?) */}        
         <pointLight
+            castShadow={true}        
             color={new Color("#FFF700")}
             intensity={1}
-            position={[10, 2.5, -218]}
-        />        
+            position={[-15, 5, -230]}
+        />           
         <directionalLight            
             castShadow={true}
             position={[40, 20, 80]}
@@ -114,10 +115,11 @@ const Lights = () => {
             angle={Math.PI}
         />           
         {/** Pelea final */}        
-        <spotLight            
-            position={[-5,10, -240]}
+        <spotLight
+            castShadow={true}   
+            position={[-5, 5, -250]}
             color={new Color("#DF5009")}
-            intensity={100}
+            intensity={50}
             angle={Math.PI}
         />           
     </>

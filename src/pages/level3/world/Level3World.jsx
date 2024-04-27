@@ -52,23 +52,23 @@ export default function Level3World(props) {
           <meshToonMaterial {...propsTexture} /> 
         </mesh>
         <mesh geometry={nodes.Miniroom_Floor.geometry} material={materials.Floor} castShadow={true} receiveShadow={true}/>
-        <mesh geometry={nodes.Maze__Outside_Walls.geometry} material={nodes.Maze__Outside_Walls.material}>
+        <mesh geometry={nodes.Maze__Outside_Walls.geometry} material={nodes.Maze__Outside_Walls.material} receiveShadow={true}>
           <meshToonMaterial {...propsTexture} /> 
         </mesh>
         <mesh geometry={nodes.Trunk.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}>
           
         </mesh>
-        <mesh geometry={nodes.Trees_Group.geometry} material={materials.hept32}>
+        <mesh geometry={nodes.Trees_Group.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}>
         
         </mesh>
         {/*Arboles reales*/}
-        <mesh geometry={nodes.Trees_Group_9.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
-        <mesh geometry={nodes.Trees_Group_10.geometry} material={materials.hept32} castShadow={true} receiveShadow={true} />
-        <mesh geometry={nodes.Trees_Group_11.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
-        <mesh geometry={nodes.Trees_Group_12.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
-        <mesh geometry={nodes.Trees_Group_13.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>     
-        <mesh geometry={nodes.Trees_Group_14.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>     
-        <mesh geometry={nodes.Trees_Group_15.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>     
+        <mesh geometry={nodes.Trees_Group_9.geometry} material={materials.hept32} receiveShadow={true}/>
+        <mesh geometry={nodes.Trees_Group_10.geometry} material={materials.hept32} receiveShadow={true} />
+        <mesh geometry={nodes.Trees_Group_11.geometry} material={materials.hept32} receiveShadow={true}/>
+        <mesh geometry={nodes.Trees_Group_12.geometry} material={materials.hept32} receiveShadow={true}/>
+        <mesh geometry={nodes.Trees_Group_13.geometry} material={materials.hept32} receiveShadow={true}/>     
+        <mesh geometry={nodes.Trees_Group_14.geometry} material={materials.hept32} receiveShadow={true}/>     
+        <mesh geometry={nodes.Trees_Group_15.geometry} material={materials.hept32} receiveShadow={true}/>     
       </group>
     </RigidBody>      
     </group>
