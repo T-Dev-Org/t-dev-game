@@ -15,6 +15,7 @@ import useMovements from "../../utils/key-movements";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 import Instructive from "../../utils/instructive/Instructive";
 import Texts from "./abstractions/Texts";
+import Button from "../../utils/components/Button";
 
 
 
@@ -49,6 +50,7 @@ export default function Level2() {
                 </Suspense>
                 <Controls />
             </Canvas>
+            <Button to="/level3"/>
         </KeyboardControls>
 
     )

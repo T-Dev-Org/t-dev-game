@@ -1,7 +1,7 @@
 import { Center, Float, Text3D } from "@react-three/drei";
 
-const WelcomeText = (props) => {
-    const text = "Bienvenido";
+const Text = (props) => {
+    const text = "Level 4";
 
     return (
         <Float
@@ -30,4 +30,4 @@ const WelcomeText = (props) => {
         </Float>
     )
 }
-export default WelcomeText;
+export default Text;

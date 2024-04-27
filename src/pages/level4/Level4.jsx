@@ -6,12 +6,12 @@ import { KeyboardControls, OrbitControls  } from "@react-three/drei";
 import useMovements from "../../utils/key-movements";
 import { Perf } from "r3f-perf";
 import { Suspense } from "react";
-import WelcomeText from "./abstractions/WelcomeText";
 import Lights from "../level1/lights/Lights";
 import Environments from "./staging/Environments";
 import { WorldLevel4 } from "./world/WorldLevel4";
 import Controls from "./controls/Controls"
-
+import Text from "./abstractions/Text"
+import Button from "../../utils/components/Button";
 
 export default function Level4() {
     const map = useMovements();
@@ -36,10 +36,11 @@ export default function Level4() {
                         <Avatar />
                     </Ecctrl>
                 </Physics>
-                <WelcomeText position={[0,0,110]}/>
+                <Text position={[0,0,110]}/>
                 </Suspense>
                 <Controls/>
             </Canvas>
+            <Button to="/profile"/>
         </KeyboardControls>
     )
 }
