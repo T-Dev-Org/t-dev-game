@@ -6,7 +6,7 @@ import Texts from "./abstractions/Text";
 import Lights from "./lights/Lights";
 import Environments from "./staging/Environments";
 import { Canvas } from "@react-three/fiber";
-import Level1World from "./world/World1";
+import Level1World from "./world/Level1World";
 import Controls from "./controls/Controls";
 import Avatar from "./characters/avatar/Avatar";
 import useMovements from "../../utils/key-movements";
