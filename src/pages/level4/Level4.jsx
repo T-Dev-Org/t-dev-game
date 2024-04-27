@@ -1,7 +1,7 @@
 import { Physics } from "@react-three/rapier";
 import { Canvas } from "@react-three/fiber";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
-import Avatar from "./characters/avatar/Avatar";
+import Avatar from "../../utils/avatar/Avatar";
 import { KeyboardControls, OrbitControls } from "@react-three/drei";
 import useMovements from "../../utils/key-movements";
 import { Perf } from "r3f-perf";

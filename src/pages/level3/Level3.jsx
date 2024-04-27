@@ -8,7 +8,7 @@ import Environments from "./staging/Environments";
 import { Canvas } from "@react-three/fiber";
 import Level3World from "./world/Level3World";
 import Controls from "./controls/Controls";
-import Avatar from "./characters/avatar/Avatar";
+import Avatar from "../../utils/avatar/Avatar";
 import useMovements from "../../utils/key-movements";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 import { Html } from "@react-three/drei";
@@ -38,7 +38,7 @@ export default function Level3() {
             </Ecctrl>
           </Physics>
           <WelcomeText position={[0, 2, 1]} />
-          <Texts/>
+          <Texts />
         </Suspense>
         <Controls />
       </Canvas>

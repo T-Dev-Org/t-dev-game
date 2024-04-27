@@ -9,7 +9,7 @@ import { Canvas } from "@react-three/fiber";
 import Level2World from "./world/Level2World";
 import Level2WorldZone1 from "./world/Level2WorldZone1";
 import Controls from "./controls/Controls";
-import Avatar from "./characters/avatar/Avatar";
+import Avatar from "../../utils/avatar/Avatar";
 import useMovements from "../../utils/key-movements";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 import Texts from "./abstractions/Texts";
