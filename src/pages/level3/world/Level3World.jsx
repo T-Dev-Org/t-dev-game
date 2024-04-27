@@ -55,7 +55,7 @@ export default function Level3World(props) {
         <mesh geometry={nodes.Maze__Outside_Walls.geometry} material={nodes.Maze__Outside_Walls.material}>
           <meshToonMaterial {...propsTexture} /> 
         </mesh>
-        <mesh geometry={nodes.Trunk.geometry} material={materials.hept32}>
+        <mesh geometry={nodes.Trunk.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}>
           
         </mesh>
         <mesh geometry={nodes.Trees_Group.geometry} material={materials.hept32}>
@@ -67,6 +67,8 @@ export default function Level3World(props) {
         <mesh geometry={nodes.Trees_Group_11.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
         <mesh geometry={nodes.Trees_Group_12.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
         <mesh geometry={nodes.Trees_Group_13.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>     
+        <mesh geometry={nodes.Trees_Group_14.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>     
+        <mesh geometry={nodes.Trees_Group_15.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>     
       </group>
     </RigidBody>      
     </group>

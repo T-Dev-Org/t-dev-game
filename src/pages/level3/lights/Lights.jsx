@@ -1,125 +1,125 @@
-import { BakeShadows, useHelper } from "@react-three/drei";
-import { useControls } from "leva";
-import { useEffect, useMemo, useRef } from "react";
-import { Color, Vector3 } from "three";
-import { DirectionalLightHelper, SpotLightHelper } from "three/src/Three.js";
+import { Color} from "three";
 
 const Lights = () => {
-    const ambientLightRef = useRef();
-    const directionalLightRef = useRef();
-    const spotLightRef = useRef();
-    const showHelpers = true
- 
-    if (showHelpers) {
-        useHelper(directionalLightRef, DirectionalLightHelper);
-        useHelper(spotLightRef, SpotLightHelper);
-    }    
-
-    const optionsAmbientLight = useMemo(() => {
-        return {
-            intensityAL: { value: 0.40, min: 0.00, max: 1.00, step: 0.01 }
-        }
-    })
-
-    const optionsDirectionalLight = useMemo(() => {
-        return {
-            castShadowDL: true,
-            intensityDL: { value: 0.1, min: 0, max: 6, step: 0.1 },
-            positionDL: { value: [40, 20, 80] },
-            targetPositionDL: { value: [-8, 2, -213] }
-        }
-    })    
-
-    const { intensityAL } = useControls("Ambient Light", optionsAmbientLight);
-    const { castShadowDL, intensityDL, positionDL, targetPositionDL } = useControls("directionalLight", optionsDirectionalLight);
-
-    useEffect(() => {
-        console.log("Light updated")
-        if (directionalLightRef.current && directionalLightRef.current.target) {
-            directionalLightRef.current.target.position.fromArray(targetPositionDL);
-        }
-    }, [targetPositionDL]);    
-
     return <>
+        {/** Luz del nivel */}
         <ambientLight
-            color={new Color("#e51a4c")}
-            intensity={intensityAL}
-            position={[0,0,100]}            
+            color={new Color("#BE1E1E")}
+            intensity={0.4}
+            position={[0,0,-100]}            
         />
-        
+        {/** Punto de inicio */}
         <spotLight
             color={new Color("#FFFfff")}
             intensity={0.6}
             position={[0, 1, 0]}
             angle = {Math.PI}
         />
-
+        {/** Recompensas a lo largo del mapa */}
         <spotLight
             color={new Color("#FFFfff")}
-            intensity={0.6}
+            intensity={0.5}
             position={[-20, 0.5, -6]}
             angle = {Math.PI}
         />       
-
         <spotLight
             color={new Color("#FFFfff")}
-            intensity={0.1}
+            intensity={0.5}
             position={[10, 2.5, -220]}
             angle = {Math.PI}
-        />    
+        />       
         <spotLight
             color={new Color("#FFFfff")}
-            intensity={0.1}
+            intensity={0.5}
             position={[3, 2.5, -93]}
             angle = {Math.PI}
-        />            
-        
+        />             
+        <spotLight
+            color={new Color("#FFFfff")}
+            intensity={0.5}
+            position={[-7, 0.5, -100]}
+            angle = {Math.PI}
+        />      
+        <spotLight
+            color={new Color("#FFFfff")}
+            intensity={0.5}
+            position={[20, 2.5, -93]}
+            angle = {Math.PI}
+        />           
+        <spotLight
+            color={new Color("#FFFfff")}
+            intensity={0.5}
+            position={[10, 0.5, -40]}
+            angle = {Math.PI}
+        />
+        <spotLight
+            color={new Color("#FFFfff")}
+            intensity={0.5}
+            position={[2, 0.2, -75]}
+            angle = {Math.PI}
+        />
+        <spotLight
+            color={new Color("#FFFfff")}
+            intensity={0.5}
+            position={[9, 0.2, -73]}
+            angle = {Math.PI}
+        />
+        <spotLight
+            color={new Color("#FFFfff")}
+            intensity={0.5}
+            position={[-2.5, 0.5, -178]}
+            angle = {Math.PI}
+        />             
+        <spotLight
+            color={new Color("#FFFfff")}
+            intensity={0.5}
+            position={[-6, 0.2, -189]}
+            angle = {Math.PI}
+        />
+        <spotLight
+            color={new Color("#FFFfff")}
+            intensity={0.5}
+            position={[-6, 0.2, -192]}
+            angle = {Math.PI}
+        />        
+        {/** Recompensa especial (?) */}        
         <pointLight
             color={new Color("#FFF700")}
             intensity={1}
             position={[10, 2.5, -218]}
         />        
-
-        <directionalLight
-            ref={directionalLightRef}
-            castShadow={castShadowDL}
-            position={positionDL}
-            color={new Color("#FFFF00")}
-            intensity={intensityDL}
-        // shadow-mapSize={[2048, 2048]}
-        // shadow-camera-far={100}
-        // shadow-camera-left={-10}
-        // shadow-camera-right={10}
-        // shadow-camera-top={10}
-        // shadow-camera-bottom={-100}
-        />
-        {/*<directionalLight
+        <directionalLight            
             castShadow={true}
-            position={[2, 10, 0]}
-            /*color={new Color("#5C169B")}
+            position={[40, 20, 80]}
+            color={new Color("#3D0808")}
             intensity={2}
-            shadow-mapSize = {[2048, 2048]}
-            shadow-camera-far = {100}
-            shadow-camera-left = {-10}
-            shadow-camera-right = {10}
-            shadow-camera-top = {10}
-            shadow-camera-bottom = {-100}
-        />*/}{/*
-        <ambientLight
-            color={new Color("#FF0000")}
-            intensity={0.5}   
         />
-        <pointLight
-            color={new Color("#FFF700")}
-            intensity={100}
-            position={[1, 0, 0]}
+        {/** Enemigos */}
+        <spotLight            
+            position={[-17, 0.5, -60]}
+            color={new Color("#DF5009")}
+            intensity={1}
+            angle={Math.PI}
+        />         
+        <spotLight            
+            position={[-17, 0.5, -130]}
+            color={new Color("#DF5009")}
+            intensity={1}
+            angle={Math.PI}
         />
-        <spotLight
-            color={new Color("#00FF2A")}
+        <spotLight            
+            position={[-5, 0.5, -152]}
+            color={new Color("#DF5009")}
+            intensity={1}
+            angle={Math.PI}
+        />           
+        {/** Pelea final */}        
+        <spotLight            
+            position={[-5,10, -240]}
+            color={new Color("#DF5009")}
             intensity={100}
-            position={[-1, 0, 0]}
-    />   */}     
-
+            angle={Math.PI}
+        />           
     </>
 }
 export default Lights;
