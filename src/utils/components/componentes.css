@@ -1,0 +1,36 @@
+.container-button {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    bottom: 30px;
+    right: 100px;
+}
+
+.button-next {
+    cursor: pointer;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    padding: .5em 1.5em;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+
+.button-next:hover {
+    letter-spacing: 2px;
+}
+
+.button-next:hover~.second {
+    opacity: .66;
+    right: -20px;
+    transition-delay: 50ms;
+}
+
+.button-next:hover~.third {
+    opacity: .33;
+    right: -40px;
+    transition-delay: 100ms;
+}
