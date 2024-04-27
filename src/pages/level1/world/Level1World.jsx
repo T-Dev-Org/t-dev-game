@@ -2,8 +2,8 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 
-export default function Level1(props) {
-  const { nodes, materials } = useGLTF("/assets/models/world/level_1.glb");
+export default function Level1World(props) {
+  const { nodes, materials } = useGLTF("/assets/models/world/Level1World.glb");
   return (
     <RigidBody type="fixed" colliders="trimesh">
       <group {...props} dispose={null}>
@@ -338,4 +338,4 @@ export default function Level1(props) {
   );
 }
 
-useGLTF.preload("/level_1.glb");
+useGLTF.preload("/Level1World.glb");
