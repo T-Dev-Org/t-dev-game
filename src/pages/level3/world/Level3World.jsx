@@ -32,7 +32,16 @@ export default function Level3World(props) {
   propsTexture.displacementMap.wrapS = propsTexture.displacementMap.wrapT = RepeatWrapping     
 
   return (
-    <RigidBody type='fixed' colliders='trimesh'>
+    <group>
+      {/*Estos son arboles falsos, donde hay escondidas cosas*/}
+      <mesh geometry={nodes.Trees_Group_2.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
+      <mesh geometry={nodes.Trees_Group_4.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
+      <mesh geometry={nodes.Trees_Gruop_3.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
+      <mesh geometry={nodes.Trees_Gruop_5.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
+      <mesh geometry={nodes.Trees_Gruop_6.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
+      <mesh geometry={nodes.Trees_Group_7.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
+      <mesh geometry={nodes.Trees_Gruop_8.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>      
+      <RigidBody type='fixed' colliders='trimesh'>
       <group {...props} dispose={null}>
         <mesh geometry={nodes.Maze_Inside_Walls.geometry} material={nodes.Maze_Inside_Walls} castShadow={true} recieveShadow={true}>
           <meshToonMaterial {...propsTexture} /> 
@@ -52,20 +61,16 @@ export default function Level3World(props) {
         <mesh geometry={nodes.Trees_Group.geometry} material={materials.hept32}>
         
         </mesh>
-        <mesh geometry={nodes.Trees_Group_2.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
-        <mesh geometry={nodes.Trees_Group_4.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
-        <mesh geometry={nodes.Trees_Gruop_3.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
-        <mesh geometry={nodes.Trees_Gruop_5.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
-        <mesh geometry={nodes.Trees_Gruop_6.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
-        <mesh geometry={nodes.Trees_Group_7.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
-        <mesh geometry={nodes.Trees_Gruop_8.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
+        {/*Arboles reales*/}
         <mesh geometry={nodes.Trees_Group_9.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
         <mesh geometry={nodes.Trees_Group_10.geometry} material={materials.hept32} castShadow={true} receiveShadow={true} />
         <mesh geometry={nodes.Trees_Group_11.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
         <mesh geometry={nodes.Trees_Group_12.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
         <mesh geometry={nodes.Trees_Group_13.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>     
       </group>
-    </RigidBody>
+    </RigidBody>      
+    </group>
+
   )
 }
 

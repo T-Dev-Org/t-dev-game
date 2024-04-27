@@ -17,7 +17,26 @@ const Texts = (props) => {
     <CustomText2D
       position={[-20, 2, -12]}
       rotation={[0, Math.PI/2, 0]}
-      text="Where we are?" />          
+      text="Where we are?" />
+    <CustomText2D 
+      position={[-5, 0.2, -85]}
+      rotation={[Math.PI/-2, 0, 0]}
+      text="Checkpoint 2" />
+    <CustomText3D
+      size={0.3}
+      position={[2, 2, -80]}
+      rotation={[0, Math.PI, 0]}
+      text="Are these fake?" />
+    <CustomText3D
+      size={0.3}
+      position={[5, 2, -140]}
+      rotation={[0, 0, 0]}
+      text="And these?" />  
+    <CustomText3D
+      size={0.3}
+      position={[4, 2, -100]}
+      rotation={[0, Math.PI, 0]}
+      text="Nothing here?" />        
   </>
   )
 }

@@ -67,6 +67,12 @@ const Lights = () => {
             position={[10, 2.5, -220]}
             angle = {Math.PI}
         />    
+        <spotLight
+            color={new Color("#FFFfff")}
+            intensity={0.1}
+            position={[3, 2.5, -93]}
+            angle = {Math.PI}
+        />            
         
         <pointLight
             color={new Color("#FFF700")}
