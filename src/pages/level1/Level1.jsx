@@ -11,6 +11,7 @@ import Controls from "./controls/Controls";
 import Avatar from "./characters/avatar/Avatar";
 import useMovements from "../../utils/key-movements";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
+import Instructive from "../../utils/instructive/Instructive";
 import Button from "../../utils/components/Button";
 
 
@@ -23,7 +24,7 @@ export default function Level1() {
                 shadows={true}
             >
                 <Perf position="top-left" />
-                <Suspense fallback={null}>
+                <Suspense fallback={<Instructive />}>
                     <Lights />
                     <Environments />
                     <Physics debug={false}>
@@ -42,7 +43,7 @@ export default function Level1() {
                 </Suspense>
                 <Controls />
             </Canvas>
-            <Button to="/level2"/>
+            <Button to="/level2" />
         </KeyboardControls>
 
     )
