@@ -11,7 +11,7 @@ export default function Rat() {
   return (
     <RigidBody type="fixed" colliders="cuboid">
       <group ref={ratRef} name="Scene">
-        <group name="Rat" position={[0, -0.4, -120]} scale={10}>
+        <group name="Rat" position={[0, -0.4, -135]} scale={3} rotation = {[0, Math.PI/2, 0]}>
           <skinnedMesh
             name="Plane_1"
             geometry={nodes.Plane_1.geometry}
