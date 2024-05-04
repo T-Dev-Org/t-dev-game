@@ -39,7 +39,7 @@ const Lights = () => {
         <directionalLight
             ref={mainDLRef}
             castShadow={true}
-            position={[40, 20, 80]}
+            position={[-40, 150, -150]}
             color={new Color("#FFF700")}
             intensity={0.2}
             target={mainLightTarget}
@@ -47,7 +47,7 @@ const Lights = () => {
         <directionalLight
             ref={directionalLightRef}
             castShadow={true}
-            position={[40, 20, 80]}
+            position={[-40, 150, -150]}
             color={new Color("#FFF700")}
             intensity={1}
             target={zone1sub3DLTarget}

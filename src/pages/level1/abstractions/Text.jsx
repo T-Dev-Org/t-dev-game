@@ -17,7 +17,7 @@ const Texts = (props) => {
         color="Black"
         position={[0, -0.2, -6]}
         rotation={[Math.PI / -2, 0, 0]}
-        text="Usa W, A, S, D o tus flechas para moverte"
+        text="Usa W, A, S, D para moverte"
       />
       <CustomText2D
         fontSize={0.5}
@@ -35,9 +35,16 @@ const Texts = (props) => {
       />
       <CustomText3D
         size={0.6}
-        position={[0.7, 1, -40]}
+        position={[0.7, 1, -38]}
         rotation={[0, 0, 0]}
         text="Bien Hecho!"
+      />
+      <CustomText2D
+        fontSize={0.5}
+        color="Grey"
+        position={[-0.5, -0.4, -43]}
+        rotation={[Math.PI / -2, 0, 0]}
+        text="Protip: Si saltas mientras corres, saltas más alto"
       />
       <CustomText2D
         fontSize={0.5}
@@ -66,6 +73,33 @@ const Texts = (props) => {
         position={[-0.3, 4.6, -89.7]}
         rotation={[Math.PI / -2, 0, Math.PI / -2]}
         text=":)"
+      />
+      <CustomText2D
+        fontSize={0.5}
+        color="Black"
+        position={[0, -0.2, -116]}
+        rotation={[Math.PI / -2, 0, 0]}
+        text="Usa R para atacar a los enemigos"
+      />
+      <CustomText2D
+        fontSize={0.5}
+        color="Black"
+        position={[0, -0.2, -124]}
+        rotation={[Math.PI / -2, 0, 0]}
+        text="Usa T para realizar tu ataque especial"
+      />
+      <CustomText2D
+        fontSize={0.5}
+        color="Black"
+        position={[0, -0.2, -154]}
+        rotation={[Math.PI / -2, 0, 0]}
+        text="Usa E para interactuar"
+      />
+      <CustomText3D
+        size={0.5}
+        position={[1.2, 1, -217]}
+        rotation={[0, 0, 0]}
+        text="Pulsa Q para celebrar"
       />
     </>
   );
