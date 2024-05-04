@@ -9,11 +9,12 @@ import { Canvas } from "@react-three/fiber";
 import Level1World from "./world/Level1World";
 import Controls from "./controls/Controls";
 import Avatar from "../../utils/avatar/Avatar";
-import Rat from "./villains/Rat";
+import Press from "./staging/Button";
 import useMovements from "../../utils/key-movements";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 import Instructive from "../../utils/instructive/Instructive";
 import Button from "../../utils/components/Button";
+import Rat from "./villains/Rat";
 
 
 export default function Level1() {
@@ -39,6 +40,8 @@ export default function Level1() {
                         >
                             <Avatar />
                         </Ecctrl>
+                        <Press />
+                        <Rat />
                     </Physics>
                     <Texts />
                 </Suspense>
