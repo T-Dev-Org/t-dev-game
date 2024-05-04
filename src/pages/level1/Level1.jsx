@@ -9,6 +9,7 @@ import { Canvas } from "@react-three/fiber";
 import Level1World from "./world/Level1World";
 import Controls from "./controls/Controls";
 import Avatar from "../../utils/avatar/Avatar";
+import Rat from "./villains/Rat";
 import useMovements from "../../utils/key-movements";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 import Instructive from "../../utils/instructive/Instructive";
