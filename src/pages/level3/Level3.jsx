@@ -26,7 +26,7 @@ export default function Level3() {
           <Perf position="top-left" />
           <Lights />
           <Environments />
-          <Physics debug={false}>
+          <Physics debug={true}>
             <Level3World />
             <Ecctrl
               camInitDis={-2}
