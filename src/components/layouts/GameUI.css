@@ -1,0 +1,46 @@
+.game-ui {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  pointer-events: none;
+}
+
+.life-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.life-label {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.life-bar {
+  width: 100px;
+  height: 20px;
+  background-color: #ddd;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
