@@ -17,6 +17,7 @@ import Texts from "./abstractions/Texts";
 import GameUI from "../../utils/components/layouts/GameUI/GameUI";
 import NextLevelButton from "../../utils/components/layouts/GameUI/components/NextLevelButton";
 // import ZoneSensors from "./world/ZoneSensors";
+import { Model } from "./world/Level4World";
 
 export default function Level4() {
     const map = useMovements();
@@ -30,13 +31,13 @@ export default function Level4() {
                     <Environments />
                     <Lights />
                     <Physics>
-                        <WorldLevel4 />
+                        <Model />
                         <Ecctrl
                             camInitDis={-2}
                             camMaxDis={-2}
-                            maxVelLimit={5}
+                            maxVelLimit={6}
                             jumpVel={7}
-                            position={[0, 9, 115]}
+                            position={[0, 9, 2]}
                         >
                             <Avatar />
                         </Ecctrl>

@@ -19,7 +19,7 @@ export default function Avatar() {
 
     return (
         <group ref={avatarRef} name="Scene" position-y={-0.65}>
-            <group name="Cat" position={[-0.002, -0.008, 0.002]}>
+            <group name="Cat" position={[0,0,0]}>
                 <primitive object={nodes.spine} />
                 <skinnedMesh name="Brazos" geometry={nodes.Brazos.geometry} material={materials['Material.002']} skeleton={nodes.Brazos.skeleton} />
                 <group name="Cabeza">
