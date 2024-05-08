@@ -1,5 +1,5 @@
 // [AudioProvider.jsx]
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, useRef } from 'react';
 
 const MusicContext = createContext();
 
@@ -23,8 +23,8 @@ export const AudioProvider = ({ children }) => {
 
   const [currentSong, setCurrentSong] = useState(null);
   const [activeSoundEffects, setActiveSoundEffects] = useState([]);
-
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentAudio, setCurrentAudio] = useState(null);
+  const fadeDuration = 1000;
 
   useEffect(() => {
     const activeSounds = JSON.parse(localStorage.getItem('activeSounds')) || [];
@@ -33,15 +33,49 @@ export const AudioProvider = ({ children }) => {
 
   const handlePlayMusic = (songKey) => {
     if (currentSong !== songKey) {
-      if (currentSong) {
-        sounds.songs[currentSong].pause();
+      if (currentAudio) {
+        fadeOutCurrentSong();
       }
-      setCurrentSong(songKey);
       const audio = new Audio(sounds.songs[songKey]);
       audio.loop = true;
+      audio.volume = 0; // Comenzamos con volumen cero
       audio.play();
+      fadeInNewSong(audio);
+      setCurrentAudio(audio);
+      setCurrentSong(songKey);
     }
   };
+
+  const fadeOutCurrentSong = () => {
+    if (!currentAudio) return;
+    let volume = currentAudio.volume;
+    const fadeStep = volume / (fadeDuration / 100);
+    const fadeOutInterval = setInterval(() => {
+      volume -= fadeStep;
+      // Asegurar que el volumen mínimo sea 0
+      volume = Math.max(volume, 0);
+      currentAudio.volume = volume;
+      if (volume <= 0) {
+        currentAudio.pause();
+        clearInterval(fadeOutInterval);
+      }
+    }, 100);
+  };
+
+  const fadeInNewSong = (audio) => {
+    let volume = 0;
+    const fadeStep = 1 / (fadeDuration / 100);
+    const fadeInInterval = setInterval(() => {
+      volume += fadeStep;
+      // Asegurar que el volumen máximo sea 1
+      volume = Math.min(volume, 1);
+      audio.volume = volume;
+      if (volume >= 1) {
+        clearInterval(fadeInInterval);
+      }
+    }, 100);
+  };
+
 
   const playSoundEffect = (soundKey) => {
     const audio = new Audio(sounds.soundEffects[soundKey]);
@@ -57,29 +91,29 @@ export const AudioProvider = ({ children }) => {
   };
 
   const stopAllSounds = () => {
-    Object.values(sounds.songs).forEach(sound => {
-      sound.pause();
-    });
+    if (currentAudio) {
+      currentAudio.pause();
+    }
     setActiveSoundEffects([]);
     setCurrentSong(null);
+    setCurrentAudio(null);
     localStorage.removeItem('activeSounds');
   };
 
   const mute = () => {
-    setIsPlaying(false);
     stopAllSounds();
   };
 
   const unmute = () => {
-    setIsPlaying(true);
-    handlePlayMusic(currentSong);
+    if (currentSong) {
+      handlePlayMusic(currentSong);
+    }
     activeSoundEffects.forEach(soundKey => {
       playSoundEffect(soundKey);
     });
   };
 
   const values = {
-    isPlaying,
     handlePlayMusic,
     playSoundEffect,
     pauseSound,
