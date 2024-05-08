@@ -39,10 +39,13 @@ export const AudioProvider = ({ children }) => {
       const audio = new Audio(sounds.songs[songKey]);
       audio.loop = true;
       audio.volume = 0; // Comenzamos con volumen cero
-      audio.play();
-      fadeInNewSong(audio);
-      setCurrentAudio(audio);
-      setCurrentSong(songKey);
+      audio.play().then(() => {
+        fadeInNewSong(audio);
+        setCurrentAudio(audio);
+        setCurrentSong(songKey);
+      }).catch((error) => {
+        console.error('Error al reproducir el audio:', error);
+      });
     }
   };
 
