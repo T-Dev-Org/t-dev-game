@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Sparkles, useGLTF } from '@react-three/drei';
 import { RigidBody } from '@react-three/rapier';
-import { useAudio } from '../../../context/AudioContext';
+import { useAudio } from '../../context/AudioContext';
 
 export default function DiamondCone(props) {
 

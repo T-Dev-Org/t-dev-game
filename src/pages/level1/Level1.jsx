@@ -17,6 +17,8 @@ import Texts from "./abstractions/Texts";
 import GameUI from "../../utils/components/layouts/GameUI/GameUI";
 import NextLevelButton from "../../utils/components/layouts/GameUI/components/NextLevelButton";
 // import ZoneSensors from "./world/ZoneSensors";
+import Press from "../../globals/interactables/Button";
+import Rat from "../../globals/villains/Rat";
 
 export default function Level1() {
     const map = useMovements();
@@ -41,6 +43,8 @@ export default function Level1() {
                         >
                             <Avatar />
                         </Ecctrl>
+                        <Press position={[0, -0.5, -158]} />
+                        <Rat position={[0, 0.2, -135]} />
                     </Physics>
                     <Texts />
                 </Suspense>
