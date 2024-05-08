@@ -7,7 +7,6 @@ export default function ZoneSensors({ ...props }) {
   const rigidBodyRef = useRef();
 
   const handleThemeStarter = (themeName) => {
-    console.log(`Supose to play ${themeName}`)
     handlePlayMusic(themeName);
   }
 
@@ -25,7 +24,7 @@ export default function ZoneSensors({ ...props }) {
           onIntersectionEnter={() => { handleThemeStarter('technoTheme1') }}
         />
         <CuboidCollider
-          position={[2, 0, 0]}
+          position={[0, 0, -2]}
           args={[1, 1, 1]}
           sensor
           onIntersectionEnter={() => { handleThemeStarter('mysteryTheme') }}
