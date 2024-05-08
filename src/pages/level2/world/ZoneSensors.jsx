@@ -6,8 +6,12 @@ export default function ZoneSensors({ ...props }) {
   const { handlePlayMusic } = useAudio();
   const rigidBodyRef = useRef();
 
-  const handleThemeStarter = (themeName) => {
-    handlePlayMusic(themeName);
+  const handleIntersectionEnter = (event, themeName) => {
+
+    console.log('[ZoneSensors.jsx] colisioné con: ', event.colliderObject.name);
+    if (event.colliderObject.name == 'character-capsule-collider') {
+      handlePlayMusic(themeName);
+    }
   }
 
   return (
@@ -21,13 +25,13 @@ export default function ZoneSensors({ ...props }) {
           position={[0, 0, 3]}
           args={[1, 1, 1]}
           sensor
-          onIntersectionEnter={() => { handleThemeStarter('technoTheme1') }}
+          onIntersectionEnter={(event) => handleIntersectionEnter(event, 'technoTheme1')}
         />
         <CuboidCollider
           position={[0, 0, -2]}
           args={[1, 1, 1]}
           sensor
-          onIntersectionEnter={() => { handleThemeStarter('mysteryTheme') }}
+          onIntersectionEnter={(event) => handleIntersectionEnter(event, 'mysteryTheme1')}
         />
       </RigidBody>
     </group>
