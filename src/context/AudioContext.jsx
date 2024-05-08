@@ -10,7 +10,7 @@ const initialState = {
     technoTheme2: '/assets/sounds/music/loop_techno_2.ogg',
     mysteryTheme: '/assets/sounds/music/loop_mystery.ogg',
     guitarTheme: '/assets/sounds/music/loop_guitar.ogg',
-    endingTheme: '/assets/sounds/music/loop_guitar.ogg',
+    endingTheme: '/assets/sounds/music/ending.ogg',
   },
   soundEffects: {
     diamondCollect: '/assets/sounds/collectables/DiamondCollected.wav',
