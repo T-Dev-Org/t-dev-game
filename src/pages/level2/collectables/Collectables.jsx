@@ -30,22 +30,22 @@ export default function Collectables() {
   return (
     <>
       <DiamondCone
-        position={[2, 0, 0]}
+        position={[12.2, 0.5, -0.2]}
         onUpdateState={(newState) => updateObjectState(0, newState)}
       />
 
       <DiamondCone
-        position={[2, 0, 1]}
+        position={[16, 0.8, 1.2]}
         onUpdateState={(newState) => updateObjectState(1, newState)}
       />
 
       <DiamondCone
-        position={[-2, 0, 0]}
+        position={[17.5, 1.2, -0.9]}
         onUpdateState={(newState) => updateObjectState(2, newState)}
       />
 
       <DiamondCone
-        position={[-2, 0, 1]}
+        position={[11, 2.2, 8]}
         onUpdateState={(newState) => updateObjectState(3, newState)}
       />
     </>
