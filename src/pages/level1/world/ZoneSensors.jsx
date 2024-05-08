@@ -13,7 +13,7 @@ export default function ZoneSensors({ ...props }) {
   }
 
   const loseLive = (lifeState) => {
-    lifeState.value = lifeState.value - 1;
+    lifeState.decrement();
     console.log(lifeState.value);
   }
 
