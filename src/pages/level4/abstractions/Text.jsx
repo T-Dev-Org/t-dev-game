@@ -1,7 +1,7 @@
 import { Center, Float, Text3D } from "@react-three/drei";
 
 const Text = (props) => {
-    const text = "Level 4";
+    const text = "LEVEL 4";
 
     return (
         <Float
@@ -13,6 +13,7 @@ const Text = (props) => {
         >
             <Center
                 position={props.position}
+                rotation={[0,Math.PI, 0]}
             >
                 <Text3D
                     font={"/assets/fonts/SquidGamesFont.json"}
@@ -21,7 +22,7 @@ const Text = (props) => {
                     bevelThickness={0.01}
                     height={0.1}
                     letterSpacing={0.05}
-                    size={0.2}
+                    size={1}
                 >
                     <meshNormalMaterial />
                     {text}
