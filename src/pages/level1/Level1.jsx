@@ -32,7 +32,7 @@ export default function Level1() {
                 <Suspense fallback={<Instructive />}>
                     <Lights />
                     <Environments />
-                    <Physics debug={false}>
+                    <Physics debug={true}>
                         <Level1World />
                         <Ecctrl
                             camInitDis={-2}
@@ -44,7 +44,7 @@ export default function Level1() {
                             <Avatar />
                         </Ecctrl>
                         <Press position={[0, -0.5, -158]} />
-                        <Rat position={[0, 0.2, -135]} />
+                        <Rat position={[0, 1, -135]} />
                     </Physics>
                     <Texts />
                 </Suspense>
