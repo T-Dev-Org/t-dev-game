@@ -27,18 +27,18 @@ export default function Level4() {
                     <Environments />
                     <Lights />
                     <Physics>
-                        <WorldLevel4 />
+                        <Model />
                         <Ecctrl
                             camInitDis={-2}
                             camMaxDis={-2}
-                            maxVelLimit={5}
+                            maxVelLimit={6}
                             jumpVel={7}
-                            position={[0, 9, 115]}
+                            position={[0, 9, 2]}
                         >
                             <Avatar />
                         </Ecctrl>
                     </Physics>
-                    <Text position={[0, 0, 110]} />
+                    <Text position={[0, 5, 10]} />
                 </Suspense>
                 <Controls />
             </Canvas>
