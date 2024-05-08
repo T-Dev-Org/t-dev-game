@@ -10,7 +10,8 @@ export default function Collectables() {
       { id: 0, name: 'DiamondCone 1', isTaken: false, isCollected: false },
       { id: 1, name: 'DiamondCone 2', isTaken: false, isCollected: false },
       { id: 2, name: 'DiamondCone 3', isTaken: false, isCollected: false },
-      { id: 3, name: 'DiamondCone 4', isTaken: false, isCollected: false }
+      { id: 3, name: 'DiamondCone 4', isTaken: false, isCollected: false },
+      { id: 3, name: 'DiamondCone 5', isTaken: false, isCollected: false },
     ];
     setObjectStates(initialObjectStates);
   }, []);
@@ -47,6 +48,10 @@ export default function Collectables() {
       <DiamondCone
         position={[11, 2.2, 8]}
         onUpdateState={(newState) => updateObjectState(3, newState)}
+      />
+      <DiamondCone
+        position={[2, 0, 0]}
+        onUpdateState={(newState) => updateObjectState(4, newState)}
       />
     </>
   );
