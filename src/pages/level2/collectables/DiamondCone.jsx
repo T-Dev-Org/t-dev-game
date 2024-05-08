@@ -14,6 +14,7 @@ export default function DiamondCone(props) {
   const handleIntersectionEnter = () => {
     playSoundEffect('diamondCollect');
     setIsTaken(true);
+    props.onUpdateState({ isTaken: true, isCollected: false });
   };
 
   useEffect(() => {
