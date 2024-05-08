@@ -1,7 +1,7 @@
 // [AudioProvider.jsx]
 import React, { createContext, useState, useContext, useEffect, useRef } from 'react';
 
-const MusicContext = createContext();
+const AudioContext = createContext();
 
 const initialState = {
   songs: {
@@ -122,17 +122,17 @@ export const AudioProvider = ({ children }) => {
   };
 
   return (
-    <MusicContext.Provider value={values}>
+    <AudioContext.Provider value={values}>
       {children}
-    </MusicContext.Provider>
+    </AudioContext.Provider>
   );
 };
 
-export const useMusic = () => {
-  const context = useContext(MusicContext);
+export const useAudio = () => {
+  const context = useContext(AudioContext);
 
   if (!context) {
-    throw new Error('useMusic debe ser utilizado dentro de un MusicProvider');
+    throw new Error('useAudio debe ser utilizado dentro de un AudioProvider');
   }
 
   return context;

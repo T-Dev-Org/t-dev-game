@@ -1,7 +1,7 @@
 // [GameUI.jsx]
 
 import React from 'react';
-import CornerTopRight from './GameUI/CornerTopRight';
+import CornerTopRight from './components/CornerTopRight';
 
 const GameUI = () => {
   const clickedMute = () => {

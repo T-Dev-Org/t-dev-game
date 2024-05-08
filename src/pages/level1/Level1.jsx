@@ -1,19 +1,22 @@
+// [Level1.jsx]
 import { Perf } from "r3f-perf";
-import { KeyboardControls, OrbitControls } from "@react-three/drei";
+import { KeyboardControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import { Suspense } from "react";
-import Texts from "./abstractions/Text";
+import { Canvas } from "@react-three/fiber";
+import Instructive from "../../utils/components/layouts/instructive/Instructive";
+import useMovements from "../../utils/key-movements";
+import Controls from "../../utils/controls/Controls"
+import Ecctrl from "ecctrl";
+import Avatar from "../../utils/avatar/Avatar";
 import Lights from "./lights/Lights";
 import Environments from "./staging/Environments";
-import { Canvas } from "@react-three/fiber";
 import Level1World from "./world/Level1World";
-import Controls from "./controls/Controls";
-import Avatar from "../../utils/avatar/Avatar";
-import useMovements from "../../utils/key-movements";
-import Ecctrl, { EcctrlAnimation } from "ecctrl";
-import Instructive from "../../utils/instructive/Instructive";
-import Button from "../../utils/components/Button";
-
+import Texts from "./abstractions/Texts";
+// import Collectables from "./collectables/Collectables";
+import GameUI from "../../utils/components/layouts/GameUI/GameUI";
+import NextLevelButton from "../../utils/components/layouts/GameUI/components/NextLevelButton";
+// import ZoneSensors from "./world/ZoneSensors";
 
 export default function Level1() {
     const map = useMovements();
@@ -43,7 +46,8 @@ export default function Level1() {
                 </Suspense>
                 <Controls />
             </Canvas>
-            <Button to="/level2" />
+            <GameUI />
+            <NextLevelButton to="/level2" />
         </KeyboardControls>
 
     )

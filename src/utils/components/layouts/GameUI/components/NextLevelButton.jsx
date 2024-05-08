@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import "./componentes.css"
+import "./NextLevelButton.css"
 
-const Button = ({ to }) => {
+const NextLevelButton = ({ to }) => {
     return (
         <div className="container-button">
             <Link to={to} className="button-next">Siguiente</Link>
@@ -10,4 +10,4 @@ const Button = ({ to }) => {
     );
 };
 
-export default Button;
+export default NextLevelButton;

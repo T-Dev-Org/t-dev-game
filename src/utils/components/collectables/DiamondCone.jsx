@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { Sparkles, useGLTF } from '@react-three/drei';
 import { RigidBody } from '@react-three/rapier';
-import { useMusic } from "../../../components/providers/AudioProvider";
+import { useAudio } from '../../../context/AudioContext';
 
 export default function DiamondCone(props) {
 
   const { nodes, materials } = useGLTF('/assets/models/collectables/DiamondCone.glb');
-  const { playSoundEffect } = useMusic();
+  const { playSoundEffect } = useAudio();
   const [isTaken, setIsTaken] = useState(false);
   const [isCollected, setIsCollected] = useState(false);
 

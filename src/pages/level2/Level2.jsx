@@ -2,11 +2,11 @@
 import { Perf } from "r3f-perf";
 import { KeyboardControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import Instructive from "../../utils/instructive/Instructive";
+import Instructive from "../../utils/components/layouts/instructive/Instructive";
 import useMovements from "../../utils/key-movements";
-import Controls from "./controls/Controls";
+import Controls from "../../utils/controls/Controls"
 import Ecctrl from "ecctrl";
 import Avatar from "../../utils/avatar/Avatar";
 import Lights from "./lights/Lights";
@@ -14,9 +14,9 @@ import Environments from "./staging/Environments";
 import Level2World from "./world/Level2World";
 import Level2WorldZone1 from "./world/Level2WorldZone1";
 import Texts from "./abstractions/Texts";
-import Button from "../../utils/components/Button";
 import Collectables from "./collectables/Collectables";
-import GameUI from "../../components/layouts/GameUI";
+import GameUI from "../../utils/components/layouts/GameUI/GameUI";
+import NextLevelButton from "../../utils/components/layouts/GameUI/components/NextLevelButton";
 import ZoneSensors from "./world/ZoneSensors";
 
 export default function Level2() {
@@ -51,8 +51,8 @@ export default function Level2() {
                 </Suspense>
                 <Controls />
             </Canvas>
-            <Button to="/level3" />
             <GameUI />
+            <NextLevelButton to="/level3" />
         </KeyboardControls >
     )
 }

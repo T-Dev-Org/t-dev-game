@@ -1,12 +1,12 @@
 import { useKeyboardControls } from "@react-three/drei";
-import { useAvatar } from "../../../context/AvatarContext";
 import { useEffect, useState } from "react";
 import { useFrame } from "@react-three/fiber";
+import { useAvatar } from "../../context/AvatarContext";
 
 export default function Controls() {
   const { avatar, setAvatar } = useAvatar();
   const [sub, get] = useKeyboardControls()
-  const [danceSound] = useState(new Audio("/assets/sounds/dance.wav"))
+  const [danceSound] = useState(new Audio("/assets/sounds/catActions/dance.wav"))
   const [play, setPlay] = useState(false)
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function Controls() {
       (state) => ({ movement: state.forward || state.backward || state.leftward || state.rightward, running: state.run, jumping: state.jump, dancing: state.dance }), // Devolver un objeto con los estados relevantes
       ({ movement, running, jumping, dancing }) => { // Recibir los estados relevantes como parámetros del callback
         if (jumping) {
-          setAvatar({ ...avatar, animation: "None" });
+          setAvatar({ ...avatar, animation: "Jump" });
         }
         else if (!movement && dancing) {
           setAvatar({ ...avatar, animation: "Dance" });

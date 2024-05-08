@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import { CuboidCollider, RigidBody } from '@react-three/rapier';
-import { useMusic } from "../../../components/providers/AudioProvider";
+import { useAudio } from '../../../context/AudioContext';
 
 export default function ZoneSensors({ ...props }) {
-  const { handlePlayMusic } = useMusic();
+  const { handlePlayMusic } = useAudio();
   const rigidBodyRef = useRef();
 
   const handleThemeStarter = (themeName) => {

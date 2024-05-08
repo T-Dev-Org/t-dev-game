@@ -1,6 +1,6 @@
 // [Collectables.jsx]
 import React, { useState, useEffect } from 'react';
-import DiamondCone from './DiamondCone';
+import DiamondCone from '../../../utils/components/collectables/DiamondCone';
 
 export default function Collectables() {
   const [objectStates, setObjectStates] = useState([]);
