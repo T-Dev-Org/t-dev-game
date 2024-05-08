@@ -1,13 +1,13 @@
 // [Level2.jsx]
 import { Perf } from "r3f-perf";
-import { KeyboardControls, Loader, OrbitControls } from "@react-three/drei";
+import { KeyboardControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import Instructive from "../../utils/instructive/Instructive";
 import useMovements from "../../utils/key-movements";
 import Controls from "./controls/Controls";
-import Ecctrl, { EcctrlAnimation } from "ecctrl";
+import Ecctrl from "ecctrl";
 import Avatar from "../../utils/avatar/Avatar";
 import Lights from "./lights/Lights";
 import Environments from "./staging/Environments";
@@ -16,19 +16,11 @@ import Level2WorldZone1 from "./world/Level2WorldZone1";
 import Texts from "./abstractions/Texts";
 import Button from "../../utils/components/Button";
 import Collectables from "./collectables/Collectables";
-import { useMusic } from "../../components/providers/AudioProvider";
 import GameUI from "../../components/layouts/GameUI";
+import ZoneSensors from "./world/ZoneSensors";
 
 export default function Level2() {
     const map = useMovements();
-    const { handlePlayMusic, playSoundEffect } = useMusic();
-
-    handlePlayMusic('mainTheme');
-
-
-    const reproducirEfecto = () => {
-        playSoundEffect('diamondCollect');
-    };
 
     return (
         <KeyboardControls map={map} >
@@ -39,9 +31,10 @@ export default function Level2() {
                     <Perf position="top-left" />
                     <Lights />
                     <Environments />
-                    <Physics debug={false}>
+                    <Physics debug={true}>
                         <Level2World />
                         <Level2WorldZone1 />
+                        <ZoneSensors />
                         <Collectables />
                         <Ecctrl
                             camInitDis={-2}
