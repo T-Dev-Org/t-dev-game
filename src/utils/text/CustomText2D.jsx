@@ -8,7 +8,8 @@ const CustomText2D = (props) => {
             textAlign="center"
             position={props.position}
             rotation={props.rotation}
-            size={props.size}
+            fontSize={props.fontSize}
+            color = {props.color}
 
         >
             {text}

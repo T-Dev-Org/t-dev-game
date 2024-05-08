@@ -5,16 +5,15 @@ import { Physics } from "@react-three/rapier";
 import { Suspense } from "react";
 import Lights from "./lights/Lights";
 import Environments from "./staging/Environments";
-
 import { Canvas } from "@react-three/fiber";
 import Level2World from "./world/Level2World";
 import Level2WorldZone1 from "./world/Level2WorldZone1";
 import Controls from "./controls/Controls";
-import Avatar from "./characters/avatar/Avatar";
+import Avatar from "../../utils/avatar/Avatar";
 import useMovements from "../../utils/key-movements";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
-import Instructive from "../../utils/instructive/Instructive";
 import Texts from "./abstractions/Texts";
+import Instructive from "../../utils/instructive/Instructive";
 import Button from "../../utils/components/Button";
 
 
@@ -29,7 +28,6 @@ export default function Level2() {
             >
                 <Suspense fallback={<Instructive />}>
                     <Perf position="top-left" />
-
                     <Lights />
                     <Environments />
                     <Physics debug={false}>
@@ -50,7 +48,7 @@ export default function Level2() {
                 </Suspense>
                 <Controls />
             </Canvas>
-            <Button to="/level3"/>
+            <Button to="/level3" />
         </KeyboardControls>
 
     )
