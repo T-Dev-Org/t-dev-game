@@ -12,6 +12,7 @@ import Avatar from "../../utils/avatar/Avatar";
 import Lights from "./lights/Lights";
 import Environments from "./staging/Environments";
 import Level1World from "./world/Level1World";
+import Level1WorldStairs from "./world/Level1WorldStairs";
 import Texts from "./abstractions/Texts";
 // import Collectables from "./collectables/Collectables";
 import GameUI from "../../utils/components/layouts/GameUI/GameUI";
@@ -34,6 +35,7 @@ export default function Level1() {
                     <Environments />
                     <Physics debug={true}>
                         <Level1World />
+                        <Level1WorldStairs />
                         <Ecctrl
                             camInitDis={-2}
                             camMaxDis={-2}
