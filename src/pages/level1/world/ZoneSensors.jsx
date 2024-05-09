@@ -9,7 +9,7 @@ export default function ZoneSensors({ ...props }) {
   const lifeState = useLifeState();
 
   const handleThemeStarter = (themeName) => {
-    handlePlayMusic(themeName);
+    playSoundEffect(themeName);
   }
 
   const loseLive = (lifeState) => {
@@ -28,13 +28,17 @@ export default function ZoneSensors({ ...props }) {
           position={[0, 0, 3]}
           args={[1, 1, 1]}
           sensor
-          onIntersectionEnter={() => { loseLive(lifeState) }}
+          onIntersectionEnter={() => { loseLive(lifeState),
+            handleThemeStarter('damage')
+           }}
         />
         <CuboidCollider
           position={[0, 0, -2]}
           args={[1, 1, 1]}
           sensor
-          onIntersectionEnter={() => { loseLive(lifeState)}}
+          onIntersectionEnter={() => { loseLive(lifeState),
+            handleThemeStarter('damage')
+           }}
         />
       </RigidBody>
     </group>

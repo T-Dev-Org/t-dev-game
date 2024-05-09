@@ -14,6 +14,7 @@ const initialState = {
   },
   soundEffects: {
     diamondCollect: '/assets/sounds/collectables/DiamondCollected.wav',
+    damage: '/assets/sounds/catActions/Damage.wav'
   },
 };
 
