@@ -47,7 +47,6 @@ export default function Level1() {
 
     return (
         <>
-        {displayLife &&
                 <KeyboardControls map={map} >
                 <Canvas
                     shadows={true}
@@ -59,15 +58,19 @@ export default function Level1() {
                         <Physics debug={true}>
                             <Level1World />
                             <ZoneSensors/>
-                            <Ecctrl
-                                camInitDis={-2}
-                                camMaxDis={-2}
-                                maxVelLimit={5}
-                                jumpVel={4}
-                                position={[0, 4, -5]}
-                            >
+                            <>
+                            {displayLife &&
+                                <Ecctrl
+                                    camInitDis={-2}
+                                    camMaxDis={-2}
+                                    maxVelLimit={5}
+                                    jumpVel={4}
+                                    position={[0, 4, -5]}
+                                >
                                 <Avatar />
-                            </Ecctrl>
+                            </Ecctrl>   
+                            }                         
+                            </>
                             <Press position={[0, -0.5, -158]} />
                             <Rat position={[0, 1, -135]} />
                         </Physics>
@@ -78,8 +81,6 @@ export default function Level1() {
                 <GameUI />
                 <NextLevelButton to="/level2" />
             </KeyboardControls>
-        }
-        {!displayLife}
         </>
 
 
