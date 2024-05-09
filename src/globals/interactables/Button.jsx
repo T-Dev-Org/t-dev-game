@@ -4,7 +4,7 @@ import { useGLTF, Sparkles } from "@react-three/drei";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import { useCharacterInteraction } from "../../utils/components/controller/CharacterInteractionState";
 
-const debug = false
+const debug = true
 
 function print_debug(text) {
   if (debug) {
@@ -24,7 +24,11 @@ export default function Button(props) {
     if (event.colliderObject.name == 'character-capsule-collider') {
       setCanInteract(true);
       characterInteractionState.assign(() => {
-        props.interactFunction()
+        if (!props.interactFunction)
+          print_debug("No me has asignado props.interactionFunction!!!")
+        else
+          props.interactFunction()
+
       })
     }
   }
