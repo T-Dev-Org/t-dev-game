@@ -16,7 +16,7 @@ const initialState = {
     diamondCollect: '/assets/sounds/collectables/DiamondCollected.wav',
     ctmSound: '/assets/sounds/catActions/ctm.wav',
     damage: '/assets/sounds/catActions/Damage.wav',
-    heal: '/assets/sounds/catActions/Heal.wav'
+    heal: '/assets/sounds/catActions/Heal.wav',
     shutterSound: '/assets/sounds/catActions/shutter.wav',
   },
 };
