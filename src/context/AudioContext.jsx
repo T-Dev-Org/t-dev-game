@@ -1,4 +1,4 @@
-// [AudioProvider.jsx]
+// [AudioContext.jsx]
 import React, { createContext, useState, useContext, useEffect, useRef } from 'react';
 
 const AudioContext = createContext();
