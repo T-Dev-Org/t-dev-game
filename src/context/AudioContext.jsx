@@ -15,8 +15,8 @@ const initialState = {
   soundEffects: {
     diamondCollect: '/assets/sounds/collectables/DiamondCollected.wav',
     ctmSound: '/assets/sounds/catActions/ctm.wav',
-    damage: '/assets/sounds/catActions/Damage.wav',
-    heal: '/assets/sounds/catActions/Heal.wav',
+    damage: '/assets/sounds/catActions/damage.wav',
+    heal: '/assets/sounds/catActions/heal.wav',
     shutterSound: '/assets/sounds/catActions/shutter.wav',
   },
 };
