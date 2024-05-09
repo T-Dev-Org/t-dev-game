@@ -5,11 +5,16 @@ import { useLifeState } from '../../../utils/components/controller/CharacterLife
 
 export default function ZoneSensors({ ...props }) {
   const { handlePlayMusic } = useAudio();
+  const { playSoundEffect} = useAudio();
   const rigidBodyRef = useRef();
   const lifeState = useLifeState();
 
   const handleThemeStarter = (themeName) => {
     playSoundEffect(themeName);
+  }
+
+  const gainLive = (lifeState) => {
+    lifeState.increment();
   }
 
   const loseLive = (lifeState) => {
@@ -36,8 +41,8 @@ export default function ZoneSensors({ ...props }) {
           position={[0, 0, -2]}
           args={[1, 1, 1]}
           sensor
-          onIntersectionEnter={() => { loseLive(lifeState),
-            handleThemeStarter('damage')
+          onIntersectionEnter={() => { gainLive(lifeState),
+            handleThemeStarter('heal')
            }}
         />
       </RigidBody>
