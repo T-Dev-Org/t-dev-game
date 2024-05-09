@@ -6,11 +6,12 @@ export default function useMovements() {
         backward: "backward",
         leftward: "leftward",
         rightward: "rightward",
-        jump: "jump",
-        exit: "exit",
         run: "run",
+        jump: "jump",
         dance: "dance",
-        basic_attack: "basic_attack"
+        basic_attack: "basic_attack",
+        interact: "interact",
+        exit: "exit",
     }
 
     const map = useMemo(() => {
@@ -19,11 +20,12 @@ export default function useMovements() {
             { name: MOVEMENTS.backward, keys: ["KeyS", "ArrowDown"] },
             { name: MOVEMENTS.leftward, keys: ["KeyA", "ArrowLeft"] },
             { name: MOVEMENTS.rightward, keys: ["KeyD", "ArrowRight"] },
-            { name: MOVEMENTS.jump, keys: ["Space"] },
-            { name: MOVEMENTS.exit, keys: ["Escape"] },
             { name: MOVEMENTS.run, keys: ["Shift"] },
+            { name: MOVEMENTS.jump, keys: ["Space"] },
             { name: MOVEMENTS.dance, keys: ["KeyQ"] },
-            { name: MOVEMENTS.basic_attack, keys: ["KeyR"] }
+            { name: MOVEMENTS.basic_attack, keys: ["KeyR"] },
+            { name: MOVEMENTS.interact, keys: ["KeyE"] },
+            { name: MOVEMENTS.exit, keys: ["Escape"] },
         ]
     }, [])
 

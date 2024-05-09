@@ -18,6 +18,7 @@ import Collectables from "./collectables/Collectables";
 import GameUI from "../../utils/components/layouts/GameUI/GameUI";
 import NextLevelButton from "../../utils/components/layouts/GameUI/components/NextLevelButton";
 import ZoneSensors from "./world/ZoneSensors";
+import Interactables from "./interactables/Interactables";
 
 export default function Level2() {
     const map = useMovements();
@@ -36,6 +37,7 @@ export default function Level2() {
                         <Level2WorldZone1 />
                         <ZoneSensors />
                         <Collectables />
+                        <Interactables />
                         <Ecctrl
                             camInitDis={-2}
                             camMaxDis={-2}

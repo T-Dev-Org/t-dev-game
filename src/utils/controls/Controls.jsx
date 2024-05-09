@@ -2,6 +2,7 @@ import { useKeyboardControls } from "@react-three/drei";
 import { useEffect, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useAvatar } from "../../context/AvatarContext";
+import { useCharacterInteraction } from "../components/controller/CharacterInteractionState";
 
 export default function Controls() {
   const { avatar, setAvatar } = useAvatar();
@@ -11,9 +12,17 @@ export default function Controls() {
 
   useEffect(() => {
     const unsubscribe = sub(
-      (state) => ({ movement: state.forward || state.backward || state.leftward || state.rightward, running: state.run, jumping: state.jump, dancing: state.dance }), // Devolver un objeto con los estados relevantes
-      ({ movement, running, jumping, dancing }) => { // Recibir los estados relevantes como parámetros del callback
-        if (jumping) {
+      (state) => ({ movement: state.forward || state.backward || state.leftward || state.rightward, running: state.run, jumping: state.jump, dancing: state.dance, interacting: state.interact }), // Devolver un objeto con los estados relevantes
+      ({ movement, running, jumping, dancing, interacting }) => { // Recibir los estados relevantes como parámetros del callback
+        if (interacting) {
+          const { action } = useCharacterInteraction.getState();
+          if (action) {
+            action();
+          } else {
+            console.log("No hay función de interacción asignada.");
+          }
+        }
+        else if (jumping) {
           setAvatar({ ...avatar, animation: "Jump" });
         }
         else if (!movement && dancing) {

@@ -36,7 +36,7 @@ export default function ZoneSensors({ ...props }) {
           onIntersectionEnter={(event) => handleIntersectionEnter(event, 'technoTheme1')}
         />
         <CuboidCollider
-          position={[0, 0, -2]}
+          position={[0, 0, -3]}
           args={[1, 1, 1]}
           sensor
           onIntersectionEnter={(event) => handleIntersectionEnter(event, 'mysteryTheme')}
