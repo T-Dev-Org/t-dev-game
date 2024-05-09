@@ -11,20 +11,16 @@ export default function DiamondCone(props) {
   const { playSoundEffect } = useAudio();
   const [isTaken, setIsTaken] = useState(false);
   const [isCollected, setIsCollected] = useState(false);
-  //const diamondCount = useCollectablesState();
-
-  //const getDiamond = (diamondCount) => {
-  //  diamondCount.increment();
-  //}
+  const collectableCountState = useCollectablesState();
 
   const handleIntersectionEnter = (event) => {
 
     console.log('[DiamonCone.jsx] colisioné con: ', event.colliderObject.name);
 
     if (event.colliderObject.name == 'character-capsule-collider') {
-      //getDiamond(diamondCount);
       playSoundEffect('diamondCollect');
       setIsTaken(true);
+      collectableCountState.increment();
       props.onUpdateState({ isTaken: true, isCollected: false });
     }
   };
