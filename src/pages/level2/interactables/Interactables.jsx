@@ -2,16 +2,23 @@
 import { useEffect, useState } from "react";
 import Button from "../../../globals/interactables/Button"
 
+const debug = true
+function print_debug(text) {
+  if (debug) {
+    console.log(`[Interactables.jsx]: ${text}`);
+  }
+}
+
 export default function Interactables() {
 
   const [objectStates, setObjectStates] = useState([]);
 
   const printHola = () => {
-    console.log("Hola")
+    print_debug("Hola")
   }
 
   const printAdios = () => {
-    console.log("Adios")
+    print_debug("Adios")
   }
 
   useEffect(() => {
@@ -30,7 +37,7 @@ export default function Interactables() {
   };
 
   useEffect(() => {
-    console.log("objectStates ha cambiado a", objectStates);
+    print_debug("objectStates ha cambiado a", objectStates);
   }, [objectStates]);
 
   return (<>

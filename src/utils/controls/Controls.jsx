@@ -3,12 +3,22 @@ import { useEffect, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useAvatar } from "../../context/AvatarContext";
 import { useCharacterInteraction } from "../components/controller/CharacterInteractionState";
+import { useAudio } from "../../context/AudioContext";
+
+const debug = true
+
+function print_debug(text) {
+  if (debug) {
+    console.log(`[Controls.jsx]: ${text}`);
+  }
+}
 
 export default function Controls() {
   const { avatar, setAvatar } = useAvatar();
   const [sub, get] = useKeyboardControls()
   const [danceSound] = useState(new Audio("/assets/sounds/catActions/dance.wav"))
   const [play, setPlay] = useState(false)
+  const { playSoundEffect } = useAudio();
 
   useEffect(() => {
     const unsubscribe = sub(
@@ -18,8 +28,9 @@ export default function Controls() {
           const { action } = useCharacterInteraction.getState();
           if (action) {
             action();
+            playSoundEffect('shutterSound');
           } else {
-            console.log("No hay función de interacción asignada.");
+            print_debug("No hay función de interacción asignada.");
           }
         }
         else if (jumping) {
