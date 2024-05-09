@@ -23,6 +23,7 @@ import ZoneSensors from "./world/ZoneSensors";
 import { useLifeState } from "../../utils/components/controller/CharacterLife";
 import nullMovements from "../../utils/null-movements";
 import Interactables from "./interactables/Interactables";
+import PortalNextWorld from "../../globals/interactables/PortalNextWorld";
 
 export default function Level1() {
   const map = useMovements();
@@ -59,6 +60,10 @@ export default function Level1() {
             <Level1World />
             <ZoneSensors />
             <Interactables />
+            <PortalNextWorld
+              position={[0, 0, -224]}
+              nextLevel='/level2'
+            />
             <>
               {displayLife &&
                 <Ecctrl
