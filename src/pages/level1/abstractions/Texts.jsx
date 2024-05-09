@@ -137,7 +137,7 @@ const Texts = (props) => {
       />
       <CustomText3D
         size={0.5}
-        position={[1.2, 1, -217]}
+        position={[0.8, 1, -217.5]}
         rotation={[0, 0, 0]}
         text="Pulsa Q para celebrar"
       />
