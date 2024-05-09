@@ -11,10 +11,15 @@ export default function DiamondCone(props) {
   const [isTaken, setIsTaken] = useState(false);
   const [isCollected, setIsCollected] = useState(false);
 
-  const handleIntersectionEnter = () => {
-    playSoundEffect('diamondCollect');
-    setIsTaken(true);
-    props.onUpdateState({ isTaken: true, isCollected: false });
+  const handleIntersectionEnter = (event) => {
+
+    console.log('[DiamonCone.jsx] colisioné con: ', event.colliderObject.name);
+
+    if (event.colliderObject.name == 'character-capsule-collider') {
+      playSoundEffect('diamondCollect');
+      setIsTaken(true);
+      props.onUpdateState({ isTaken: true, isCollected: false });
+    }
   };
 
   useEffect(() => {
@@ -28,7 +33,7 @@ export default function DiamondCone(props) {
           type="fixed"
           colliders="cuboid"
           sensor
-          onIntersectionEnter={handleIntersectionEnter}
+          onIntersectionEnter={(event) => handleIntersectionEnter(event)}
         >
           <mesh geometry={nodes.Cone.geometry} material={materials.hept32palette} />
         </RigidBody>

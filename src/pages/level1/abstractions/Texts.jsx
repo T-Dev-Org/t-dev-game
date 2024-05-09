@@ -1,11 +1,51 @@
 import CustomText2D from "../../../utils/text/CustomText2D";
 import CustomText3D from "../../../utils/text/CustomText3D";
+import { useState, useEffect} from "react";
+import { useLifeState } from "../../../utils/components/controller/CharacterLife";
 
 const Texts = (props) => {
   const text = "" + props.text;
 
+  const lifeState = useLifeState();
+
+  // Estado local para controlar si se muestra la vida o no
+  const [displayLife, setDisplayLife] = useState(true);        
+
+  useEffect(() => {
+      console.log(`[Level1.jsx] Change on LifeValue, is ${lifeState.value} now`);
+
+      // Cambios en mostrar/ocultar elementos dependiendo del valor
+      if (lifeState.value <= 0) {
+        setDisplayLife(false);
+        console.log("Mori");
+      } else {
+        setDisplayLife(true);
+      }
+    }, [lifeState.value]); // Depende unicamente de cambios en lifeState.value
+
+
   return (
     <>
+      <>
+        {!displayLife &&
+        <>
+          <CustomText2D
+          fontSize={0.1}
+          position={[0, 0.1, 0.5]}
+          rotation={[0, Math.PI, 0]}
+          text="Game Over"
+          color="#000000"
+        />
+        <CustomText2D
+        fontSize={0.05}
+        position={[0, -0.1, 0.5]}
+        rotation={[0, Math.PI, 0]}
+        text="¿Jugar de nuevo?"
+        color="#000000"
+        />   
+        </> 
+        }
+      </>  
       <CustomText3D
         size={1}
         position={[0, 2, -1]}

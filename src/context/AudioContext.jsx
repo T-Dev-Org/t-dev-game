@@ -1,4 +1,4 @@
-// [AudioProvider.jsx]
+// [AudioContext.jsx]
 import React, { createContext, useState, useContext, useEffect, useRef } from 'react';
 
 const AudioContext = createContext();
@@ -10,10 +10,13 @@ const initialState = {
     technoTheme2: '/assets/sounds/music/loop_techno_2.ogg',
     mysteryTheme: '/assets/sounds/music/loop_mystery.ogg',
     guitarTheme: '/assets/sounds/music/loop_guitar.ogg',
-    endingTheme: '/assets/sounds/music/loop_guitar.ogg',
+    endingTheme: '/assets/sounds/music/ending.ogg',
   },
   soundEffects: {
     diamondCollect: '/assets/sounds/collectables/DiamondCollected.wav',
+    ctmSound: '/assets/sounds/catActions/ctm.wav',
+    damage: '/assets/sounds/catActions/Damage.wav',
+    heal: '/assets/sounds/catActions/Heal.wav'
   },
 };
 
@@ -39,10 +42,13 @@ export const AudioProvider = ({ children }) => {
       const audio = new Audio(sounds.songs[songKey]);
       audio.loop = true;
       audio.volume = 0; // Comenzamos con volumen cero
-      audio.play();
-      fadeInNewSong(audio);
-      setCurrentAudio(audio);
-      setCurrentSong(songKey);
+      audio.play().then(() => {
+        fadeInNewSong(audio);
+        setCurrentAudio(audio);
+        setCurrentSong(songKey);
+      }).catch((error) => {
+        console.error('Error al reproducir el audio:', error);
+      });
     }
   };
 
