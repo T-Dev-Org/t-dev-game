@@ -19,19 +19,20 @@ export default function Controls() {
   const [danceSound] = useState(new Audio("/assets/sounds/catActions/dance.wav"))
   const [play, setPlay] = useState(false)
   const { playSoundEffect } = useAudio();
+  const [isInteracting, setIsInteracting] = useState(false);
 
   useEffect(() => {
     const unsubscribe = sub(
-      (state) => ({ movement: state.forward || state.backward || state.leftward || state.rightward, running: state.run, jumping: state.jump, dancing: state.dance, interacting: state.interact }), // Devolver un objeto con los estados relevantes
-      ({ movement, running, jumping, dancing, interacting }) => { // Recibir los estados relevantes como parámetros del callback
+      (state) => ({
+        movement: state.forward || state.backward || state.leftward || state.rightward,
+        running: state.run,
+        jumping: state.jump,
+        dancing: state.dance,
+        interacting: state.interact,
+      }),
+      ({ movement, running, jumping, dancing, interacting }) => {
         if (interacting) {
-          const { action } = useCharacterInteraction.getState();
-          if (action) {
-            action();
-            playSoundEffect('shutterSound');
-          } else {
-            print_debug("No hay función de interacción asignada.");
-          }
+          setIsInteracting(true);
         }
         else if (jumping) {
           setAvatar({ ...avatar, animation: "Jump" });
@@ -48,10 +49,26 @@ export default function Controls() {
         else {
           setAvatar({ ...avatar, animation: "Idle" });
         }
+
+        if (!interacting)
+          setIsInteracting(false);
       }
     );
     return () => unsubscribe();
   }, [avatar, setAvatar, sub]);
+
+  // Logica de interaccion para ejecutarse una vez 
+  useEffect(() => {
+    if (isInteracting) {
+      const { action } = useCharacterInteraction.getState();
+      if (action) {
+        action();
+        playSoundEffect('shutterSound');
+      } else {
+        print_debug("No hay accion asignada.")
+      }
+    }
+  }, [isInteracting])
 
   useEffect(() => {
     if (play) {
