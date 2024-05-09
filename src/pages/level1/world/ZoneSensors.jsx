@@ -22,12 +22,27 @@ export default function ZoneSensors({ ...props }) {
     console.log(lifeState.value);
   }
 
+  const handleIntersectionEnter = (event, themeName, soundEffect = 'none') => {
+
+    console.log('[ZoneSensors.jsx] colisioné con: ', event.colliderObject.name);
+    if (event.colliderObject.name == 'character-capsule-collider') {
+
+      console.log(`[ZoneSensors.jsx] Toca reproducir ${themeName} ${soundEffect}`);
+
+      if (themeName != 'continue')
+        handlePlayMusic(themeName);
+
+      if (soundEffect != 'none')
+        playSoundEffect(soundEffect);
+
+    }
+  }  
+
   return (
     <group {...props} dispose={null}>
       <RigidBody
         type="fixed"
-        colliders="cuboid"
-        sensor
+        colliders={false}
       >
         <CuboidCollider
           position={[0, 0, 3]}
@@ -45,6 +60,19 @@ export default function ZoneSensors({ ...props }) {
             handleThemeStarter('heal')
            }}
         />
+        {/* Pre-dead events */}
+        <CuboidCollider
+          position={[0, -25, 0]}
+          args={[200, 1, 200]}
+          onIntersectionEnter={(event) => handleIntersectionEnter(event, 'continue', 'ctmSound')}
+          sensor
+        />
+        {/* Dead Sensor */}
+        <CuboidCollider
+          position={[0, -50, 0]}
+          args={[200, 1, 200]}
+          onIntersectionEnter={(event) => handleIntersectionEnter(event, 'continue', 'ctmSound')}
+        />        
       </RigidBody>
     </group>
   );
