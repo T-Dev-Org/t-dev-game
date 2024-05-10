@@ -20,6 +20,7 @@ import NextLevelButton from "../../utils/components/layouts/GameUI/components/Ne
 import ZoneSensors from "./world/ZoneSensors";
 import Interactables from "./interactables/Interactables";
 import { useLifeState } from "../../utils/components/controller/CharacterLife";
+import GameOverScene from "../../utils/components/layouts/GameOverScene/GameOverScene";
 
 export default function Level2() {
     const map = useMovements();
@@ -65,6 +66,11 @@ export default function Level2() {
                 </Suspense>
                 <Controls />
             </Canvas>
+            {!displayLife &&
+                <GameOverScene
+                    reloadLevel='/level2'
+                />}
+
             <GameUI />
             <NextLevelButton to="/level3" />
         </KeyboardControls >

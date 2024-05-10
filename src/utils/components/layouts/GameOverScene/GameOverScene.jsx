@@ -10,7 +10,7 @@ const GameOverScene = ({ ...props }) => {
   return (
     <>
       <div className="complete-scene">
-        <div className='container-fluid text-center my-auto'>
+        <div className='container-fluid-game-over text-center my-auto'>
           <h1 className='dead-title'> Game Over </h1>
           <div className='spacer-4'></div>
           <h1 className='play-again-text'> ¿Jugar de nuevo? </h1>

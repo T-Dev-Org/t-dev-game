@@ -14,14 +14,13 @@ import Environments from "./staging/Environments";
 import Level1World from "./world/Level1World";
 import Level1WorldStairs from "./world/Level1WorldStairs";
 import Texts from "./abstractions/Texts";
-import Collectables from "./collectables/Collectables";
 import GameUI from "../../utils/components/layouts/GameUI/GameUI";
-import NextLevelButton from "../../utils/components/layouts/GameUI/components/NextLevelButton";
 import Rat from "../../globals/villains/Rat";
 import ZoneSensors from "./world/ZoneSensors";
 import { useLifeState } from "../../utils/components/controller/CharacterLife";
 import nullMovements from "../../utils/null-movements";
 import GameOverScene from "../../utils/components/layouts/GameOverScene/GameOverScene";
+import Collectables from "./collectables/Collectables";
 import Interactables from "./interactables/Interactables";
 import PortalNextWorld from "../../globals/interactables/PortalNextWorld";
 import { useCollectablesState } from "../../utils/components/controller/CharacterCollectables";
@@ -60,7 +59,12 @@ export default function Level1() {
           <Environments />
           <Physics debug={true}>
             <Level1World />
-            <Level1WorldStairs />
+            <PortalNextWorld
+              position={[0, 0, -224]}
+              nextLevel='/level2'
+            />
+            <Collectables />
+            <Interactables />
             <ZoneSensors />
             <>
               {displayLife &&
