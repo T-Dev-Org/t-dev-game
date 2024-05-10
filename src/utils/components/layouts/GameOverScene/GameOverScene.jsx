@@ -1,56 +1,26 @@
 // [GameOverScene.jsx]
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { useLifeState } from '../../controller/CharacterLife';
-import PlayAgainButton from '../GameUI/components/PlayAgainButton';
-import GoHomeButton from '../GameUI/components/GoHomeButton';
-import CustomText2D from '../../../text/CustomText2D';
+import './GameOverScene.css';
 
+const GameOverScene = ({ ...props }) => {
 
-const GameOverScene = () => {
-
-  const lifeState = useLifeState();
-
-  // Estado local para controlar si se muestra la vida o no
-  const [displayLife, setDisplayLife] = useState(true);        
-
-  useEffect(() => {
-      console.log(`[Level1.jsx] Change on LifeValue, is ${lifeState.value} now`);
-
-      // Cambios en mostrar/ocultar elementos dependiendo del valor
-      if (lifeState.value <= 0) {
-        setDisplayLife(false);
-        console.log("Mori");
-      } else {
-        setDisplayLife(true);
-      }
-    }, [lifeState.value]); // Depende unicamente de cambios en lifeState.value  
-  const clickedMute = () => {
-    console.log("Boton de mute clickeado")
-  }
+  const mainMenu = props.mainMenu ? props.reloadLevel : '/'
+  const reloadLevel = props.reloadLevel ? props.reloadLevel : '/level1'
 
   return (
     <>
-      {!displayLife &&
-        <>
-          <CustomText2D
-          fontSize={0.1}
-          position={[0, 0.1, 0.5]}
-          rotation={[0, Math.PI, 0]}
-          text="Game Over"
-          color="#000000"
-          />
-          <CustomText2D
-          fontSize={0.05}
-          position={[0, -0.1, 0.5]}
-          rotation={[0, Math.PI, 0]}
-          text="¿Jugar de nuevo?"
-          color="#000000"
-          />   
-          <PlayAgainButton to="/level1"/>
-          <GoHomeButton to="/"/>
-        </>
-      }
+      <div className="complete-scene">
+        <div className='container-fluid text-center my-auto'>
+          <h1 className='dead-title'> Game Over </h1>
+          <div className='spacer-4'></div>
+          <h1 className='play-again-text'> ¿Jugar de nuevo? </h1>
+          <div className='spacer-2'></div>
+          <div className='game-over-buttons-container'>
+            <a className='btn-game-over' href={mainMenu}> Menú Principal </a>
+            <a className='btn-game-over' href={reloadLevel}> Jugar de nuevo </a>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

@@ -26,63 +26,66 @@ import nullMovements from "../../utils/null-movements";
 import GameOverScene from "../../utils/components/layouts/GameOverScene/GameOverScene";
 
 export default function Level1() {
-    const map = useMovements();
+  const map = useMovements();
 
-    const nullMap = nullMovements();
+  const nullMap = nullMovements();
 
-    const lifeState = useLifeState();
+  const lifeState = useLifeState();
 
-    // Estado local para controlar si se muestra la vida o no
-    const [displayLife, setDisplayLife] = useState(true);        
+  // Estado local para controlar si se muestra la vida o no
+  const [displayLife, setDisplayLife] = useState(true);
 
-    useEffect(() => {
-        console.log(`[Level1.jsx] Change on LifeValue, is ${lifeState.value} now`);
-  
-        // Cambios en mostrar/ocultar elementos dependiendo del valor
-        if (lifeState.value <= 0) {
-          setDisplayLife(false);
-          console.log("Mori");
-        } else {
-          setDisplayLife(true);
-        }
-      }, [lifeState.value]); // Depende unicamente de cambios en lifeState.value    
+  useEffect(() => {
+    console.log(`[Level1.jsx] Change on LifeValue, is ${lifeState.value} now`);
 
-    return (
-        <KeyboardControls map={map} >
-            <Canvas
-                shadows={true}
-            >
-                <Perf position="top-left" />
-                <Suspense fallback={<Instructive />}>
-                    <Lights />
-                    <Environments />
-                    <Physics debug={true}>
-                        <Level1World />
-                        <Level1WorldStairs />
-                        <ZoneSensors/>
-                        <>
-                        {displayLife &&
-                              <Ecctrl
-                                  camInitDis={-2}
-                                  camMaxDis={-2}
-                                  maxVelLimit={5}
-                                  jumpVel={4}
-                                  position={[0, 4, -5]}
-                              >
-                              <Avatar />
-                            </Ecctrl>   
-                          }                                                      
-                          </>
-                          <Press position={[0, -0.5, -158]} />
-                          <Rat position={[0, 1, -135]} />
-                    </Physics>
-                    <Texts />
-                </Suspense>
-                <Controls />
-            </Canvas>
-            <GameOverScene />
-            <GameUI />           
-            <NextLevelButton to="/level2" />
-        </KeyboardControls>
-    )
+    // Cambios en mostrar/ocultar elementos dependiendo del valor
+    if (lifeState.value <= 0) {
+      setDisplayLife(false);
+      console.log("Mori");
+    } else {
+      setDisplayLife(true);
+    }
+  }, [lifeState.value]); // Depende unicamente de cambios en lifeState.value    
+
+  return (<>
+    <KeyboardControls map={map} >
+      <Canvas
+        shadows={true}
+      >
+        <Perf position="top-left" />
+        <Suspense fallback={<Instructive />}>
+          <Lights />
+          <Environments />
+          <Physics debug={true}>
+            <Level1World />
+            <Level1WorldStairs />
+            <ZoneSensors />
+            <>
+              {displayLife &&
+                <Ecctrl
+                  camInitDis={-2}
+                  camMaxDis={-2}
+                  maxVelLimit={5}
+                  jumpVel={4}
+                  position={[0, 4, -5]}
+                >
+                  <Avatar />
+                </Ecctrl>
+              }
+            </>
+            <Press position={[0, -0.5, -158]} />
+            <Rat position={[0, 1, -135]} />
+          </Physics>
+          <Texts />
+        </Suspense>
+        <Controls />
+      </Canvas>
+      {displayLife &&
+        <GameOverScene
+          reloadLevel='/level1'
+        />}
+      <GameUI />
+    </KeyboardControls>
+  </>
+  )
 }
