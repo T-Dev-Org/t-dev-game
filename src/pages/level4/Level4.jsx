@@ -17,7 +17,6 @@ import GameUI from "../../utils/components/layouts/GameUI/GameUI";
 import NextLevelButton from "../../utils/components/layouts/GameUI/components/NextLevelButton";
 // import ZoneSensors from "./world/ZoneSensors";
 import { Model } from "./world/Level4World";
-import { Cubo } from "../../globals/collectables/Cubo";
 import { Cubos } from "../../globals/collectables/Cubos";
 
 export default function Level4() {
