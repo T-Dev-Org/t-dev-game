@@ -2,12 +2,14 @@ import React, { useRef } from 'react';
 import { CuboidCollider, RigidBody } from '@react-three/rapier';
 import { useAudio } from '../../../context/AudioContext';
 import { useLifeState } from '../../../utils/components/controller/CharacterLife';
+import { useCollectablesState } from '../../../utils/components/controller/CharacterCollectables';
 
 export default function ZoneSensors({ ...props }) {
   const { handlePlayMusic } = useAudio();
   const { playSoundEffect} = useAudio();
   const rigidBodyRef = useRef();
   const lifeState = useLifeState();
+  const collectableCountState = useCollectablesState();
 
   const handleThemeStarter = (themeName) => {
     playSoundEffect(themeName);
@@ -48,7 +50,7 @@ export default function ZoneSensors({ ...props }) {
         lifeState.decrement();
         console.log(lifeState.value);
     }
-    
+      collectableCountState.reset();
     }
   }
 

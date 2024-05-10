@@ -8,7 +8,8 @@ export const useLifeState = create((set) => ({
     // Variables del estado
     title: "Life", // Título del estado 
     value: standardLife, // Valor actual de vida
-    isFalling: false, // Nuevo atributo booleano 'isFalling'    
+    isFalling: false, // Nuevo atributo booleano 'isFalling'  
+    maximumLife,  
 
   
     // Funciones para modificar el estado de vida
