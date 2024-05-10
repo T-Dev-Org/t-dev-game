@@ -2,12 +2,14 @@ import React, { useRef } from 'react';
 import { CuboidCollider, RigidBody } from '@react-three/rapier';
 import { useAudio } from '../../../context/AudioContext';
 import { useLifeState } from '../../../utils/components/controller/CharacterLife';
+import { useCollectablesState } from '../../../utils/components/controller/CharacterCollectables';
 
 export default function ZoneSensors({ ...props }) {
   const { handlePlayMusic } = useAudio();
   const { playSoundEffect} = useAudio();
   const rigidBodyRef = useRef();
   const lifeState = useLifeState();
+  const collectableCountState = useCollectablesState();
 
   const handleThemeStarter = (themeName) => {
     playSoundEffect(themeName);
@@ -36,7 +38,21 @@ export default function ZoneSensors({ ...props }) {
         playSoundEffect(soundEffect);
 
     }
-  }  
+  }
+
+  const handleFall = (event, lifeState) => {
+
+    console.log("[ZoneSensors.jsx] fll ");
+
+    if (event.colliderObject.name == 'character-capsule-collider') {
+      for (let i = 0; i < lifeState.value; i++) {
+        // Aquí puedes poner el código que quieres que se ejecute en cada iteración
+        lifeState.decrement();
+        console.log(lifeState.value);
+    }
+      collectableCountState.reset();
+    }
+  }
 
   return (
     <group {...props} dispose={null}>
@@ -48,7 +64,8 @@ export default function ZoneSensors({ ...props }) {
           position={[0, 0, 3]}
           args={[1, 1, 1]}
           sensor
-          onIntersectionEnter={() => { loseLive(lifeState),
+          onIntersectionEnter={() => { 
+            loseLive(lifeState),
             handleThemeStarter('damage')
            }}
         />
@@ -56,22 +73,29 @@ export default function ZoneSensors({ ...props }) {
           position={[0, 0, -2]}
           args={[1, 1, 1]}
           sensor
-          onIntersectionEnter={() => { gainLive(lifeState),
+          onIntersectionEnter={(event) => { 
+            gainLive(lifeState),
             handleThemeStarter('heal')
            }}
         />
         {/* Pre-dead events */}
         <CuboidCollider
           position={[0, -25, 0]}
-          args={[200, 1, 200]}
-          onIntersectionEnter={(event) => handleIntersectionEnter(event, 'continue', 'ctmSound')}
+          args={[500, 1, 500]}
+          onIntersectionEnter={(event) => {
+            handleIntersectionEnter(event, 'continue', 'ctmSound'), 
+            handleFall(event, lifeState)}
+          }
           sensor
         />
         {/* Dead Sensor */}
         <CuboidCollider
           position={[0, -50, 0]}
           args={[200, 1, 200]}
-          onIntersectionEnter={(event) => handleIntersectionEnter(event, 'continue', 'ctmSound')}
+          onIntersectionEnter={(event) => {
+            handleIntersectionEnter(event, 'continue', 'ctmSound')
+            }
+          }
         />        
       </RigidBody>
     </group>

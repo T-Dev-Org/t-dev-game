@@ -2,7 +2,7 @@
 import { Perf } from "r3f-perf";
 import { KeyboardControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
-import { Suspense } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import Instructive from "../../utils/components/layouts/instructive/Instructive";
 import useMovements from "../../utils/key-movements";
@@ -18,9 +18,21 @@ import Collectables from "./collectables/Collectables";
 import GameUI from "../../utils/components/layouts/GameUI/GameUI";
 import NextLevelButton from "../../utils/components/layouts/GameUI/components/NextLevelButton";
 import ZoneSensors from "./world/ZoneSensors";
+import Interactables from "./interactables/Interactables";
+import { useLifeState } from "../../utils/components/controller/CharacterLife";
+import GameOverScene from "../../utils/components/layouts/GameOverScene/GameOverScene";
 
 export default function Level2() {
     const map = useMovements();
+    const lifeState = useLifeState();
+    const [displayLife, setDisplayLife] = useState(true);
+
+    useEffect(() => {
+        if (lifeState.value <= 0)
+            setDisplayLife(false);
+        else
+            setDisplayLife(true);
+    }, [lifeState.value]);
 
     return (
         <KeyboardControls map={map} >
@@ -36,21 +48,29 @@ export default function Level2() {
                         <Level2WorldZone1 />
                         <ZoneSensors />
                         <Collectables />
-                        <Ecctrl
-                            camInitDis={-2}
-                            camMaxDis={-2}
-                            maxVelLimit={4}
-                            jumpVel={3}
-                            position={[0, 2, 0]}
-                            slopeMaxAngle={Math.PI / 5.5}
-                        >
-                            <Avatar />
-                        </Ecctrl>
+                        <Interactables />
+                        {displayLife &&
+                            <Ecctrl
+                                camInitDis={-2}
+                                camMaxDis={-2}
+                                maxVelLimit={4}
+                                jumpVel={3}
+                                position={[0, 2, 0]}
+                                slopeMaxAngle={Math.PI / 5.5}
+                            >
+                                <Avatar />
+                            </Ecctrl>
+                        }
                     </Physics>
                     <Texts />
                 </Suspense>
                 <Controls />
             </Canvas>
+            {!displayLife &&
+                <GameOverScene
+                    reloadLevel='/level2'
+                />}
+
             <GameUI />
             <NextLevelButton to="/level3" />
         </KeyboardControls >

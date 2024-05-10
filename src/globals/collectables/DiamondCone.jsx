@@ -3,6 +3,16 @@ import React, { useEffect, useState } from 'react';
 import { Sparkles, useGLTF } from '@react-three/drei';
 import { RigidBody } from '@react-three/rapier';
 import { useAudio } from '../../context/AudioContext';
+import { useCollectablesState } from '../../utils/components/controller/CharacterCollectables';
+
+const debug = true
+const disableCollect4Debug = false
+
+function print_debug(text) {
+  if (debug) {
+    console.log(`[Interactables.jsx]: ${text}`);
+  }
+}
 
 export default function DiamondCone(props) {
 
@@ -10,6 +20,7 @@ export default function DiamondCone(props) {
   const { playSoundEffect } = useAudio();
   const [isTaken, setIsTaken] = useState(false);
   const [isCollected, setIsCollected] = useState(false);
+  const collectableCountState = useCollectablesState();
 
   const handleIntersectionEnter = (event) => {
 
@@ -18,6 +29,7 @@ export default function DiamondCone(props) {
     if (event.colliderObject.name == 'character-capsule-collider') {
       playSoundEffect('diamondCollect');
       setIsTaken(true);
+      collectableCountState.increment();
       props.onUpdateState({ isTaken: true, isCollected: false });
     }
   };
@@ -33,7 +45,10 @@ export default function DiamondCone(props) {
           type="fixed"
           colliders="cuboid"
           sensor
-          onIntersectionEnter={(event) => handleIntersectionEnter(event)}
+          onIntersectionEnter={(event) => {
+            if (!disableCollect4Debug)
+              handleIntersectionEnter(event)
+          }}
         >
           <mesh geometry={nodes.Cone.geometry} material={materials.hept32palette} />
         </RigidBody>
