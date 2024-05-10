@@ -9,7 +9,7 @@ export default function Rat(props) {
   );
   //const { actions } = useAnimations(animations, group);
   return (
-    <RigidBody type="dynamic" colliders={false}>
+    <RigidBody type="dynamic" colliders={false} position-y={-0.99}>
       <group {...props} ref={ratRef} name="Scene">
         <group name="Rat" scale={3}>
           <skinnedMesh
@@ -38,10 +38,10 @@ export default function Rat(props) {
           />
           <primitive object={nodes.Bone006} />
         </group>
-        <CuboidCollider
+        {/* <CuboidCollider
           position={[0, 0.3, 0]}
           args={[0.8, 0.2, 0.2]}
-        />
+        /> */}
       </group>
     </RigidBody>
   );
