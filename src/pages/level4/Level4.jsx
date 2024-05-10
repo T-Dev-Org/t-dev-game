@@ -18,13 +18,13 @@ import NextLevelButton from "../../utils/components/layouts/GameUI/components/Ne
 // import ZoneSensors from "./world/ZoneSensors";
 import { Model } from "./world/Level4World";
 import { Cubos } from "../../globals/collectables/Cubos";
+import { ObstaculoBarra } from "../../globals/collectables/ObstaculoBarra";
 
 export default function Level4() {
     const map = useMovements();
 
     return (
         <KeyboardControls map={map} >
-
             <Canvas shadows={true}>
                 <Perf position="top-left" />
                 <Suspense fallback={<Instructive />}>
@@ -32,7 +32,10 @@ export default function Level4() {
                     <Lights />
                     <Physics>
                         <Model />
-                        <Cubos/>
+                        <Cubos position={[0,40,60]}/>
+                        <Cubos position={[0,40,65]}/>
+                        <ObstaculoBarra position={[0,35,90]}/>
+                        <ObstaculoBarra position={[0,35,130]}/>
                         <Ecctrl
                             camInitDis={-2}
                             camMaxDis={-2}

@@ -11,7 +11,7 @@ import { RigidBody } from '@react-three/rapier'
 export function Cubos(props) {
   const { nodes, materials } = useGLTF('/assets/models/collectables/Cubos.glb')
   return (
-    <group {...props} dispose={null} position={[0,40,60]}>
+    <group {...props} dispose={null}>
       <RigidBody type='dynamic' colliders='cuboid' friction={1}>
       <mesh geometry={nodes.Cube.geometry} material={materials['Material.002']} />
       </RigidBody>
