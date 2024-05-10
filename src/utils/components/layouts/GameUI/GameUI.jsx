@@ -3,8 +3,6 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useLifeState } from '../../controller/CharacterLife';
 import CornerTopRight from './components/CornerTopRight';
-import PlayAgainButton from './components/PlayAgainButton';
-import GoHomeButton from './components/GoHomeButton';
 
 const GameUI = () => {
 
@@ -31,13 +29,6 @@ const GameUI = () => {
   return (
     <>
       <CornerTopRight />
-      <>
-        {!displayLife &&
-        <>
-          <PlayAgainButton to="/level1"/>
-          <GoHomeButton to="/"/>        
-        </>}      
-      </>
     </>
   );
 };

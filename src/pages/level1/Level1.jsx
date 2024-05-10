@@ -21,9 +21,11 @@ import Rat from "../../globals/villains/Rat";
 import ZoneSensors from "./world/ZoneSensors";
 import { useLifeState } from "../../utils/components/controller/CharacterLife";
 import nullMovements from "../../utils/null-movements";
+import GameOverScene from "../../utils/components/layouts/GameOverScene/GameOverScene";
 import Interactables from "./interactables/Interactables";
 import PortalNextWorld from "../../globals/interactables/PortalNextWorld";
 import { useCollectablesState } from "../../utils/components/controller/CharacterCollectables";
+import Button from "../../globals/interactables/Button";
 
 export default function Level1() {
   const map = useMovements();
@@ -47,7 +49,7 @@ export default function Level1() {
     }
   }, [lifeState.value]); // Depende unicamente de cambios en lifeState.value    
 
-  return (
+  return (<>
     <KeyboardControls map={map} >
       <Canvas
         shadows={true}
@@ -56,15 +58,10 @@ export default function Level1() {
         <Suspense fallback={<Instructive />}>
           <Lights />
           <Environments />
-          <Physics debug={false}>
+          <Physics debug={true}>
             <Level1World />
+            <Level1WorldStairs />
             <ZoneSensors />
-            <Interactables />
-            <PortalNextWorld
-              position={[0, 0, -224]}
-              nextLevel='/level2'
-            />
-            <Collectables />
             <>
               {displayLife &&
                 <Ecctrl
@@ -78,14 +75,19 @@ export default function Level1() {
                 </Ecctrl>
               }
             </>
+            <Button position={[0, -0.5, -158]} />
             <Rat position={[0, 1, -135]} />
           </Physics>
           <Texts />
         </Suspense>
         <Controls />
       </Canvas>
+      {!displayLife &&
+        <GameOverScene
+          reloadLevel='/level1'
+        />}
       <GameUI />
-      <NextLevelButton to="/level2" />
     </KeyboardControls>
+  </>
   )
 }
