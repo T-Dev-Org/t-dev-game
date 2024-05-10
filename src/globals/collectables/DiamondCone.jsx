@@ -5,6 +5,15 @@ import { RigidBody } from '@react-three/rapier';
 import { useAudio } from '../../context/AudioContext';
 import { useCollectablesState } from '../../utils/components/controller/CharacterCollectables';
 
+const debug = true
+const disableCollect4Debug = false
+
+function print_debug(text) {
+  if (debug) {
+    console.log(`[Interactables.jsx]: ${text}`);
+  }
+}
+
 export default function DiamondCone(props) {
 
   const { nodes, materials } = useGLTF('/assets/models/collectables/DiamondCone.glb');
@@ -40,8 +49,10 @@ export default function DiamondCone(props) {
           type="fixed"
           colliders="cuboid"
           sensor
-          onIntersectionEnter={(event) =>{ 
-            handleIntersectionEnter(event)}}
+          onIntersectionEnter={(event) => {
+            if (!disableCollect4Debug)
+              handleIntersectionEnter(event)
+          }}
         >
           <mesh geometry={nodes.Cone.geometry} material={materials.hept32palette} />
         </RigidBody>
