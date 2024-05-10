@@ -21,6 +21,8 @@ import ZoneSensors from "./world/ZoneSensors";
 import Interactables from "./interactables/Interactables";
 import { useLifeState } from "../../utils/components/controller/CharacterLife";
 import GameOverScene from "../../utils/components/layouts/GameOverScene/GameOverScene";
+import SymbolicSensors from "./world/SymbolicSensors";
+import PortalNextWorld from "../../globals/interactables/PortalNextWorld";
 
 export default function Level2() {
     const map = useMovements();
@@ -47,8 +49,13 @@ export default function Level2() {
                         <Level2World />
                         <Level2WorldZone1 />
                         <ZoneSensors />
+                        <SymbolicSensors />
                         <Collectables />
                         <Interactables />
+                        <PortalNextWorld
+                            position={[28, 1, -15]}
+                            nextLevel='/level3'
+                        />
                         {displayLife &&
                             <Ecctrl
                                 camInitDis={-2}
@@ -70,9 +77,7 @@ export default function Level2() {
                 <GameOverScene
                     reloadLevel='/level2'
                 />}
-
             <GameUI />
-            <NextLevelButton to="/level3" />
         </KeyboardControls >
     )
 }
