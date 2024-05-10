@@ -13,14 +13,6 @@ export default function Interactables() {
 
   const [objectStates, setObjectStates] = useState([]);
 
-  const printHola = () => {
-    print_debug("Hola")
-  }
-
-  const printAdios = () => {
-    print_debug("Adios")
-  }
-
   useEffect(() => {
     const initialObjectStates = [
       { id: 0, name: 'Button 1', canInteract: false },
@@ -41,16 +33,6 @@ export default function Interactables() {
   }, [objectStates]);
 
   return (<>
-    <Button
-      position={[-2, 0, 2]}
-      interactFunction={printHola}
-      onUpdateState={(newState) => updateObjectState(0, newState)}
-    />
 
-    <Button
-      position={[-2, 0, -2]}
-      interactFunction={printAdios}
-      onUpdateState={(newState) => updateObjectState(0, newState)}
-    />
   </>)
 }
