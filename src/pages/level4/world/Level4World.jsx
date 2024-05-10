@@ -12,10 +12,10 @@ export function Model(props) {
   return (
     <group {...props} dispose={null}>
       <RigidBody type='fixed' colliders='trimesh'>
-      <mesh geometry={nodes.Floor.geometry} material={materials.Material} />
+      <mesh geometry={nodes.Floor.geometry} material={materials.Verde} />
       </RigidBody>
     </group>
   )
 }
 
-useGLTF.preload('/assets/models/world/Level4World.glb')
+useGLTF.preload('/Level4World.glb')
