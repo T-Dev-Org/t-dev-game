@@ -23,6 +23,7 @@ import Rat from "../../globals/villains/Rat";
 import ZoneSensors from "./world/ZoneSensors";
 import { useLifeState } from "../../utils/components/controller/CharacterLife";
 import nullMovements from "../../utils/null-movements";
+import GameOverScene from "../../utils/components/layouts/GameOverScene/GameOverScene";
 
 export default function Level1() {
     const map = useMovements();
@@ -70,7 +71,7 @@ export default function Level1() {
                               >
                               <Avatar />
                             </Ecctrl>   
-                          }                         
+                          }                                                      
                           </>
                           <Press position={[0, -0.5, -158]} />
                           <Rat position={[0, 1, -135]} />
@@ -79,7 +80,8 @@ export default function Level1() {
                 </Suspense>
                 <Controls />
             </Canvas>
-            <GameUI />
+            <GameOverScene />
+            <GameUI />           
             <NextLevelButton to="/level2" />
         </KeyboardControls>
     )

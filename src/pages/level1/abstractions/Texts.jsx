@@ -26,26 +26,6 @@ const Texts = (props) => {
 
   return (
     <>
-      <>
-        {!displayLife &&
-        <>
-          <CustomText2D
-          fontSize={0.1}
-          position={[0, 0.1, 0.5]}
-          rotation={[0, Math.PI, 0]}
-          text="Game Over"
-          color="#000000"
-        />
-        <CustomText2D
-        fontSize={0.05}
-        position={[0, -0.1, 0.5]}
-        rotation={[0, Math.PI, 0]}
-        text="¿Jugar de nuevo?"
-        color="#000000"
-        />   
-        </> 
-        }
-      </>  
       <CustomText3D
         size={1}
         position={[0, 2, -1]}

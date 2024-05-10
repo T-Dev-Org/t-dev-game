@@ -1,10 +1,13 @@
-// [GameUI.jsx]
+// [GameOverScene.jsx]
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useLifeState } from '../../controller/CharacterLife';
-import CornerTopRight from './components/CornerTopRight';
+import PlayAgainButton from '../GameUI/components/PlayAgainButton';
+import GoHomeButton from '../GameUI/components/GoHomeButton';
+import CustomText2D from '../../../text/CustomText2D';
 
-const GameUI = () => {
+
+const GameOverScene = () => {
 
   const lifeState = useLifeState();
 
@@ -28,9 +31,28 @@ const GameUI = () => {
 
   return (
     <>
-      <CornerTopRight />
+      {!displayLife &&
+        <>
+          <CustomText2D
+          fontSize={0.1}
+          position={[0, 0.1, 0.5]}
+          rotation={[0, Math.PI, 0]}
+          text="Game Over"
+          color="#000000"
+          />
+          <CustomText2D
+          fontSize={0.05}
+          position={[0, -0.1, 0.5]}
+          rotation={[0, Math.PI, 0]}
+          text="¿Jugar de nuevo?"
+          color="#000000"
+          />   
+          <PlayAgainButton to="/level1"/>
+          <GoHomeButton to="/"/>
+        </>
+      }
     </>
   );
 };
 
-export default GameUI;
+export default GameOverScene;
