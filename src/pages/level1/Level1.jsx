@@ -48,6 +48,7 @@ export default function Level1() {
     }
   }, [lifeState.value]); // Depende unicamente de cambios en lifeState.value    
 
+
   return (<>
     <KeyboardControls map={map} >
       <Canvas
@@ -73,7 +74,7 @@ export default function Level1() {
                   camMaxDis={-2}
                   maxVelLimit={5}
                   jumpVel={4}
-                  position={[0, 4, -5]}
+                  position={[0, 4, -145]}
                 >
                   <Avatar />
                 </Ecctrl>
