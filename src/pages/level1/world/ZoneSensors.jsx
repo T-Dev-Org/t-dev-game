@@ -60,24 +60,6 @@ export default function ZoneSensors({ ...props }) {
         type="fixed"
         colliders={false}
       >
-        <CuboidCollider
-          position={[0, 0, 3]}
-          args={[1, 1, 1]}
-          sensor
-          onIntersectionEnter={() => { 
-            loseLive(lifeState),
-            handleThemeStarter('damage')
-           }}
-        />
-        <CuboidCollider
-          position={[0, 0, -2]}
-          args={[1, 1, 1]}
-          sensor
-          onIntersectionEnter={(event) => { 
-            gainLive(lifeState),
-            handleThemeStarter('heal')
-           }}
-        />
         {/* Pre-dead events */}
         <CuboidCollider
           position={[0, -25, 0]}

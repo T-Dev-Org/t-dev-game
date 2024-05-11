@@ -74,14 +74,14 @@ export default function Level1() {
                   camMaxDis={-2}
                   maxVelLimit={5}
                   jumpVel={4}
-                  position={[0, 4, -145]}
+                  position={[0, 4, -5]}
                 >
                   <Avatar />
                 </Ecctrl>
               }
             </>
             <Button position={[0, -0.5, -158]} />
-            <Rat position={[0, 1, -135]} />
+            <Rat position={[0, 0, -135]} />
           </Physics>
           <Texts />
         </Suspense>
