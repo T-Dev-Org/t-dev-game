@@ -48,6 +48,7 @@ export default function Level1() {
     }
   }, [lifeState.value]); // Depende unicamente de cambios en lifeState.value    
 
+
   return (<>
     <KeyboardControls map={map} >
       <Canvas
@@ -80,7 +81,7 @@ export default function Level1() {
               }
             </>
             <Button position={[0, -0.5, -158]} />
-            <Rat position={[0, 1, -135]} />
+            <Rat position={[0, 0, -135]} />
           </Physics>
           <Texts />
         </Suspense>
