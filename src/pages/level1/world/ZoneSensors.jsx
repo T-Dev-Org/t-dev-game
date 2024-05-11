@@ -1,15 +1,19 @@
+//[ZoneSensors.jsx]
+
 import React, { useRef } from 'react';
 import { CuboidCollider, RigidBody } from '@react-three/rapier';
 import { useAudio } from '../../../context/AudioContext';
 import { useLifeState } from '../../../utils/components/controller/CharacterLife';
 import { useCollectablesState } from '../../../utils/components/controller/CharacterCollectables';
+import { guardarEnLocalStorage, obtenerDeLocalStorage } from '../../../utils/localStorageUtils';
+import { useCheckpointState } from '../checkpoints/CharacterCheckpointState';
 
 export default function ZoneSensors({ ...props }) {
   const { handlePlayMusic } = useAudio();
-  const { playSoundEffect} = useAudio();
-  const rigidBodyRef = useRef();
+  const { playSoundEffect } = useAudio();
   const lifeState = useLifeState();
   const collectableCountState = useCollectablesState();
+  const checkpointState = useCheckpointState();
 
   const handleThemeStarter = (themeName) => {
     playSoundEffect(themeName);
@@ -27,6 +31,7 @@ export default function ZoneSensors({ ...props }) {
   const handleIntersectionEnter = (event, themeName, soundEffect = 'none') => {
 
     console.log('[ZoneSensors.jsx] colisioné con: ', event.colliderObject.name);
+
     if (event.colliderObject.name == 'character-capsule-collider') {
 
       console.log(`[ZoneSensors.jsx] Toca reproducir ${themeName} ${soundEffect}`);
@@ -49,8 +54,17 @@ export default function ZoneSensors({ ...props }) {
         // Aquí puedes poner el código que quieres que se ejecute en cada iteración
         lifeState.decrement();
         console.log(lifeState.value);
-    }
+      }
       collectableCountState.reset();
+    }
+  }
+
+  const handleCheckpoint = (event) => {
+    if (event.colliderObject.name == 'character-capsule-collider') {
+      const actualCheckpoint = checkpointState.setActualPosition(checkpointState.checkpoint1);
+      guardarEnLocalStorage('checkpoint', actualCheckpoint);
+      console.log('Este es la posicion: ', actualCheckpoint);
+
     }
   }
 
@@ -64,28 +78,28 @@ export default function ZoneSensors({ ...props }) {
           position={[0, 0, 3]}
           args={[1, 1, 1]}
           sensor
-          onIntersectionEnter={() => { 
+          onIntersectionEnter={() => {
             loseLive(lifeState),
-            handleThemeStarter('damage')
-           }}
+              handleThemeStarter('damage')
+          }}
         />
         <CuboidCollider
           position={[0, 0, -2]}
           args={[1, 1, 1]}
           sensor
-          onIntersectionEnter={(event) => { 
-            gainLive(lifeState),
-            handleThemeStarter('heal')
-           }}
+          onIntersectionEnter={(event) => {
+            gainLive(lifeState);
+            handleThemeStarter('heal');
+          }}
         />
         {/* Pre-dead events */}
         <CuboidCollider
           position={[0, -25, 0]}
           args={[500, 1, 500]}
           onIntersectionEnter={(event) => {
-            handleIntersectionEnter(event, 'continue', 'ctmSound'), 
-            handleFall(event, lifeState)}
-          }
+            handleIntersectionEnter(event, 'continue', 'ctmSound');
+            handleFall(event, lifeState);
+          }}
           sensor
         />
         {/* Dead Sensor */}
@@ -93,10 +107,9 @@ export default function ZoneSensors({ ...props }) {
           position={[0, -50, 0]}
           args={[200, 1, 200]}
           onIntersectionEnter={(event) => {
-            handleIntersectionEnter(event, 'continue', 'ctmSound')
-            }
-          }
-        />        
+            handleIntersectionEnter(event, 'continue', 'ctmSound');
+          }}
+        />
       </RigidBody>
     </group>
   );
