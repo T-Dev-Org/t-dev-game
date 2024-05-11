@@ -21,6 +21,7 @@ import { Cubos } from "../../globals/collectables/Cubos";
 import { ObstaculoBarra } from "../../globals/collectables/ObstaculoBarra";
 import Rat from "../../globals/villains/Rat";
 import { Button_Circle, Ejemplo } from "../../globals/collectables/Button";
+import Collectables from "./collectables/Collectables";
 
 export default function Level4() {
     const map = useMovements();
@@ -39,6 +40,7 @@ export default function Level4() {
                         <ObstaculoBarra position={[0, 35, 130]} />
                         <Rat position={[0, 35, 160]} />
                         <Button_Circle position={[0,34,280]} ruta={"/profile"}/>
+                        <Collectables/>
                         <Ecctrl
                             camInitDis={-2}
                             camMaxDis={-2}
