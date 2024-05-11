@@ -40,7 +40,7 @@ export default function Level3World(props) {
       <mesh geometry={nodes.Trees_Gruop_5.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
       <mesh geometry={nodes.Trees_Gruop_6.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
       <mesh geometry={nodes.Trees_Group_7.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
-      <mesh geometry={nodes.Trees_Gruop_8.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>      
+  <mesh geometry={nodes.Trees_Gruop_8.geometry} material={materials.hept32} castShadow={true} receiveShadow={true}/>
       <RigidBody type='fixed' colliders='trimesh'>
       <group {...props} dispose={null}>
         <mesh geometry={nodes.Maze_Inside_Walls.geometry} material={nodes.Maze_Inside_Walls} castShadow={true} recieveShadow={true}>
@@ -68,7 +68,7 @@ export default function Level3World(props) {
         <mesh geometry={nodes.Trees_Group_12.geometry} material={materials.hept32} receiveShadow={true}/>
         <mesh geometry={nodes.Trees_Group_13.geometry} material={materials.hept32} receiveShadow={true}/>     
         <mesh geometry={nodes.Trees_Group_14.geometry} material={materials.hept32} receiveShadow={true}/>     
-        <mesh geometry={nodes.Trees_Group_15.geometry} material={materials.hept32} receiveShadow={true}/>     
+        <mesh geometry={nodes.Trees_Group_15.geometry} material={materials.hept32} receiveShadow={true}/>   
       </group>
     </RigidBody>      
     </group>

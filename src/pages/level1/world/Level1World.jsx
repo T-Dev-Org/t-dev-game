@@ -3,7 +3,7 @@ import { useGLTF } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 
 export default function Level1World(props) {
-  const { nodes, materials } = useGLTF("/assets/models/world/Level1World.glb");
+  const { nodes, materials } = useGLTF("assets/models/world/Level1World.glb");
   return (
     <RigidBody type="fixed" colliders="trimesh">
       <group {...props} dispose={null}>
@@ -60,225 +60,133 @@ export default function Level1World(props) {
           receiveShadow
           geometry={nodes.Shurb_2003.geometry}
           material={materials.Hojas}
-          position={[0, -0.364, 0]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Shrub_1001.geometry}
           material={materials.Hojas}
-          position={[0, -0.364, 0]}
         />
-        <group position={[0, -0.364, 0]}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Icosphere016.geometry}
-            material={materials.Hojas}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Icosphere016_1.geometry}
-            material={materials.Tronco}
-          />
-        </group>
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Shrub_1002.geometry}
           material={materials.Hojas}
-          position={[0, -0.364, 0]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Shurb_2004.geometry}
           material={materials.Hojas}
-          position={[0, -0.364, 0]}
         />
-        <group position={[0, -0.364, 0]}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Icosphere019.geometry}
-            material={materials.Hojas}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Icosphere019_1.geometry}
-            material={materials.Tronco}
-          />
-        </group>
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Shurb_2005.geometry}
           material={materials.Hojas}
-          position={[0, -0.364, 0]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Shrub_1003.geometry}
           material={materials.Hojas}
-          position={[0, -0.364, 0]}
         />
-        <group position={[0, -0.364, 0]}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Icosphere022.geometry}
-            material={materials.Hojas}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Icosphere022_1.geometry}
-            material={materials.Tronco}
-          />
-        </group>
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Shurb_2006.geometry}
           material={materials.Hojas}
-          position={[0, -0.364, 0]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Shrub_1004.geometry}
           material={materials.Hojas}
-          position={[0, -0.364, 0]}
         />
-        <group position={[0, -0.364, 0]}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Icosphere025.geometry}
-            material={materials.Hojas}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Icosphere025_1.geometry}
-            material={materials.Tronco}
-          />
-        </group>
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Shurb_2007.geometry}
           material={materials.Hojas}
-          position={[0, -0.364, 0]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Shrub_1005.geometry}
           material={materials.Hojas}
-          position={[0, -0.364, 0]}
         />
-        <group position={[0, -0.364, 0]}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Icosphere028.geometry}
-            material={materials.Hojas}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Icosphere028_1.geometry}
-            material={materials.Tronco}
-          />
-        </group>
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Shrub_1006.geometry}
           material={materials.Hojas}
-          position={[0, -0.364, 0]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Shurb_2008.geometry}
           material={materials.Hojas}
-          position={[0, -0.364, 0]}
         />
-        <group position={[0, -0.364, 0]}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Icosphere031.geometry}
-            material={materials.Hojas}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Icosphere031_1.geometry}
-            material={materials.Tronco}
-          />
-        </group>
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Shrub_1007.geometry}
           material={materials.Hojas}
-          position={[0, -0.364, 0]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Shurb_2009.geometry}
           material={materials.Hojas}
-          position={[0, -0.364, 0]}
         />
-        <group position={[0, -0.364, 0]}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Icosphere034.geometry}
-            material={materials.Hojas}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Icosphere034_1.geometry}
-            material={materials.Tronco}
-          />
-        </group>
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Shrub_1008.geometry}
           material={materials.Hojas}
-          position={[0, -0.364, 0]}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Shurb_2010.geometry}
           material={materials.Hojas}
-          position={[0, -0.364, 0]}
         />
-        <group position={[0, -0.364, 0]}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Icosphere037.geometry}
-            material={materials.Hojas}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Icosphere037_1.geometry}
-            material={materials.Tronco}
-          />
-        </group>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Shurb_3010.geometry}
+          material={materials.Hojas}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Leaf_3010.geometry}
+          material={materials.Hojas}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Shurb_2011.geometry}
+          material={materials.Hojas}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Shurb_3007.geometry}
+          material={materials.Hojas}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Shurb_2012.geometry}
+          material={materials.Hojas}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Shurb_3008.geometry}
+          material={materials.Hojas}
+        />
         <mesh
           castShadow
           receiveShadow
@@ -333,9 +241,105 @@ export default function Level1World(props) {
           geometry={nodes.Icosphere_1.geometry}
           material={materials["Tronco.001"]}
         />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Icosphere016.geometry}
+          material={materials.Hojas}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Icosphere016_1.geometry}
+          material={materials.Tronco}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Icosphere019.geometry}
+          material={materials.Hojas}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Icosphere019_1.geometry}
+          material={materials.Tronco}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Icosphere022.geometry}
+          material={materials.Hojas}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Icosphere022_1.geometry}
+          material={materials.Tronco}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Icosphere025.geometry}
+          material={materials.Hojas}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Icosphere025_1.geometry}
+          material={materials.Tronco}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Icosphere028.geometry}
+          material={materials.Hojas}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Icosphere028_1.geometry}
+          material={materials.Tronco}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Icosphere031.geometry}
+          material={materials.Hojas}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Icosphere031_1.geometry}
+          material={materials.Tronco}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Icosphere034.geometry}
+          material={materials.Hojas}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Icosphere034_1.geometry}
+          material={materials.Tronco}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Icosphere037.geometry}
+          material={materials.Hojas}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Icosphere037_1.geometry}
+          material={materials.Tronco}
+        />
       </group>
     </RigidBody>
   );
 }
 
-useGLTF.preload("/Level1World.glb");
+useGLTF.preload("assets/models/world/Level1World.glb");

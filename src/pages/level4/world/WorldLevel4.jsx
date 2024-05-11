@@ -8,7 +8,7 @@ import { useGLTF, useTexture } from '@react-three/drei'
 import { RepeatWrapping } from 'three';
 import { RigidBody } from '@react-three/rapier';
 
-export function WorldLevel4(props) {
+export default function WorldLevel4(props) {
   const { nodes, materials } = useGLTF('/assets/models/world/Level4World.glb')
   const PATH = "/assets/textures/pbr/coast_sand_rocks_02/";
 
@@ -64,7 +64,7 @@ export function WorldLevel4(props) {
     <group {...props} dispose={null}>
       <RigidBody type='fixed' colliders='trimesh'>
         <mesh geometry={nodes.Walls.geometry} material={materials.Material}>
-          <meshStandardMaterial {...propsTextureWalls}/>
+          <meshStandardMaterial {...propsTextureWalls} />
         </mesh>
       </RigidBody>
       <RigidBody type='fixed' colliders='trimesh'>
@@ -73,15 +73,15 @@ export function WorldLevel4(props) {
         </mesh>
       </RigidBody>
       <RigidBody type='fixed' colliders='trimesh'>
-      <mesh geometry={nodes.Temple.geometry} material={materials.mat21} >
-        <meshStandardMaterial {...propsTextureTemple}/>
-      </mesh>
-      <mesh geometry={nodes.Lamp1_1.geometry} material={materials['lambert4SG.001']} />
-      <mesh geometry={nodes.Lamp1_2.geometry} material={materials['lambert2SG.001']} />
-      <mesh geometry={nodes.Lamp1_3.geometry} material={materials['lambert3SG.001']} />
-      <mesh geometry={nodes.Lamp2_1.geometry} material={materials['lambert4SG.002']} />
-      <mesh geometry={nodes.Lamp2_2.geometry} material={materials['lambert2SG.002']} />
-      <mesh geometry={nodes.Lamp2_3.geometry} material={materials['lambert3SG.002']} />
+        <mesh geometry={nodes.Temple.geometry} material={materials.mat21} >
+          <meshStandardMaterial {...propsTextureTemple} />
+        </mesh>
+        <mesh geometry={nodes.Lamp1_1.geometry} material={materials['lambert4SG.001']} />
+        <mesh geometry={nodes.Lamp1_2.geometry} material={materials['lambert2SG.001']} />
+        <mesh geometry={nodes.Lamp1_3.geometry} material={materials['lambert3SG.001']} />
+        <mesh geometry={nodes.Lamp2_1.geometry} material={materials['lambert4SG.002']} />
+        <mesh geometry={nodes.Lamp2_2.geometry} material={materials['lambert2SG.002']} />
+        <mesh geometry={nodes.Lamp2_3.geometry} material={materials['lambert3SG.002']} />
       </RigidBody>
     </group>
   )

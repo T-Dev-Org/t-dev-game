@@ -16,6 +16,7 @@ const Lights = () => {
             angle = {Math.PI}
         />
         {/** Recompensas a lo largo del mapa */}
+        {/*
         <spotLight
             color={new Color("#FFFfff")}
             intensity={0.5}
@@ -81,7 +82,7 @@ const Lights = () => {
             intensity={0.5}
             position={[-6, 0.2, -192]}
             angle = {Math.PI}
-        />        
+        /> */}      
         {/** Recompensa especial (?) */}        
         <pointLight
             castShadow={true}        
@@ -96,6 +97,7 @@ const Lights = () => {
             intensity={2}
         />
         {/** Enemigos */}
+        {/*
         <spotLight            
             position={[-17, 0.5, -60]}
             color={new Color("#DF5009")}
@@ -113,7 +115,8 @@ const Lights = () => {
             color={new Color("#DF5009")}
             intensity={1}
             angle={Math.PI}
-        />           
+        />
+        */}        
         {/** Pelea final */}        
         <spotLight
             castShadow={true}   

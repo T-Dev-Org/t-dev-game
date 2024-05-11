@@ -1,0 +1,11 @@
+/* [CornerTopRight.css] */
+
+.container-top-right {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #ffffff;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+}

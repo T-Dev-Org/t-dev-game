@@ -1,20 +1,22 @@
+// [Level3.jsx]
 import { Perf } from "r3f-perf";
-import { KeyboardControls, OrbitControls } from "@react-three/drei";
+import { KeyboardControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import { Suspense } from "react";
-import WelcomeText from "./abstractions/WelcomeText";
+import { Canvas } from "@react-three/fiber";
+import Instructive from "../../utils/components/layouts/instructive/Instructive";
+import useMovements from "../../utils/key-movements";
+import Controls from "../../utils/controls/Controls"
+import Ecctrl from "ecctrl";
+import Avatar from "../../utils/avatar/Avatar";
 import Lights from "./lights/Lights";
 import Environments from "./staging/Environments";
-import { Canvas } from "@react-three/fiber";
 import Level3World from "./world/Level3World";
-import Controls from "./controls/Controls";
-import Avatar from "../../utils/avatar/Avatar";
-import useMovements from "../../utils/key-movements";
-import Ecctrl, { EcctrlAnimation } from "ecctrl";
-import { Html } from "@react-three/drei";
-import Instructive from "../../utils/instructive/Instructive";
-import Button from "../../utils/components/Button";
 import Texts from "./abstractions/Texts";
+// import Collectables from "./collectables/Collectables";
+import GameUI from "../../utils/components/layouts/GameUI/GameUI";
+import NextLevelButton from "../../utils/components/layouts/GameUI/components/NextLevelButton";
+// import ZoneSensors from "./world/ZoneSensors";
 
 export default function Level3() {
   const map = useMovements();
@@ -26,7 +28,7 @@ export default function Level3() {
           {/* <Perf position="top-left" /> */}
           <Lights />
           <Environments />
-          <Physics debug={false}>
+          <Physics debug={true}>
             <Level3World />
             <Ecctrl
               camInitDis={-2}
@@ -38,12 +40,12 @@ export default function Level3() {
               <Avatar />
             </Ecctrl>
           </Physics>
-          <WelcomeText position={[0, 2, 1]} />
           <Texts />
         </Suspense>
         <Controls />
       </Canvas>
-      <Button to="/level4" />
+      {/* <GameUI /> */}
+      <NextLevelButton to="/level4" />
     </KeyboardControls>
   );
 }
