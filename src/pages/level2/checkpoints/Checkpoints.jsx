@@ -33,7 +33,7 @@ export default function Checkpoints() {
       {/* Collider de los Checkpoints */}
       <CuboidCollider
         position={checkpointState.checkpoint1}
-        args={[4.2, 3, 3.2]}
+        args={[4.2, 2, 3.2]}
         onIntersectionEnter={(event) => {
           updateCheckpoint(checkpointState.checkpoint1);
         }}
@@ -41,7 +41,7 @@ export default function Checkpoints() {
       />
       <CuboidCollider
         position={checkpointState.checkpoint2}
-        args={[4, 2, 4]}
+        args={[4, 4, 4]}
         onIntersectionEnter={(event) => {
           updateCheckpoint(checkpointState.checkpoint2);
         }}
