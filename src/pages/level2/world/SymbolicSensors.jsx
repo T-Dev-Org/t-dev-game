@@ -68,25 +68,6 @@ export default function SymbolicSensors({ ...props }) {
             <meshBasicMaterial transparent opacity={0} />
           </mesh>
         </RigidBody>
-
-        {/* <CuboidCollider
-          position={[0, 0, 3]}
-          args={[1, 1, 1]}
-          sensor
-          onIntersectionEnter={() => {
-            loseLive(lifeState),
-              playSoundEffect('damage')
-          }}
-        />
-        <CuboidCollider
-          position={[0, 0, -2]}
-          args={[1, 1, 1]}
-          sensor
-          onIntersectionEnter={(event) => {
-            gainLive(lifeState),
-              playSoundEffect('heal')
-          }}
-        /> */}
       </RigidBody>
     </group>
   );

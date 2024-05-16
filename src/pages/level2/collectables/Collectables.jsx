@@ -55,7 +55,7 @@ export default function Collectables() {
         onUpdateState={(newState) => updateObjectState(3, newState)}
       />
       <DiamondCone
-        position={[-22, 0, -36]}
+        position={[40, 1, -18]}
         onUpdateState={(newState) => updateObjectState(4, newState)}
       />
       <DiamondCone
