@@ -23,6 +23,7 @@ import { useLifeState } from "../../utils/components/controller/CharacterLife";
 import GameOverScene from "../../utils/components/layouts/GameOverScene/GameOverScene";
 import SymbolicSensors from "./world/SymbolicSensors";
 import PortalNextWorld from "../../globals/interactables/PortalNextWorld";
+import Checkpoints from "./checkpoints/Checkpoints";
 
 export default function Level2() {
     const map = useMovements();
@@ -49,6 +50,7 @@ export default function Level2() {
                         <Level2World />
                         <Level2WorldZone1 />
                         <ZoneSensors />
+                        <Checkpoints />
                         <SymbolicSensors />
                         <Collectables />
                         <Interactables />
