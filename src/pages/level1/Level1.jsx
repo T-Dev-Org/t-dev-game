@@ -28,8 +28,9 @@ import checkpointsData from "./checkpoints/CheckpointsData.json"
 import Collectables from "../../globals/collectables/CollectablesGenerator";
 import Checkpoints from "../../globals/interactables/CheckpointsGenerator";
 import { obtenerDeLocalStorage } from "../../utils/localStorageUtils";
+import SymbolicSensors from "./world/SymbolicSensors";
 
-const debug = true;
+const debug = false;
 
 export default function Level1() {
 
@@ -71,6 +72,7 @@ export default function Level1() {
             <Checkpoints checkpointsData={checkpointsData} />
             <Collectables collectablesData={collectablesData} />
             <Interactables />
+            <SymbolicSensors />
             <ZoneSensors />
             <>
               {displayLife &&
