@@ -1,27 +1,29 @@
 import CustomText2D from "../../../utils/text/CustomText2D";
 import CustomText3D from "../../../utils/text/CustomText3D";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useLifeState } from "../../../utils/components/controller/CharacterLife";
+
+const debug = false;
+
+function print_debug(text) {
+  if (debug) {
+    console.log(`[Texts.jsx]: ${text}`);
+  }
+}
 
 const Texts = (props) => {
   const text = "" + props.text;
-
   const lifeState = useLifeState();
-
-  // Estado local para controlar si se muestra la vida o no
-  const [displayLife, setDisplayLife] = useState(true);        
+  const [displayLife, setDisplayLife] = useState(true);
 
   useEffect(() => {
-      console.log(`[Level1.jsx] Change on LifeValue, is ${lifeState.value} now`);
-
-      // Cambios en mostrar/ocultar elementos dependiendo del valor
-      if (lifeState.value <= 0) {
-        setDisplayLife(false);
-        console.log("Mori");
-      } else {
-        setDisplayLife(true);
-      }
-    }, [lifeState.value]); // Depende unicamente de cambios en lifeState.value
+    if (lifeState.value <= 0) {
+      setDisplayLife(false);
+      print_debug("Mori");
+    } else {
+      setDisplayLife(true);
+    }
+  }, [lifeState.value]);
 
 
   return (

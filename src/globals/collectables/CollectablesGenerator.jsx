@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import DiamondCone from "./DiamondCone";
 
-const debug = false;
+const debug = true;
 
 function print_debug(text) {
   if (debug) {
@@ -19,7 +19,7 @@ export default function Collectables({ collectablesData }) {
   }, []);
 
   useEffect(() => {
-    console.log("collectables ha cambiado a", collectables);
+    print_debug(`Change on collectablesData, is ${collectablesData.collectables} now`);
   }, [collectables]);
 
   const updateCollectableState = (id, newState) => {

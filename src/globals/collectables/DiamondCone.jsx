@@ -5,7 +5,7 @@ import { RigidBody } from '@react-three/rapier';
 import { useAudio } from '../../context/AudioContext';
 import { useCollectablesState } from '../../utils/components/controller/CharacterCollectables';
 
-const debug = true
+const debug = false;
 const disableCollect4Debug = false
 
 function print_debug(text) {
@@ -24,7 +24,7 @@ export default function DiamondCone(props) {
 
   const handleIntersectionEnter = (event) => {
 
-    console.log('[DiamonCone.jsx] colisioné con: ', event.colliderObject.name);
+    print_debug(`Colisioné con: ${event.colliderObject.name}`);
 
     if (event.colliderObject.name == 'character-capsule-collider') {
       playSoundEffect('diamondCollect');

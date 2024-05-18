@@ -4,7 +4,7 @@ import { useAudio } from '../../context/AudioContext';
 import { useCharacterPositionState } from '../../utils/components/controller/CharacterPositionState';
 import { guardarEnLocalStorage } from '../../utils/localStorageUtils';
 
-const debug = true
+const debug = true;
 
 function print_debug(text) {
   if (debug) {

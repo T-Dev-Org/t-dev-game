@@ -12,7 +12,6 @@ import Avatar from "../../utils/avatar/Avatar";
 import Lights from "./lights/Lights";
 import Environments from "./staging/Environments";
 import Level1World from "./world/Level1World";
-import Level1WorldStairs from "./world/Level1WorldStairs";
 import Texts from "./abstractions/Texts";
 import GameUI from "../../utils/components/layouts/GameUI/GameUI";
 import Rat from "../../globals/villains/Rat";
@@ -30,13 +29,16 @@ import Collectables from "../../globals/collectables/CollectablesGenerator";
 import Checkpoints from "../../globals/interactables/CheckpointsGenerator";
 import { obtenerDeLocalStorage } from "../../utils/localStorageUtils";
 
+const debug = true;
+
 export default function Level1() {
 
   const map = useMovements();
 
   const lifeState = useLifeState();
-  const positionState = useCharacterPositionState();
+  const [displayLife, setDisplayLife] = useState(true);
 
+  const positionState = useCharacterPositionState();
   const [actualPosition, setActualPosition] = useState(positionState.initialPosition)
 
   useEffect(() => {
@@ -44,15 +46,12 @@ export default function Level1() {
       setActualPosition(obtenerDeLocalStorage("actualPosition"))
   }, obtenerDeLocalStorage("actualPosition"))
 
-  const [displayLife, setDisplayLife] = useState(true);
-
   useEffect(() => {
     if (lifeState.value <= 0)
       setDisplayLife(false);
     else
       setDisplayLife(true);
   }, [lifeState.value]);
-
 
   return (<>
     <KeyboardControls map={map} >
@@ -63,7 +62,7 @@ export default function Level1() {
         <Suspense fallback={<Instructive />}>
           <Lights />
           <Environments />
-          <Physics debug={true}>
+          <Physics debug={debug}>
             <Level1World />
             <PortalNextWorld
               position={[0, 0, -224]}

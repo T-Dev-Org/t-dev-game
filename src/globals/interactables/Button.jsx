@@ -4,7 +4,7 @@ import { useGLTF, Sparkles } from "@react-three/drei";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import { useCharacterInteraction } from "../../utils/components/controller/CharacterInteractionState";
 
-const debug = true
+const debug = false;
 
 function print_debug(text) {
   if (debug) {
