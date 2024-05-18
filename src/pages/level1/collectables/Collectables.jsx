@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DiamondCone from "../../../globals/collectables/DiamondCone";
 import collectablesData from './CollectablesData.json';
 
-const debug = true;
+const debug = false;
 
 function print_debug(text) {
   if (debug) {

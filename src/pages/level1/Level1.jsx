@@ -23,10 +23,10 @@ import GameOverScene from "../../utils/components/layouts/GameOverScene/GameOver
 import Collectables from "./collectables/Collectables";
 import Interactables from "./interactables/Interactables";
 import PortalNextWorld from "../../globals/interactables/PortalNextWorld";
-import { useCollectablesState } from "../../utils/components/controller/CharacterCollectables";
 import Button from "../../globals/interactables/Button";
-import { useCheckpointState } from "./checkpoints/CharacterCheckpointState";
-import Checkpoints from "./checkpoints/Checkpoints";
+import { useCharacterPositionState } from "../../utils/components/controller/CharacterPositionState";
+import Checkpoints from "../../globals/interactables/CheckpointsGenerator";
+import checkpointsData from "./checkpoints/CheckpointsData.json"
 import { obtenerDeLocalStorage } from "../../utils/localStorageUtils";
 
 export default function Level1() {
@@ -34,9 +34,9 @@ export default function Level1() {
   const map = useMovements();
 
   const lifeState = useLifeState();
-  const checkpointState = useCheckpointState();
+  const positionState = useCharacterPositionState();
 
-  const [actualPosition, setActualPosition] = useState(checkpointState.initialPosition)
+  const [actualPosition, setActualPosition] = useState(positionState.initialPosition)
 
   useEffect(() => {
     if (obtenerDeLocalStorage("actualPosition"))
@@ -46,7 +46,6 @@ export default function Level1() {
   const [displayLife, setDisplayLife] = useState(true);
 
   useEffect(() => {
-    console.log(`[Level1.jsx] Change on LifeValue, is ${lifeState.value} now`);
     if (lifeState.value <= 0)
       setDisplayLife(false);
     else
@@ -72,7 +71,7 @@ export default function Level1() {
             <Collectables />
             <Interactables />
             <ZoneSensors />
-            <Checkpoints />
+            <Checkpoints checkpointsData={checkpointsData} />
             <>
               {displayLife &&
                 <Ecctrl
