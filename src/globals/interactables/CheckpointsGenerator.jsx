@@ -16,6 +16,7 @@ export default function Checkpoints({ checkpointsData }) {
       {checkpoints.map((checkpoint) => (
         <Checkpoint
           key={checkpoint.id}
+          name={checkpoint.name}
           position={checkpoint.position}
           args={checkpoint.args}
         />

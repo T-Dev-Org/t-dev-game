@@ -27,12 +27,10 @@ export default function Checkpoint(props) {
   }
 
   const handleCheckpoint = (event) => {
-    print_debug(`El evento es: ${event}`);
-
     if (event.colliderObject.name == 'character-capsule-collider') {
-      print_debug(`Colision con el gato`);
       positionState.setActualPosition(props.position);
       guardarEnLocalStorage('actualPosition', props.position);
+      print_debug(`${props.name} reached`);
     }
   }
 
