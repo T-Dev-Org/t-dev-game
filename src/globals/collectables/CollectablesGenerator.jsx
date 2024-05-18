@@ -1,6 +1,7 @@
+// [CollectablesGenerator.jsx]
+
 import React, { useState, useEffect } from 'react';
-import DiamondCone from "../../../globals/collectables/DiamondCone";
-import collectablesData from './CollectablesData.json';
+import DiamondCone from "./DiamondCone";
 
 const debug = false;
 
@@ -10,7 +11,7 @@ function print_debug(text) {
   }
 }
 
-export default function Collectables() {
+export default function Collectables({ collectablesData }) {
   const [collectables, setCollectables] = useState([]);
 
   useEffect(() => {

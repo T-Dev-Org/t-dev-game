@@ -20,13 +20,14 @@ import ZoneSensors from "./world/ZoneSensors";
 import { useLifeState } from "../../utils/components/controller/CharacterLife";
 import nullMovements from "../../utils/null-movements";
 import GameOverScene from "../../utils/components/layouts/GameOverScene/GameOverScene";
-import Collectables from "./collectables/Collectables";
 import Interactables from "./interactables/Interactables";
 import PortalNextWorld from "../../globals/interactables/PortalNextWorld";
 import Button from "../../globals/interactables/Button";
 import { useCharacterPositionState } from "../../utils/components/controller/CharacterPositionState";
-import Checkpoints from "../../globals/interactables/CheckpointsGenerator";
+import collectablesData from "./collectables/CollectablesData.json";
 import checkpointsData from "./checkpoints/CheckpointsData.json"
+import Collectables from "../../globals/collectables/CollectablesGenerator";
+import Checkpoints from "../../globals/interactables/CheckpointsGenerator";
 import { obtenerDeLocalStorage } from "../../utils/localStorageUtils";
 
 export default function Level1() {
@@ -68,10 +69,10 @@ export default function Level1() {
               position={[0, 0, -224]}
               nextLevel='/level2'
             />
-            <Collectables />
+            <Checkpoints checkpointsData={checkpointsData} />
+            <Collectables collectablesData={collectablesData} />
             <Interactables />
             <ZoneSensors />
-            <Checkpoints checkpointsData={checkpointsData} />
             <>
               {displayLife &&
                 <Ecctrl
