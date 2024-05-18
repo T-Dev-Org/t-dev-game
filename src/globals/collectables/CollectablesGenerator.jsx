@@ -19,7 +19,7 @@ export default function Collectables({ collectablesData }) {
   }, []);
 
   useEffect(() => {
-    console.log('Change on collectablesData:', collectablesData.collectables);
+    console.log('Change on collectables:', collectables);
   }, [collectables]);
 
   const updateCollectableState = (id, newState) => {
