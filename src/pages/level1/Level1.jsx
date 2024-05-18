@@ -53,6 +53,7 @@ export default function Level1() {
       setDisplayLife(true);
   }, [lifeState.value]);
 
+
   return (<>
     <KeyboardControls map={map} >
       <Canvas
@@ -86,7 +87,7 @@ export default function Level1() {
               }
             </>
             <Button position={[0, -0.5, -158]} />
-            <Rat position={[0, 1, -135]} />
+            <Rat position={[0, 0, -135]} />
           </Physics>
           <Texts />
         </Suspense>
