@@ -1,5 +1,5 @@
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
-import { useCheckpointState } from "./CharacterCheckpointState"
+import { useCheckpointStateLevel1 } from "../../level2/checkpoints/CharacterCheckpointStateLevel1";
 import { useAudio } from "../../../context/AudioContext";
 import { guardarEnLocalStorage } from "../../../utils/localStorageUtils";
 
@@ -8,7 +8,7 @@ export default function Checkpoints() {
   const { handlePlayMusic } = useAudio();
   const { playSoundEffect } = useAudio();
 
-  const checkpointState = useCheckpointState();
+  const checkpointState = useCheckpointStateLevel1();
 
   const handleIntersectionEnter = (event, themeName, soundEffect = 'none') => {
 

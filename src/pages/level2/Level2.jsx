@@ -24,11 +24,21 @@ import GameOverScene from "../../utils/components/layouts/GameOverScene/GameOver
 import SymbolicSensors from "./world/SymbolicSensors";
 import PortalNextWorld from "../../globals/interactables/PortalNextWorld";
 import Checkpoints from "./checkpoints/Checkpoints";
+import { useCheckpointStateLevel1 } from "./checkpoints/CharacterCheckpointStateLevel1";
+import { obtenerDeLocalStorage } from "../../utils/localStorageUtils";
 
 export default function Level2() {
     const map = useMovements();
     const lifeState = useLifeState();
     const [displayLife, setDisplayLife] = useState(true);
+    const checkpointStateLevel1 = useCheckpointStateLevel1();
+
+    useEffect(() => {
+        if (obtenerDeLocalStorage("actualPosition"))
+            setActualPosition(obtenerDeLocalStorage("actualPosition"))
+    }, obtenerDeLocalStorage("actualPosition"))
+
+    const [actualPosition, setActualPosition] = useState(checkpointStateLevel1.initialPosition)
 
     useEffect(() => {
         if (lifeState.value <= 0)
@@ -64,7 +74,7 @@ export default function Level2() {
                                 camMaxDis={-2}
                                 maxVelLimit={4}
                                 jumpVel={3}
-                                position={[0, 2, 0]}
+                                position={actualPosition}
                                 slopeMaxAngle={Math.PI / 5.5}
                             >
                                 <Avatar />
