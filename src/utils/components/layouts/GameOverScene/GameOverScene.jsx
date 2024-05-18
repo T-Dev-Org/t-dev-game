@@ -25,10 +25,11 @@ const GameOverScene = ({ ...props }) => {
           <h1 className='play-again-text'> ¿Jugar de nuevo? </h1>
           <div className='spacer-2'></div>
           <div className='game-over-buttons-container'>
-            <a className='btn-game-over' href={mainMenu}> Menú Principal </a>
+            <button className='btn-game-over' onClick={() => {
+              navigate(mainMenu);
+            }}> Menú Principal </button>
             <button className='btn-game-over' onClick={() => {
               navigate(0);
-              print_debug(`[GameOverScene.jsx] navegando a: ${reloadLevel}`);
             }}> Jugar de nuevo </button>
           </div>
         </div>
