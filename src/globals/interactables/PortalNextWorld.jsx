@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Sparkles } from "@react-three/drei";
 import { CuboidCollider, RigidBody } from '@react-three/rapier';
 import { useAudio } from '../../context/AudioContext';
@@ -13,6 +14,7 @@ function print_debug(text) {
 }
 
 export default function PortalNextWorld({ ...props }) {
+  const navigate = useNavigate();
   const { handlePlayMusic } = useAudio();
   const { playSoundEffect } = useAudio();
   const nextLevel = props.nextLevel ? props.nextLevel : '/level1'
@@ -22,12 +24,12 @@ export default function PortalNextWorld({ ...props }) {
 
     print_debug(`[PortalNextWorld.jsx] colisioné con: ${event.colliderObject.name}`);
 
-    if (event.colliderObject.name == 'character-capsule-collider') {
+    if (event.colliderObject.name === 'character-capsule-collider') {
       handlePlayMusic('mainTheme');
       playSoundEffect('shutterSound');
-      //Redirigir la pagina a nextLevel
+
       limpiarLocalStorage();
-      window.location.href = nextLevel;
+      navigate(nextLevel);
     }
   }
 

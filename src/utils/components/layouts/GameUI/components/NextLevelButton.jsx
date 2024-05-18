@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import "./NextLevelButton.css"
 
-const debug = true
+const debug = true;
 
 function print_debug(text) {
     if (debug) {
