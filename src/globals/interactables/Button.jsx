@@ -6,13 +6,13 @@ import { useCharacterInteraction } from '../../utils/components/controller/Chara
 
 const debug = false
 
-function print_debug(text) {
+function print_debug (text) {
   if (debug) {
     console.log(`[Button.jsx]: ${text}`)
   }
 }
 
-export default function Button(props) {
+export default function Button (props) {
   const characterInteractionState = useCharacterInteraction()
   const { nodes, materials } = useGLTF('/assets/models/objects/button.glb')
   const [canInteract, setCanInteract] = useState(false)

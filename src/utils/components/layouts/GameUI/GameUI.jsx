@@ -1,34 +1,34 @@
 // [GameUI.jsx]
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { useLifeState } from '../../controller/CharacterLife';
-import CornerTopRight from './components/CornerTopRight';
-import CreateSaveIndicator from './components/SaveIndicator';
-import { useSavingState } from './states/SavingState';
+import React from 'react'
+import { useState, useEffect } from 'react'
+import { useLifeState } from '../../controller/CharacterLife'
+import CornerTopRight from './components/CornerTopRight'
+import CreateSaveIndicator from './components/SaveIndicator'
+import { useSavingState } from './states/SavingState'
 
-const debug = false;
+const debug = false
 
-function print_debug(text) {
+function print_debug (text) {
   if (debug) {
-    console.log(`[GameUI.jsx]: ${text}`);
+    console.log(`[GameUI.jsx]: ${text}`)
   }
 }
 
 const GameUI = () => {
-  const lifeState = useLifeState();
-  const [displayLife, setDisplayLife] = useState(true);
-  const savingState = useSavingState();
+  const lifeState = useLifeState()
+  const [displayLife, setDisplayLife] = useState(true)
+  const savingState = useSavingState()
 
   useEffect(() => {
-    print_debug(`Change on LifeValue, is ${lifeState.value} now`);
+    print_debug(`Change on LifeValue, is ${lifeState.value} now`)
 
     if (lifeState.value <= 0) {
-      setDisplayLife(false);
-      console.log("Mori");
+      setDisplayLife(false)
+      console.log('Mori')
     } else {
-      setDisplayLife(true);
+      setDisplayLife(true)
     }
-  }, [lifeState.value]);
+  }, [lifeState.value])
 
   return (
     <>
@@ -36,7 +36,7 @@ const GameUI = () => {
       {savingState.isSaving &&
         <CreateSaveIndicator />}
     </>
-  );
-};
+  )
+}
 
-export default GameUI;
+export default GameUI

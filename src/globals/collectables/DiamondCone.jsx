@@ -8,13 +8,13 @@ import { useCollectablesState } from '../../utils/components/controller/Characte
 const debug = false
 const disableCollect4Debug = false
 
-function print_debug(text) {
+function print_debug (text) {
   if (debug) {
     console.log(`[Interactables.jsx]: ${text}`)
   }
 }
 
-export default function DiamondCone(props) {
+export default function DiamondCone (props) {
   const { nodes, materials } = useGLTF('/assets/models/collectables/DiamondCone.glb')
   const { playSoundEffect } = useAudio()
   const [isTaken, setIsTaken] = useState(false)

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import Checkpoint from './Checkpoint'
 
-export default function Checkpoints({ checkpointsData }) {
+export default function Checkpoints ({ checkpointsData }) {
   const [checkpoints, setCheckpoints] = useState([])
 
   useEffect(() => {

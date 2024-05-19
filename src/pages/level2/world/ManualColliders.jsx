@@ -1,6 +1,6 @@
 import { RigidBody, CuboidCollider } from '@react-three/rapier'
 
-export default function ManualColliders() {
+export default function ManualColliders () {
   return (
     <RigidBody type='fixed' colliders={false}>
       {/* Friendly colliders */}

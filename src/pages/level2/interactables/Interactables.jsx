@@ -3,13 +3,13 @@ import Button from '../../../globals/interactables/Button'
 import Level2Door1 from '../world/Level2Door1'
 
 const debug = true
-function print_debug(text) {
+function print_debug (text) {
   if (debug) {
     console.log(`[Interactables.jsx]: ${text}`)
   }
 }
 
-export default function Interactables() {
+export default function Interactables () {
   const [stateDoor1Level2, setStateDoor1Level2] = useState(true)
 
   const toggleDoor1Level2 = () => {

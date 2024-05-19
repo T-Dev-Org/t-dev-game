@@ -32,7 +32,7 @@ import ManualColliders from './world/ManualColliders'
 
 const debug = true
 
-export default function Level2() {
+export default function Level2 () {
   const map = useMovements()
 
   const lifeState = useLifeState()

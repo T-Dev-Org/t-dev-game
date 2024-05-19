@@ -7,13 +7,13 @@ import { limpiarLocalStorage } from '../../utils/localStorageUtils'
 
 const debug = true
 
-function print_debug(text) {
+function print_debug (text) {
   if (debug) {
     console.log(`[PortalNextWorld.jsx]: ${text}`)
   }
 }
 
-export default function PortalNextWorld({ ...props }) {
+export default function PortalNextWorld ({ ...props }) {
   const navigate = useNavigate()
   const { handlePlayMusic } = useAudio()
   const { playSoundEffect } = useAudio()

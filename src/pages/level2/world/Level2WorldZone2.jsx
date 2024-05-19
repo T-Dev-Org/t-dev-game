@@ -3,7 +3,7 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import { RigidBody } from '@react-three/rapier'
 
-export default function Level2WorldZone2(props) {
+export default function Level2WorldZone2 (props) {
   const { nodes, materials } = useGLTF('/assets/models/world/Level2/Level2WorldZone2.glb')
   return (
     <RigidBody type='fixed' colliders='trimesh'>

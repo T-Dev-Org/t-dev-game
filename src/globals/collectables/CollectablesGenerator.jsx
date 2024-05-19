@@ -5,13 +5,13 @@ import DiamondCone from './DiamondCone'
 
 const debug = true
 
-function print_debug(text) {
+function print_debug (text) {
   if (debug) {
     console.log(`[Collectables.jsx]: ${text}`)
   }
 }
 
-export default function Collectables({ collectablesData }) {
+export default function Collectables ({ collectablesData }) {
   const [collectables, setCollectables] = useState([])
 
   useEffect(() => {

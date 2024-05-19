@@ -38,11 +38,7 @@ export default function Checkpoint(props) {
     <CuboidCollider
       {...props}
       onIntersectionEnter={(event) => {
-        handleIntersectionEnter(event, 'continue', 'ctmSound')
-
-        print_debug('It suposed to active the save indicator')
         savingState.activeSaving()
-
         handleCheckpoint(event)
       }}
       sensor

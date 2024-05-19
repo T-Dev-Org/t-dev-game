@@ -1,6 +1,6 @@
 import { Environment } from '@react-three/drei'
 
-export default function Environments() {
+export default function Environments () {
   return (
     <Environment
       path='/assets/textures/cubemaps/autumn_field_puresky/'
