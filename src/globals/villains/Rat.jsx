@@ -79,53 +79,41 @@ export default function Rat (
 
   // const { actions } = useAnimations(animations, group);
   return (
-    <group ref={ratRef}>
-      <RigidBody
-        type='fixed'
-        ref={ratBodyRef}
-        colliders={false}
-        // position={position}
-      >
-        <group
-          {...props}
-          dispose={null}
-        >
-          <group name='Rat' scale={3}>
-            <skinnedMesh
-              name='Plane_1'
-              geometry={nodes.Plane_1.geometry}
-              material={materials.Pelaje}
-              skeleton={nodes.Plane_1.skeleton}
-              colliders='trimesh'
-            />
-            <skinnedMesh
-              name='Plane_2'
-              geometry={nodes.Plane_2.geometry}
-              material={materials.Blandas}
-              skeleton={nodes.Plane_2.skeleton}
-            />
-            <skinnedMesh
-              name='Plane_3'
-              geometry={nodes.Plane_3.geometry}
-              material={materials.Ojos}
-              skeleton={nodes.Plane_3.skeleton}
-            />
-            <skinnedMesh
-              name='Plane_4'
-              geometry={nodes.Plane_4.geometry}
-              material={materials.Ojos_2}
-              skeleton={nodes.Plane_4.skeleton}
-            />
-            <primitive object={nodes.Bone006} />
-          </group>
-          <CuboidCollider
-            position={[0, 0.3, 0]}
-            args={[0.8, 0.2, 0.2]}
+    <RigidBody type='dynamic' colliders={false} position-y={-0.99}>
+      <group {...props} ref={ratRef} name='Scene'>
+        <group name='Rat' scale={3}>
+          <skinnedMesh
+            name='Plane_1'
+            geometry={nodes.Plane_1.geometry}
+            material={materials.Pelaje}
+            skeleton={nodes.Plane_1.skeleton}
           />
-
+          <skinnedMesh
+            name='Plane_2'
+            geometry={nodes.Plane_2.geometry}
+            material={materials.Blandas}
+            skeleton={nodes.Plane_2.skeleton}
+          />
+          <skinnedMesh
+            name='Plane_3'
+            geometry={nodes.Plane_3.geometry}
+            material={materials.Ojos}
+            skeleton={nodes.Plane_3.skeleton}
+          />
+          <skinnedMesh
+            name='Plane_4'
+            geometry={nodes.Plane_4.geometry}
+            material={materials.Ojos_2}
+            skeleton={nodes.Plane_4.skeleton}
+          />
+          <primitive object={nodes.Bone006} />
         </group>
-      </RigidBody>
-    </group>
+        {/* <CuboidCollider
+          position={[0, 0.3, 0]}
+          args={[0.8, 0.2, 0.2]}
+        /> */}
+      </group>
+    </RigidBody>
   )
 }
 

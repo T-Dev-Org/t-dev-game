@@ -29,6 +29,7 @@ import Collectables from '../../globals/collectables/CollectablesGenerator'
 import Checkpoints from '../../globals/interactables/CheckpointsGenerator'
 import { obtenerDeLocalStorage } from '../../utils/localStorageUtils'
 import SymbolicSensors from './world/SymbolicSensors'
+import NextLevelButton from '../../utils/components/layouts/GameUI/components/NextLevelButton'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
@@ -93,6 +94,8 @@ export default function Level1 () {
           <GameOverScene
             reloadLevel='/level1'
           />}
+        {debug &&
+          <NextLevelButton to='/level2' />}
         <GameUI />
       </KeyboardControls>
     </>

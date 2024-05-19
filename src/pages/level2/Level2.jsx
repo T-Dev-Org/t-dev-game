@@ -93,7 +93,8 @@ export default function Level2 () {
             reloadLevel='/level2'
           />}
         <GameUI />
-        <NextLevelButton to='/level3' />
+        {debug &&
+          <NextLevelButton to='/level3' />}
       </KeyboardControls>
     </>
   )

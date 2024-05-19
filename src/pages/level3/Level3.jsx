@@ -47,7 +47,8 @@ export default function Level3 () {
         <Controls />
       </Canvas>
       {/* <GameUI /> */}
-      <NextLevelButton to='/level4' />
+      {debug &&
+        <NextLevelButton to='/level4' />}
     </KeyboardControls>
   )
 }
