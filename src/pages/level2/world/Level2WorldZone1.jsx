@@ -5,7 +5,7 @@ import { CuboidCollider, RigidBody } from '@react-three/rapier'
 
 
 export default function Level2WorldZone1(props) {
-  const { nodes, materials } = useGLTF('/assets/models/world//Level2WorldZone1.glb')
+  const { nodes, materials } = useGLTF('/assets/models/world/Level2/Level2WorldZone1.glb')
   return (<>
     <group {...props} dispose={null}>
       <RigidBody type='fixed' colliders={false}>

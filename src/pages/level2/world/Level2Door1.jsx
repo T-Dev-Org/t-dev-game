@@ -8,7 +8,7 @@ import { useGLTF } from '@react-three/drei'
 import { RigidBody } from '@react-three/rapier'
 
 export default function Level2Door1(props) {
-  const { nodes, materials } = useGLTF('/assets/models/world/Level2Door1.glb')
+  const { nodes, materials } = useGLTF('/assets/models/world/Level2/Level2Door1.glb')
   return (
     <group {...props} dispose={null}>
       <RigidBody type='fixed' colliders='hull'>

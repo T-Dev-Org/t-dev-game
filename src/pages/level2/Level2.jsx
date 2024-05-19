@@ -13,6 +13,7 @@ import Lights from "./lights/Lights";
 import Environments from "./staging/Environments";
 import Level2World from "./world/Level2World";
 import Level2WorldZone1 from "./world/Level2WorldZone1";
+import Level2WorldZone2 from "./world/Level2WorldZone2";
 import Texts from "./abstractions/Texts";
 import GameUI from "../../utils/components/layouts/GameUI/GameUI";
 import NextLevelButton from "../../utils/components/layouts/GameUI/components/NextLevelButton";
@@ -67,6 +68,7 @@ export default function Level2() {
                             <Collectables collectablesData={collectablesData} />
                             <Level2World />
                             <Level2WorldZone1 />
+                            <Level2WorldZone2 />
                             <ManualColliders />
                             <SymbolicSensors />
                             <Interactables />
