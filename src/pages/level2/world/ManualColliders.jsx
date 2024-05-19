@@ -1,23 +1,27 @@
-import { RigidBody, CuboidCollider } from "@react-three/rapier";
+import { RigidBody, CuboidCollider } from '@react-three/rapier'
 
 export default function ManualColliders() {
   return (
-    <RigidBody type="fixed" colliders={false}>
+    <RigidBody type='fixed' colliders={false}>
       {/* Friendly colliders */}
       <CuboidCollider position={[0, -1, -10.6]} args={[3, 1, 1]} />
 
       <CuboidCollider
         position={[12.6, 0.2, -0.23]}
-        args={[1.08, 0.2, 0.808]} />
+        args={[1.08, 0.2, 0.808]}
+      />
       <CuboidCollider
         position={[16.1, 0.5, 1.28]}
-        args={[1.05, 0.2, 0.72]} />
+        args={[1.05, 0.2, 0.72]}
+      />
       <CuboidCollider
         position={[17.7, 0.62, -1.14]}
-        args={[0.86, 0.2, 0.72]} />
+        args={[0.86, 0.2, 0.72]}
+      />
       <CuboidCollider
         position={[19.7, 1, -3.6]}
-        args={[0.88, 0.2, 0.74]} />
+        args={[0.88, 0.2, 0.74]}
+      />
 
       {/* Zona 1 */}
       <CuboidCollider position={[-6, 2, -63]} args={[6.6, 2, 1]} rotation={[0, Math.PI / -1.15, 0]} />
@@ -35,5 +39,5 @@ export default function ManualColliders() {
       {/* Barrera de entrada 1 */}
       <CuboidCollider position={[-6.4, 2, -15]} args={[6, 2, 1.4]} rotation={[0, Math.PI / -1.6, 0]} />
     </RigidBody>
-  );
+  )
 }

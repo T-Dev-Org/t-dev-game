@@ -7,10 +7,10 @@ export default function Level2World(props) {
   const { nodes, materials } = useGLTF('/assets/models/world/Level2/Level2World.glb')
 
   return (
-    <RigidBody type='fixed' colliders="trimesh">
+    <RigidBody type='fixed' colliders='trimesh'>
       <group {...props} dispose={null}>
-        <mesh geometry={nodes.Platforms.geometry} material={materials.hept32} receiveShadow={true} />
-        <mesh geometry={nodes.Terrain.geometry} material={materials.hept32} receiveShadow={true} />
+        <mesh geometry={nodes.Platforms.geometry} material={materials.hept32} receiveShadow />
+        <mesh geometry={nodes.Terrain.geometry} material={materials.hept32} receiveShadow />
       </group>
     </RigidBody>
   )

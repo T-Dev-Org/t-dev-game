@@ -1,51 +1,46 @@
 // [Buton.jsx]
-import React, { useState } from "react";
-import { useGLTF, Sparkles } from "@react-three/drei";
-import { CuboidCollider, RigidBody } from "@react-three/rapier";
-import { useCharacterInteraction } from "../../utils/components/controller/CharacterInteractionState";
+import React, { useState } from 'react'
+import { useGLTF, Sparkles } from '@react-three/drei'
+import { CuboidCollider, RigidBody } from '@react-three/rapier'
+import { useCharacterInteraction } from '../../utils/components/controller/CharacterInteractionState'
 
-const debug = false;
+const debug = false
 
 function print_debug(text) {
   if (debug) {
-    console.log(`[Button.jsx]: ${text}`);
+    console.log(`[Button.jsx]: ${text}`)
   }
 }
 
 export default function Button(props) {
-
   const characterInteractionState = useCharacterInteraction()
-  const { nodes, materials } = useGLTF("/assets/models/objects/button.glb");
-  const [canInteract, setCanInteract] = useState(false);
+  const { nodes, materials } = useGLTF('/assets/models/objects/button.glb')
+  const [canInteract, setCanInteract] = useState(false)
 
   const handleIntersectionEnter = (event) => {
-    print_debug(`Colisioné con: ${event.colliderObject.name}`);
+    print_debug(`Colisioné con: ${event.colliderObject.name}`)
 
-    if (event.colliderObject.name == 'character-capsule-collider') {
-      setCanInteract(true);
+    if (event.colliderObject.name === 'character-capsule-collider') {
+      setCanInteract(true)
       characterInteractionState.assign(() => {
-        if (!props.interactFunction)
-          print_debug("No me has asignado props.interactionFunction!!!")
-        else
-          props.interactFunction()
-
+        if (!props.interactFunction) { print_debug('No me has asignado props.interactionFunction!!!') } else { props.interactFunction() }
       })
     }
   }
 
   const handleIntersectionExit = (event) => {
-    print_debug(`Salí de colision con: ${event.colliderObject.name}`);
+    print_debug(`Salí de colision con: ${event.colliderObject.name}`)
 
-    if (event.colliderObject.name == 'character-capsule-collider') {
-      setCanInteract(false);
-      characterInteractionState.clear();
+    if (event.colliderObject.name === 'character-capsule-collider') {
+      setCanInteract(false)
+      characterInteractionState.clear()
     }
   }
 
   return (
-    <RigidBody type="fixed" colliders={false}>
-      <group {...props} name="Scene">
-        <group name="Button" scale={0.7}>
+    <RigidBody type='fixed' colliders={false}>
+      <group {...props} name='Scene'>
+        <group name='Button' scale={0.7}>
           <mesh
             castShadow
             receiveShadow
@@ -78,14 +73,14 @@ export default function Button(props) {
             position={[0, 1, 0]}
             count={10}
             speed={1}
-            color={'blue'}
+            color='blue'
             size={6}
             scale={2}
           />)}
       </group>
 
     </RigidBody>
-  );
+  )
 }
 
-useGLTF.preload("/assets/models/objects/button.glb");
+useGLTF.preload('/assets/models/objects/button.glb')

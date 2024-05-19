@@ -1,15 +1,14 @@
 // [CheckpointsGenerator.jsx]
 
-import React, { useState, useEffect } from 'react';
-import Checkpoint from "./Checkpoint";
+import React, { useState, useEffect } from 'react'
+import Checkpoint from './Checkpoint'
 
 export default function Checkpoints({ checkpointsData }) {
-
-  const [checkpoints, setCheckpoints] = useState([]);
+  const [checkpoints, setCheckpoints] = useState([])
 
   useEffect(() => {
-    setCheckpoints(checkpointsData.checkpoints);
-  }, [checkpointsData]);
+    setCheckpoints(checkpointsData.checkpoints)
+  }, [checkpointsData])
 
   return (
     <>
@@ -22,5 +21,5 @@ export default function Checkpoints({ checkpointsData }) {
         />
       ))}
     </>
-  );
+  )
 }
