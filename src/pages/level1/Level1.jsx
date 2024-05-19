@@ -30,7 +30,7 @@ import Checkpoints from '../../globals/interactables/CheckpointsGenerator'
 import { obtenerDeLocalStorage } from '../../utils/localStorageUtils'
 import SymbolicSensors from './world/SymbolicSensors'
 
-const debug = false
+const debug = process.env.REACT_APP_DEBUG === 'true'
 
 export default function Level1 () {
   const map = useMovements()

@@ -30,7 +30,7 @@ import Checkpoints from '../../globals/interactables/CheckpointsGenerator'
 import { obtenerDeLocalStorage } from '../../utils/localStorageUtils'
 import ManualColliders from './world/ManualColliders'
 
-const debug = true
+const debug = process.env.REACT_APP_DEBUG === 'true'
 
 export default function Level2 () {
   const map = useMovements()

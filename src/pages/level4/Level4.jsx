@@ -19,6 +19,8 @@ import NextLevelButton from '../../utils/components/layouts/GameUI/components/Ne
 // import ZoneSensors from "./world/ZoneSensors";
 import { Model } from './world/Level4World'
 
+const debug = process.env.REACT_APP_DEBUG === 'true'
+
 export default function Level4 () {
   const map = useMovements()
 
@@ -30,7 +32,7 @@ export default function Level4 () {
         <Suspense fallback={<Instructive />}>
           <Environments />
           <Lights />
-          <Physics>
+          <Physics debug={debug}>
             <Model />
             <Ecctrl
               camInitDis={-2}

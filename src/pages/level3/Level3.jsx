@@ -18,6 +18,8 @@ import GameUI from '../../utils/components/layouts/GameUI/GameUI'
 import NextLevelButton from '../../utils/components/layouts/GameUI/components/NextLevelButton'
 // import ZoneSensors from "./world/ZoneSensors";
 
+const debug = process.env.REACT_APP_DEBUG === 'true'
+
 export default function Level3 () {
   const map = useMovements()
 
@@ -28,7 +30,7 @@ export default function Level3 () {
           <Perf position='top-left' />
           <Lights />
           <Environments />
-          <Physics debug>
+          <Physics debug={debug}>
             <Level3World />
             <Ecctrl
               camInitDis={-2}

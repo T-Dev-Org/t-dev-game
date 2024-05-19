@@ -6,9 +6,11 @@ import { useEffect, useMemo, useRef } from 'react'
 import { Color, Vector3 } from 'three'
 import { DirectionalLightHelper } from 'three/src/Three.js'
 
+const debug = process.env.REACT_APP_DEBUG === 'true'
+
 const Lights = () => {
   // Debug
-  const showHelpers = true
+  const showHelpers = debug
 
   // Specific Refs
   const mainAmbientLightRef = useRef()
