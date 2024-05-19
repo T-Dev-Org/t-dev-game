@@ -1,3 +1,14 @@
+# Exclusiones IDE
+.idea
+.vscode
+
+# Exlusones entorno virtual
+venv
+.env
+
+# Exclusiones vercel
+.vercel
+
 # Exclusiones Node
 node_modules
 

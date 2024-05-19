@@ -1,17 +1,23 @@
-import CustomText2D from "../../../utils/text/CustomText2D";
-import CustomText3D from "../../../utils/text/CustomText3D";
+import { Center, Float, Text3D } from '@react-three/drei'
 
 const Texts = (props) => {
-  const text = "" + props.text;
+  const text = 'LEVEL 4'
 
-  return (<>
-    {/*Checkpoints*/}
-    <CustomText3D
-      size={0.2}
-      position={[0, -2, 110]}
-      rotation={[0, 0, 0]}
-      text="Nivel 4" />
-  </>
+  return (
+    <Float>
+      <Center position={props.position} rotation={[0, Math.PI, 0]}>
+        <Text3D
+          font='/assets/fonts/SquidGamesFont.json'
+          bevelThickness={0.01}
+          height={0.1}
+          letterSpacing={0.05}
+          size={1}
+        >
+          <meshNormalMaterial />
+          {text}
+        </Text3D>
+      </Center>
+    </Float>
   )
 }
-export default Texts;
+export default Texts
