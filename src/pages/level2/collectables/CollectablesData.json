@@ -24,7 +24,7 @@
     {
       "id": "3",
       "name": "DiamondCone 4",
-      "position": [11.2, 2.2, 7.3],
+      "position": [-14.5, 1, -15.5],
       "isTaken": false,
       "isCollected": false
     },

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Button from "../../../globals/interactables/Button"
-// import Level1WorldStairs from "../world/Level1WorldStairs";
+import Level2Door1 from "../world/Level2Door1";
 import { create } from "zustand";
 
 const debug = true
@@ -12,17 +12,18 @@ function print_debug(text) {
 
 export default function Interactables() {
 
-  //   const [stateStairLevel1, setStateStairLevel1] = useState(false);
+  const [stateDoor1Level2, setStateDoor1Level2] = useState(true);
 
-  //   const toggleStairs = () => {
-  //     setStateStairLevel1((prevState) => !prevState);
-  //   };
+  const toggleDoor1Level2 = () => {
+    setStateDoor1Level2((prevState) => !prevState);
+  };
+
 
   return (<>
     {/* PostCheckpoint 1 Button */}
     <Button
-      position={[10, 0, -32]}
-      // interactFunction={toggleStairs} // Example
+      position={[24, 0, -10]}
+      interactFunction={toggleDoor1Level2}
       onUpdateState={(newState) => updateObjectState(0, newState)}
     />
     <Button
@@ -30,10 +31,10 @@ export default function Interactables() {
       // interactFunction={toggleStairs} // Example
       onUpdateState={(newState) => updateObjectState(0, newState)}
     />
-    {/* {stateStairLevel1 &&
-      <Level1WorldStairs
-        position={[0, -1, 0]} />
-    } */}
+
+    {stateDoor1Level2 &&
+      <Level2Door1 />
+    }
 
   </>)
 }

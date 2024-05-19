@@ -16,7 +16,6 @@ import Level2WorldZone1 from "./world/Level2WorldZone1";
 import Texts from "./abstractions/Texts";
 import GameUI from "../../utils/components/layouts/GameUI/GameUI";
 import NextLevelButton from "../../utils/components/layouts/GameUI/components/NextLevelButton";
-import ZoneSensors from "./world/ZoneSensors";
 import Interactables from "./interactables/Interactables";
 import { useLifeState } from "../../utils/components/controller/CharacterLife";
 import GameOverScene from "../../utils/components/layouts/GameOverScene/GameOverScene";
@@ -28,8 +27,9 @@ import checkpointsData from "./checkpoints/CheckpointsData.json"
 import Collectables from "../../globals/collectables/CollectablesGenerator";
 import Checkpoints from "../../globals/interactables/CheckpointsGenerator";
 import { obtenerDeLocalStorage } from "../../utils/localStorageUtils";
+import ManualColliders from "./world/ManualColliders";
 
-const debug = false;
+const debug = true;
 
 export default function Level2() {
     const map = useMovements();
@@ -67,7 +67,7 @@ export default function Level2() {
                             <Collectables collectablesData={collectablesData} />
                             <Level2World />
                             <Level2WorldZone1 />
-                            <ZoneSensors />
+                            <ManualColliders />
                             <SymbolicSensors />
                             <Interactables />
                             <PortalNextWorld

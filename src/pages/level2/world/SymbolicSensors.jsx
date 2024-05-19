@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { RigidBody } from '@react-three/rapier';
+import { RigidBody, CuboidCollider } from '@react-three/rapier';
 import { useAudio } from '../../../context/AudioContext';
 import { useLifeState } from '../../../utils/components/controller/CharacterLife';
 import { TorusGeometry } from 'three/src/Three.js';
@@ -18,21 +18,27 @@ export default function SymbolicSensors({ ...props }) {
   const torusGeometry = new TorusGeometry();
 
   const handleIntersectionEnter = (event, themeName, soundEffect = 'none') => {
+    print_debug('Colisioné con: ', event.colliderObject.name);
 
-    console.log('[ZoneSensors.jsx] colisioné con: ', event.colliderObject.name);
     if (event.colliderObject.name == 'character-capsule-collider') {
-
-      console.log(`[ZoneSensors.jsx] Toca reproducir ${themeName} ${soundEffect}`);
-
+      print_debug(`Toca reproducir ${themeName} ${soundEffect}`);
       if (themeName != 'continue')
         handlePlayMusic(themeName);
-
       if (soundEffect != 'none')
         playSoundEffect(soundEffect);
-
     }
   }
 
+  const handleFall = (event, lifeState) => {
+    console.log("handleFall invocado!!!");
+
+    if (event.colliderObject.name == 'character-capsule-collider') {
+      for (let i = 0; i < lifeState.value; i++) {
+        lifeState.decrement();
+        console.log(lifeState.value);
+      }
+    }
+  }
 
   const gainLive = (lifeState) => {
     lifeState.increment();
@@ -68,6 +74,32 @@ export default function SymbolicSensors({ ...props }) {
             <meshBasicMaterial transparent opacity={0} />
           </mesh>
         </RigidBody>
+
+        {/* Pre-dead events */}
+        <CuboidCollider
+          position={[0, -4, 0]}
+          args={[500, 1, 500]}
+          onIntersectionEnter={(event) => {
+            handleIntersectionEnter(event, 'continue', 'ctmSound');
+          }}
+          sensor
+        />
+        {/* Dead Sensor */}
+        <CuboidCollider
+          position={[0, -10, 0]}
+          args={[500, 1, 500]}
+          onIntersectionEnter={(event) => {
+            handleFall(event, lifeState);
+          }}
+          sensor
+        />
+        <CuboidCollider
+          position={[0, -210, 0]}
+          args={[200, 1, 200]}
+          onIntersectionEnter={(event) => {
+            handleIntersectionEnter(event, 'continue', 'ctmSound');
+          }}
+        />
       </RigidBody>
     </group>
   );
