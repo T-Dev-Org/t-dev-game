@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { CuboidCollider } from '@react-three/rapier';
 import { useAudio } from '../../context/AudioContext';
 import { useCharacterPositionState } from '../../utils/components/controller/CharacterPositionState';
 import { guardarEnLocalStorage } from '../../utils/localStorageUtils';
+import { useSavingState } from '../../utils/components/layouts/GameUI/states/SavingState';
 
 const debug = true;
 
@@ -15,6 +16,7 @@ function print_debug(text) {
 export default function Checkpoint(props) {
   const { handlePlayMusic } = useAudio();
   const { playSoundEffect } = useAudio();
+  const savingState = useSavingState();
   const positionState = useCharacterPositionState();
 
   const handleIntersectionEnter = (event, themeName, soundEffect = 'none') => {
@@ -38,6 +40,10 @@ export default function Checkpoint(props) {
     <CuboidCollider {...props}
       onIntersectionEnter={(event) => {
         handleIntersectionEnter(event, 'continue', 'ctmSound');
+
+        print_debug("It suposed to active the save indicator");
+        savingState.activeSaving();
+
         handleCheckpoint(event);
       }}
       sensor

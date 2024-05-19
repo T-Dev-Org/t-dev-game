@@ -3,6 +3,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useLifeState } from '../../controller/CharacterLife';
 import CornerTopRight from './components/CornerTopRight';
+import CreateSaveIndicator from './components/SaveIndicator';
+import { useSavingState } from './states/SavingState';
 
 const debug = false;
 
@@ -15,6 +17,7 @@ function print_debug(text) {
 const GameUI = () => {
   const lifeState = useLifeState();
   const [displayLife, setDisplayLife] = useState(true);
+  const savingState = useSavingState();
 
   useEffect(() => {
     print_debug(`Change on LifeValue, is ${lifeState.value} now`);
@@ -30,6 +33,8 @@ const GameUI = () => {
   return (
     <>
       <CornerTopRight />
+      {savingState.isSaving &&
+        <CreateSaveIndicator />}
     </>
   );
 };
