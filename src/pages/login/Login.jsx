@@ -1,7 +1,9 @@
 import './Login.css'
 import LoginComponent from './components/LoginComponent'
+import { useAppState } from '../../globals/AppState'
 
-export default function Login () {
+export default function Login() {
+  const appState = useAppState()
   return (
     <>
       <div className='container-fluid'>
@@ -11,10 +13,10 @@ export default function Login () {
           </div>
         </div>
         <div className='bottom-left'>
-          Un videojuego de T-Dev
+          {appState.description}
         </div>
         <div className='bottom-right'>
-          v1.0
+          {appState.version}
         </div>
       </div>
     </>
