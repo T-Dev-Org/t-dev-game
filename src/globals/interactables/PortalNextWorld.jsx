@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Sparkles } from "@react-three/drei";
 import { CuboidCollider, RigidBody } from '@react-three/rapier';
 import { useAudio } from '../../context/AudioContext';
+import { limpiarLocalStorage } from '../../utils/localStorageUtils';
 
 const debug = true
 
@@ -25,6 +26,7 @@ export default function PortalNextWorld({ ...props }) {
       handlePlayMusic('mainTheme');
       playSoundEffect('shutterSound');
       //Redirigir la pagina a nextLevel
+      limpiarLocalStorage();
       window.location.href = nextLevel;
     }
   }

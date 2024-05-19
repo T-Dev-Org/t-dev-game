@@ -25,28 +25,33 @@ import Interactables from "./interactables/Interactables";
 import PortalNextWorld from "../../globals/interactables/PortalNextWorld";
 import { useCollectablesState } from "../../utils/components/controller/CharacterCollectables";
 import Button from "../../globals/interactables/Button";
+import { useCheckpointState } from "./checkpoints/CharacterCheckpointState";
+import Checkpoints from "./checkpoints/Checkpoints";
+import { obtenerDeLocalStorage } from "../../utils/localStorageUtils";
 
 export default function Level1() {
+
   const map = useMovements();
 
-  const nullMap = nullMovements();
-
   const lifeState = useLifeState();
+  const checkpointState = useCheckpointState();
 
-  // Estado local para controlar si se muestra la vida o no
+  const [actualPosition, setActualPosition] = useState(checkpointState.initialPosition)
+
+  useEffect(() => {
+    if (obtenerDeLocalStorage("actualPosition"))
+      setActualPosition(obtenerDeLocalStorage("actualPosition"))
+  }, obtenerDeLocalStorage("actualPosition"))
+
   const [displayLife, setDisplayLife] = useState(true);
 
   useEffect(() => {
     console.log(`[Level1.jsx] Change on LifeValue, is ${lifeState.value} now`);
-
-    // Cambios en mostrar/ocultar elementos dependiendo del valor
-    if (lifeState.value <= 0) {
+    if (lifeState.value <= 0)
       setDisplayLife(false);
-      console.log("Mori");
-    } else {
+    else
       setDisplayLife(true);
-    }
-  }, [lifeState.value]); // Depende unicamente de cambios en lifeState.value    
+  }, [lifeState.value]);
 
 
   return (<>
@@ -67,6 +72,7 @@ export default function Level1() {
             <Collectables />
             <Interactables />
             <ZoneSensors />
+            <Checkpoints />
             <>
               {displayLife &&
                 <Ecctrl
@@ -74,7 +80,7 @@ export default function Level1() {
                   camMaxDis={-2}
                   maxVelLimit={5}
                   jumpVel={4}
-                  position={[0, 4, -5]}
+                  position={actualPosition}
                 >
                   <Avatar />
                 </Ecctrl>

@@ -1,20 +1,19 @@
 //[CharacterCheckpointState.jsx]
 
-import {create} from 'zustand'
+import { create } from 'zustand'
 
-const actualPosition = [0, 0, 0];
+const initialPos = [0, 2, 0]
 
 export const useCheckpointState = create((set) => ({
 
-    initialPosition: [0, 0, 0],
-    checkpoint1: [0, 1, -39.55],
-    checkpoint2: [0, 6.5, -76],
-    checkpoint3: [0, 6, -103.4],
-    checkpoint4: [0, 1, -150],
-    valueActualPosition: actualPosition,
+    initialPosition: initialPos,
+    checkpoint1: [0, 2, -39.55],
+    checkpoint2: [0, 7.5, -76],
+    checkpoint3: [0, 8, -103.4],
+    checkpoint4: [0, 9, -150],
+    actualPosition: initialPos,
 
-    setActualPosition: () => set((state) => ({
-        actualPosition: state.valueActualPosition,
-    })),
-    resetActualPosition: () => set({initialPosition})
+    setInitialPosition: (someposition) => set({ initialPosition: someposition }),
+    setActualPosition: (someposition) => set({ actualPosition: someposition }),
+    resetActualPosition: () => set({ initialPos })
 }))
