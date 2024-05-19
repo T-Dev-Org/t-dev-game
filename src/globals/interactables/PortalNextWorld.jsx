@@ -1,41 +1,42 @@
-import React, { useEffect, useRef } from 'react';
-import { Sparkles } from "@react-three/drei";
-import { CuboidCollider, RigidBody } from '@react-three/rapier';
-import { useAudio } from '../../context/AudioContext';
-import { limpiarLocalStorage } from '../../utils/localStorageUtils';
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Sparkles } from '@react-three/drei'
+import { CuboidCollider, RigidBody } from '@react-three/rapier'
+import { useAudio } from '../../context/AudioContext'
+import { limpiarLocalStorage } from '../../utils/localStorageUtils'
 
 const debug = true
 
-function print_debug(text) {
+function print_debug (text) {
   if (debug) {
-    console.log(`[PortalNextWorld.jsx]: ${text}`);
+    console.log(`[PortalNextWorld.jsx]: ${text}`)
   }
 }
 
-export default function PortalNextWorld({ ...props }) {
-  const { handlePlayMusic } = useAudio();
-  const { playSoundEffect } = useAudio();
+export default function PortalNextWorld ({ ...props }) {
+  const navigate = useNavigate()
+  const { handlePlayMusic } = useAudio()
+  const { playSoundEffect } = useAudio()
   const nextLevel = props.nextLevel ? props.nextLevel : '/level1'
   const position = props.position ? props.position : [0, 0, 0]
 
   const handleIntersectionEnter = (event) => {
+    print_debug(`[PortalNextWorld.jsx] colisioné con: ${event.colliderObject.name}`)
 
-    print_debug(`[PortalNextWorld.jsx] colisioné con: ${event.colliderObject.name}`);
+    if (event.colliderObject.name === 'character-capsule-collider') {
+      handlePlayMusic('mainTheme')
+      playSoundEffect('shutterSound')
 
-    if (event.colliderObject.name == 'character-capsule-collider') {
-      handlePlayMusic('mainTheme');
-      playSoundEffect('shutterSound');
-      //Redirigir la pagina a nextLevel
-      limpiarLocalStorage();
-      window.location.href = nextLevel;
+      limpiarLocalStorage()
+      navigate(nextLevel)
     }
   }
 
   return (
-    <group {...props} name='scene' position={position} >
+    <group {...props} name='scene' position={position}>
       <group name='portal' position={[0, 0.6, 0]} dispose={null}>
         <RigidBody
-          type="fixed"
+          type='fixed'
           colliders={false}
         >
           <CuboidCollider
@@ -47,7 +48,7 @@ export default function PortalNextWorld({ ...props }) {
             position={[0, -0.1, 0]}
             count={6}
             speed={1.5}
-            color={'purple'}
+            color='purple'
             size={6}
             scale={1.5}
           />
@@ -55,7 +56,7 @@ export default function PortalNextWorld({ ...props }) {
             position={[0, 0.1, 0]}
             count={10}
             speed={0.2}
-            color={'yellow'}
+            color='yellow'
             size={6}
             scale={2}
           />
@@ -63,12 +64,12 @@ export default function PortalNextWorld({ ...props }) {
             position={[0, 0, 0]}
             count={6}
             speed={1.5}
-            color={'blue'}
+            color='blue'
             size={6}
             scale={1.5}
           />
         </RigidBody>
       </group>
     </group>
-  );
+  )
 }

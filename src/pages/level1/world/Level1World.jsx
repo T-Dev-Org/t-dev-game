@@ -1,11 +1,11 @@
-import React, { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
-import { RigidBody } from "@react-three/rapier";
+import React, { useRef } from 'react'
+import { useGLTF } from '@react-three/drei'
+import { RigidBody } from '@react-three/rapier'
 
-export default function Level1World(props) {
-  const { nodes, materials } = useGLTF("assets/models/world/Level1World.glb");
+export default function Level1World (props) {
+  const { nodes, materials } = useGLTF('assets/models/world/Level1World.glb')
   return (
-    <RigidBody type="fixed" colliders="trimesh">
+    <RigidBody type='fixed' colliders='trimesh'>
       <group {...props} dispose={null}>
         <mesh
           castShadow
@@ -191,13 +191,13 @@ export default function Level1World(props) {
           castShadow
           receiveShadow
           geometry={nodes.Cube001.geometry}
-          material={materials["Suelo.001"]}
+          material={materials['Suelo.001']}
         />
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.Cube001_1.geometry}
-          material={materials["Tierra.001"]}
+          material={materials['Tierra.001']}
         />
         <mesh
           castShadow
@@ -227,7 +227,7 @@ export default function Level1World(props) {
           castShadow
           receiveShadow
           geometry={nodes.Icosphere001_1.geometry}
-          material={materials["Tronco.002"]}
+          material={materials['Tronco.002']}
         />
         <mesh
           castShadow
@@ -239,7 +239,7 @@ export default function Level1World(props) {
           castShadow
           receiveShadow
           geometry={nodes.Icosphere_1.geometry}
-          material={materials["Tronco.001"]}
+          material={materials['Tronco.001']}
         />
         <mesh
           castShadow
@@ -339,7 +339,7 @@ export default function Level1World(props) {
         />
       </group>
     </RigidBody>
-  );
+  )
 }
 
-useGLTF.preload("assets/models/world/Level1World.glb");
+useGLTF.preload('assets/models/world/Level1World.glb')

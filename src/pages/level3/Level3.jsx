@@ -1,34 +1,37 @@
 // [Level3.jsx]
-import { Perf } from "r3f-perf";
-import { KeyboardControls } from "@react-three/drei";
-import { Physics } from "@react-three/rapier";
-import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
-import Instructive from "../../utils/components/layouts/instructive/Instructive";
-import useMovements from "../../utils/key-movements";
-import Controls from "../../utils/controls/Controls"
-import Ecctrl from "ecctrl";
-import Avatar from "../../utils/avatar/Avatar";
-import Lights from "./lights/Lights";
-import Environments from "./staging/Environments";
-import Level3World from "./world/Level3World";
-import Texts from "./abstractions/Texts";
+import { Perf } from 'r3f-perf'
+import { KeyboardControls } from '@react-three/drei'
+import { Physics } from '@react-three/rapier'
+import { Suspense } from 'react'
+import { Canvas } from '@react-three/fiber'
+import Instructive from '../../utils/components/layouts/instructive/Instructive'
+import useMovements from '../../utils/key-movements'
+import Controls from '../../utils/controls/Controls'
+import Ecctrl from 'ecctrl'
+import Avatar from '../../utils/avatar/Avatar'
+import Lights from './lights/Lights'
+import Environments from './staging/Environments'
+import Level3World from './world/Level3World'
+import Texts from './abstractions/Texts'
 // import Collectables from "./collectables/Collectables";
-import GameUI from "../../utils/components/layouts/GameUI/GameUI";
-import NextLevelButton from "../../utils/components/layouts/GameUI/components/NextLevelButton";
+import GameUI from '../../utils/components/layouts/GameUI/GameUI'
+import NextLevelButton from '../../utils/components/layouts/GameUI/components/NextLevelButton'
 // import ZoneSensors from "./world/ZoneSensors";
 
-export default function Level3() {
-  const map = useMovements();
+const debug = process.env.REACT_APP_DEBUG === 'true'
+
+export default function Level3 () {
+  const map = useMovements()
 
   return (
     <KeyboardControls map={map}>
-      <Canvas shadows={true}>
+      <Canvas shadows>
         <Suspense fallback={<Instructive />}>
-          {/* <Perf position="top-left" /> */}
+          {debug &&
+            <Perf position='top-left' />}
           <Lights />
           <Environments />
-          <Physics debug={true}>
+          <Physics debug={debug}>
             <Level3World />
             <Ecctrl
               camInitDis={-2}
@@ -45,7 +48,8 @@ export default function Level3() {
         <Controls />
       </Canvas>
       {/* <GameUI /> */}
-      <NextLevelButton to="/level4" />
+      {debug &&
+        <NextLevelButton to='/level4' />}
     </KeyboardControls>
-  );
+  )
 }
