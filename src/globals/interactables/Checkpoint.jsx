@@ -7,13 +7,13 @@ import { useSavingState } from '../../utils/components/layouts/GameUI/states/Sav
 
 const debug = true
 
-function print_debug(text) {
+function print_debug (text) {
   if (debug) {
     console.log(`[Checkpoint.jsx]: ${text}`)
   }
 }
 
-export default function Checkpoint(props) {
+export default function Checkpoint (props) {
   const { handlePlayMusic } = useAudio()
   const { playSoundEffect } = useAudio()
   const savingState = useSavingState()
