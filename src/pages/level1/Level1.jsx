@@ -30,11 +30,31 @@ import Checkpoints from '../../globals/interactables/CheckpointsGenerator'
 import { obtenerDeLocalStorage } from '../../utils/localStorageUtils'
 import SymbolicSensors from './world/SymbolicSensors'
 import NextLevelButton from '../../utils/components/layouts/GameUI/components/NextLevelButton'
+import { useAuth } from '../../context/AuthContext'
+import Logout from '../../utils/components/layouts/logout/Logout'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
 export default function Level1 () {
   const map = useMovements()
+
+  const auth = useAuth();
+
+  const [valuesUser, setValuesUser] = useState(null)
+
+  useEffect(() => {
+    if (auth.userLogged) {
+      const { displayName, email } = auth.userLogged
+      
+      const user = { 
+        displayName: displayName, 
+        email: email,
+       }
+
+      setValuesUser(user)
+      console.log(user)
+    }
+  }, [auth.userLogged])
 
   const lifeState = useLifeState()
   const [displayLife, setDisplayLife] = useState(true)
@@ -53,6 +73,7 @@ export default function Level1 () {
   return (
     <>
       <KeyboardControls map={map}>
+      <Logout />
         <Canvas
           shadows
         >

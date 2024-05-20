@@ -1,0 +1,23 @@
+.button-logout {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+}
+
+.button-logout button {
+    background-color: transparent;
+    border: none;
+    color: black;
+    font-size: 0.99rem;
+    font-weight: bold;
+    font-style: oblique;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.button-logout button:hover {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+}
