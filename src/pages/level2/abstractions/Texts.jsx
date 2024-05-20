@@ -26,8 +26,8 @@ const Texts = (props) => {
         text='Checkpoint 3'
       />
       <CustomText2D
-        position={[-24, 0.1, -150]}
-        rotation={[Math.PI / -2, 0, Math.PI / 2.18]}
+        position={[8, 19.5, -102]}
+        rotation={[Math.PI / -2, 0, Math.PI / 2]}
         text='Checkpoint 4'
       />
       <CustomText2D
