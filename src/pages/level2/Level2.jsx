@@ -73,7 +73,7 @@ export default function Level2 () {
               <SymbolicSensors />
               <Interactables />
               <PortalNextWorld
-                position={[28, 1, -15]}
+                position={[-24, 20, -102]}
                 nextLevel='/level3'
               />
               {displayLife &&
