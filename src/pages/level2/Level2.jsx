@@ -29,10 +29,11 @@ import Collectables from '../../globals/collectables/CollectablesGenerator'
 import Checkpoints from '../../globals/interactables/CheckpointsGenerator'
 import { obtenerDeLocalStorage } from '../../utils/localStorageUtils'
 import ManualColliders from './world/ManualColliders'
+import Level2WorldZone3 from './world/Level2WorldZone3'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
-export default function Level2 () {
+export default function Level2() {
   const map = useMovements()
 
   const lifeState = useLifeState()
@@ -65,6 +66,7 @@ export default function Level2 () {
               <Level2World />
               <Level2WorldZone1 />
               <Level2WorldZone2 />
+              <Level2WorldZone3 />
               <ManualColliders />
               <SymbolicSensors />
               <Interactables />

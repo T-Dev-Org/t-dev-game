@@ -30,6 +30,12 @@ const Texts = (props) => {
         rotation={[Math.PI / -2, 0, Math.PI / 2.18]}
         text='Checkpoint 4'
       />
+      <CustomText2D
+        fontSize={0.45}
+        position={[-19.8, 2, -137.5]}
+        rotation={[Math.PI, 1.98 * Math.PI, Math.PI]}
+        text='Usa el interruptor de plataformas para subir la montaña'
+      />
     </>
   )
 }

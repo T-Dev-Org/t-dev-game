@@ -3,13 +3,13 @@ import Button from '../../../globals/interactables/Button'
 import Level2Door1 from '../world/Level2Door1'
 
 const debug = true
-function print_debug (text) {
+function print_debug(text) {
   if (debug) {
     console.log(`[Interactables.jsx]: ${text}`)
   }
 }
 
-export default function Interactables () {
+export default function Interactables() {
   const [stateDoor1Level2, setStateDoor1Level2] = useState(true)
 
   const toggleDoor1Level2 = () => {
@@ -24,8 +24,9 @@ export default function Interactables () {
         interactFunction={toggleDoor1Level2}
         onUpdateState={(newState) => updateObjectState(0, newState)}
       />
+      {/* PostCheckpoint 2 Button */}
       <Button
-        position={[40, 0.2, -157.5]}
+        position={[42, 0.2, -157.5]}
         // interactFunction={toggleStairs} // Example
         onUpdateState={(newState) => updateObjectState(0, newState)}
       />
