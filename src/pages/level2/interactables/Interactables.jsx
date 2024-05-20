@@ -4,13 +4,13 @@ import Level2Door1 from '../world/Level2Door1'
 import Level2Platforms from '../world/Level2Platforms'
 
 const debug = true
-function print_debug(text) {
+function print_debug (text) {
   if (debug) {
     console.log(`[Interactables.jsx]: ${text}`)
   }
 }
 
-export default function Interactables() {
+export default function Interactables () {
   const [stateDoor1Level2, setStateDoor1Level2] = useState(true)
   const [statePlatforms, setStatePlatforms] = useState(false)
 
