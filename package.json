@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "vercel --prod"
+    "deploy": "vercel --prod",
+    "format": "standard --fix"
   },
   "keywords": [],
   "author": "",
@@ -44,6 +45,7 @@
     "@babel/core": "^7.24.5",
     "@babel/preset-env": "^7.24.5",
     "@babel/preset-react": "^7.24.1",
-    "babel-loader": "^9.1.3"
+    "babel-loader": "^9.1.3",
+    "standard": "^17.1.0"
   }
 }
