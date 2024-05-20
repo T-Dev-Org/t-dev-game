@@ -54,4 +54,4 @@ export default function Level2WorldZone1 (props) {
   )
 }
 
-useGLTF.preload('/assets/models/world//Level2WorldZone1.glb')
+useGLTF.preload('/assets/models/world/Level2/Level2WorldZone1.glb')
