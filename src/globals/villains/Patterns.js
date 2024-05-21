@@ -10,6 +10,12 @@ const yDisplacementPattern = (time, amplitude, actualPosition) => ({
   z: actualPosition.z
 })
 
+const zDisplacementPattern = (time, amplitude, actualPosition) => ({
+  x: actualPosition.x,
+  y: actualPosition.y,
+  z: Math.sin(time) * amplitude + actualPosition.z
+})
+
 const roundDisplacementPattern = (time, amplitude, actualPosition) => ({
   x: Math.sin(time) * amplitude + actualPosition.x,
   y: actualPosition.y,
@@ -23,12 +29,15 @@ const roundReverseDisplacementPattern = (time, amplitude, actualPosition) => ({
 })
 
 export const applyPattern = (pattern, time, amplitude, actualPosition) => {
-  const patchedAmplitude = amplitude * 0.1
+  const patchedAmplitude = 0.1
   if (pattern === 'x') {
     return xDisplacementPattern(time, patchedAmplitude, actualPosition)
   } else if (pattern === 'y') {
     return yDisplacementPattern(time, patchedAmplitude, actualPosition)
-  } else if (pattern === 'round') {
+  } else if (pattern === 'z') {
+    return zDisplacementPattern(time, patchedAmplitude, actualPosition)
+  }
+  else if (pattern === 'round') {
     return roundDisplacementPattern(time, patchedAmplitude, actualPosition)
   } else if (pattern === 'round_reverse') {
     return roundReverseDisplacementPattern(time, patchedAmplitude, actualPosition)
