@@ -4,17 +4,17 @@ import { CuboidCollider, RigidBody } from '@react-three/rapier'
 import { useFrame } from '@react-three/fiber'
 import { useLifeState } from '../../utils/components/controller/CharacterLife'
 import { useCharacterBasicAttack } from '../../utils/components/controller/CharacterAttackState'
+import { applyPattern } from './Patterns'
 
 const debug = true
 
-function print_debug(text) {
+function print_debug (text) {
   if (debug) {
     console.log(`[Rat.jsx]: ${text}`)
   }
 }
 
-export default function Rat(props) {
-
+export default function Rat (props) {
   const { nodes, materials } = useGLTF('/assets/models/villains/rat.glb')
 
   const ratRef = useRef()
@@ -29,14 +29,13 @@ export default function Rat(props) {
   const [pattern, setPattern] = useState(props.pattern) // Patrón de movimiento actual
 
   useEffect(() => {
-    if (life < 0)
-      characterBasickAttackState.clear()
+    if (life < 0) characterBasickAttackState.clear()
   }, [life])
 
   const handleIntersectionEnter = (event) => {
     if (event.colliderObject.name === 'character-capsule-collider') {
       characterBasickAttackState.assign(() => {
-        setLife(prevLife => prevLife - 1)
+        setLife((prevLife) => prevLife - 1)
       })
     }
   }
@@ -74,50 +73,28 @@ export default function Rat(props) {
   }
 
   const calculatePosition = (time) => {
-    const amplitude = 3
-
-    if (pattern === 'x') {
-      return {
-        x: Math.sin(time) * amplitude,
-        y: ratRef.current.position.y,
-        z: ratRef.current.position.z
-      }
-    } else if (pattern === 'y') {
-      return {
-        x: ratRef.current.position.x,
-        y: Math.cos(time) * amplitude,
-        z: ratRef.current.position.z
-      }
+    const actualPosition = {
+      x: ratRef.current.position.x,
+      y: ratRef.current.position.y,
+      z: ratRef.current.position.z
     }
-    else if (pattern === 'round') {
-      return {
-        x: Math.sin(time) * amplitude,
-        y: ratRef.current.position.y,
-        z: Math.cos(time) * amplitude,
-      }
-    } else {
-      return {
-        x: ratRef.current.position.x,
-        y: ratRef.current.position.y,
-        z: ratRef.current.position.z
-      }
-    }
+    return applyPattern(pattern, time, 1, actualPosition)
   }
 
   useFrame((state, delta) => {
     const time = state.clock.elapsedTime
     if (ratRef.current) {
       const { x, y, z } = calculatePosition(time)
-      ratRef.current.position.x = x
-      ratRef.current.position.y = y
-      ratRef.current.position.z = z
+      ratRef.current.position.x = x ?? ratRef.current.position.x
+      ratRef.current.position.y = y ?? ratRef.current.position.y
+      ratRef.current.position.z = z ?? ratRef.current.position.z
       updateCollider()
     }
   })
 
   return (
     <>
-      {life > 0 &&
+      {life > 0 && (
         <RigidBody type='fixed' colliders={false}>
           <CuboidCollider
             ref={ratHostilColliderRef}
@@ -153,7 +130,6 @@ export default function Rat(props) {
               geometry={nodes.Plane_3.geometry}
               material={materials.Ojos}
               skeleton={nodes.Plane_3.skeleton}
-
             />
             <mesh
               name='Plane_4'
@@ -163,7 +139,8 @@ export default function Rat(props) {
             />
           </group>
           <primitive object={nodes.Bone006} />
-        </RigidBody>}
+        </RigidBody>
+      )}
     </>
   )
 }

@@ -11,15 +11,15 @@
       "id": "1",
       "name": "Rat 1",
       "type": "rat",
-      "pattern": "y",
+      "pattern": "round",
       "position": [0, 0, -1]
     },
     {
       "id": "2",
       "name": "Rat 2",
       "type": "rat",
-      "pattern": "round",
-      "position": [0, 0, 0]
+      "pattern": "round_reverse",
+      "position": [0, 0, 1]
     }
   ]
 }
