@@ -1,7 +1,8 @@
-import { useRef, useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { CuboidCollider, RigidBody } from '@react-three/rapier';
 import { useFrame } from '@react-three/fiber';
+import { useLifeState } from '../../utils/components/controller/CharacterLife';
 
 export default function Rat(props) {
   const ratRef = useRef();
@@ -9,41 +10,51 @@ export default function Rat(props) {
   const ratHitSensorRef = useRef();
   const { nodes, materials } = useGLTF('/assets/models/villains/rat.glb');
   const [amplitude, setAmplitude] = useState(3.5);
+  const [doDamage, setDoDamage] = useState(true)
 
-  const scale = 3
+
+  const lifeState = useLifeState()
+  const scale = 3;
 
   const calculatePositionSin = (time) => {
     return Math.sin(time) * amplitude;
   };
 
-  function updateCollider() {
-    if (ratRef.current && ratHostilColliderRef.current) {
+  useEffect(() => {
+    setTimeout(() => {
+      setDoDamage(true);
+    }, 1000);
+  }, [setDoDamage]);
+
+  const updateCollider = () => {
+    if (ratRef.current && ratHostilColliderRef.current && ratHitSensorRef.current) {
+      const { position, rotation } = ratRef.current;
       ratHostilColliderRef.current.setTranslation({
-        x: ratRef.current.position.x,
-        y: ratRef.current.position.y + 0.3,
-        z: ratRef.current.position.z
+        x: position.x,
+        y: position.y + 0.3,
+        z: position.z
       });
       ratHostilColliderRef.current.setRotation({
-        x: ratRef.current.rotation.x,
-        y: ratRef.current.rotation.y,
-        z: ratRef.current.rotation.z
+        x: rotation.x,
+        y: rotation.y,
+        z: rotation.z
       });
       ratHitSensorRef.current.setTranslation({
-        x: ratRef.current.position.x,
-        y: ratRef.current.position.y + 0.3,
-        z: ratRef.current.position.z
+        x: position.x,
+        y: position.y + 0.3,
+        z: position.z
       });
       ratHitSensorRef.current.setRotation({
-        x: ratRef.current.rotation.x,
-        y: ratRef.current.rotation.y,
-        z: ratRef.current.rotation.z
+        x: rotation.x,
+        y: rotation.y,
+        z: rotation.z
       });
     }
-  }
+  };
 
   useFrame((state, delta) => {
     const time = state.clock.elapsedTime;
-    if (ratRef.current && ratHostilColliderRef.current) {
+    if (ratRef.current) {
       ratRef.current.position.x = calculatePositionSin(time);
       updateCollider();
     }
@@ -53,14 +64,20 @@ export default function Rat(props) {
     <RigidBody type="fixed" colliders={false}>
       <CuboidCollider
         ref={ratHostilColliderRef}
-        args={[0.6 / 3 * scale, 0.2 / 3 * scale, 0.2 / 3 * scale]} />
+        args={[0.6 / 3 * scale, 0.2 / 3 * scale, 0.2 / 3 * scale]}
+        onCollisionEnter={(other) => {
+          if (other.colliderObject.name === 'character-capsule-collider') {
+            lifeState.decrement()
+            setDoDamage(false)
+          }
+        }}
+      />
       <CuboidCollider
         ref={ratHitSensorRef}
         args={[1 / 3 * scale, 0.4 / 3 * scale, 0.6 / 3 * scale]}
-        sensor />
-      <group {...props}
-        ref={ratRef}
-        scale={scale}>
+        sensor
+      />
+      <group {...props} ref={ratRef} scale={scale} dispose={null}>
         <skinnedMesh
           name="Plane_1"
           geometry={nodes.Plane_1.geometry}
