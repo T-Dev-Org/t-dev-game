@@ -12,14 +12,28 @@
       "name": "Rat 1",
       "type": "rat",
       "pattern": "round",
-      "position": [0, 0, -1]
+      "position": [0, 0, 2]
     },
     {
       "id": "2",
       "name": "Rat 2",
       "type": "rat",
       "pattern": "round_reverse",
-      "position": [0, 0, 1]
+      "position": [0, 0, 2]
+    },
+    {
+      "id": "3",
+      "name": "Rat 3",
+      "type": "rat",
+      "pattern": "round",
+      "position": [0, 0, -2]
+    },
+    {
+      "id": "3",
+      "name": "Rat 3",
+      "type": "rat",
+      "pattern": "z",
+      "position": [1, 0, -2]
     }
   ]
 }
