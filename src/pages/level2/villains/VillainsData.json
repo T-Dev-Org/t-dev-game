@@ -3,7 +3,23 @@
     {
       "id": "0",
       "name": "Rat 0",
+      "type": "rat",
+      "pattern": "x",
       "position": [0, 0, 1]
+    },
+    {
+      "id": "1",
+      "name": "Rat 1",
+      "type": "rat",
+      "pattern": "y",
+      "position": [0, 0, -1]
+    },
+    {
+      "id": "2",
+      "name": "Rat 2",
+      "type": "rat",
+      "pattern": "round",
+      "position": [0, 0, 0]
     }
   ]
 }

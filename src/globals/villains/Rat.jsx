@@ -14,16 +14,19 @@ function print_debug(text) {
 }
 
 export default function Rat(props) {
+
+  const { nodes, materials } = useGLTF('/assets/models/villains/rat.glb')
+
   const ratRef = useRef()
   const ratHostilColliderRef = useRef()
   const ratHitSensorRef = useRef()
-  const { nodes, materials } = useGLTF('/assets/models/villains/rat.glb')
+  const scale = 3
 
   const lifeState = useLifeState() // Vida del protagonista
-  const [life, setLife] = useState(3) // Vida de la rata
-
   const characterBasickAttackState = useCharacterBasicAttack()
-  const scale = 3
+
+  const [life, setLife] = useState(3) // Vida de la rata
+  const [pattern, setPattern] = useState(props.pattern) // Patrón de movimiento actual
 
   useEffect(() => {
     if (life < 0)
@@ -70,14 +73,44 @@ export default function Rat(props) {
     }
   }
 
-  useFrame((state, delta) => {
+  const calculatePosition = (time) => {
     const amplitude = 3
-    const calculatePositionSin = (time) => {
-      return Math.sin(time) * amplitude
+
+    if (pattern === 'x') {
+      return {
+        x: Math.sin(time) * amplitude,
+        y: ratRef.current.position.y,
+        z: ratRef.current.position.z
+      }
+    } else if (pattern === 'y') {
+      return {
+        x: ratRef.current.position.x,
+        y: Math.cos(time) * amplitude,
+        z: ratRef.current.position.z
+      }
     }
+    else if (pattern === 'round') {
+      return {
+        x: Math.sin(time) * amplitude,
+        y: ratRef.current.position.y,
+        z: Math.cos(time) * amplitude,
+      }
+    } else {
+      return {
+        x: ratRef.current.position.x,
+        y: ratRef.current.position.y,
+        z: ratRef.current.position.z
+      }
+    }
+  }
+
+  useFrame((state, delta) => {
     const time = state.clock.elapsedTime
     if (ratRef.current) {
-      ratRef.current.position.x = calculatePositionSin(time)
+      const { x, y, z } = calculatePosition(time)
+      ratRef.current.position.x = x
+      ratRef.current.position.y = y
+      ratRef.current.position.z = z
       updateCollider()
     }
   })

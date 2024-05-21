@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import Rat from './Rat'
 
-export default function Villains ({ villainsData }) {
+export default function Villains({ villainsData }) {
   const [villains, setVillains] = useState([])
 
   useEffect(() => {
@@ -27,6 +27,7 @@ export default function Villains ({ villainsData }) {
         <Rat
           key={villain.id}
           position={villain.position}
+          pattern={villain.pattern}
           onUpdateState={(newState) => updateVillainState(villain.id, newState)}
         />
       ))}
