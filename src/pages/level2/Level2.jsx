@@ -31,10 +31,13 @@ import { obtenerDeLocalStorage } from '../../utils/localStorageUtils'
 import ManualColliders from './world/ManualColliders'
 import Level2WorldZone3 from './world/Level2WorldZone3'
 import Level2WorldZone4 from './world/Level2WorldZone4'
+import Villains from '../../globals/villains/VillainsGenerator'
+import VillainsData from './villains/VillainsData.json'
+import Rat from '../../globals/villains/Rat'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
-export default function Level2 () {
+export default function Level2() {
   const map = useMovements()
 
   const lifeState = useLifeState()
@@ -70,13 +73,6 @@ export default function Level2 () {
               <Level2WorldZone2 />
               <Level2WorldZone3 />
               <Level2WorldZone4 />
-              <ManualColliders />
-              <SymbolicSensors />
-              <Interactables />
-              <PortalNextWorld
-                position={[-24, 20, -102]}
-                nextLevel='/level3'
-              />
               {displayLife &&
                 <Ecctrl
                   camInitDis={-2}
@@ -88,6 +84,14 @@ export default function Level2 () {
                 >
                   <Avatar />
                 </Ecctrl>}
+              <ManualColliders />
+              <SymbolicSensors />
+              <Interactables />
+              <PortalNextWorld
+                position={[-24, 20, -102]}
+                nextLevel='/level3'
+              />
+              <Villains villainsData={VillainsData} />
             </Physics>
             <Texts />
           </Suspense>

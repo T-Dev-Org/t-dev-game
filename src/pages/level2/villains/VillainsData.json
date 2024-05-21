@@ -1,0 +1,9 @@
+{
+  "villains": [
+    {
+      "id": "0",
+      "name": "Rat 0",
+      "position": [0, 0, 1]
+    }
+  ]
+}
