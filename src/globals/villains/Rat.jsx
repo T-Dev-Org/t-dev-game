@@ -3,27 +3,46 @@ import { useGLTF } from '@react-three/drei'
 import { CuboidCollider, RigidBody } from '@react-three/rapier'
 import { useFrame } from '@react-three/fiber'
 import { useLifeState } from '../../utils/components/controller/CharacterLife'
+import { useCharacterBasicAttack } from '../../utils/components/controller/CharacterAttackState'
 
-export default function Rat (props) {
+const debug = true
+
+function print_debug(text) {
+  if (debug) {
+    console.log(`[Rat.jsx]: ${text}`)
+  }
+}
+
+export default function Rat(props) {
   const ratRef = useRef()
   const ratHostilColliderRef = useRef()
   const ratHitSensorRef = useRef()
   const { nodes, materials } = useGLTF('/assets/models/villains/rat.glb')
-  const [amplitude, setAmplitude] = useState(3.5)
-  const [doDamage, setDoDamage] = useState(true)
 
-  const lifeState = useLifeState()
+  const lifeState = useLifeState() // Vida del protagonista
+  const [life, setLife] = useState(3) // Vida de la rata
+
+  const characterBasickAttackState = useCharacterBasicAttack()
   const scale = 3
 
-  const calculatePositionSin = (time) => {
-    return Math.sin(time) * amplitude
+  useEffect(() => {
+    if (life < 0)
+      characterBasickAttackState.clear()
+  }, [life])
+
+  const handleIntersectionEnter = (event) => {
+    if (event.colliderObject.name === 'character-capsule-collider') {
+      characterBasickAttackState.assign(() => {
+        setLife(prevLife => prevLife - 1)
+      })
+    }
   }
 
-  useEffect(() => {
-    setTimeout(() => {
-      setDoDamage(true)
-    }, 1000)
-  }, [setDoDamage])
+  const handleIntersectionExit = (event) => {
+    if (event.colliderObject.name === 'character-capsule-collider') {
+      characterBasickAttackState.clear()
+    }
+  }
 
   const updateCollider = () => {
     if (ratRef.current && ratHostilColliderRef.current && ratHitSensorRef.current) {
@@ -52,6 +71,10 @@ export default function Rat (props) {
   }
 
   useFrame((state, delta) => {
+    const amplitude = 3
+    const calculatePositionSin = (time) => {
+      return Math.sin(time) * amplitude
+    }
     const time = state.clock.elapsedTime
     if (ratRef.current) {
       ratRef.current.position.x = calculatePositionSin(time)
@@ -60,50 +83,54 @@ export default function Rat (props) {
   })
 
   return (
-    <RigidBody type='fixed' colliders={false}>
-      <CuboidCollider
-        ref={ratHostilColliderRef}
-        args={[0.6 / 3 * scale, 0.2 / 3 * scale, 0.2 / 3 * scale]}
-        onCollisionEnter={(other) => {
-          if (other.colliderObject.name === 'character-capsule-collider') {
-            lifeState.decrement()
-            setDoDamage(false)
-          }
-        }}
-      />
-      <CuboidCollider
-        ref={ratHitSensorRef}
-        args={[1 / 3 * scale, 0.4 / 3 * scale, 0.6 / 3 * scale]}
-        sensor
-      />
-      <group {...props} ref={ratRef} scale={scale} dispose={null}>
-        <skinnedMesh
-          name='Plane_1'
-          geometry={nodes.Plane_1.geometry}
-          material={materials.Pelaje}
-          skeleton={nodes.Plane_1.skeleton}
-        />
-        <skinnedMesh
-          name='Plane_2'
-          geometry={nodes.Plane_2.geometry}
-          material={materials.Blandas}
-          skeleton={nodes.Plane_2.skeleton}
-        />
-        <skinnedMesh
-          name='Plane_3'
-          geometry={nodes.Plane_3.geometry}
-          material={materials.Ojos}
-          skeleton={nodes.Plane_3.skeleton}
-        />
-        <skinnedMesh
-          name='Plane_4'
-          geometry={nodes.Plane_4.geometry}
-          material={materials.Ojos_2}
-          skeleton={nodes.Plane_4.skeleton}
-        />
-        <primitive object={nodes.Bone006} />
-      </group>
-    </RigidBody>
+    <>
+      {life > 0 &&
+        <RigidBody type='fixed' colliders={false}>
+          <CuboidCollider
+            ref={ratHostilColliderRef}
+            args={[0.6 / 3 * scale, 0.2 / 3 * scale, 0.2 / 3 * scale]}
+            onCollisionEnter={(other) => {
+              if (other.colliderObject.name === 'character-capsule-collider') {
+                lifeState.decrement()
+              }
+            }}
+          />
+          <CuboidCollider
+            ref={ratHitSensorRef}
+            args={[1.5 / 3 * scale, 0.4 / 3 * scale, 1.1 / 3 * scale]}
+            onIntersectionEnter={(event) => handleIntersectionEnter(event)}
+            onCollisionExit={(event) => handleIntersectionExit(event)}
+            sensor
+          />
+          <group {...props} ref={ratRef} scale={scale} dispose={null}>
+            <skinnedMesh
+              name='Plane_1'
+              geometry={nodes.Plane_1.geometry}
+              material={materials.Pelaje}
+              skeleton={nodes.Plane_1.skeleton}
+            />
+            <skinnedMesh
+              name='Plane_2'
+              geometry={nodes.Plane_2.geometry}
+              material={materials.Blandas}
+              skeleton={nodes.Plane_2.skeleton}
+            />
+            <skinnedMesh
+              name='Plane_3'
+              geometry={nodes.Plane_3.geometry}
+              material={materials.Ojos}
+              skeleton={nodes.Plane_3.skeleton}
+            />
+            <skinnedMesh
+              name='Plane_4'
+              geometry={nodes.Plane_4.geometry}
+              material={materials.Ojos_2}
+              skeleton={nodes.Plane_4.skeleton}
+            />
+            <primitive object={nodes.Bone006} />
+          </group>
+        </RigidBody>}
+    </>
   )
 }
 
