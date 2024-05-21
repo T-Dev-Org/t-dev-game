@@ -8,13 +8,13 @@ import { useAudio } from '../../context/AudioContext'
 
 const debug = true
 
-function print_debug(text) {
+function print_debug (text) {
   if (debug) {
     console.log(`[Controls.jsx]: ${text}`)
   }
 }
 
-export default function Controls() {
+export default function Controls () {
   const { avatar, setAvatar } = useAvatar()
   const [sub, get] = useKeyboardControls()
   const [danceSound] = useState(new Audio('/assets/sounds/catActions/dance.wav'))
@@ -37,10 +37,11 @@ export default function Controls() {
       ({ movement, running, jumping, dancing, interacting, attacking }) => {
         if (attacking) {
           setIsAttacking(true)
-          if (basicAttackState.action)
+          if (basicAttackState.action) {
             setAvatar({ ...avatar, animation: 'T-Pose' })
-        }
-        else if (interacting) {
+            playSoundEffect('catAttackSound')
+          }
+        } else if (interacting) {
           setIsInteracting(true)
         } else if (jumping) {
           setAvatar({ ...avatar, animation: 'Jump' })
@@ -79,7 +80,6 @@ export default function Controls() {
       const { action } = useCharacterBasicAttack.getState()
       if (action) {
         action()
-        playSoundEffect('shutterSound')
       } else {
         print_debug('No hay accion asignada.')
       }

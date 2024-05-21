@@ -44,7 +44,7 @@ export default function SymbolicSensors ({ ...props }) {
         colliders={false}
 
       >
-        <RigidBody
+        {/* <RigidBody
           position={[0, 1, 0]}
           rotation={[Math.PI / 2, 0, 0]}
           type='fixed'
@@ -60,7 +60,7 @@ export default function SymbolicSensors ({ ...props }) {
             />
             <meshBasicMaterial transparent opacity={0} />
           </mesh>
-        </RigidBody>
+        </RigidBody> */}
 
         {/* Pre-dead events */}
         <CuboidCollider

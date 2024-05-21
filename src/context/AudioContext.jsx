@@ -17,7 +17,8 @@ const initialState = {
     ctmSound: '/assets/sounds/catActions/ctm.wav',
     damage: '/assets/sounds/catActions/damage.wav',
     heal: '/assets/sounds/catActions/heal.wav',
-    shutterSound: '/assets/sounds/catActions/shutter.wav'
+    shutterSound: '/assets/sounds/catActions/shutter.wav',
+    catAttackSound: '/assets/sounds/catActions/catAttack.wav'
   }
 }
 
