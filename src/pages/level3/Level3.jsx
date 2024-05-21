@@ -27,7 +27,8 @@ export default function Level3 () {
     <KeyboardControls map={map}>
       <Canvas shadows>
         <Suspense fallback={<Instructive />}>
-          <Perf position='top-left' />
+          {debug &&
+            <Perf position='top-left' />}
           <Lights />
           <Environments />
           <Physics debug={debug}>

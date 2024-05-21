@@ -56,7 +56,8 @@ export default function Level1 () {
         <Canvas
           shadows
         >
-          <Perf position='top-left' />
+          {debug &&
+            <Perf position='top-left' />}
           <Suspense fallback={<Instructive />}>
             <Lights />
             <Environments />

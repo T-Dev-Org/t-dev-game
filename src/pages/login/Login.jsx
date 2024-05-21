@@ -2,7 +2,7 @@ import './Login.css'
 import LoginComponent from './components/LoginComponent'
 import { useAppState } from '../../globals/AppState'
 
-export default function Login() {
+export default function Login () {
   const appState = useAppState()
   return (
     <>
