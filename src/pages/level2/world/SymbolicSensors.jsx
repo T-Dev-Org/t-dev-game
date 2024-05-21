@@ -5,13 +5,13 @@ import { useAudio } from '../../../context/AudioContext'
 import { useLifeState } from '../../../utils/components/controller/CharacterLife'
 
 const debug = true
-function print_debug(text) {
+function print_debug (text) {
   if (debug) {
     console.log(`[SymbolicSensors.jsx]: ${text}`)
   }
 }
 
-export default function SymbolicSensors({ ...props }) {
+export default function SymbolicSensors ({ ...props }) {
   const { handlePlayMusic } = useAudio()
   const { playSoundEffect } = useAudio()
   const lifeState = useLifeState()
