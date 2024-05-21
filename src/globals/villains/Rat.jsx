@@ -102,33 +102,34 @@ export default function Rat(props) {
             onCollisionExit={(event) => handleIntersectionExit(event)}
             sensor
           />
-          <group {...props} ref={ratRef} scale={scale} dispose={null}>
-            <skinnedMesh
+          <group {...props} ref={ratRef} dispose={null}>
+            <mesh
               name='Plane_1'
               geometry={nodes.Plane_1.geometry}
               material={materials.Pelaje}
               skeleton={nodes.Plane_1.skeleton}
             />
-            <skinnedMesh
+            <mesh
               name='Plane_2'
               geometry={nodes.Plane_2.geometry}
               material={materials.Blandas}
               skeleton={nodes.Plane_2.skeleton}
             />
-            <skinnedMesh
+            <mesh
               name='Plane_3'
               geometry={nodes.Plane_3.geometry}
               material={materials.Ojos}
               skeleton={nodes.Plane_3.skeleton}
+
             />
-            <skinnedMesh
+            <mesh
               name='Plane_4'
               geometry={nodes.Plane_4.geometry}
               material={materials.Ojos_2}
               skeleton={nodes.Plane_4.skeleton}
             />
-            <primitive object={nodes.Bone006} />
           </group>
+          <primitive object={nodes.Bone006} />
         </RigidBody>}
     </>
   )
