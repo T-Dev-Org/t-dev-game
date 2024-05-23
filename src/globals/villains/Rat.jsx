@@ -8,13 +8,13 @@ import { applyPattern } from './Patterns'
 
 const debug = true
 
-function print_debug (text) {
+function print_debug(text) {
   if (debug) {
     console.log(`[Rat.jsx]: ${text}`)
   }
 }
 
-export default function Rat (props) {
+export default function Rat(props) {
   const { nodes, materials } = useGLTF('/assets/models/villains/rat.glb')
 
   const ratRef = useRef()
@@ -25,7 +25,7 @@ export default function Rat (props) {
   const lifeState = useLifeState() // Vida del protagonista
   const characterBasickAttackState = useCharacterBasicAttack()
 
-  const [life, setLife] = useState(3) // Vida de la rata
+  const [life, setLife] = useState(1) // Vida de la rata
   const [pattern, setPattern] = useState(props.pattern) // Patrón de movimiento actual
 
   useEffect(() => {
@@ -47,7 +47,11 @@ export default function Rat (props) {
   }
 
   const updateCollider = () => {
-    if (ratRef.current && ratHostilColliderRef.current && ratHitSensorRef.current) {
+    if (
+      ratRef.current &&
+      ratHostilColliderRef.current &&
+      ratHitSensorRef.current
+    ) {
       const { position, rotation } = ratRef.current
       ratHostilColliderRef.current.setTranslation({
         x: position.x,
@@ -98,7 +102,7 @@ export default function Rat (props) {
         <RigidBody type='fixed' colliders={false}>
           <CuboidCollider
             ref={ratHostilColliderRef}
-            args={[0.6 / 3 * scale, 0.2 / 3 * scale, 0.2 / 3 * scale]}
+            args={[(0.6 / 3) * scale, (0.2 / 3) * scale, (0.2 / 3) * scale]}
             onCollisionEnter={(other) => {
               if (other.colliderObject.name === 'character-capsule-collider') {
                 lifeState.decrement()
@@ -107,7 +111,7 @@ export default function Rat (props) {
           />
           <CuboidCollider
             ref={ratHitSensorRef}
-            args={[1.5 / 3 * scale, 0.4 / 3 * scale, 1.1 / 3 * scale]}
+            args={[(1.5 / 3) * scale, (0.4 / 3) * scale, (1.1 / 3) * scale]}
             onIntersectionEnter={(event) => handleIntersectionEnter(event)}
             onCollisionExit={(event) => handleIntersectionExit(event)}
             sensor
