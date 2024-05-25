@@ -5,7 +5,7 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(255, 255, 255, 0.9);
-  background-image: url("../../../public/assets/images/instructives/level2_1.png");
+  background-image: url('../../../public/assets/images/instructives/level2_1.png');
   user-select: none;
 }
 

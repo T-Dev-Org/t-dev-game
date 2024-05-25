@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../context/AuthContext'
+import './LoginComponent.css'
 
 export default function LoginComponent() {
   const navigate = useNavigate()
@@ -27,31 +28,41 @@ export default function LoginComponent() {
             alt='Logo T-Dev con texto T-Dev'
           />
         </div>
-
         <h2 className='text-primary'>La puerta a la dimension desconocida</h2>
-
-        <form className='mx-4'>
-          <div className='my-4'>
-            <div>
-              <button
-                onClick={(e) => onHandleButtonLogin(e)}
-                className='btn btn-outline-primary rounded-4 my-2'
-              >
-                Iniciar con Google
-              </button>
+        <div className='my-4'>
+          <button
+            onClick={(e) => onHandleButtonLogin(e)}
+            className='btn btn-outline-secondary rounded-4 my-2'
+          >
+            <div className='d-flex flex-row'>
+              <div className='mx-1'>
+                <img
+                  className='rounded-circle bg-white p-1 login-icon'
+                  src='/assets/images/icons/google.png'
+                  alt='google-icon'
+                />
+              </div>
+              <div className='sign-in-text mx-1'>Iniciar con Google</div>
             </div>
-            <div>
-              <button
-                className='btn btn-outline-primary rounded-4 mt-4 mb-2'
-                onClick={() => {
-                  navigate('/level1')
-                }}
-              >
-                Iniciar como invitado
-              </button>
-            </div>
+          </button>
+          <div>
+            <button
+              className='btn btn-outline-secondary rounded-4 my-2'
+              onClick={() => {
+                navigate('/level1')
+              }}
+            >
+              <div className='d-flex flex-row'>
+                <img
+                  className='rounded-circle bg-white p-1 login-icon'
+                  src='/assets/images/icons/perfil-desconocido.png'
+                  alt='google-icon'
+                />
+                <div className='sign-in-text mx-2'>Iniciar como invitado</div>
+              </div>
+            </button>
           </div>
-        </form>
+        </div>
       </div>
     </>
   )
