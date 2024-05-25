@@ -30,11 +30,11 @@ import Checkpoints from '../../globals/interactables/CheckpointsGenerator'
 import { obtenerDeLocalStorage } from '../../utils/localStorageUtils'
 import SymbolicSensors from './world/SymbolicSensors'
 import NextLevelButton from '../../utils/components/layouts/GameUI/components/NextLevelButton'
-import { useAuth } from '../../context/AuthContext'
 import Logout from '../../utils/components/layouts/logout/Logout'
 import { createUser, readUSer } from '../../utils/db/users-collection'
 import Villains from '../../globals/villains/VillainsGenerator'
 import VillainsData from './villains/VillainsData.json'
+
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 

@@ -21,7 +21,7 @@ const readUSer = async (userEmail) => {
         if (userSnapshot.empty) {
             return {success: false, message: "User not found"};
         }
-        const userData = userSnapshot.docs.map((doc) => doc.data());
+        const userData = userSnapshot.docs[0].data();
         return {success: true, message: "User found", data: userData};
     } catch (error) {
         return {success: false, message: "Error to get the user", error};
@@ -38,7 +38,8 @@ const editUser = async (userEmail, userData) => {
         }
 
         const userDoc = userSnapshot.docs[0];
-        await userDoc.ref.update(userData);
+        const userDocRef = userDoc.ref;
+        await updateDoc(userDocRef, userData);
         return {success: true, message: "User updated successfully"};
     } catch (error) {
         return {success: false, message: "Error to update the user", error};
