@@ -1,21 +1,22 @@
-import { useNavigate } from 'react-router-dom'
+import { json, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../context/AuthContext'
+import { readUSer, createUser } from '../../../utils/db/users-collection'
+import { usePlayer } from '../../../context/PlayerContext'
 import './LoginComponent.css'
 
 export default function LoginComponent() {
   const navigate = useNavigate()
   const auth = useAuth()
+  const { playerData, setPlayerData } = usePlayer()
 
   const onHandleButtonLogin = async (e) => {
     e.preventDefault()
-    await auth
-      .loginWithGoogle()
-      .then((res) => {
-        navigate('/level1')
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    try {
+      const result = await auth.loginWithGoogle()
+      await verificar(result.user, setPlayerData, navigate)
+    } catch (error) {
+      console.error('Error al iniciar sesión con Google:', error)
+    }
   }
 
   return (
@@ -31,7 +32,7 @@ export default function LoginComponent() {
         <h2 className='text-primary'>La puerta a la dimension desconocida</h2>
         <div className='my-4'>
           <button
-            onClick={(e) => onHandleButtonLogin(e)}
+            onClick={onHandleButtonLogin}
             className='btn btn-outline-secondary rounded-4 my-2'
           >
             <div className='d-flex flex-row'>
@@ -66,4 +67,27 @@ export default function LoginComponent() {
       </div>
     </>
   )
+}
+
+async function verificar(user, setPlayerData, navigate) {
+  try {
+    const { displayName, email } = user
+    const result = await readUSer(email)
+    if (result.success) {
+      setPlayerData(result.data)
+      navigate('/level1')
+    } else {
+      const newUser = {
+        email,
+        displayName,
+        vidas: 3, // Valor inicial para vidas
+        diamantes: 0 // Valor inicial para diamantes
+      }
+      await createUser(newUser)
+      setPlayerData(newUser)
+      navigate('/level1')
+    }
+  } catch (error) {
+    console.error('Error al leer el usuario:', error)
+  }
 }

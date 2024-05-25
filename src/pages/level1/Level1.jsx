@@ -30,9 +30,7 @@ import Checkpoints from '../../globals/interactables/CheckpointsGenerator'
 import { obtenerDeLocalStorage } from '../../utils/localStorageUtils'
 import SymbolicSensors from './world/SymbolicSensors'
 import NextLevelButton from '../../utils/components/layouts/GameUI/components/NextLevelButton'
-import { useAuth } from '../../context/AuthContext'
 import Logout from '../../utils/components/layouts/logout/Logout'
-import { createUser, readUSer } from '../../utils/db/users-collection'
 import Villains from '../../globals/villains/VillainsGenerator'
 import VillainsData from './villains/VillainsData.json'
 
@@ -40,32 +38,6 @@ const debug = process.env.REACT_APP_DEBUG === 'true'
 
 export default function Level1() {
   const map = useMovements()
-
-  const auth = useAuth()
-
-  const saveDataUser = async (valuesUser) => {
-    await createUser(valuesUser)
-  }
-
-  const readDataUser = async (email) => {
-    await readUSer(email)
-      .then((result) => console.log(result))
-      .catch((error) => console.log(error))
-  }
-
-  useEffect(() => {
-    if (auth.userLogged) {
-      const { displayName, email } = auth.userLogged
-
-      saveDataUser({
-        displayName: displayName,
-        email: email
-      })
-
-      const result = readDataUser(email)
-      console.log(result)
-    }
-  }, [auth.userLogged])
 
   const lifeState = useLifeState()
   const [displayLife, setDisplayLife] = useState(true)
