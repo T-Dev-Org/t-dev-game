@@ -111,6 +111,85 @@
       "type": "rat",
       "pattern": "round",
       "position": [-22, 0, -158]
+    },
+    {
+      "id": "16",
+      "name": "Rat 16",
+      "type": "rat",
+      "pattern": "x",
+      "position": [22, 0, -158]
+    },
+    {
+      "id": "17",
+      "name": "Rat Guard 1",
+      "type": "rat",
+      "pattern": "round",
+      "position": [-25, 19, -102],
+      "rotation": [0, 3.14, 0]
+    },
+    {
+      "id": "18",
+      "name": "Rat Guard 2",
+      "type": "rat",
+      "pattern": "round",
+      "position": [-25, 19, -94],
+      "rotation": [0, 3.14, 0]
+    },
+    {
+      "id": "19",
+      "name": "Rat Guard 3",
+      "type": "rat",
+      "pattern": "round_reverse",
+      "position": [-22, 19, -108],
+      "rotation": [0, 3.14, 0]
+    },
+    {
+      "id": "20",
+      "name": "Rat Guard 4",
+      "type": "rat",
+      "pattern": "z",
+      "position": [-26, 19, -100],
+      "rotation": [0, 3.14, 0]
+    },
+    {
+      "id": "20",
+      "name": "Rat Guard 5",
+      "type": "rat",
+      "pattern": "z",
+      "position": [-26, 19, -106],
+      "rotation": [0, 3.14, 0]
+    },
+    {
+      "id": "21",
+      "name": "Rat Guard 6",
+      "type": "rat",
+      "pattern": "z",
+      "position": [-22, 19, -98],
+      "rotation": [0, 3.14, 0]
+    },
+    {
+      "id": "22",
+      "name": "Rat Guard 7",
+      "type": "rat",
+      "pattern": "z",
+      "position": [-22, 19, -104],
+      "rotation": [0, 3.14, 0]
+    },
+    {
+      "id": "23",
+      "name": "Rat Guard 8",
+      "type": "rat",
+      "pattern": "y",
+      "position": [4, 22, -110],
+      "rotation": [0, 1.57, 0]
+    },
+    {
+      "id": "25",
+      "name": "Rat Guard 9",
+      "type": "rat",
+      "pattern": "y",
+      "position": [4, 22, -94],
+      "rotation": [0, -1.57, 0]
     }
   ]
 }
