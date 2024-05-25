@@ -1,0 +1,195 @@
+{
+  "villains": [
+    {
+      "id": "0",
+      "name": "Rat 0",
+      "type": "rat",
+      "pattern": "z",
+      "position": [35, 0, -18]
+    },
+    {
+      "id": "1",
+      "name": "Rat 1",
+      "type": "rat",
+      "pattern": "x",
+      "position": [35, 0, -18]
+    },
+    {
+      "id": "2",
+      "name": "Rat 2",
+      "type": "rat",
+      "pattern": "round",
+      "position": [35, 0, -18]
+    },
+    {
+      "id": "3",
+      "name": "Rat 3",
+      "type": "rat",
+      "pattern": "x",
+      "position": [-14.5, 0, -15.5]
+    },
+    {
+      "id": "4",
+      "name": "Rat 4",
+      "type": "rat",
+      "pattern": "round",
+      "position": [-14.5, 0, -15.5]
+    },
+    {
+      "id": "5",
+      "name": "Rat 5",
+      "type": "rat",
+      "pattern": "round_reverse",
+      "position": [-14.5, 0, -15.5]
+    },
+    {
+      "id": "6",
+      "name": "Rat 6",
+      "type": "rat",
+      "pattern": "x",
+      "position": [30, 9, -120]
+    },
+    {
+      "id": "7",
+      "name": "Rat 7",
+      "type": "rat",
+      "pattern": "round",
+      "position": [30, 9, -120]
+    },
+    {
+      "id": "8",
+      "name": "Rat 8",
+      "type": "rat",
+      "pattern": "round_reverse",
+      "position": [35, 9, -120]
+    },
+    {
+      "id": "9",
+      "name": "Rat 9",
+      "type": "rat",
+      "pattern": "z",
+      "position": [30, 9, -120]
+    },
+    {
+      "id": "10",
+      "name": "Rat 10",
+      "type": "rat",
+      "pattern": "z",
+      "position": [20, 1, -156]
+    },
+    {
+      "id": "11",
+      "name": "Rat 11",
+      "type": "rat",
+      "pattern": "x",
+      "position": [22, 1, -158]
+    },
+    {
+      "id": "12",
+      "name": "Rat 12",
+      "type": "rat",
+      "pattern": "round",
+      "position": [-24, 0, -143]
+    },
+    {
+      "id": "13",
+      "name": "Rat 13",
+      "type": "rat",
+      "pattern": "round_reverse",
+      "position": [-24, 0, -143]
+    },
+    {
+      "id": "14",
+      "name": "Rat 14",
+      "type": "rat",
+      "pattern": "x",
+      "position": [-22, 0, -158]
+    },
+    {
+      "id": "15",
+      "name": "Rat 15",
+      "type": "rat",
+      "pattern": "round",
+      "position": [-22, 0, -158]
+    },
+    {
+      "id": "16",
+      "name": "Rat 16",
+      "type": "rat",
+      "pattern": "x",
+      "position": [22, 0, -158]
+    },
+    {
+      "id": "17",
+      "name": "Rat Guard 1",
+      "type": "rat",
+      "pattern": "round",
+      "position": [-25, 19, -102],
+      "rotation": [0, 3.14, 0]
+    },
+    {
+      "id": "18",
+      "name": "Rat Guard 2",
+      "type": "rat",
+      "pattern": "round",
+      "position": [-25, 19, -94],
+      "rotation": [0, 3.14, 0]
+    },
+    {
+      "id": "19",
+      "name": "Rat Guard 3",
+      "type": "rat",
+      "pattern": "round_reverse",
+      "position": [-22, 19, -108],
+      "rotation": [0, 3.14, 0]
+    },
+    {
+      "id": "20",
+      "name": "Rat Guard 4",
+      "type": "rat",
+      "pattern": "z",
+      "position": [-26, 19, -100],
+      "rotation": [0, 3.14, 0]
+    },
+    {
+      "id": "21",
+      "name": "Rat Guard 5",
+      "type": "rat",
+      "pattern": "z",
+      "position": [-26, 19, -106],
+      "rotation": [0, 3.14, 0]
+    },
+    {
+      "id": "22",
+      "name": "Rat Guard 6",
+      "type": "rat",
+      "pattern": "z",
+      "position": [-22, 19, -98],
+      "rotation": [0, 3.14, 0]
+    },
+    {
+      "id": "23",
+      "name": "Rat Guard 7",
+      "type": "rat",
+      "pattern": "z",
+      "position": [-22, 19, -104],
+      "rotation": [0, 3.14, 0]
+    },
+    {
+      "id": "24",
+      "name": "Rat Guard 8",
+      "type": "rat",
+      "pattern": "y",
+      "position": [4, 22, -110],
+      "rotation": [0, 1.57, 0]
+    },
+    {
+      "id": "25",
+      "name": "Rat Guard 9",
+      "type": "rat",
+      "pattern": "y",
+      "position": [4, 22, -94],
+      "rotation": [0, -1.57, 0]
+    }
+  ]
+}

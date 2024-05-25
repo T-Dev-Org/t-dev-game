@@ -19,17 +19,17 @@ export default function SymbolicSensors ({ ...props }) {
   const handleIntersectionEnter = (event, themeName, soundEffect = 'none') => {
     print_debug('Colisioné con: ', event.colliderObject.name)
 
-    if (event.colliderObject.name == 'character-capsule-collider') {
+    if (event.colliderObject.name === 'character-capsule-collider') {
       print_debug(`Toca reproducir ${themeName} ${soundEffect}`)
-      if (themeName != 'continue') { handlePlayMusic(themeName) }
-      if (soundEffect != 'none') { playSoundEffect(soundEffect) }
+      if (themeName !== 'continue') { handlePlayMusic(themeName) }
+      if (soundEffect !== 'none') { playSoundEffect(soundEffect) }
     }
   }
 
   const handleFall = (event, lifeState) => {
     console.log('handleFall invocado!!!')
 
-    if (event.colliderObject.name == 'character-capsule-collider') {
+    if (event.colliderObject.name === 'character-capsule-collider') {
       for (let i = 0; i < lifeState.value; i++) {
         lifeState.decrement()
         console.log(lifeState.value)
@@ -44,7 +44,7 @@ export default function SymbolicSensors ({ ...props }) {
         colliders={false}
 
       >
-        <RigidBody
+        {/* <RigidBody
           position={[0, 1, 0]}
           rotation={[Math.PI / 2, 0, 0]}
           type='fixed'
@@ -60,7 +60,7 @@ export default function SymbolicSensors ({ ...props }) {
             />
             <meshBasicMaterial transparent opacity={0} />
           </mesh>
-        </RigidBody>
+        </RigidBody> */}
 
         {/* Pre-dead events */}
         <CuboidCollider

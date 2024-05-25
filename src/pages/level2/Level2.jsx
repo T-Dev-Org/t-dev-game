@@ -2,7 +2,7 @@
 import { Perf } from 'r3f-perf'
 import { KeyboardControls } from '@react-three/drei'
 import { Physics } from '@react-three/rapier'
-import { Suspense, useState, useEffect } from 'react'
+import { Suspense, useState, useEffect, useCallback } from 'react'
 import { Canvas } from '@react-three/fiber'
 import Instructive from '../../utils/components/layouts/instructive/Instructive'
 import useMovements from '../../utils/key-movements'
@@ -29,34 +29,50 @@ import Collectables from '../../globals/collectables/CollectablesGenerator'
 import Checkpoints from '../../globals/interactables/CheckpointsGenerator'
 import { obtenerDeLocalStorage } from '../../utils/localStorageUtils'
 import ManualColliders from './world/ManualColliders'
+import Level2WorldZone3 from './world/Level2WorldZone3'
+import Level2WorldZone4 from './world/Level2WorldZone4'
+import Villains from '../../globals/villains/VillainsGenerator'
+import VillainsData from './villains/VillainsData.json'
+import SpecialVillans from './villains/SpecialVillans'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
-export default function Level2 () {
+export default function Level2() {
   const map = useMovements()
 
   const lifeState = useLifeState()
   const [displayLife, setDisplayLife] = useState(true)
 
   const positionState = useCharacterPositionState()
-  const [actualPosition, setActualPosition] = useState(positionState.initialPosition)
+  const [actualPosition, setActualPosition] = useState(
+    positionState.initialPosition
+  )
+
+  const [showPortal, setShowPortal] = useState(false)
 
   useEffect(() => {
-    if (obtenerDeLocalStorage('actualPosition')) { setActualPosition(obtenerDeLocalStorage('actualPosition')) }
+    if (obtenerDeLocalStorage('actualPosition')) {
+      setActualPosition(obtenerDeLocalStorage('actualPosition'))
+    }
   }, obtenerDeLocalStorage('actualPosition'))
 
   useEffect(() => {
-    if (lifeState.value <= 0) { setDisplayLife(false) } else { setDisplayLife(true) }
+    if (lifeState.value <= 0) {
+      setDisplayLife(false)
+    } else {
+      setDisplayLife(true)
+    }
   }, [lifeState.value])
+
+  const handleEnemyDeath = useCallback(() => {
+    setShowPortal(true)
+  }, [])
 
   return (
     <>
       <KeyboardControls map={map}>
-        <Canvas
-          shadows
-        >
-          {debug &&
-            <Perf position='top-left' />}
+        <Canvas shadows>
+          {debug && <Perf position='top-left' />}
           <Suspense fallback={<Instructive />}>
             <Lights />
             <Environments />
@@ -66,14 +82,9 @@ export default function Level2 () {
               <Level2World />
               <Level2WorldZone1 />
               <Level2WorldZone2 />
-              <ManualColliders />
-              <SymbolicSensors />
-              <Interactables />
-              <PortalNextWorld
-                position={[28, 1, -15]}
-                nextLevel='/level3'
-              />
-              {displayLife &&
+              <Level2WorldZone3 />
+              <Level2WorldZone4 />
+              {displayLife && (
                 <Ecctrl
                   camInitDis={-2}
                   camMaxDis={-2}
@@ -83,19 +94,30 @@ export default function Level2 () {
                   slopeMaxAngle={Math.PI / 5.5}
                 >
                   <Avatar />
-                </Ecctrl>}
+                </Ecctrl>
+              )}
+              <ManualColliders />
+              <SymbolicSensors />
+              <Interactables />
+              <>
+                {showPortal && (
+                  <PortalNextWorld
+                    position={[-24, 20, -102]}
+                    rotation={[0, Math.PI / 2, 0]}
+                    nextLevel='/level3'
+                  />
+                )}
+              </>
+              <SpecialVillans onEnemyDeath={handleEnemyDeath} />
+              <Villains villainsData={VillainsData} />
             </Physics>
             <Texts />
           </Suspense>
           <Controls />
         </Canvas>
-        {!displayLife &&
-          <GameOverScene
-            reloadLevel='/level2'
-          />}
+        {!displayLife && <GameOverScene reloadLevel='/level2' />}
         <GameUI />
-        {debug &&
-          <NextLevelButton to='/level3' />}
+        {debug && <NextLevelButton to='/level3' />}
       </KeyboardControls>
     </>
   )
