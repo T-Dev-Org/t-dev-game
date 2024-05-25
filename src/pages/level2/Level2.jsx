@@ -2,7 +2,7 @@
 import { Perf } from 'r3f-perf'
 import { KeyboardControls } from '@react-three/drei'
 import { Physics } from '@react-three/rapier'
-import { Suspense, useState, useEffect } from 'react'
+import { Suspense, useState, useEffect, useCallback } from 'react'
 import { Canvas } from '@react-three/fiber'
 import Instructive from '../../utils/components/layouts/instructive/Instructive'
 import useMovements from '../../utils/key-movements'
@@ -33,8 +33,7 @@ import Level2WorldZone3 from './world/Level2WorldZone3'
 import Level2WorldZone4 from './world/Level2WorldZone4'
 import Villains from '../../globals/villains/VillainsGenerator'
 import VillainsData from './villains/VillainsData.json'
-import Rat from '../../globals/villains/Rat'
-import Dog from '../../globals/villains/Dog'
+import SpecialVillans from './villains/SpecialVillans'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
@@ -49,6 +48,8 @@ export default function Level2() {
     positionState.initialPosition
   )
 
+  const [showPortal, setShowPortal] = useState(false)
+
   useEffect(() => {
     if (obtenerDeLocalStorage('actualPosition')) {
       setActualPosition(obtenerDeLocalStorage('actualPosition'))
@@ -62,6 +63,10 @@ export default function Level2() {
       setDisplayLife(true)
     }
   }, [lifeState.value])
+
+  const handleEnemyDeath = useCallback(() => {
+    setShowPortal(true)
+  }, [])
 
   return (
     <>
@@ -94,12 +99,16 @@ export default function Level2() {
               <ManualColliders />
               <SymbolicSensors />
               <Interactables />
-              <PortalNextWorld
-                position={[-24, 20, -102]}
-                rotation={[0, Math.PI / 2, 0]}
-                nextLevel='/level3'
-              />
-              <Dog position={[-25, 19, -102]} rotation={[0, Math.PI / 2, 0]} />
+              <>
+                {showPortal && (
+                  <PortalNextWorld
+                    position={[-24, 20, -102]}
+                    rotation={[0, Math.PI / 2, 0]}
+                    nextLevel='/level3'
+                  />
+                )}
+              </>
+              <SpecialVillans onEnemyDeath={handleEnemyDeath} />
               <Villains villainsData={VillainsData} />
             </Physics>
             <Texts />

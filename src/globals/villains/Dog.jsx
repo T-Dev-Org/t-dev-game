@@ -1,10 +1,11 @@
+// [Dog.jsx]
 import React, { useRef, useEffect, useState } from 'react'
 import { useGLTF, useAnimations, Sparkles } from '@react-three/drei'
 import { CuboidCollider, RigidBody } from '@react-three/rapier'
 import { useLifeState } from '../../utils/components/controller/CharacterLife'
 import { useCharacterBasicAttack } from '../../utils/components/controller/CharacterAttackState'
 
-export default function Dog(props) {
+export default function Dog({ onDeath, ...props }) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF(
     '/assets/models/villains/Dog.glb'
@@ -25,6 +26,12 @@ export default function Dog(props) {
       actions.Dance.play()
     }
   }, [actions])
+
+  useEffect(() => {
+    if (life <= 0) {
+      onDeath()
+    }
+  }, [life, onDeath])
 
   const handleIntersectionEnter = (event) => {
     if (event.colliderObject?.name === 'character-capsule-collider') {
@@ -50,9 +57,10 @@ export default function Dog(props) {
             <CuboidCollider
               args={[34 * scale, 60 * scale, 34 * scale]}
               position={positionCorrection}
-              onCollisionEnter={(other) => {
+              onCollisionEnter={(event) => {
+                console.log(`${event.colliderObject.name} collided`)
                 if (
-                  other.colliderObject.name === 'character-capsule-collider'
+                  event.colliderObject.name === 'character-capsule-collider'
                 ) {
                   lifeState.decrement()
                 }
