@@ -2,10 +2,17 @@
 
 .container-top-right {
   position: absolute;
+  text-align: right;
   top: 20px;
   right: 20px;
-  background-color: #ffffff;
   padding: 10px;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
+  user-select: none;
+}
+
+.life-label {
+  font-size: 2rem;
+}
+
+.diamond-count {
+  font-size: 1.5rem;
 }
