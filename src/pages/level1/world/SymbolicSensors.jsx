@@ -5,13 +5,13 @@ import { useLifeState } from '../../../utils/components/controller/CharacterLife
 import { TorusGeometry } from 'three/src/Three.js'
 
 const debug = false
-function print_debug (text) {
+function print_debug(text) {
   if (debug) {
     console.log(`[SymbolicSensors.jsx]: ${text}`)
   }
 }
 
-export default function SymbolicSensors ({ ...props }) {
+export default function SymbolicSensors({ ...props }) {
   const { handlePlayMusic } = useAudio()
   const { playSoundEffect } = useAudio()
   const lifeState = useLifeState()
@@ -20,11 +20,17 @@ export default function SymbolicSensors ({ ...props }) {
   const handleIntersectionEnter = (event, themeName, soundEffect = 'none') => {
     console.log('[ZoneSensors.jsx] colisioné con: ', event.colliderObject.name)
     if (event.colliderObject.name == 'character-capsule-collider') {
-      console.log(`[ZoneSensors.jsx] Toca reproducir ${themeName} ${soundEffect}`)
+      console.log(
+        `[ZoneSensors.jsx] Toca reproducir ${themeName} ${soundEffect}`
+      )
 
-      if (themeName != 'continue') { handlePlayMusic(themeName) }
+      if (themeName != 'continue') {
+        handlePlayMusic(themeName)
+      }
 
-      if (soundEffect != 'none') { playSoundEffect(soundEffect) }
+      if (soundEffect != 'none') {
+        playSoundEffect(soundEffect)
+      }
     }
   }
 
@@ -39,12 +45,8 @@ export default function SymbolicSensors ({ ...props }) {
 
   return (
     <group {...props} dispose={null}>
-      <RigidBody
-        type='fixed'
-        colliders={false}
-
-      >
-        <RigidBody
+      <RigidBody type='fixed' colliders={false}>
+        {/* <RigidBody
           position={[0, 1, 0]}
           rotation={[Math.PI / 2, 0, 0]}
           type='fixed'
@@ -60,7 +62,7 @@ export default function SymbolicSensors ({ ...props }) {
             />
             <meshBasicMaterial transparent opacity={0} />
           </mesh>
-        </RigidBody>
+        </RigidBody> */}
       </RigidBody>
     </group>
   )
