@@ -1,4 +1,22 @@
-export default function LoginComponent () {
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../../context/AuthContext'
+
+export default function LoginComponent() {
+  const navigate = useNavigate()
+  const auth = useAuth()
+
+  const onHandleButtonLogin = async (e) => {
+    e.preventDefault()
+    await auth
+      .loginWithGoogle()
+      .then((res) => {
+        navigate('/level1')
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   return (
     <>
       <div className='card rounded-4 text-center'>
@@ -14,19 +32,23 @@ export default function LoginComponent () {
 
         <form className='mx-4'>
           <div className='my-4'>
-            <label className='form-label h4 my-2' htmlFor='inputEmail'>Correo Electrónico</label>
-            <input className='form-control ' type='email' id='inputEmail' aria-describedby='emailHelp' />
-            <label className='form-label h4 my-2' htmlFor='inputPassword'>Contraseña</label>
-            <input className='form-control' type='password' id='inputPassword' />
             <div>
-              <button className='btn btn-outline-primary rounded-4 mt-4 mb-2' type='submit'>
-                Iniciar Sesión
+              <button
+                onClick={(e) => onHandleButtonLogin(e)}
+                className='btn btn-outline-primary rounded-4 my-2'
+              >
+                Iniciar con Google
               </button>
             </div>
             <div>
-              <a className='btn btn-outline-primary rounded-4 my-2' href='level1' rel='noopener noreferrer'>
-                Iniciar como Invitado
-              </a>
+              <button
+                className='btn btn-outline-primary rounded-4 mt-4 mb-2'
+                onClick={() => {
+                  navigate('/level1')
+                }}
+              >
+                Iniciar como invitado
+              </button>
             </div>
           </div>
         </form>

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useAvatar } from '../../context/AvatarContext'
 import { useCharacterInteraction } from '../components/controller/CharacterInteractionState'
+import { useCharacterBasicAttack } from '../components/controller/CharacterAttackState'
 import { useAudio } from '../../context/AudioContext'
 
 const debug = true
@@ -19,7 +20,9 @@ export default function Controls () {
   const [danceSound] = useState(new Audio('/assets/sounds/catActions/dance.wav'))
   const [play, setPlay] = useState(false)
   const { playSoundEffect } = useAudio()
+  const [isAttacking, setIsAttacking] = useState(false)
   const [isInteracting, setIsInteracting] = useState(false)
+  const basicAttackState = useCharacterBasicAttack()
 
   useEffect(() => {
     const unsubscribe = sub(
@@ -28,10 +31,17 @@ export default function Controls () {
         running: state.run,
         jumping: state.jump,
         dancing: state.dance,
-        interacting: state.interact
+        interacting: state.interact,
+        attacking: state.basic_attack
       }),
-      ({ movement, running, jumping, dancing, interacting }) => {
-        if (interacting) {
+      ({ movement, running, jumping, dancing, interacting, attacking }) => {
+        if (attacking) {
+          setIsAttacking(true)
+          if (basicAttackState.action) {
+            setAvatar({ ...avatar, animation: 'T-Pose' })
+            playSoundEffect('catAttackSound')
+          }
+        } else if (interacting) {
           setIsInteracting(true)
         } else if (jumping) {
           setAvatar({ ...avatar, animation: 'Jump' })
@@ -46,6 +56,7 @@ export default function Controls () {
         }
 
         if (!interacting) { setIsInteracting(false) }
+        if (!attacking) { setIsAttacking(false) }
       }
     )
     return () => unsubscribe()
@@ -63,6 +74,17 @@ export default function Controls () {
       }
     }
   }, [isInteracting])
+
+  useEffect(() => {
+    if (isAttacking) {
+      const { action } = useCharacterBasicAttack.getState()
+      if (action) {
+        action()
+      } else {
+        print_debug('No hay accion asignada.')
+      }
+    }
+  }, [isAttacking])
 
   useEffect(() => {
     if (play) {

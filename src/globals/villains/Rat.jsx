@@ -1,120 +1,152 @@
-import { useRef, useEffect } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
-import { CuboidCollider, RigidBody, TrimeshCollider } from '@react-three/rapier'
-import { useAvatar } from '../../context/AvatarContext'
+import { useEffect, useRef, useState } from 'react'
+import { useGLTF } from '@react-three/drei'
+import { CuboidCollider, RigidBody } from '@react-three/rapier'
 import { useFrame } from '@react-three/fiber'
-import { CatmullRom } from 'three'
+import { useLifeState } from '../../utils/components/controller/CharacterLife'
+import { useCharacterBasicAttack } from '../../utils/components/controller/CharacterAttackState'
+import { applyPattern } from './Patterns'
 
-const ratCurrentSpeed = 4
+const debug = true
 
-export default function Rat (
+function print_debug(text) {
+  if (debug) {
+    console.log(`[Rat.jsx]: ${text}`)
+  }
+}
 
-  props,
-  { position }
-) {
+export default function Rat(props) {
+  const { nodes, materials } = useGLTF('/assets/models/villains/rat.glb')
+
   const ratRef = useRef()
-  const ratBodyRef = useRef()
-  const { nodes, materials, animations } = useGLTF(
-    '/assets/models/villains/rat.glb'
-  )
+  const ratHostilColliderRef = useRef()
+  const ratHitSensorRef = useRef()
+  const scale = 3
 
-  const { avatar, setAvatar } = useAvatar()
+  const lifeState = useLifeState() // Vida del protagonista
+  const characterBasickAttackState = useCharacterBasicAttack()
 
-  const amplitude = 3.5
+  const [life, setLife] = useState(1) // Vida de la rata
+  const [pattern, setPattern] = useState(props.pattern) // Patrón de movimiento actual
+
+  useEffect(() => {
+    if (life < 0) characterBasickAttackState.clear()
+  }, [life])
+
+  const handleIntersectionEnter = (event) => {
+    if (event.colliderObject.name === 'character-capsule-collider') {
+      characterBasickAttackState.assign(() => {
+        setLife((prevLife) => prevLife - 1)
+      })
+    }
+  }
+
+  const handleIntersectionExit = (event) => {
+    if (event.colliderObject.name === 'character-capsule-collider') {
+      characterBasickAttackState.clear()
+    }
+  }
+
+  const updateCollider = () => {
+    if (
+      ratRef.current &&
+      ratHostilColliderRef.current &&
+      ratHitSensorRef.current
+    ) {
+      const { position, rotation } = ratRef.current
+      ratHostilColliderRef.current.setTranslation({
+        x: position.x,
+        y: position.y + 0.3,
+        z: position.z
+      })
+      ratHostilColliderRef.current.setRotation({
+        x: rotation.x,
+        y: rotation.y,
+        z: rotation.z
+      })
+      ratHitSensorRef.current.setTranslation({
+        x: position.x,
+        y: position.y + 0.3,
+        z: position.z
+      })
+      ratHitSensorRef.current.setRotation({
+        x: rotation.x,
+        y: rotation.y,
+        z: rotation.z
+      })
+    }
+  }
+
+  const calculatePosition = (time) => {
+    const actualPosition = {
+      x: ratRef.current.position.x,
+      y: ratRef.current.position.y,
+      z: ratRef.current.position.z
+    }
+    return applyPattern(pattern, time, 1, actualPosition)
+  }
 
   useFrame((state, delta) => {
-    const position = ratRef.current.position
-    position.x = Math.cos(state.clock.getElapsedTime()) * amplitude + props.position[0]
+    const time = state.clock.elapsedTime
+    if (ratRef.current) {
+      const { x, y, z } = calculatePosition(time)
+      ratRef.current.position.x = x ?? ratRef.current.position.x
+      ratRef.current.position.y = y ?? ratRef.current.position.y
+      ratRef.current.position.z = z ?? ratRef.current.position.z
+      updateCollider()
+    }
   })
 
-  /*
-    useFrame((state, delta=5) =>{
-      const currentPosition = ratBodyRef.current?.translation();
-
-      console.log("Position", position)
-
-      console.log("currentPostion", currentPosition)
-
-      let moveX = currentPosition?.x;
-      let moveZ = currentPosition?.z;
-
-      console.log("moveX", moveX)
-      console.log("moveZ", moveZ)
-
-      console.log("1 ", avatar.body?.translation().x)
-      console.log("2", currentPosition?.x)
-      if (avatar.body?.translation().x > currentPosition?.x){
-        moveX += delta * ratCurrentSpeed;
-        console.log("moveX ahora es: ", moveX)
-      } else if (avatar.body?.translation().x < currentPosition?.x){
-        moveX -= delta * ratCurrentSpeed;
-        console.log("moveX ahora es: ", moveX)
-      };
-
-      if (avatar.body?.translation().z > currentPosition?.z + 24.5){
-        moveZ += delta * ratCurrentSpeed;
-      } else if (avatar.body?.translation().z < currentPosition?.z + 25.5){
-        moveZ -= delta * ratCurrentSpeed;
-      };
-
-      ratBodyRef.current?.setTranslation({
-        x: moveX,
-        y: ratBodyRef.current?.translation().y,
-        z: moveZ
-      }, true)
-
-      const angle = Math.atan2(avatar.body?.translation().x -
-      currentPosition?.x, avatar.body?.translation().z - 24.5 -
-      currentPosition?.z)-Math.PI;
-
-      console.log("Angle: ",angle)
-
-      ratRef.current.position.x = (currentPosition?.x * delta) - (Math.sin(angle))*49;
-      ratRef.current.rotation.y = angle;
-      ratRef.current.position.z = (currentPosition?.z * delta) - (1 - Math.cos(angle))*49;
-
-    }
-    )
-  */
-
-  // const { actions } = useAnimations(animations, group);
   return (
-    <RigidBody type='dynamic' colliders={false} position-y={-0.99}>
-      <group {...props} ref={ratRef} name='Scene'>
-        <group name='Rat' scale={3}>
-          <skinnedMesh
-            name='Plane_1'
-            geometry={nodes.Plane_1.geometry}
-            material={materials.Pelaje}
-            skeleton={nodes.Plane_1.skeleton}
+    <>
+      {life > 0 && (
+        <RigidBody type='fixed' colliders={false}>
+          <CuboidCollider
+            ref={ratHostilColliderRef}
+            args={[(0.6 / 3) * scale, (0.2 / 3) * scale, (0.2 / 3) * scale]}
+            onCollisionEnter={(other) => {
+              if (other.colliderObject.name === 'character-capsule-collider') {
+                lifeState.decrement()
+              }
+            }}
           />
-          <skinnedMesh
-            name='Plane_2'
-            geometry={nodes.Plane_2.geometry}
-            material={materials.Blandas}
-            skeleton={nodes.Plane_2.skeleton}
+          <CuboidCollider
+            ref={ratHitSensorRef}
+            args={[(1.5 / 3) * scale, (0.4 / 3) * scale, (1.1 / 3) * scale]}
+            onIntersectionEnter={(event) => handleIntersectionEnter(event)}
+            onCollisionExit={(event) => handleIntersectionExit(event)}
+            sensor
           />
-          <skinnedMesh
-            name='Plane_3'
-            geometry={nodes.Plane_3.geometry}
-            material={materials.Ojos}
-            skeleton={nodes.Plane_3.skeleton}
-          />
-          <skinnedMesh
-            name='Plane_4'
-            geometry={nodes.Plane_4.geometry}
-            material={materials.Ojos_2}
-            skeleton={nodes.Plane_4.skeleton}
-          />
+          <group {...props} ref={ratRef} dispose={null}>
+            <mesh
+              name='Plane_1'
+              geometry={nodes.Plane_1.geometry}
+              material={materials.Pelaje}
+              skeleton={nodes.Plane_1.skeleton}
+            />
+            <mesh
+              name='Plane_2'
+              geometry={nodes.Plane_2.geometry}
+              material={materials.Blandas}
+              skeleton={nodes.Plane_2.skeleton}
+            />
+            <mesh
+              name='Plane_3'
+              geometry={nodes.Plane_3.geometry}
+              material={materials.Ojos}
+              skeleton={nodes.Plane_3.skeleton}
+            />
+            <mesh
+              name='Plane_4'
+              geometry={nodes.Plane_4.geometry}
+              material={materials.Ojos_2}
+              skeleton={nodes.Plane_4.skeleton}
+            />
+          </group>
           <primitive object={nodes.Bone006} />
-        </group>
-        {/* <CuboidCollider
-          position={[0, 0.3, 0]}
-          args={[0.8, 0.2, 0.2]}
-        /> */}
-      </group>
-    </RigidBody>
+        </RigidBody>
+      )}
+    </>
   )
 }
 
-useGLTF.preload('/rat.glb')
+useGLTF.preload('/assets/models/villains/rat.glb')

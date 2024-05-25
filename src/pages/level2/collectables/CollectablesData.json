@@ -59,14 +59,14 @@
     {
       "id": "8",
       "name": "DiamondCone 9",
-      "position": [-20, 1, -156],
+      "position": [-24, 1, -143],
       "isTaken": false,
       "isCollected": false
     },
     {
       "id": "9",
       "name": "DiamondCone 10",
-      "position": [-20, 1, -160],
+      "position": [-22, 1, -158],
       "isTaken": false,
       "isCollected": false
     }

@@ -17,24 +17,19 @@ export default function Avatar () {
   const { nodes, materials, animations } = useGLTF('/assets/models/catPoly/CatPoly.glb')
 
   const lifeState = useLifeState()
-
-  // Estado local para controlar si se muestra la vida o no
   const [displayLife, setDisplayLife] = useState(true)
 
   useEffect(() => {
-    print_debug(`[Avatar.jsx] Change on LifeValue, is ${lifeState.value} now`)
-
-    // Cambios en mostrar/ocultar elementos dependiendo del valor
     if (lifeState.value <= 0) {
       setDisplayLife(false)
     } else {
       setDisplayLife(true)
     }
-  }, [lifeState.value]) // Depende unicamente de cambios en lifeState.value
+  }, [lifeState.value])
 
   const { actions } = useAnimations(animations, avatarRef)
   useEffect(() => {
-    actions[avatar.animation]?.reset().fadeIn(0.5).play()
+    actions[avatar.animation]?.reset().play()
     return () => {
       if (actions[avatar.animation]) { actions[avatar.animation].fadeOut(0.5) }
     }
