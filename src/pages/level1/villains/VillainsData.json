@@ -1,0 +1,12 @@
+{
+  "villains": [
+    {
+      "id": "0",
+      "name": "Rat 0",
+      "type": "rat",
+      "pattern": "x",
+      "position": [-3, 0, -135],
+      "rotation": [0, 1.57, 0]
+    }
+  ]
+}
