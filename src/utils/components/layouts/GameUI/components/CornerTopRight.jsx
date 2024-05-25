@@ -19,18 +19,11 @@ const CornerTopRight = ({ life, playerName }) => {
     }
   }, [displayLife.value])
 
-  useEffect(() => {
-    setDiamantes('')
-    for (let i = 0; i < diamondsCount.value; i++) {
-      setDiamantes((prevDiamantes) => prevDiamantes + '💎')
-    }
-  }, [diamondsCount.value])
-
   return (
     <div className='container-top-right'>
       <div className='life-label'>{vida}</div>
       <div className='life-bar' style={{ width: `${displayLife}%` }} />
-      <div className='diamond-count'>{diamantes}</div>
+      <div className='diamond-count'>💎 x{diamondsCount.value}</div>
     </div>
   )
 }

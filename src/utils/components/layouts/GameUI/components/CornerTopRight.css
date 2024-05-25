@@ -11,8 +11,12 @@
 
 .life-label {
   font-size: 2rem;
+  text-shadow: 1px 1px 10px #00000046;
 }
 
 .diamond-count {
   font-size: 1.5rem;
+  text-shadow: 1px 1px 10px #00000075;
+  font-weight: bold;
+  color: white;
 }
