@@ -80,7 +80,8 @@ async function verificar(user, setPlayerData, navigate) {
         email,
         displayName,
         vidas: 3, // Valor inicial para vidas
-        diamantes: 0 // Valor inicial para diamantes
+        diamantes: 0, // Valor inicial para diamantes
+        position: [0, 2, 0],
       };
       await createUser(newUser);
       setPlayerData(newUser);
