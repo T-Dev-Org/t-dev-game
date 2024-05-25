@@ -34,34 +34,40 @@ import Level2WorldZone4 from './world/Level2WorldZone4'
 import Villains from '../../globals/villains/VillainsGenerator'
 import VillainsData from './villains/VillainsData.json'
 import Rat from '../../globals/villains/Rat'
+import Dog from '../../globals/villains/Dog'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
-export default function Level2 () {
+export default function Level2() {
   const map = useMovements()
 
   const lifeState = useLifeState()
   const [displayLife, setDisplayLife] = useState(true)
 
   const positionState = useCharacterPositionState()
-  const [actualPosition, setActualPosition] = useState(positionState.initialPosition)
+  const [actualPosition, setActualPosition] = useState(
+    positionState.initialPosition
+  )
 
   useEffect(() => {
-    if (obtenerDeLocalStorage('actualPosition')) { setActualPosition(obtenerDeLocalStorage('actualPosition')) }
+    if (obtenerDeLocalStorage('actualPosition')) {
+      setActualPosition(obtenerDeLocalStorage('actualPosition'))
+    }
   }, obtenerDeLocalStorage('actualPosition'))
 
   useEffect(() => {
-    if (lifeState.value <= 0) { setDisplayLife(false) } else { setDisplayLife(true) }
+    if (lifeState.value <= 0) {
+      setDisplayLife(false)
+    } else {
+      setDisplayLife(true)
+    }
   }, [lifeState.value])
 
   return (
     <>
       <KeyboardControls map={map}>
-        <Canvas
-          shadows
-        >
-          {debug &&
-            <Perf position='top-left' />}
+        <Canvas shadows>
+          {debug && <Perf position='top-left' />}
           <Suspense fallback={<Instructive />}>
             <Lights />
             <Environments />
@@ -73,7 +79,7 @@ export default function Level2 () {
               <Level2WorldZone2 />
               <Level2WorldZone3 />
               <Level2WorldZone4 />
-              {displayLife &&
+              {displayLife && (
                 <Ecctrl
                   camInitDis={-2}
                   camMaxDis={-2}
@@ -83,27 +89,26 @@ export default function Level2 () {
                   slopeMaxAngle={Math.PI / 5.5}
                 >
                   <Avatar />
-                </Ecctrl>}
+                </Ecctrl>
+              )}
               <ManualColliders />
               <SymbolicSensors />
               <Interactables />
               <PortalNextWorld
                 position={[-24, 20, -102]}
+                rotation={[0, Math.PI / 2, 0]}
                 nextLevel='/level3'
               />
+              <Dog position={[-25, 19, -102]} rotation={[0, Math.PI / 2, 0]} />
               <Villains villainsData={VillainsData} />
             </Physics>
             <Texts />
           </Suspense>
           <Controls />
         </Canvas>
-        {!displayLife &&
-          <GameOverScene
-            reloadLevel='/level2'
-          />}
+        {!displayLife && <GameOverScene reloadLevel='/level2' />}
         <GameUI />
-        {debug &&
-          <NextLevelButton to='/level3' />}
+        {debug && <NextLevelButton to='/level3' />}
       </KeyboardControls>
     </>
   )

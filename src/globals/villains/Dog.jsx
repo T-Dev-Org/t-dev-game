@@ -48,7 +48,7 @@ export default function Dog(props) {
         <RigidBody type='fixed' colliders={false}>
           <group ref={group} {...props} dispose={null}>
             <CuboidCollider
-              args={[30 * scale, 60 * scale, 30 * scale]}
+              args={[34 * scale, 60 * scale, 34 * scale]}
               position={positionCorrection}
               onCollisionEnter={(other) => {
                 if (
