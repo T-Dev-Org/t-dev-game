@@ -152,7 +152,7 @@
       "rotation": [0, 3.14, 0]
     },
     {
-      "id": "20",
+      "id": "21",
       "name": "Rat Guard 5",
       "type": "rat",
       "pattern": "z",
@@ -160,7 +160,7 @@
       "rotation": [0, 3.14, 0]
     },
     {
-      "id": "21",
+      "id": "22",
       "name": "Rat Guard 6",
       "type": "rat",
       "pattern": "z",
@@ -168,7 +168,7 @@
       "rotation": [0, 3.14, 0]
     },
     {
-      "id": "22",
+      "id": "23",
       "name": "Rat Guard 7",
       "type": "rat",
       "pattern": "z",
@@ -176,7 +176,7 @@
       "rotation": [0, 3.14, 0]
     },
     {
-      "id": "23",
+      "id": "24",
       "name": "Rat Guard 8",
       "type": "rat",
       "pattern": "y",
