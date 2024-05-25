@@ -21,7 +21,7 @@ const readUSer = async (userEmail) => {
         if (userSnapshot.empty) {
             return {success: false, message: "User not found"};
         }
-        const userData = userSnapshot.docs.map((doc) => doc.data());
+        const userData = userSnapshot.docs[0].data();
         return {success: true, message: "User found", data: userData};
     } catch (error) {
         return {success: false, message: "Error to get the user", error};

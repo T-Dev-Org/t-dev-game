@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { json, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../context/AuthContext'
 import {readUSer, createUser} from '../../../utils/db/users-collection'
 import {usePlayer} from '../../../context/PlayerContext'
@@ -73,16 +73,21 @@ async function verificar(user, setPlayerData, navigate) {
     const { displayName, email } = user;
     const result = await readUSer(email);
     if (result.success) {
-      const newUser = {displayName, email };
-      setPlayerData({displayName, email});
+      setPlayerData(result.data)
       navigate('/level1');
     } else {
-      const newUser = {displayName, email };
+      const newUser = {
+        email,
+        displayName,
+        vidas: 3, // Valor inicial para vidas
+        diamantes: 0 // Valor inicial para diamantes
+      };
       await createUser(newUser);
-      setPlayerData({displayName, email});
+      setPlayerData(newUser);
       navigate('/level1');
     }
   } catch (error) {
     console.error('Error al leer el usuario:', error);
   }
 }
+
