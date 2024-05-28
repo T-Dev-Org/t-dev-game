@@ -59,8 +59,7 @@ export default function LoginComponent() {
               Iniciar con Google
             </button>
           </div>
-        </div>
-      </form>
+        </form>
     </div>
   );
 }
