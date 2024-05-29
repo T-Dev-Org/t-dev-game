@@ -2,7 +2,7 @@
 
 import { create } from 'zustand'
 
-const initialPos = [0, 10, 0]
+const initialPos = [0, 10, -2]
 
 export const useCharacterPositionState = create((set) => ({
   refPos: '',
