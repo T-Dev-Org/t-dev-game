@@ -19,7 +19,7 @@ const GameUI = () => {
   const lifeState = useLifeState()
   const [displayLife, setDisplayLife] = useState(true)
   const savingState = useSavingState()
-  const {playerData} = usePlayer();
+  const { playerData } = usePlayer()
 
   useEffect(() => {
     print_debug(`Change on LifeValue, is ${lifeState.value} now`)
@@ -34,7 +34,7 @@ const GameUI = () => {
 
   return (
     <>
-      <CornerTopRight playerName={playerData?.displayName}/>
+      <CornerTopRight playerName={playerData?.displayName} />
       {savingState.isSaving &&
         <CreateSaveIndicator />}
     </>
