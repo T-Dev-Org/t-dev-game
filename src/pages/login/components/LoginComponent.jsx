@@ -46,23 +46,6 @@ export default function LoginComponent() {
               <div className='sign-in-text mx-1'>Iniciar con Google</div>
             </div>
           </button>
-          <div>
-            <button
-              className='btn btn-outline-secondary rounded-4 my-2'
-              onClick={() => {
-                navigate('/level1')
-              }}
-            >
-              <div className='d-flex flex-row'>
-                <img
-                  className='rounded-circle bg-white p-1 login-icon'
-                  src='/assets/images/icons/perfil-desconocido.png'
-                  alt='google-icon'
-                />
-                <div className='sign-in-text mx-2'>Iniciar como invitado</div>
-              </div>
-            </button>
-          </div>
         </div>
       </div>
     </>
