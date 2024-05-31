@@ -1,0 +1,33 @@
+{
+    "checkpoints": [
+      {
+        "id": "0",
+        "name": "Checkpoint 1",
+        "position": [-5, 3, -55],
+        "args": [4.2, 2, 3.2],
+        "isTaken": false
+      },
+      {
+        "id": "1",
+        "name": "Checkpoint 2",
+        "position": [-5, 3, -85],
+        "args": [4, 4, 4],
+        "isTaken": false
+      },
+      {
+        "id": "2",
+        "name": "Checkpoint 3",
+        "position": [0, 3, -162],
+        "args": [4, 2, 4],
+        "isTaken": false
+      },
+      {
+        "id": "3",
+        "name": "Checkpoint 4",
+        "args": [4, 2, 4],
+        "position": [-8, 3, -218],
+        "isTaken": false
+      }
+    ]
+  }
+  

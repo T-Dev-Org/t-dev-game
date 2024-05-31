@@ -2,7 +2,7 @@
 import { Perf } from 'r3f-perf'
 import { KeyboardControls } from '@react-three/drei'
 import { Physics } from '@react-three/rapier'
-import { Suspense } from 'react'
+import { Suspense, useState, useEffect, useCallback } from 'react'
 import { Canvas } from '@react-three/fiber'
 import Instructive from '../../utils/components/layouts/instructive/Instructive'
 import useMovements from '../../utils/key-movements'
@@ -17,11 +17,44 @@ import Texts from './abstractions/Texts'
 import GameUI from '../../utils/components/layouts/GameUI/GameUI'
 import NextLevelButton from '../../utils/components/layouts/GameUI/components/NextLevelButton'
 // import ZoneSensors from "./world/ZoneSensors";
+import Checkpoints from '../../globals/interactables/CheckpointsGenerator'
+import checkpointsData from './checkpoints/CheckpointsData.json'
+import { useLifeState } from '../../utils/components/controller/CharacterLife'
+import { useCharacterPositionState } from '../../utils/components/controller/CharacterPositionState'
+import { obtenerDeLocalStorage } from '../../utils/localStorageUtils'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
 export default function Level3 () {
   const map = useMovements()
+
+  const lifeState = useLifeState()
+  const [displayLife, setDisplayLife] = useState(true)
+
+  const positionState = useCharacterPositionState()
+  const [actualPosition, setActualPosition] = useState(
+    positionState.initialPosition
+  )
+
+  const [showPortal, setShowPortal] = useState(false)
+
+  useEffect(() => {
+    if (obtenerDeLocalStorage('actualPosition')) {
+      setActualPosition(obtenerDeLocalStorage('actualPosition'))
+    }
+  }, obtenerDeLocalStorage('actualPosition'))
+
+  useEffect(() => {
+    if (lifeState.value <= 0) {
+      setDisplayLife(false)
+    } else {
+      setDisplayLife(true)
+    }
+  }, [lifeState.value])
+
+  const handleEnemyDeath = useCallback(() => {
+    setShowPortal(true)
+  }, [])  
 
   return (
     <KeyboardControls map={map}>
@@ -32,6 +65,7 @@ export default function Level3 () {
           <Lights />
           <Environments />
           <Physics debug={debug}>
+            <Checkpoints checkpointsData={checkpointsData} />            
             <Level3World />
             <Ecctrl
               camInitDis={-2}
