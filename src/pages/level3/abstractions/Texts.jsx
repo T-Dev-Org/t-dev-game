@@ -11,7 +11,7 @@ const Texts = (props) => {
         size={0.2}
         position={[0, 2, 1]}
         rotation={[0, Math.PI, 0]}
-        text='Welcome to hell'
+        text='Level 3'
       />
       <CustomText2D
         position={[-5, 0.2, -55]}
@@ -36,39 +36,27 @@ const Texts = (props) => {
       {/* Mnesajes de ayuda/preguntas */}
       <CustomText3D
         size={0.3}
+        position={[-5, 2, -85]}
+        rotation={[0, 0, 0]}
+        text='Recuerda explorar todo el laberinto'
+      />
+      <CustomText3D
+        size={0.3}
         position={[-14, 2, -45]}
         rotation={[0, Math.PI / 2, 0]}
-        text='Which way..?'
+        text='A donde iras?'
       />
       <CustomText3D
         size={0.3}
-        position={[-8, 2, -22]}
+        position={[-12, 2, -22]}
         rotation={[0, Math.PI, 0]}
-        text='Where we are?'
-      />
-      <CustomText3D
-        size={0.3}
-        position={[2, 2, -80]}
-        rotation={[0, Math.PI, 0]}
-        text='Are these fake?'
+        text='Nada por aqui...'
       />
       <CustomText3D
         size={0.3}
         position={[5, 2, -140]}
         rotation={[0, 0, 0]}
-        text='And these?'
-      />
-      <CustomText3D
-        size={0.3}
-        position={[0, 2, -100]}
-        rotation={[0, Math.PI, 0]}
-        text='Nothing here?'
-      />
-      <CustomText3D
-        size={0.3}
-        position={[-8, 2.5, -225]}
-        rotation={[0, 0, 0]}
-        text='Final battle, now or never'
+        text='Son reales?'
       />
     </>
   )
