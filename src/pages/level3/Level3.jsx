@@ -24,6 +24,9 @@ import { useCharacterPositionState } from '../../utils/components/controller/Cha
 import { obtenerDeLocalStorage } from '../../utils/localStorageUtils'
 import Collectables from '../../globals/collectables/CollectablesGenerator'
 import collectablesData from './collectables/CollectablesData.json'
+import Villains from '../../globals/villains/VillainsGenerator'
+import VillainsData from './villains/VillainsData.json'
+import GameOverScene from '../../utils/components/layouts/GameOverScene/GameOverScene'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
@@ -70,21 +73,26 @@ export default function Level3 () {
             <Checkpoints checkpointsData={checkpointsData} />
             <Collectables collectablesData={collectablesData} />
             <Level3World />
-            <Ecctrl
-              camInitDis={-2}
-              camMaxDis={-2}
-              maxVelLimit={5}
-              jumpVel={4}
-              position={[0, 2, 0]}
-            >
-              <Avatar />
-            </Ecctrl>
+            {displayLife && (
+                <Ecctrl
+                  camInitDis={-2}
+                  camMaxDis={-2}
+                  maxVelLimit={4}
+                  jumpVel={3}
+                  position={actualPosition}
+                  slopeMaxAngle={Math.PI / 5.5}
+                >
+                  <Avatar />
+                </Ecctrl>
+              )}
+            <Villains villainsData={VillainsData} />
           </Physics>
           <Texts />
         </Suspense>
         <Controls />
       </Canvas>
-      {/* <GameUI /> */}
+      {!displayLife && <GameOverScene reloadLevel='/level3' />}      
+      <GameUI />
       {debug &&
         <NextLevelButton to='/level4' />}
     </KeyboardControls>
