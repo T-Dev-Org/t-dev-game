@@ -56,7 +56,7 @@ const Texts = (props) => {
         size={0.3}
         position={[-10, 2, -100]}
         rotation={[0, 0, 0]}
-        text='Son reales?'
+        text='Hay algo ahi?'
       />
     </>
   )
