@@ -24,7 +24,7 @@
       {
         "id": "3",
         "name": "Checkpoint 4",
-        "position": [-8, 1, -218],        
+        "position": [0, 1, -190],        
         "args": [3.5, 0.5, 3.5],
         "isTaken": false
       }

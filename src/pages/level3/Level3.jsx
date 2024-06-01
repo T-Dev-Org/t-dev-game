@@ -22,6 +22,8 @@ import checkpointsData from './checkpoints/CheckpointsData.json'
 import { useLifeState } from '../../utils/components/controller/CharacterLife'
 import { useCharacterPositionState } from '../../utils/components/controller/CharacterPositionState'
 import { obtenerDeLocalStorage } from '../../utils/localStorageUtils'
+import Collectables from '../../globals/collectables/CollectablesGenerator'
+import collectablesData from './collectables/CollectablesData.json'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
@@ -65,7 +67,8 @@ export default function Level3 () {
           <Lights />
           <Environments />
           <Physics debug={debug}>
-            <Checkpoints checkpointsData={checkpointsData} />            
+            <Checkpoints checkpointsData={checkpointsData} />
+            <Collectables collectablesData={collectablesData} />
             <Level3World />
             <Ecctrl
               camInitDis={-2}
