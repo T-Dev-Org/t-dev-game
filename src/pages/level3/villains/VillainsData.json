@@ -13,7 +13,7 @@
         "name": "Rat 1",
         "type": "rat",
         "pattern": "x",
-        "position": [0, 0, -6],
+        "position": [2, 0, -6],
         "rotation": [0, 1.57, 0]
       },
       {
@@ -39,6 +39,182 @@
         "pattern": "z",
         "position": [0, 0, -35],
         "rotation": [0, 1.57, 0]
-      }      
+      },
+      {
+        "id": "5",
+        "name": "Rat 5",
+        "type": "rat",
+        "pattern": "x",
+        "position": [0, 0, -40],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "id": "6",
+        "name": "Rat 6",
+        "type": "rat",
+        "pattern": "x",
+        "position": [0, 0, -48],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "id": "7",
+        "name": "Rat 7",
+        "type": "rat",
+        "pattern": "x",
+        "position": [0, 0, -56],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "id": "8",
+        "name": "Rat 8",
+        "type": "rat",
+        "pattern": "x_negative",
+        "position": [0, 0, -44],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "id": "9",
+        "name": "Rat 9",
+        "type": "rat",
+        "pattern": "x_negative",
+        "position": [0, 0, -52],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "id": "10",
+        "name": "Rat 10",
+        "type": "rat",
+        "pattern": "x_negative",
+        "position": [0, 0, -60],
+        "rotation": [0, 0, 0]
+      },           
+      {
+        "id": "11",
+        "name": "Rat 11",
+        "type": "rat",
+        "pattern": "round_reverse",
+        "position": [9, 0, -18],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "12",
+        "name": "Rat 12",
+        "type": "rat",
+        "pattern": "round",
+        "position": [12, 0, -15],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "13",
+        "name": "Rat 13",
+        "type": "rat",
+        "pattern": "x",
+        "position": [-15, 0, -37],
+        "rotation": [0, -1.57, 0]
+      },
+      {
+        "id": "14",
+        "name": "Rat 14",
+        "type": "rat",
+        "pattern": "x_negative",
+        "position": [-15, 0, -32],
+        "rotation": [0, -1.57, 0]
+      },
+      {
+        "id": "15",
+        "name": "Rat 15",
+        "type": "rat",
+        "pattern": "x",
+        "position": [-10, 0, -27],
+        "rotation": [0, -1.57, 0]
+      },
+      {
+        "id": "16",
+        "name": "Rat 16",
+        "type": "rat",
+        "pattern": "x_negative",
+        "position": [-10, 0, -22],
+        "rotation": [0, -1.57, 0]
+      },
+      {
+        "id": "17",
+        "name": "Rat 17",
+        "type": "rat",
+        "pattern": "x",
+        "position": [-10, 0, -17],
+        "rotation": [0, -1.57, 0]
+      },
+      {
+        "id": "18",
+        "name": "Rat 18",
+        "type": "rat",
+        "pattern": "x_negative",
+        "position": [-10, 0, -12],
+        "rotation": [0, -1.57, 0]
+      },
+      {
+        "id": "19",
+        "name": "Rat 19",
+        "type": "rat",
+        "pattern": "z",
+        "position": [-14, 0, -55],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "20",
+        "name": "Rat 20",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [-15, 0, -55],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "21",
+        "name": "Rat 21",
+        "type": "rat",
+        "pattern": "z",
+        "position": [-16, 0, -55],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "22",
+        "name": "Rat 22",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [-17, 0, -55],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "23",
+        "name": "Rat 23",
+        "type": "rat",
+        "pattern": "z",
+        "position": [-18, 0, -55],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "24",
+        "name": "Rat 24",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [-19, 0, -55],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "25",
+        "name": "Rat 25",
+        "type": "rat",
+        "pattern": "z",
+        "position": [9, 0, -62],
+        "rotation": [0, -1.57, 0]
+      },
+      {
+        "id": "26",
+        "name": "Rat 26",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [11, 0, -52],
+        "rotation": [0, 1.57, 0]
+      }
     ]
 }

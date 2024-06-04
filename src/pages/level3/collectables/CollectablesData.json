@@ -3,7 +3,7 @@
       {
         "id": "0",
         "name": "DiamondCone 1",
-        "position": [-20, 0.5, -6],
+        "position": [-19, 0.5, -10],
         "isTaken": false,
         "isCollected": false
       },
@@ -67,6 +67,27 @@
         "id": "9",
         "name": "DiamondCone 10",
         "position": [-6, 0.2, -189],
+        "isTaken": false,
+        "isCollected": false
+      },
+      {
+        "id": "10",
+        "name": "DiamondCone 11",
+        "position": [8, 0.2, -30],
+        "isTaken": false,
+        "isCollected": false
+      },
+      {
+        "id": "11",
+        "name": "DiamondCone 12",
+        "position": [8, 2, -30],
+        "isTaken": false,
+        "isCollected": false
+      },
+      {
+        "id": "12",
+        "name": "DiamondCone 13",
+        "position": [8, 0.2, -20],
         "isTaken": false,
         "isCollected": false
       }
