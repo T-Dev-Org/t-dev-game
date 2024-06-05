@@ -4,8 +4,8 @@ import { useAudio } from '../../context/AudioContext'
 import { useCharacterPositionState } from '../../utils/components/controller/CharacterPositionState'
 import { guardarEnLocalStorage } from '../../utils/localStorageUtils'
 import { useSavingState } from '../../utils/components/layouts/GameUI/states/SavingState'
-import { useAuth } from '../../context/AuthContext'
 import { editUser, readUSer } from '../../utils/db/users-collection'
+import { usePlayer } from '../../context/PlayerContext'
 
 const debug = true
 
@@ -20,9 +20,7 @@ export default function Checkpoint (props) {
   const { playSoundEffect } = useAudio()
   const savingState = useSavingState()
   const positionState = useCharacterPositionState()
-  const {userLogged} = useAuth()
-  const displayName = userLogged.displayName
-  const email = userLogged.email
+  const {playerData} = usePlayer()
 
   const handleIntersectionEnter = (event, themeName, soundEffect = 'none') => {
     if (event.colliderObject.name === 'character-capsule-collider') {
@@ -34,9 +32,14 @@ export default function Checkpoint (props) {
   const handleCheckpoint = async (event) => {
     if (event.colliderObject.name === 'character-capsule-collider') {
       try {
-        const user = { displayName, email, vidas: 3, diamantes: 0, position: props.position }
+        const user = { 
+          displayName: playerData.displayName,
+          email: playerData.email,
+          vidas: 3,
+          diamantes: 0, 
+          position: props.position }
         positionState.setActualPosition(props.position)
-        const actualUser = await editUser(email, user)
+        const actualUser = await editUser(playerData.email, user)
         console.log("Usuario actualizado: ", actualUser)
         //guardarEnLocalStorage('actualPosition', props.position)
         print_debug(`${props.name} reached`)
