@@ -5,7 +5,7 @@
         "name": "Rat 0",
         "type": "rat",
         "pattern": "z",
-        "position": [0, 0, -12],
+        "position": [0, 0, -14],
         "rotation": [0, 1.57, 0]
       },
       {

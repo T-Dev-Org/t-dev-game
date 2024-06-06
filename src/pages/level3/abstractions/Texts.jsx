@@ -34,7 +34,7 @@ const Texts = (props) => {
         text='Checkpoint 4'
       />
       {/* Mnesajes de ayuda/preguntas */}
-      <CustomText3D
+{ /*    <CustomText3D
         size={0.3}
         position={[-5, 2, -85]}
         rotation={[0, 0, 0]}
@@ -57,7 +57,7 @@ const Texts = (props) => {
         position={[-10, 2, -100]}
         rotation={[0, 0, 0]}
         text='Hay algo ahi?'
-      />
+      />*/}
     </>
   )
 }
