@@ -2,7 +2,9 @@ import { json, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../context/AuthContext'
 import { readUSer, createUser } from '../../../utils/db/users-collection'
 import { usePlayer } from '../../../context/PlayerContext'
+
 import './LoginComponent.css'
+import { guardarEnLocalStorage } from '../../../utils/localStorageUtils'
 
 export default function LoginComponent() {
   const navigate = useNavigate()
@@ -58,6 +60,7 @@ async function verificar(user, setPlayerData, navigate) {
     const result = await readUSer(email)
     if (result.success) {
       setPlayerData(result.data)
+      guardarEnLocalStorage('actualPosition', result.data.position)
       navigate('/level1')
     } else {
       const newUser = {
