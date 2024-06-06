@@ -34,30 +34,56 @@ import Level2WorldZone4 from './world/Level2WorldZone4'
 import Villains from '../../globals/villains/VillainsGenerator'
 import VillainsData from './villains/VillainsData.json'
 import SpecialVillans from './villains/SpecialVillans'
+import { editUser, readUSer } from '../../utils/db/users-collection'
+import { usePlayer } from '../../context/PlayerContext'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
 export default function Level2 () {
   const map = useMovements()
 
+  const {playerData} = usePlayer()
+  const [isLoading, setIsLoading] = useState(true) 
+
   const lifeState = useLifeState()
   const [displayLife, setDisplayLife] = useState(true)
 
-  const positionState = useCharacterPositionState()
-  const [actualPosition, setActualPosition] = useState(
-    positionState.initialPosition
-  )
+  // const positionState = useCharacterPositionState()
+  // const [actualPosition, setActualPosition] = useState(
+  //   positionState.initialPosition
+  // )
+
+  const { actualPosition, setActualPosition, resetActualPosition } = useCharacterPositionState();
+
 
   const [showPortal, setShowPortal] = useState(false)
 
+  // const initializeUserPosition = useCallback(async () => {
+  //   const user = {
+  //     diamantes: playerData.diamantes,
+  //     displayName: playerData.displayName,
+  //     email: playerData.email,
+  //     level: '/level2',
+  //     position: [0, 10, -2],
+  //     vidas: playerData.vidas
+  //   }
+  //   await editUser(playerData.email, user)
+  // }, [playerData.displayName])
+
   useEffect(() => {
-    if (obtenerDeLocalStorage('actualPosition')) {
-      setActualPosition(obtenerDeLocalStorage('actualPosition'))
+    const cargarPosicion = async () => {
+      const infoJugador = await readUSer(playerData.email)
+      if (infoJugador.success) {
+        await setActualPosition(infoJugador.data.position)
+      }
+      setIsLoading(false)
     }
-  }, obtenerDeLocalStorage('actualPosition'))
+    cargarPosicion()
+  }, [setActualPosition]) 
 
   useEffect(() => {
     if (lifeState.value <= 0) {
+      resetActualPosition()
       setDisplayLife(false)
     } else {
       setDisplayLife(true)
@@ -84,7 +110,8 @@ export default function Level2 () {
               <Level2WorldZone2 />
               <Level2WorldZone3 />
               <Level2WorldZone4 />
-              {displayLife && (
+              <>
+              {displayLife && actualPosition && !isLoading &&(
                 <Ecctrl
                   camInitDis={-2}
                   camMaxDis={-2}
@@ -92,10 +119,15 @@ export default function Level2 () {
                   jumpVel={3}
                   position={actualPosition}
                   slopeMaxAngle={Math.PI / 5.5}
+                  onPositionChange={setActualPosition}
                 >
                   <Avatar />
                 </Ecctrl>
               )}
+              {isLoading && (
+                  <Instructive />
+                )}
+              </>
               <ManualColliders />
               <SymbolicSensors />
               <Interactables />

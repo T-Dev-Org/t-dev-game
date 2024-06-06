@@ -60,15 +60,15 @@ async function verificar(user, setPlayerData, navigate) {
     const result = await readUSer(email)
     if (result.success) {
       setPlayerData(result.data)
-      guardarEnLocalStorage('actualPosition', result.data.position)
-      navigate('/level1')
+      navigate(result.data.level)
     } else {
       const newUser = {
         email,
         displayName,
         vidas: 3, // Valor inicial para vidas
         diamantes: 0, // Valor inicial para diamantes
-        position: [0, 2, 0]
+        position: [0, 2, 0],
+        level: '/level1'
       }
       await createUser(newUser)
       setPlayerData(newUser)
