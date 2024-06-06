@@ -27,6 +27,7 @@ import collectablesData from './collectables/CollectablesData.json'
 import Villains from '../../globals/villains/VillainsGenerator'
 import VillainsData from './villains/VillainsData.json'
 import GameOverScene from '../../utils/components/layouts/GameOverScene/GameOverScene'
+import Interactables from './interactables/Interactables'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
@@ -79,13 +80,14 @@ export default function Level3 () {
                   camMaxDis={-2}
                   maxVelLimit={4}
                   jumpVel={3}
-                  position={actualPosition}
+                  position={[0, 5, -200]}
                   slopeMaxAngle={Math.PI / 5.5}
                 >
                   <Avatar />
                 </Ecctrl>
               )}
             <Villains villainsData={VillainsData} />
+            <Interactables />
           </Physics>
           <Texts />
         </Suspense>
