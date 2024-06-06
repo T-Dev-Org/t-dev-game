@@ -215,6 +215,406 @@
         "pattern": "z_negative",
         "position": [11, 0, -52],
         "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "27",
+        "name": "Rat 27",
+        "type": "rat",
+        "pattern": "z",
+        "position": [11, 0, -90],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "28",
+        "name": "Rat 28",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [9, 0, -90],
+        "rotation": [0, -1.57, 0]
+      },
+      {
+        "id": "29",
+        "name": "Rat 29",
+        "type": "rat",
+        "pattern": "z",
+        "position": [7, 0, -90],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "30",
+        "name": "Rat 30",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [5, 0, -90],
+        "rotation": [0, -1.57, 0]
+      },
+      {
+        "id": "31",
+        "name": "Rat 31",
+        "type": "rat",
+        "pattern": "z",
+        "position": [11, 0, -108],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "32",
+        "name": "Rat 32",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [9, 0, -108],
+        "rotation": [0, -1.57, 0]
+      },
+      {
+        "id": "33",
+        "name": "Rat 33",
+        "type": "rat",
+        "pattern": "z",
+        "position": [7, 0, -108],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "34",
+        "name": "Rat 34",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [5, 0, -108],
+        "rotation": [0, -1.57, 0] 
+      },
+      {
+        "id": "35",
+        "name": "Rat 35",
+        "type": "rat",
+        "pattern": "z",
+        "position": [11, 0, -126],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "36",
+        "name": "Rat 36",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [9, 0, -126],
+        "rotation": [0, -1.57, 0]
+      },
+      { 
+        "id": "37",
+        "name": "Rat 37",
+        "type": "rat",
+        "pattern": "z",
+        "position": [7, 0, -126],
+        "rotation": [0, 1.57, 0]  
+      },
+      {
+        "id": "38",
+        "name": "Rat 38",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [5, 0, -126],
+        "rotation": [0, -1.57, 0] 
+      },
+      {
+        "id": "39",
+        "name": "Rat 39",
+        "type": "rat",
+        "pattern": "z",
+        "position": [3, 0, -108],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "40",
+        "name": "Rat 40",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [1, 0, -108],
+        "rotation": [0, -1.57, 0]
+      },
+      {
+        "id": "41",
+        "name": "Rat 41",
+        "type": "rat",
+        "pattern": "z",
+        "position": [-1, 0, -108],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "42",
+        "name": "Rat 42",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [-3, 0, -108],
+        "rotation": [0, -1.57, 0] 
+      },
+      {
+        "id": "43",
+        "name": "Rat 43",
+        "type": "rat",
+        "pattern": "round",
+        "position": [-15, 0, -88],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "44",
+        "name": "Rat 44",
+        "type": "rat",
+        "pattern": "round_reverse",
+        "position": [-15, 0, -98],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "45",
+        "name": "Rat 45",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [-14, 0, -113],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "46",
+        "name": "Rat 46",
+        "type": "rat",
+        "pattern": "z",
+        "position": [-15, 0, -113],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "47",
+        "name": "Rat 47",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [-16, 0, -113],
+        "rotation": [0, 1.57, 0]  
+      },
+      {
+        "id": "48",
+        "name": "Rat 48",
+        "type": "rat",
+        "pattern": "z",
+        "position": [-17, 0, -113],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "49",
+        "name": "Rat 49",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [-18, 0, -113],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "50",
+        "name": "Rat 50",
+        "type": "rat",
+        "pattern": "z",
+        "position": [-14, 0, -129],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "51", 
+        "name": "Rat 51",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [-15, 0, -129],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "52",
+        "name": "Rat 52",
+        "type": "rat",
+        "pattern": "z",
+        "position": [-16, 0, -129],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "53",
+        "name": "Rat 53",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [-17, 0, -129],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "54",
+        "name": "Rat 54",
+        "type": "rat",
+        "pattern": "z",
+        "position": [-18, 0, -129],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "55",
+        "name": "Rat 55",
+        "type": "rat",
+        "pattern": "x",
+        "position": [-5, 0, -155],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "id": "56",
+        "name": "Rat 56",
+        "type": "rat",
+        "pattern": "x_negative",
+        "position": [-5, 0, -153],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "id": "57",
+        "name": "Rat 57",
+        "type": "rat",
+        "pattern": "x",
+        "position": [-5, 0, -151],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "id": "58",
+        "name": "Rat 58",
+        "type": "rat",
+        "pattern": "x_negative",
+        "position": [-5, 0, -149],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "id": "59",
+        "name": "Rat 59",
+        "type": "rat",
+        "pattern": "x_negative",
+        "position": [-12, 0, -161],
+        "rotation": [0, 0, 0] 
+      },
+      {
+        "id": "60",
+        "name": "Rat 60",
+        "type": "rat",
+        "pattern": "x",
+        "position": [-12, 0, -163],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "id": "61",
+        "name": "Rat 61",
+        "type": "rat",
+        "pattern": "x_negative",
+        "position": [-12, 0, -165],
+        "rotation": [0, 0, 0]
+      },
+      { 
+        "id": "62",
+        "name": "Rat 62",
+        "type": "rat",
+        "pattern": "x",
+        "position": [-12, 0, -159],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "id": "63",
+        "name": "Rat 63",
+        "type": "rat",
+        "pattern": "round",
+        "position": [-15, 0, -169],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "id": "64",
+        "name": "Rat 64",
+        "type": "rat",
+        "pattern": "round_reverse",
+        "position": [-15, 0, -169],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "id": "65",
+        "name": "Rat 65",
+        "type": "rat",
+        "pattern": "round",
+        "position": [-5, 0, -174],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "id": "66",
+        "name": "Rat 66",
+        "type": "rat",
+        "pattern": "round_reverse",
+        "position": [-5, 0, -174],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "id": "67",
+        "name": "Rat 67",
+        "type": "rat",
+        "pattern": "round",
+        "position": [5, 0, -174],
+        "rotation": [0, 0, 0]
+      },
+      { 
+        "id": "68",
+        "name": "Rat 68",
+        "type": "rat",
+        "pattern": "round_reverse",
+        "position": [5, 0, -174],
+        "rotation": [0, 0, 0]
+      },
+      {
+        "id": "69",
+        "name": "Rat 69",
+        "type": "rat",
+        "pattern": "z",
+        "position": [11, 0, -200],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "70",
+        "name": "Rat 70",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [9, 0, -200],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "71",
+        "name": "Rat 71",
+        "type": "rat",
+        "pattern": "z",
+        "position": [7, 0, -200],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "72",
+        "name": "Rat 72",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [5, 0, -200],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "73",
+        "name": "Rat 73",
+        "type": "rat",
+        "pattern": "x",
+        "position": [-5, 0, -210],
+        "rotation": [0, 3.14, 0]
+      },
+      {
+        "id": "74",
+        "name": "Rat 74",
+        "type": "rat",
+        "pattern": "x_negative",
+        "position": [-5, 0, -208],
+        "rotation": [0, 3.14, 0]
+      },
+      {
+        "id": "75",
+        "name": "Rat 75",
+        "type": "rat",
+        "pattern": "x",
+        "position": [-5, 0, -206],
+        "rotation": [0, 3.14, 0]
+      },
+      {
+        "id": "76",
+        "name": "Rat 76",
+        "type": "rat",
+        "pattern": "x_negative",
+        "position": [-5, 0, -204],
+        "rotation": [0, 3.14, 0]
       }
     ]
 }
