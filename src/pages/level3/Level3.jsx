@@ -29,21 +29,34 @@ import VillainsData from './villains/VillainsData.json'
 import GameOverScene from '../../utils/components/layouts/GameOverScene/GameOverScene'
 import Interactables from './interactables/Interactables'
 import PortalNextWorld from '../../globals/interactables/PortalNextWorld'
+import { usePlayer } from '../../context/PlayerContext'
+import { editUser, readUSer } from '../../utils/db/users-collection'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
 export default function Level3 () {
   const map = useMovements()
 
+  const {playerData} = usePlayer()
+  const [isLoading, setIsLoading] = useState(true)   
+
   const lifeState = useLifeState()
   const [displayLife, setDisplayLife] = useState(true)
 
-  const positionState = useCharacterPositionState()
-  const [actualPosition, setActualPosition] = useState(
-    positionState.initialPosition
-  )
+  const { actualPosition, setActualPosition, resetActualPosition } = useCharacterPositionState();
 
   const [showPortal, setShowPortal] = useState(false)
+
+  useEffect(() => {
+    const cargarPosicion = async () => {
+      const infoJugador = await readUSer(playerData.email)
+      if (infoJugador.success) {
+        await setActualPosition(infoJugador.data.position)
+      }
+      setIsLoading(false)
+    }
+    cargarPosicion()
+  }, [setActualPosition]) 
 
   useEffect(() => {
     if (obtenerDeLocalStorage('actualPosition')) {
@@ -75,18 +88,21 @@ export default function Level3 () {
             <Checkpoints checkpointsData={checkpointsData} />
             <Collectables collectablesData={collectablesData} />
             <Level3World />
-            {displayLife && (
+            {displayLife && actualPosition && !isLoading && (
                 <Ecctrl
                   camInitDis={-2}
                   camMaxDis={-2}
                   maxVelLimit={4}
                   jumpVel={3}
-                  position={[0, 5, 0]}
+                  position={actualPosition}
                   slopeMaxAngle={Math.PI / 5.5}
                 >
                   <Avatar />
                 </Ecctrl>
               )}
+              {isLoading && (
+                  <Instructive />
+                )}
             <Villains villainsData={VillainsData} />
             <Interactables />
             <PortalNextWorld
