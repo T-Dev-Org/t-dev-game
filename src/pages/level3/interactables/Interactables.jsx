@@ -25,9 +25,7 @@ export default function Interactables () {
         />
 
         {stateDoor &&
-          <Level3Door 
-            position={[0, 0, -210]}
-          />
+          <Level3Door />
         }
       </>
     )

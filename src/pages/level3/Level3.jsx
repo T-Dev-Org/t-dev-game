@@ -28,6 +28,7 @@ import Villains from '../../globals/villains/VillainsGenerator'
 import VillainsData from './villains/VillainsData.json'
 import GameOverScene from '../../utils/components/layouts/GameOverScene/GameOverScene'
 import Interactables from './interactables/Interactables'
+import PortalNextWorld from '../../globals/interactables/PortalNextWorld'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
@@ -80,7 +81,7 @@ export default function Level3 () {
                   camMaxDis={-2}
                   maxVelLimit={4}
                   jumpVel={3}
-                  position={[0, 5, -200]}
+                  position={[0, 5, 0]}
                   slopeMaxAngle={Math.PI / 5.5}
                 >
                   <Avatar />
@@ -88,6 +89,11 @@ export default function Level3 () {
               )}
             <Villains villainsData={VillainsData} />
             <Interactables />
+            <PortalNextWorld
+              position={[-7.5, 0, -263]}
+              rotation={[0, Math.PI / 2, 0]}
+              nextLevel='/level4'
+            />
           </Physics>
           <Texts />
         </Suspense>

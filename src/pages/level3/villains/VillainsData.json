@@ -615,6 +615,38 @@
         "pattern": "x_negative",
         "position": [-5, 0, -204],
         "rotation": [0, 3.14, 0]
+      },
+      {
+        "id": "77",
+        "name": "Rat 77",
+        "type": "rat",
+        "pattern": "z",
+        "position": [-13, 0, -205],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "78",
+        "name": "Rat 78",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [-15, 0, -205],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "79",
+        "name": "Rat 79",
+        "type": "rat",
+        "pattern": "z",
+        "position": [-17, 0, -205],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "80",
+        "name": "Rat 80",
+        "type": "rat",
+        "pattern": "z_negative",
+        "position": [-19, 0, -205],
+        "rotation": [0, 1.57, 0]
       }
     ]
 }
