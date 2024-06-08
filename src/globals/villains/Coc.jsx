@@ -54,7 +54,7 @@ export default function Coc({ onDeath, ...props }) {
     <>
       {life > 0 && (
         <RigidBody type='fixed' colliders={false}>
-          <group ref={group} {...props} scale={2} dispose={null}>
+          <group ref={group} {...props} dispose={null}>
             <CuboidCollider
               args={[
                 16 * colliderScale,
