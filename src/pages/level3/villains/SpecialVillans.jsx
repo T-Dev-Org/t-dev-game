@@ -1,10 +1,10 @@
 import React from 'react'
-import Dog from '../../../globals/villains/Dog'
+import Coc from '../../../globals/villains/Coc'
 
 export default function SpecialVillans({ onEnemyDeath }) {
   return (
     <>
-      <Dog
+      <Coc
         position={[-7.5, 0, -240]}
         rotation={[0, 0, 0]}
         onDeath={onEnemyDeath}
