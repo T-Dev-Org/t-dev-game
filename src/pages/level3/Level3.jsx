@@ -31,7 +31,6 @@ import Interactables from './interactables/Interactables'
 import PortalNextWorld from '../../globals/interactables/PortalNextWorld'
 import { editUser, readUSer } from '../../utils/db/users-collection'
 import { usePlayer } from '../../context/PlayerContext'
-import { readUSer } from '../../utils/db/users-collection'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
