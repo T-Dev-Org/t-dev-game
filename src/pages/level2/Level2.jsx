@@ -36,39 +36,24 @@ import VillainsData from './villains/VillainsData.json'
 import SpecialVillans from './villains/SpecialVillans'
 import { editUser, readUSer } from '../../utils/db/users-collection'
 import { usePlayer } from '../../context/PlayerContext'
+import { useNavigate } from 'react-router-dom'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
-export default function Level2 () {
+export default function Level2() {
   const map = useMovements()
+  const navigate = useNavigate()
 
-  const {playerData} = usePlayer()
-  const [isLoading, setIsLoading] = useState(true) 
+  const { playerData, setPlayerData } = usePlayer()
+  const [isLoading, setIsLoading] = useState(true)
 
   const lifeState = useLifeState()
   const [displayLife, setDisplayLife] = useState(true)
 
-  // const positionState = useCharacterPositionState()
-  // const [actualPosition, setActualPosition] = useState(
-  //   positionState.initialPosition
-  // )
-
-  const { actualPosition, setActualPosition, resetActualPosition } = useCharacterPositionState();
-
+  const { actualPosition, setActualPosition, resetActualPosition } =
+    useCharacterPositionState()
 
   const [showPortal, setShowPortal] = useState(false)
-
-  // const initializeUserPosition = useCallback(async () => {
-  //   const user = {
-  //     diamantes: playerData.diamantes,
-  //     displayName: playerData.displayName,
-  //     email: playerData.email,
-  //     level: '/level2',
-  //     position: [0, 10, -2],
-  //     vidas: playerData.vidas
-  //   }
-  //   await editUser(playerData.email, user)
-  // }, [playerData.displayName])
 
   useEffect(() => {
     const cargarPosicion = async () => {
@@ -79,7 +64,7 @@ export default function Level2 () {
       setIsLoading(false)
     }
     cargarPosicion()
-  }, [setActualPosition]) 
+  }, [setActualPosition])
 
   useEffect(() => {
     if (lifeState.value <= 0) {
@@ -93,6 +78,11 @@ export default function Level2 () {
   const handleEnemyDeath = useCallback(() => {
     setShowPortal(true)
   }, [])
+
+  const handleNextLevel = async () => {
+    await initializeUser(playerData, setPlayerData); 
+    navigate('/level3');
+  };
 
   return (
     <>
@@ -111,22 +101,20 @@ export default function Level2 () {
               <Level2WorldZone3 />
               <Level2WorldZone4 />
               <>
-              {displayLife && actualPosition && !isLoading &&(
-                <Ecctrl
-                  camInitDis={-2}
-                  camMaxDis={-2}
-                  maxVelLimit={4}
-                  jumpVel={3}
-                  position={actualPosition}
-                  slopeMaxAngle={Math.PI / 5.5}
-                  onPositionChange={setActualPosition}
-                >
-                  <Avatar />
-                </Ecctrl>
-              )}
-              {isLoading && (
-                  <Instructive />
+                {displayLife && actualPosition && !isLoading && (
+                  <Ecctrl
+                    camInitDis={-2}
+                    camMaxDis={-2}
+                    maxVelLimit={4}
+                    jumpVel={3}
+                    position={actualPosition}
+                    slopeMaxAngle={Math.PI / 5.5}
+                    onPositionChange={setActualPosition}
+                  >
+                    <Avatar />
+                  </Ecctrl>
                 )}
+                {isLoading && <Instructive />}
               </>
               <ManualColliders />
               <SymbolicSensors />
@@ -136,7 +124,7 @@ export default function Level2 () {
                   <PortalNextWorld
                     position={[-24, 20, -102]}
                     rotation={[0, Math.PI / 2, 0]}
-                    nextLevel='/level3'
+                    nextLevel= {handleNextLevel}
                   />
                 )}
               </>
@@ -153,4 +141,17 @@ export default function Level2 () {
       </KeyboardControls>
     </>
   )
+}
+
+export async function initializeUser(playerData, setPlayerData) {
+  const user = {
+    diamantes: playerData.diamantes,
+    displayName: playerData.displayName,
+    email: playerData.email,
+    level: '/level3',
+    position: [0, 10, -2],
+    vidas: playerData.vidas
+  }
+  setPlayerData(user)
+  await editUser(playerData.email, user)
 }

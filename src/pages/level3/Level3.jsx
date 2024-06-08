@@ -29,8 +29,9 @@ import VillainsData from './villains/VillainsData.json'
 import GameOverScene from '../../utils/components/layouts/GameOverScene/GameOverScene'
 import Interactables from './interactables/Interactables'
 import PortalNextWorld from '../../globals/interactables/PortalNextWorld'
-import { usePlayer } from '../../context/PlayerContext'
 import { editUser, readUSer } from '../../utils/db/users-collection'
+import { usePlayer } from '../../context/PlayerContext'
+import { readUSer } from '../../utils/db/users-collection'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
@@ -38,12 +39,13 @@ export default function Level3 () {
   const map = useMovements()
 
   const {playerData} = usePlayer()
-  const [isLoading, setIsLoading] = useState(true)   
+  const [isLoading, setIsLoading] = useState(true)
 
   const lifeState = useLifeState()
   const [displayLife, setDisplayLife] = useState(true)
 
-  const { actualPosition, setActualPosition, resetActualPosition } = useCharacterPositionState();
+  const { actualPosition, setActualPosition, resetActualPosition } =
+  useCharacterPositionState()
 
   const [showPortal, setShowPortal] = useState(false)
 
@@ -56,16 +58,11 @@ export default function Level3 () {
       setIsLoading(false)
     }
     cargarPosicion()
-  }, [setActualPosition]) 
-
-  useEffect(() => {
-    if (obtenerDeLocalStorage('actualPosition')) {
-      setActualPosition(obtenerDeLocalStorage('actualPosition'))
-    }
-  }, obtenerDeLocalStorage('actualPosition'))
+  }, [setActualPosition])
 
   useEffect(() => {
     if (lifeState.value <= 0) {
+      resetActualPosition()
       setDisplayLife(false)
     } else {
       setDisplayLife(true)
@@ -88,7 +85,8 @@ export default function Level3 () {
             <Checkpoints checkpointsData={checkpointsData} />
             <Collectables collectablesData={collectablesData} />
             <Level3World />
-            {displayLife && actualPosition && !isLoading && (
+            <>
+            {displayLife && actualPosition && !isLoading &&(
                 <Ecctrl
                   camInitDis={-2}
                   camMaxDis={-2}
@@ -100,9 +98,8 @@ export default function Level3 () {
                   <Avatar />
                 </Ecctrl>
               )}
-              {isLoading && (
-                  <Instructive />
-                )}
+              {isLoading && <Instructive />}
+            </>
             <Villains villainsData={VillainsData} />
             <Interactables />
             <PortalNextWorld
@@ -121,4 +118,17 @@ export default function Level3 () {
         <NextLevelButton to='/level4' />}
     </KeyboardControls>
   )
+}
+
+export async function initializeUser(playerData, setPlayerData) {
+  const user = {
+    diamantes: playerData.diamantes,
+    displayName: playerData.displayName,
+    email: playerData.email,
+    level: '/level3',
+    position: [0, 10, -2],
+    vidas: playerData.vidas
+  }
+  setPlayerData(user)
+  await editUser(playerData.email, user)
 }
