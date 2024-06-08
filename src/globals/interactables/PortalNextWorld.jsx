@@ -19,7 +19,7 @@ export default function PortalNextWorld({ ...props }) {
   const nextLevel = props.nextLevel ? props.nextLevel : '/level1'
   const position = props.position ? props.position : [0, 0, 0]
 
-  const handleIntersectionEnter = (event) => {
+  const handleIntersectionEnter = async (event) => {
     print_debug(
       `[PortalNextWorld.jsx] colisioné con: ${event.colliderObject.name}`
     )
@@ -27,7 +27,7 @@ export default function PortalNextWorld({ ...props }) {
     if (event.colliderObject.name === 'character-capsule-collider') {
       playSoundEffect('shutterSound')
       limpiarLocalStorage()
-      navigate(nextLevel)
+      await nextLevel()
     }
   }
 
