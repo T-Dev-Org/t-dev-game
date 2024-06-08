@@ -32,6 +32,7 @@ import PortalNextWorld from '../../globals/interactables/PortalNextWorld'
 import { editUser, readUSer } from '../../utils/db/users-collection'
 import { usePlayer } from '../../context/PlayerContext'
 import SpecialVillans from './villains/SpecialVillans'
+import SymbolicSensors from './world/SymbolicSensors'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
@@ -110,6 +111,7 @@ export default function Level3 () {
             </>
             <SpecialVillans onEnemyDeath={handleEnemyDeath} />
             <Villains villainsData={VillainsData} />
+            <SymbolicSensors />
             <Interactables />
           </Physics>
           <Texts />
