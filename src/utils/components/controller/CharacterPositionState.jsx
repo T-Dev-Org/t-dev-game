@@ -2,13 +2,10 @@
 
 import { create } from 'zustand'
 
-const initialPos = [0, 10, 0]
-
 export const useCharacterPositionState = create((set) => ({
-  refPos: '',
-  initialPosition: initialPos,
-  actualPosition: initialPos,
+  actualPosition: null,
 
   setActualPosition: (someposition) => set({ actualPosition: someposition }),
-  resetActualPosition: () => set({ initialPos })
-}))
+  resetActualPosition: () => set({ actualPosition: [0, 10, -2] }) 
+}));
+

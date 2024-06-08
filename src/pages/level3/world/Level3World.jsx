@@ -33,16 +33,15 @@ export default function Level3World (props) {
 
   return (
     <group>
-      {/* Estos son arboles falsos, donde hay escondidas cosas */}
-      <mesh geometry={nodes.Trees_Group_2.geometry} material={materials.hept32} castShadow receiveShadow />
-      <mesh geometry={nodes.Trees_Group_4.geometry} material={materials.hept32} castShadow receiveShadow />
-      <mesh geometry={nodes.Trees_Gruop_3.geometry} material={materials.hept32} castShadow receiveShadow />
-      <mesh geometry={nodes.Trees_Gruop_5.geometry} material={materials.hept32} castShadow receiveShadow />
-      <mesh geometry={nodes.Trees_Gruop_6.geometry} material={materials.hept32} castShadow receiveShadow />
-      <mesh geometry={nodes.Trees_Group_7.geometry} material={materials.hept32} castShadow receiveShadow />
-      <mesh geometry={nodes.Trees_Gruop_8.geometry} material={materials.hept32} castShadow receiveShadow />
       <RigidBody type='fixed' colliders='trimesh'>
         <group {...props} dispose={null}>
+          <mesh geometry={nodes.Trees_Group_2.geometry} material={materials.hept32} castShadow receiveShadow />
+          <mesh geometry={nodes.Trees_Group_4.geometry} material={materials.hept32} castShadow receiveShadow />
+          <mesh geometry={nodes.Trees_Gruop_3.geometry} material={materials.hept32} castShadow receiveShadow />
+          <mesh geometry={nodes.Trees_Gruop_5.geometry} material={materials.hept32} castShadow receiveShadow />
+          <mesh geometry={nodes.Trees_Gruop_6.geometry} material={materials.hept32} castShadow receiveShadow />
+          <mesh geometry={nodes.Trees_Group_7.geometry} material={materials.hept32} castShadow receiveShadow />
+          <mesh geometry={nodes.Trees_Gruop_8.geometry} material={materials.hept32} castShadow receiveShadow />
           <mesh geometry={nodes.Maze_Inside_Walls.geometry} material={nodes.Maze_Inside_Walls} castShadow recieveShadow>
             <meshToonMaterial {...propsTexture} />
           </mesh>

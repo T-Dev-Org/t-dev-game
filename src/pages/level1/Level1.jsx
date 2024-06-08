@@ -30,64 +30,56 @@ import Checkpoints from '../../globals/interactables/CheckpointsGenerator'
 import { obtenerDeLocalStorage } from '../../utils/localStorageUtils'
 import SymbolicSensors from './world/SymbolicSensors'
 import NextLevelButton from '../../utils/components/layouts/GameUI/components/NextLevelButton'
-import { useAuth } from '../../context/AuthContext'
 import Logout from '../../utils/components/layouts/logout/Logout'
-import { createUser, readUSer } from '../../utils/db/users-collection'
 import Villains from '../../globals/villains/VillainsGenerator'
 import VillainsData from './villains/VillainsData.json'
+import { readUSer } from '../../utils/db/users-collection'
+import { usePlayer } from '../../context/PlayerContext'
+import { useNavigate } from 'react-router-dom'
+import { initializeUser } from '../level2/Level2'
+
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
 export default function Level1() {
   const map = useMovements()
+  const navigate = useNavigate()
 
-  const auth = useAuth()
-
-  const saveDataUser = async (valuesUser) => {
-    await createUser(valuesUser)
-  }
-
-  const readDataUser = async (email) => {
-    await readUSer(email)
-      .then((result) => console.log(result))
-      .catch((error) => console.log(error))
-  }
-
-  useEffect(() => {
-    if (auth.userLogged) {
-      const { displayName, email } = auth.userLogged
-
-      saveDataUser({
-        displayName: displayName,
-        email: email
-      })
-
-      const result = readDataUser(email)
-      console.log(result)
-    }
-  }, [auth.userLogged])
+  const {playerData, setPlayerData} = usePlayer()
+  const [isLoading, setIsLoading] = useState(true)
 
   const lifeState = useLifeState()
   const [displayLife, setDisplayLife] = useState(true)
 
-  const positionState = useCharacterPositionState()
-  const [actualPosition, setActualPosition] = useState(
-    positionState.initialPosition
-  )
+  const { actualPosition, setActualPosition, resetActualPosition } = useCharacterPositionState();
 
   useEffect(() => {
-    if (obtenerDeLocalStorage('actualPosition')) {
-      setActualPosition(obtenerDeLocalStorage('actualPosition'))
+    const cargarPosicion = async () => {
+      const infoJugador = await readUSer(playerData.email)
+      if (infoJugador.success) {
+        await setActualPosition(infoJugador.data.position)
+      }
+      setIsLoading(false)
     }
-  }, obtenerDeLocalStorage('actualPosition'))
+    cargarPosicion()
+  }, [setActualPosition]) 
+
 
   useEffect(() => {
     if (lifeState.value <= 0) {
+      resetActualPosition();
       setDisplayLife(false)
     } else {
       setDisplayLife(true)
     }
   }, [lifeState.value])
+
+  const handleNextLevel = async () => {
+    await initializeUser(playerData, setPlayerData); 
+    navigate('/level2');
+  };
+
+
 
   return (
     <>
@@ -100,28 +92,33 @@ export default function Level1() {
             <Environments />
             <Physics debug={debug}>
               <Level1World />
-              <PortalNextWorld position={[0, 0, -224]} nextLevel='/level2' />
+              <PortalNextWorld position={[0, 0, -224]} nextLevel={handleNextLevel} />
               <Checkpoints checkpointsData={checkpointsData} />
               <Collectables collectablesData={collectablesData} />
               <Interactables />
               <SymbolicSensors />
               <ZoneSensors />
               <>
-                {displayLife && (
+                {displayLife && !isLoading && actualPosition && (
                   <Ecctrl
                     camInitDis={-2}
                     camMaxDis={-2}
                     maxVelLimit={5}
                     jumpVel={4}
                     position={actualPosition}
+                    onPositionChange={setActualPosition}
                   >
                     <Avatar />
                   </Ecctrl>
                 )}
+
+                {displayLife && isLoading && (
+                  <Instructive />
+                )}
               </>
               <Button position={[0, -0.5, -158]} />
               <Villains villainsData={VillainsData} />
-            </Physics>
+            </Physics>  
             <Texts />
           </Suspense>
           <Controls />

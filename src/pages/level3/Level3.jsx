@@ -2,7 +2,7 @@
 import { Perf } from 'r3f-perf'
 import { KeyboardControls } from '@react-three/drei'
 import { Physics } from '@react-three/rapier'
-import { Suspense } from 'react'
+import { Suspense, useState, useEffect, useCallback } from 'react'
 import { Canvas } from '@react-three/fiber'
 import Instructive from '../../utils/components/layouts/instructive/Instructive'
 import useMovements from '../../utils/key-movements'
@@ -17,11 +17,62 @@ import Texts from './abstractions/Texts'
 import GameUI from '../../utils/components/layouts/GameUI/GameUI'
 import NextLevelButton from '../../utils/components/layouts/GameUI/components/NextLevelButton'
 // import ZoneSensors from "./world/ZoneSensors";
+import Checkpoints from '../../globals/interactables/CheckpointsGenerator'
+import checkpointsData from './checkpoints/CheckpointsData.json'
+import { useLifeState } from '../../utils/components/controller/CharacterLife'
+import { useCharacterPositionState } from '../../utils/components/controller/CharacterPositionState'
+import { obtenerDeLocalStorage } from '../../utils/localStorageUtils'
+import Collectables from '../../globals/collectables/CollectablesGenerator'
+import collectablesData from './collectables/CollectablesData.json'
+import Villains from '../../globals/villains/VillainsGenerator'
+import VillainsData from './villains/VillainsData.json'
+import GameOverScene from '../../utils/components/layouts/GameOverScene/GameOverScene'
+import Interactables from './interactables/Interactables'
+import PortalNextWorld from '../../globals/interactables/PortalNextWorld'
+import { editUser, readUSer } from '../../utils/db/users-collection'
+import { usePlayer } from '../../context/PlayerContext'
+import SpecialVillans from './villains/SpecialVillans'
+import SymbolicSensors from './world/SymbolicSensors'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
 export default function Level3 () {
   const map = useMovements()
+
+  const {playerData} = usePlayer()
+  const [isLoading, setIsLoading] = useState(true)
+
+  const lifeState = useLifeState()
+  const [displayLife, setDisplayLife] = useState(true)
+
+  const { actualPosition, setActualPosition, resetActualPosition } =
+  useCharacterPositionState()
+
+  const [showPortal, setShowPortal] = useState(false)
+
+  useEffect(() => {
+    const cargarPosicion = async () => {
+      const infoJugador = await readUSer(playerData.email)
+      if (infoJugador.success) {
+        await setActualPosition(infoJugador.data.position)
+      }
+      setIsLoading(false)
+    }
+    cargarPosicion()
+  }, [setActualPosition])
+
+  useEffect(() => {
+    if (lifeState.value <= 0) {
+      resetActualPosition()
+      setDisplayLife(false)
+    } else {
+      setDisplayLife(true)
+    }
+  }, [lifeState.value])
+
+  const handleEnemyDeath = useCallback(() => {
+    setShowPortal(true)
+  }, [])  
 
   return (
     <KeyboardControls map={map}>
@@ -32,24 +83,58 @@ export default function Level3 () {
           <Lights />
           <Environments />
           <Physics debug={debug}>
+            <Checkpoints checkpointsData={checkpointsData} />
+            <Collectables collectablesData={collectablesData} />
             <Level3World />
-            <Ecctrl
-              camInitDis={-2}
-              camMaxDis={-2}
-              maxVelLimit={5}
-              jumpVel={4}
-              position={[0, 2, 0]}
-            >
-              <Avatar />
-            </Ecctrl>
+            <>
+            {displayLife && actualPosition && !isLoading &&(
+                <Ecctrl
+                  camInitDis={-2}
+                  camMaxDis={-2}
+                  maxVelLimit={4}
+                  jumpVel={3}
+                  position={actualPosition}
+                  slopeMaxAngle={Math.PI / 5.5}
+                >
+                  <Avatar />
+                </Ecctrl>
+              )}
+              {isLoading && <Instructive />}
+            </>
+            <>
+              {showPortal && (
+                <PortalNextWorld
+                  position={[-7.5, 0, -263]}
+                  rotation={[0, Math.PI / 2, 0]}
+                  nextLevel='/level4'
+              />)}
+            </>
+            <SpecialVillans onEnemyDeath={handleEnemyDeath} />
+            <Villains villainsData={VillainsData} />
+            <SymbolicSensors />
+            <Interactables />
           </Physics>
           <Texts />
         </Suspense>
         <Controls />
       </Canvas>
-      {/* <GameUI /> */}
+      {!displayLife && <GameOverScene reloadLevel='/level3' />}      
+      <GameUI />
       {debug &&
         <NextLevelButton to='/level4' />}
     </KeyboardControls>
   )
+}
+
+export async function initializeUser(playerData, setPlayerData) {
+  const user = {
+    diamantes: playerData.diamantes,
+    displayName: playerData.displayName,
+    email: playerData.email,
+    level: '/level3',
+    position: [0, 10, -2],
+    vidas: playerData.vidas
+  }
+  setPlayerData(user)
+  await editUser(playerData.email, user)
 }
