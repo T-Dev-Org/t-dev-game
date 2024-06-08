@@ -2,7 +2,9 @@ import { json, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../context/AuthContext'
 import { readUSer, createUser } from '../../../utils/db/users-collection'
 import { usePlayer } from '../../../context/PlayerContext'
+
 import './LoginComponent.css'
+import { guardarEnLocalStorage } from '../../../utils/localStorageUtils'
 
 export default function LoginComponent() {
   const navigate = useNavigate()
@@ -46,23 +48,6 @@ export default function LoginComponent() {
               <div className='sign-in-text mx-1'>Iniciar con Google</div>
             </div>
           </button>
-          <div>
-            <button
-              className='btn btn-outline-secondary rounded-4 my-2'
-              onClick={() => {
-                navigate('/level1')
-              }}
-            >
-              <div className='d-flex flex-row'>
-                <img
-                  className='rounded-circle bg-white p-1 login-icon'
-                  src='/assets/images/icons/perfil-desconocido.png'
-                  alt='google-icon'
-                />
-                <div className='sign-in-text mx-2'>Iniciar como invitado</div>
-              </div>
-            </button>
-          </div>
         </div>
       </div>
     </>
@@ -75,14 +60,15 @@ async function verificar(user, setPlayerData, navigate) {
     const result = await readUSer(email)
     if (result.success) {
       setPlayerData(result.data)
-      navigate('/level1')
+      navigate(result.data.level)
     } else {
       const newUser = {
         email,
         displayName,
         vidas: 3, // Valor inicial para vidas
         diamantes: 0, // Valor inicial para diamantes
-        position: [0, 2, 0]
+        position: [0, 2, 0],
+        level: '/level1'
       }
       await createUser(newUser)
       setPlayerData(newUser)
