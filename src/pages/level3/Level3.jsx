@@ -31,6 +31,7 @@ import Interactables from './interactables/Interactables'
 import PortalNextWorld from '../../globals/interactables/PortalNextWorld'
 import { editUser, readUSer } from '../../utils/db/users-collection'
 import { usePlayer } from '../../context/PlayerContext'
+import SpecialVillans from './villains/SpecialVillans'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
@@ -99,13 +100,17 @@ export default function Level3 () {
               )}
               {isLoading && <Instructive />}
             </>
+            <>
+              {showPortal && (
+                <PortalNextWorld
+                  position={[-7.5, 0, -263]}
+                  rotation={[0, Math.PI / 2, 0]}
+                  nextLevel='/level4'
+              />)}
+            </>
+            <SpecialVillans onEnemyDeath={handleEnemyDeath} />
             <Villains villainsData={VillainsData} />
             <Interactables />
-            <PortalNextWorld
-              position={[-7.5, 0, -263]}
-              rotation={[0, Math.PI / 2, 0]}
-              nextLevel='/level4'
-            />
           </Physics>
           <Texts />
         </Suspense>
