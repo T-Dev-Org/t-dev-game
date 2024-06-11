@@ -27,8 +27,12 @@ import collectablesData from './collectables/CollectablesData.json'
 import Villains from '../../globals/villains/VillainsGenerator'
 import VillainsData from './villains/VillainsData.json'
 import GameOverScene from '../../utils/components/layouts/GameOverScene/GameOverScene'
+import Interactables from './interactables/Interactables'
+import PortalNextWorld from '../../globals/interactables/PortalNextWorld'
+import { editUser, readUSer } from '../../utils/db/users-collection'
 import { usePlayer } from '../../context/PlayerContext'
-import { readUSer } from '../../utils/db/users-collection'
+import SpecialVillans from './villains/SpecialVillans'
+import SymbolicSensors from './world/SymbolicSensors'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
@@ -97,7 +101,18 @@ export default function Level3 () {
               )}
               {isLoading && <Instructive />}
             </>
+            <>
+              {showPortal && (
+                <PortalNextWorld
+                  position={[-7.5, 0, -263]}
+                  rotation={[0, Math.PI / 2, 0]}
+                  nextLevel='/level4'
+              />)}
+            </>
+            <SpecialVillans onEnemyDeath={handleEnemyDeath} />
             <Villains villainsData={VillainsData} />
+            <SymbolicSensors />
+            <Interactables />
           </Physics>
           <Texts />
         </Suspense>

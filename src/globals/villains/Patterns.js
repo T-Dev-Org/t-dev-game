@@ -4,9 +4,21 @@ const xDisplacementPattern = (time, amplitude, actualPosition) => ({
   z: actualPosition.z
 })
 
+const xNegativeDisplacementPattern = (time, amplitude, actualPosition) => ({
+  x: -Math.sin(time) * amplitude + actualPosition.x,
+  y: actualPosition.y,
+  z: actualPosition.z
+})
+
 const yDisplacementPattern = (time, amplitude, actualPosition) => ({
   x: actualPosition.x,
   y: Math.cos(time) * amplitude + actualPosition.y,
+  z: actualPosition.z
+})
+
+const yNegativeDisplacementPattern = (time, amplitude, actualPosition) => ({
+  x: actualPosition.x,
+  y: -Math.cos(time) * amplitude + actualPosition.y,
   z: actualPosition.z
 })
 
@@ -14,6 +26,12 @@ const zDisplacementPattern = (time, amplitude, actualPosition) => ({
   x: actualPosition.x,
   y: actualPosition.y,
   z: Math.sin(time) * amplitude + actualPosition.z
+})
+
+const zNegativeDisplacementPattern = (time, amplitude, actualPosition) => ({
+  x: actualPosition.x,
+  y: actualPosition.y,
+  z: -Math.sin(time) * amplitude + actualPosition.z
 })
 
 const roundDisplacementPattern = (time, amplitude, actualPosition) => ({
@@ -32,12 +50,19 @@ export const applyPattern = (pattern, time, amplitude, actualPosition) => {
   const patchedAmplitude = amplitude * 0.1
   if (pattern === 'x') {
     return xDisplacementPattern(time, patchedAmplitude, actualPosition)
+  } else if (pattern === 'x_negative') {
+    return xNegativeDisplacementPattern(time, patchedAmplitude, actualPosition)
   } else if (pattern === 'y') {
     const yPatchedAmplitude = patchedAmplitude / 4
     return yDisplacementPattern(time, yPatchedAmplitude, actualPosition)
-  } else if (pattern === 'z') {
+  } else if (pattern === 'y_negative') {
+    const yPatchedAmplitude = patchedAmplitude / 4
+    return yNegativeDisplacementPattern(time, yPatchedAmplitude, actualPosition)
+  } else if (pattern === 'z') { 
     return zDisplacementPattern(time, patchedAmplitude, actualPosition)
-  } else if (pattern === 'round') {
+  } else if (pattern === 'z_negative') {
+    return zNegativeDisplacementPattern(time, patchedAmplitude, actualPosition)
+  }else if (pattern === 'round') {
     return roundDisplacementPattern(time, patchedAmplitude, actualPosition)
   } else if (pattern === 'round_reverse') {
     return roundReverseDisplacementPattern(
