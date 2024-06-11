@@ -7,7 +7,7 @@ import React, { useRef, useState } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { useNavigate } from 'react-router-dom'
 import { RigidBody } from '@react-three/rapier'
-import CustomText3D from '../../utils/text/CustomText3D'
+import CustomText3D from '../../../utils/text/CustomText3D'
 
 export function Button_Circle ({ ruta, ...props }) {
   const group = useRef()

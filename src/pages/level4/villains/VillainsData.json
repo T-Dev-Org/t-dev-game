@@ -1,0 +1,44 @@
+{
+    "villains": [
+      {
+        "id": "0",
+        "name": "Rat 0",
+        "type": "rat",
+        "pattern": "z",
+        "position": [1.4,34,250],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "1",
+        "name": "Rat 1",
+        "type": "rat",
+        "pattern": "x",
+        "position": [5, 34, 251],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "2",
+        "name": "Rat 2",
+        "type": "rat",
+        "pattern": "round",
+        "position": [2, 34, 252],
+        "rotation": [0, 2, 0]
+      },
+      {
+        "id": "3",
+        "name": "Rat 3",
+        "type": "rat",
+        "pattern": "round_reverse",
+        "position": [2, 34, 253],
+        "rotation": [0, 1.57, 0]
+      },
+      {
+        "id": "4",
+        "name": "Rat 4",
+        "type": "rat",
+        "pattern": "z",
+        "position": [-2, 34, 254],
+        "rotation": [0, 1.57, 0]
+      }      
+    ]
+}
