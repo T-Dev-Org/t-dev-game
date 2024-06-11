@@ -90,8 +90,8 @@ export default function Level4 () {
             <Obstacle position={[0,35,190]} args={[37, 2, 4]}/>
             <Obstacle position={[0,36,210]} args={[37, 2, 4]}/>
             <Obstacle.Oscillating position={[0,42.5,228]}/>
-            {/* <FallingBalls count={20} position={[0,100,61]}/> */}
-            <Button_Circle position={[0,34,280]} ruta={'/profile'}/>
+            <FallingBalls count={100} position={[0,90,50]}/>
+            <Button_Circle position={[0,34,295]} ruta={'/profile'}/>
             <>
             {displayLife &&(
                 <Ecctrl

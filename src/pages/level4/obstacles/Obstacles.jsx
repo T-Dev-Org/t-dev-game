@@ -4,6 +4,7 @@ import { forwardRef, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { useLifeState } from '../../../utils/components/controller/CharacterLife'
 import { useAudio } from '../../../context/AudioContext'
+import { useAvatar } from '../../../context/AvatarContext'
 
 function getRandomColor() {
     const letters = '0123456789ABCDEF'
@@ -20,9 +21,9 @@ const Obstacle = forwardRef(function Obstacle({ position, args, color = getRando
     const [lastHitTime, setLastHitTime] = useState(0)
     const hitCooldown = 1000 
 
-    function onHit() {
+    function onHit(event) {
         const now = Date.now()
-        if (now - lastHitTime >= hitCooldown) {
+        if (now - lastHitTime >= hitCooldown && event.other.colliderObject.name === 'character-capsule-collider') {
             lifeState.decrement()
             playSoundEffect('hit')
             setLastHitTime(now)
