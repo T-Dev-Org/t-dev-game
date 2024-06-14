@@ -23,9 +23,8 @@ import Villains from '../../globals/villains/VillainsGenerator'
 import VillainsData from './villains/VillainsData.json'
 import GameOverScene from '../../utils/components/layouts/GameOverScene/GameOverScene'
 import { usePlayer } from '../../context/PlayerContext'
-import { readUSer } from '../../utils/db/users-collection'
+import { editUser, readUSer } from '../../utils/db/users-collection'
 import {Model} from './world/Level4World'
-import { obtenerDeLocalStorage } from '../../utils/localStorageUtils'
 import Obstacle from './obstacles/Obstacles'
 import FallingBalls from './obstacles/FallingBall'
 import { Button_Circle } from './abstractions/Button'
@@ -36,7 +35,7 @@ export default function Level4 () {
   const map = useMovements()
 
   const {playerData} = usePlayer()
-  // const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
 
   const lifeState = useLifeState()
   const [displayLife, setDisplayLife] = useState(true)
@@ -44,19 +43,22 @@ export default function Level4 () {
   const { actualPosition, setActualPosition, resetActualPosition } =
   useCharacterPositionState()
 
+  const [shouldFall, setShouldFall] = useState(false)
 
-  const [showPortal, setShowPortal] = useState(false)
+  const startFallPosition = [0, 20, -220]
+  const stopFallPosition = [0, 34.5, -72]
 
-  // useEffect(() => {
-  //   const cargarPosicion = async () => {
-  //     const infoJugador = await readUSer(playerData.email)
-  //     if (infoJugador.success) {
-  //       await setActualPosition(infoJugador.data.position)
-  //     }
-  //     setIsLoading(false)
-  //   }
-  //   cargarPosicion()
-  // }, [setActualPosition])
+
+  useEffect(() => {
+    const cargarPosicion = async () => {
+      const infoJugador = await readUSer(playerData.email)
+      if (infoJugador.success) {
+        await setActualPosition(infoJugador.data.position)
+      }
+      setIsLoading(false)
+    }
+    cargarPosicion()
+  }, [setActualPosition])
 
 
   useEffect(() => {
@@ -68,9 +70,26 @@ export default function Level4 () {
     }
   }, [lifeState.value])
 
-  const handleEnemyDeath = useCallback(() => {
-    setShowPortal(true)
-  }, [])  
+  useEffect(() => {
+    if (actualPosition) {
+      const [x, y, z] = actualPosition
+      if (
+        Math.abs(x - startFallPosition[0]) < 1 &&
+        Math.abs(y - startFallPosition[1]) < 1 &&
+        Math.abs(z - startFallPosition[2]) < 1
+      ) {
+        setShouldFall(true)
+      }
+      if (
+        Math.abs(x - stopFallPosition[0]) < 1 &&
+        Math.abs(y - stopFallPosition[1]) < 1 &&
+        Math.abs(z - stopFallPosition[2]) < 1
+      ) {
+        setShouldFall(false)
+      }
+    }
+  }, [actualPosition, startFallPosition, stopFallPosition])
+
 
   return (
     <KeyboardControls map={map}>
@@ -84,33 +103,37 @@ export default function Level4 () {
             <Checkpoints checkpointsData={checkpointsData} />
             <Collectables collectablesData={collectablesData} />
             <Model />
-            <Obstacle.Spinner position={[0,34.5,90]} speed={2}/>
-            <Obstacle.Spinner position={[0,34.5,130]} speed={2}/>
-            <Obstacle.SlidingWall position={[0,34.5,168]} speed={1.5}/>
-            <Obstacle position={[0,35,190]} args={[37, 2, 4]}/>
-            <Obstacle position={[0,36,210]} args={[37, 2, 4]}/>
-            <Obstacle.Oscillating position={[0,42.5,228]}/>
-            <FallingBalls count={100} position={[0,90,50]}/>
-            <Button_Circle position={[0,34,295]} ruta={'/profile'}/>
+            <Obstacle.Spinner position={[0,34.5,-130]} speed={2}/>
+            <Obstacle.Spinner position={[0,34.5,-95]} speed={2}/>
+            <Obstacle.SlidingWall position={[0,34.5,-60]} speed={1.5}/>
+            <Obstacle position={[0,35,-40]} args={[37, 2, 4]}/>
+            <Obstacle position={[0,36,-20]} args={[37, 2, 4]}/>
+            <Obstacle position={[0,35,0]} args={[37, 2, 4]}/>
+            <Obstacle.Oscillating position={[0,42.5,20]}/>
+            <Obstacle.SlidingWall position={[0,34.5,40]} speed={2} />
+            <Obstacle.Oscillating position={[0,42.5,60]} speed={1.5}/>
+            <Obstacle.SlidingWall position={[0,34.5,80]} speed={2.5} />
+            {shouldFall && <FallingBalls count={100} position={[0, 90, -150]} />}
+            <Button_Circle position={[0,33.5,200]} ruta={'/profile'}/>
             <>
-            {displayLife &&(
+            {displayLife && actualPosition && !isLoading &&(
                 <Ecctrl
                   camInitDis={-2}
                   camMaxDis={-2}
                   maxVelLimit={6}
                   jumpVel={6}
-                  // position={actualPosition}
-                  position={[0,9,2]}
+                  position={actualPosition}
+                  onPositionChange={setActualPosition}
                   
                 >
                   <Avatar />
                 </Ecctrl>
               )}
-              {/* {isLoading && <Instructive />} */}
+              {isLoading && <Instructive />}
             </>
             <Villains villainsData={VillainsData} />
           </Physics>
-          <Texts position={[0, 7, 12]} />
+          <Texts position={[0, 20, -220]} />
         </Suspense>
         <Controls />
       </Canvas>
@@ -122,13 +145,13 @@ export default function Level4 () {
   )
 }
 
-export async function initializeUser(playerData, setPlayerData) {
+export async function initializerPlayer(playerData, setPlayerData) {
   const user = {
     diamantes: playerData.diamantes,
     displayName: playerData.displayName,
     email: playerData.email,
     level: '/level4',
-    position: [0,9,2],
+    position: [0, 20, -220],
     vidas: playerData.vidas
   }
   setPlayerData(user)

@@ -33,13 +33,16 @@ import { editUser, readUSer } from '../../utils/db/users-collection'
 import { usePlayer } from '../../context/PlayerContext'
 import SpecialVillans from './villains/SpecialVillans'
 import SymbolicSensors from './world/SymbolicSensors'
+import { useNavigate } from 'react-router-dom'
+import { initializerPlayer } from '../level4/Level4'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
 export default function Level3 () {
   const map = useMovements()
+  const navigate = useNavigate()
 
-  const {playerData} = usePlayer()
+  const {playerData, setPlayerData} = usePlayer()
   const [isLoading, setIsLoading] = useState(true)
 
   const lifeState = useLifeState()
@@ -48,7 +51,7 @@ export default function Level3 () {
   const { actualPosition, setActualPosition, resetActualPosition } =
   useCharacterPositionState()
 
-  const [showPortal, setShowPortal] = useState(false)
+  const [showPortal, setShowPortal] = useState(true)
 
   useEffect(() => {
     const cargarPosicion = async () => {
@@ -73,6 +76,11 @@ export default function Level3 () {
   const handleEnemyDeath = useCallback(() => {
     setShowPortal(true)
   }, [])  
+
+  const handleNextLevel = async () => {
+    await initializerPlayer(playerData, setPlayerData); 
+    navigate('/level4');
+  };
 
   return (
     <KeyboardControls map={map}>
@@ -106,7 +114,7 @@ export default function Level3 () {
                 <PortalNextWorld
                   position={[-7.5, 0, -263]}
                   rotation={[0, Math.PI / 2, 0]}
-                  nextLevel='/level4'
+                  nextLevel= {handleNextLevel}
               />)}
             </>
             <SpecialVillans onEnemyDeath={handleEnemyDeath} />

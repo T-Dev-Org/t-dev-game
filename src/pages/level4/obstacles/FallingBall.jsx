@@ -19,7 +19,7 @@ const FallingBall = ({ position, radius = 1 }) => {
         } 
     }
     return (
-        <RigidBody type="dynamic" position={position} restitution={0.5} onCollisionEnter={onHit}>
+        <RigidBody type="dynamic" colliders='ball' position={position} restitution={0.5} onCollisionEnter={onHit}>
             <mesh castShadow>
                 <sphereGeometry args={[radius, 32, 32]} />
                 <meshStandardMaterial color={new THREE.Color(`hsl(${Math.random() * 360}, 100%, 50%)`)} />

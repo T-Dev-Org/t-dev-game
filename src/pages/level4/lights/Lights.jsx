@@ -8,7 +8,7 @@ const Lights = () => {
       />
       <directionalLight
         castShadow
-        position={[2, 10, 0]}
+        position={[50, 50, -100]}
         color={new Color('#FFF700')}
         intensity={2}
         shadow-mapSize={[2048, 2048]}

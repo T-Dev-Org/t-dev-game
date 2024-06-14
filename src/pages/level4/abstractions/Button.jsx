@@ -36,7 +36,7 @@ export function Button_Circle ({ ruta, ...props }) {
         </group>
       </group>
       <CustomText3D
-        text='Ganaste!!'
+        text='¡Pulsa el botón!'
         position={[0, 5, 0]}
         size={0.5}
         rotation={[0, Math.PI, 0]}

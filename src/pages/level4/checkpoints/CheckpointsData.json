@@ -3,29 +3,29 @@
       {
         "id": "0",
         "name": "Checkpoint 1",
-        "position": [0,35,65],
-        "args": [3.5, 0.5, 3.5],
+        "position": [0,34.5,-152],
+        "args": [15, 0.5, 3.5],
         "isTaken": false
       },
       {
         "id": "1",
         "name": "Checkpoint 2",
-        "position": [0,10,2],
-        "args": [3.5, 0.5, 3.5],
+        "position": [0,34.5,-72],
+        "args": [15, 0.5, 3.5],
         "isTaken": false
       },
       {
         "id": "2",
         "name": "Checkpoint 3",
-        "position": [-12.5, 14, 38],
-        "args": [3.5, 0.5, 3.5],
+        "position": [-3,34.5,12],
+        "args": [15, 0.5, 3.5],
         "isTaken": false
       },
       {
         "id": "3",
         "name": "Checkpoint 4",
-        "position": [12.5, 21.5, 49],        
-        "args": [3.5, 0.5, 3.5],
+        "position": [0,34.5,95],        
+        "args": [15, 0.5, 3.5],
         "isTaken": false
       }
     ]

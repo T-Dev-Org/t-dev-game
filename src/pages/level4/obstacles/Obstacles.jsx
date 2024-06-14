@@ -56,7 +56,7 @@ const Spinner = function ({ speed = 1, initialShift = Math.random() * 10, invert
     return <Obstacle ref={obstacleRef} position={position} args={args} color={color} {...props} />
 }
 
-const SlidingWall = function ({ speed = 1, initialShift = 0, args=[22,20,5], position, color, ...props }) {
+const SlidingWall = function ({ speed = 1, initialShift = 0, args=[25,20,5], position, color, ...props }) {
     const obstacleRef = useRef()
 
     useFrame(({ clock }) => {
@@ -75,7 +75,7 @@ const SlidingWall = function ({ speed = 1, initialShift = 0, args=[22,20,5], pos
     return <Obstacle ref={obstacleRef} position={position} args={args} color={color} {...props} />
 }
 
-const Oscillating = function ({ speed = 1, amplitude = 5, initialShift = 0, position,color, args = [34, 15, 5], ...props }) {
+const Oscillating = function ({ speed = 1, amplitude = 5, initialShift = 0, position,color, args = [36, 15, 5], ...props }) {
     const obstacleRef = useRef()
 
     useFrame(({ clock }) => {
