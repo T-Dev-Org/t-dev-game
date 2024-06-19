@@ -28,11 +28,13 @@ import {Model} from './world/Level4World'
 import Obstacle from './obstacles/Obstacles'
 import FallingBalls from './obstacles/FallingBall'
 import { Button_Circle } from './abstractions/Button'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
 export default function Level4 () {
   const map = useMovements()
+  const navigate = useNavigate()
 
   const {playerData} = usePlayer()
   const [isLoading, setIsLoading] = useState(true)
@@ -63,7 +65,8 @@ export default function Level4 () {
 
   useEffect(() => {
     if (lifeState.value <= 0) {
-      resetActualPosition()
+      // resetActualPosition()
+      navigate('/gameOver')
       setDisplayLife(false)
     } else {
       setDisplayLife(true)
@@ -136,8 +139,7 @@ export default function Level4 () {
           <Texts position={[0, 20, -220]} />
         </Suspense>
         <Controls />
-      </Canvas>
-      {!displayLife && <GameOverScene reloadLevel='/level4' />}      
+      </Canvas>    
       <GameUI />
       {debug &&
         <NextLevelButton to='/profile' />}

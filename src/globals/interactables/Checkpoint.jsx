@@ -37,6 +37,7 @@ export default function Checkpoint (props) {
           email: playerData.email,
           vidas: 3,
           diamantes: 0, 
+          level: playerData.level,
           position: props.position }
         positionState.setActualPosition(props.position)
         const actualUser = await editUser(playerData.email, user)

@@ -5,17 +5,20 @@ import { usePlayer } from '../../../context/PlayerContext'
 
 import './LoginComponent.css'
 import { guardarEnLocalStorage } from '../../../utils/localStorageUtils'
+// import { cargarPosicion } from '../../level1/Level1'
+import { useCharacterPositionState } from '../../../utils/components/controller/CharacterPositionState'
 
 export default function LoginComponent() {
   const navigate = useNavigate()
   const auth = useAuth()
   const { playerData, setPlayerData } = usePlayer()
+  const {setActualPosition} = useCharacterPositionState()
 
   const onHandleButtonLogin = async (e) => {
     e.preventDefault()
     try {
       const result = await auth.loginWithGoogle()
-      await verificar(result.user, setPlayerData, navigate)
+      await verificar(result.user, setPlayerData, navigate, setActualPosition)
     } catch (error) {
       console.error('Error al iniciar sesión con Google:', error)
     }
@@ -54,27 +57,30 @@ export default function LoginComponent() {
   )
 }
 
-async function verificar(user, setPlayerData, navigate) {
+async function verificar(user, setPlayerData, navigate, setActualPosition) {
+  const { displayName, email } = user;
+  const result = await readUSer(email);
   try {
-    const { displayName, email } = user
-    const result = await readUSer(email)
     if (result.success) {
-      setPlayerData(result.data)
-      navigate(result.data.level)
+      setPlayerData(result.data);
+      navigate(result.data.level);
+      // cargarPosicion(result.data, setActualPosition);
     } else {
       const newUser = {
         email,
         displayName,
         vidas: 3, // Valor inicial para vidas
         diamantes: 0, // Valor inicial para diamantes
-        position: [0, 2, 0],
+        position: [0, 10, -2],
         level: '/level1'
-      }
-      await createUser(newUser)
-      setPlayerData(newUser)
-      navigate('/level1')
+      };
+      await createUser(newUser);
+      setPlayerData(newUser);
+      navigate('/level1');
+        // cargarPosicion(newUser, setActualPosition);
     }
   } catch (error) {
-    console.error('Error al leer el usuario:', error)
+    console.error('Error al leer el usuario:', error);
   }
 }
+
