@@ -12,7 +12,9 @@ export function Model(props) {
   return (
     <group {...props} dispose={null}>
       <RigidBody type='fixed' colliders='trimesh'>
-      <mesh geometry={nodes.Floor.geometry} material={materials.Verde} />
+      <mesh geometry={nodes.Floor.geometry} material={materials.Verde}>
+        <meshStandardMaterial attach="material" color="#0CF574" />
+      </mesh>
       <mesh geometry={nodes.Flag1_1.geometry} material={materials['Brown.001']} />
       <mesh geometry={nodes.Flag1_2.geometry} material={materials['LightRed.001']} />
       <mesh geometry={nodes.Flag2_1.geometry} material={materials['Brown.001']} />

@@ -28,6 +28,7 @@ import Obstacle from './obstacles/Obstacles'
 import FallingBalls from './obstacles/FallingBall'
 import { Button_Circle } from './abstractions/Button'
 import { useNavigate } from 'react-router-dom'
+import ZoneSensors from './world/ZoneSensors'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
@@ -134,6 +135,7 @@ export default function Level4 () {
               {isLoading && <Instructive />}
             </>
             <Villains villainsData={VillainsData} />
+            <ZoneSensors/>
           </Physics>
           <Texts position={[0, 20, -220]} />
         </Suspense>

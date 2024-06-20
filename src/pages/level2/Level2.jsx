@@ -82,9 +82,8 @@ export default function Level2() {
   }, [])
 
   const handleNextLevel = async () => {
-    console.log("handle next level")
     await initializerUser(playerData, setPlayerData); 
-    navigate('/level3');
+    navigate('/level3', { replace: true });
   };
 
   return (
@@ -95,7 +94,7 @@ export default function Level2() {
           <Suspense fallback={<Instructive />}>
             <Lights />
             <Environments />
-            <Physics debug={debug}>
+            <Physics debug={true}>
               <Checkpoints checkpointsData={checkpointsData} />
               <Collectables collectablesData={collectablesData} />
               <Level2World />
