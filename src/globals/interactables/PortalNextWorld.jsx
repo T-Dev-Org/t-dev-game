@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { Sparkles } from '@react-three/drei'
 import { CuboidCollider, RigidBody } from '@react-three/rapier'
 import { useAudio } from '../../context/AudioContext'
-import { limpiarLocalStorage } from '../../utils/localStorageUtils'
 
 const debug = true
 
@@ -26,7 +25,6 @@ export default function PortalNextWorld({ ...props }) {
 
     if (event.colliderObject.name === 'character-capsule-collider') {
       playSoundEffect('shutterSound')
-      limpiarLocalStorage()
       await nextLevel()
     }
   }

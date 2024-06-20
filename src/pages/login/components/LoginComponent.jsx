@@ -2,23 +2,19 @@ import { json, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../context/AuthContext'
 import { readUSer, createUser } from '../../../utils/db/users-collection'
 import { usePlayer } from '../../../context/PlayerContext'
-
 import './LoginComponent.css'
-import { guardarEnLocalStorage } from '../../../utils/localStorageUtils'
-// import { cargarPosicion } from '../../level1/Level1'
 import { useCharacterPositionState } from '../../../utils/components/controller/CharacterPositionState'
 
 export default function LoginComponent() {
   const navigate = useNavigate()
   const auth = useAuth()
-  const { playerData, setPlayerData } = usePlayer()
-  const {setActualPosition} = useCharacterPositionState()
+  const { setPlayerData } = usePlayer()
 
   const onHandleButtonLogin = async (e) => {
     e.preventDefault()
     try {
       const result = await auth.loginWithGoogle()
-      await verificar(result.user, setPlayerData, navigate, setActualPosition)
+      await verificar(result.user, setPlayerData, navigate)
     } catch (error) {
       console.error('Error al iniciar sesión con Google:', error)
     }
@@ -57,14 +53,13 @@ export default function LoginComponent() {
   )
 }
 
-async function verificar(user, setPlayerData, navigate, setActualPosition) {
+async function verificar(user, setPlayerData, navigate) {
   const { displayName, email } = user;
   const result = await readUSer(email);
   try {
     if (result.success) {
       setPlayerData(result.data);
       navigate(result.data.level);
-      // cargarPosicion(result.data, setActualPosition);
     } else {
       const newUser = {
         email,
@@ -77,7 +72,6 @@ async function verificar(user, setPlayerData, navigate, setActualPosition) {
       await createUser(newUser);
       setPlayerData(newUser);
       navigate('/level1');
-        // cargarPosicion(newUser, setActualPosition);
     }
   } catch (error) {
     console.error('Error al leer el usuario:', error);
