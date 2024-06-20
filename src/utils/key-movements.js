@@ -16,10 +16,10 @@ export default function useMovements () {
 
   const map = useMemo(() => {
     return [
-      { name: MOVEMENTS.forward, keys: ['KeyW', 'ArrowUp'] },
-      { name: MOVEMENTS.backward, keys: ['KeyS', 'ArrowDown'] },
-      { name: MOVEMENTS.leftward, keys: ['KeyA', 'ArrowLeft'] },
-      { name: MOVEMENTS.rightward, keys: ['KeyD', 'ArrowRight'] },
+      { name: MOVEMENTS.forward, keys: ['KeyW'] },
+      { name: MOVEMENTS.backward, keys: ['KeyS'] },
+      { name: MOVEMENTS.leftward, keys: ['KeyA'] },
+      { name: MOVEMENTS.rightward, keys: ['KeyD'] },
       { name: MOVEMENTS.run, keys: ['Shift'] },
       { name: MOVEMENTS.jump, keys: ['Space'] },
       { name: MOVEMENTS.dance, keys: ['KeyQ'] },

@@ -35,6 +35,7 @@ import SpecialVillans from './villains/SpecialVillans'
 import SymbolicSensors from './world/SymbolicSensors'
 import { useNavigate } from 'react-router-dom'
 import { initializerPlayer } from '../level4/Level4'
+import Player2 from './world/Player2'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
@@ -96,6 +97,7 @@ export default function Level3 () {
             <Level3World />
             <>
             {displayLife && actualPosition && !isLoading &&(
+              <>
                 <Ecctrl
                   camInitDis={-2}
                   camMaxDis={-2}
@@ -106,6 +108,8 @@ export default function Level3 () {
                 >
                   <Avatar />
                 </Ecctrl>
+                <Player2 />
+              </>
               )}
               {isLoading && <Instructive />}
             </>
