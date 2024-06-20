@@ -4,6 +4,7 @@ import './GameOverScene.css';
 import { usePlayer } from '../../../../context/PlayerContext';
 import { useCharacterPositionState } from '../../controller/CharacterPositionState';
 import { useLifeState } from '../../controller/CharacterLife';
+import useGameStore from '../../controller/CharacterStatsState';
 
 const debug = true;
 
@@ -18,10 +19,12 @@ const GameOverScene = ({ ...props }) => {
   const mainMenu = props.mainMenu ? props.mainMenu : '/';
   const { playerData } = usePlayer();
   const lifeState = useLifeState()
+  const incrementLosses = useGameStore(state => state.incrementLosses);
 
   const handlePlayAgain = async () => {
     lifeState.reset()
     navigate(playerData.level); 
+    incrementLosses();
   };
 
   return (
