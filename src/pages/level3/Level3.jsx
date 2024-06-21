@@ -36,6 +36,7 @@ import SymbolicSensors from './world/SymbolicSensors'
 import { useNavigate } from 'react-router-dom'
 import { initializerPlayer } from '../level4/Level4'
 import Player2 from './world/Player2'
+import Player1 from './world/Player1'
 
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
@@ -99,16 +100,7 @@ export default function Level3 () {
             <>
             {displayLife && actualPosition && !isLoading &&(
               <>
-                <Ecctrl
-                  camInitDis={-2}
-                  camMaxDis={-2}
-                  maxVelLimit={4}
-                  jumpVel={3}
-                  position={actualPosition}
-                  slopeMaxAngle={Math.PI / 5.5}
-                >
-                  <Avatar />
-                </Ecctrl>
+                <Player1 actualPosition={actualPosition} />
                 <Player2 />
               </>
               )}
