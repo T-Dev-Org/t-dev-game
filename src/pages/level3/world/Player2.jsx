@@ -9,7 +9,7 @@ import { socket } from "../../../socket/socket-manager";
  * @component
  * @returns {JSX.Element} The Player2 component.
  */
-export default function Player2() {
+export default function Player2(actualPosition) {
   // Refs for the rigid body and player mesh
   const rbPlayer2Ref = useRef();
   const player2Ref = useRef();
@@ -42,9 +42,9 @@ export default function Player2() {
   }, []);
 
   return (
-    <RigidBody ref={rbPlayer2Ref} position={[-5, 1, -55]}>
+    <RigidBody ref={rbPlayer2Ref} position={actualPosition}>
       <mesh ref={player2Ref}>
-        <sphereGeometry args={[1, 64, 64]} />
+        <sphereGeometry args={[1, 10, 10]} />
         <meshPhongMaterial color={0x960056} />
       </mesh>
     </RigidBody>

@@ -101,7 +101,7 @@ export default function Level3 () {
             {displayLife && actualPosition && !isLoading &&(
               <>
                 <Player1 actualPosition={actualPosition} />
-                <Player2 />
+                <Player2 actualPosition={[actualPosition[0], actualPosition[1], actualPosition[2] + 2]} />
               </>
               )}
               {isLoading && <Instructive />}
