@@ -81,7 +81,7 @@ export default function Level2() {
 
   const handleNextLevel = async () => {
     await initializeUser(playerData, setPlayerData); 
-    navigate('/level3');
+    navigate('/level4');
   };
 
   return (
