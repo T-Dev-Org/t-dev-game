@@ -29,6 +29,7 @@ import FallingBalls from './obstacles/FallingBall'
 import { Button_Circle } from './abstractions/Button'
 import { useNavigate } from 'react-router-dom'
 import ZoneSensors from './world/ZoneSensors'
+import SpecialVillans from './villains/SpecialVillans'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 

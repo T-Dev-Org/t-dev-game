@@ -4,7 +4,6 @@ import { forwardRef, useRef, useState } from 'react'
 import * as THREE from 'three'
 import { useLifeState } from '../../../utils/components/controller/CharacterLife'
 import { useAudio } from '../../../context/AudioContext'
-import { useAvatar } from '../../../context/AvatarContext'
 
 function getRandomColor() {
     const letters = '0123456789ABCDEF'

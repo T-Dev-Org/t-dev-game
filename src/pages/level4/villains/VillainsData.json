@@ -6,39 +6,110 @@
         "type": "rat",
         "pattern": "z",
         "position": [0,34,110],
-        "rotation": [0, 1.57, 0]
+        "rotation": [0, -1, 0]
       },
       {
         "id": "1",
         "name": "Rat 1",
         "type": "rat",
-        "pattern": "x",
-        "position": [2, 34, 111],
-        "rotation": [0, 1.57, 0]
+        "pattern": "z",
+        "position": [4,34,110],
+        "rotation": [0, -1, 0]
       },
       {
         "id": "2",
         "name": "Rat 2",
         "type": "rat",
-        "pattern": "round",
-        "position": [1, 34, 113],
-        "rotation": [0, 2, 0]
+        "pattern": "z",
+        "position": [-4,34,110],
+        "rotation": [0, -1, 0]
       },
       {
         "id": "3",
         "name": "Rat 3",
         "type": "rat",
-        "pattern": "round_reverse",
-        "position": [1, 34, 120],
-        "rotation": [0, 1.57, 0]
+        "pattern": "z",
+        "position": [-8,34,110],
+        "rotation": [0, -1, 0]
       },
       {
         "id": "4",
         "name": "Rat 4",
         "type": "rat",
         "pattern": "z",
-        "position": [-2, 34, 113],
-        "rotation": [0, 1.57, 0]
-      }      
+        "position": [8,34,110],
+        "rotation": [0, -1, 0]
+      },{
+        "id": "5",
+        "name": "Rat 5",
+        "type": "rat",
+        "pattern": "z",
+        "position": [0,34,100],
+        "rotation": [0, -1, 0]
+      },
+      {
+        "id": "6",
+        "name": "Rat 6",
+        "type": "rat",
+        "pattern": "z",
+        "position": [4,34,100],
+        "rotation": [0, -1, 0]
+      },
+      {
+        "id": "7",
+        "name": "Rat 7",
+        "type": "rat",
+        "pattern": "z",
+        "position": [-4,34,100],
+        "rotation": [0, -1, 0]
+      },
+      {
+        "id": "8",
+        "name": "Rat 8",
+        "type": "rat",
+        "pattern": "z",
+        "position": [-8,34,100],
+        "rotation": [0, -1, 0]
+      },
+      {
+        "id": "9",
+        "name": "Rat 9",
+        "type": "rat",
+        "pattern": "z",
+        "position": [8,34,100],
+        "rotation": [0, -1, 0]
+      },
+      {
+        "id": "10",
+        "name": "Rat 10",
+        "type": "rat",
+        "pattern": "z",
+        "position": [12,34,100],
+        "rotation": [0, -1, 0]
+      },
+      {
+        "id": "11",
+        "name": "Rat 11",
+        "type": "rat",
+        "pattern": "z",
+        "position": [-12,34,100],
+        "rotation": [0, -1, 0]
+      },
+      {
+        "id": "12",
+        "name": "Rat 12",
+        "type": "rat",
+        "pattern": "z",
+        "position": [-16,34,100],
+        "rotation": [0, -1, 0]
+      },
+      {
+        "id": "13",
+        "name": "Rat 13",
+        "type": "rat",
+        "pattern": "z",
+        "position": [-16,34,100],
+        "rotation": [0, -1, 0]
+      }                          
     ]
 }

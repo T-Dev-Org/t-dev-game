@@ -3,70 +3,71 @@
     {
       "id": "0",
       "name": "DiamondCone 1",
-      "position": [0,0,10],
-      "args": [3.5, 0.5, 3.5],
-      "isTaken": false
+      "position": [12, 5, -190],
+      "isTaken": false,
+      "isCollected": false
     },
     {
       "id": "1",
       "name": "DiamondCone 2",
-      "position": [12.5, 6, 30],
-      "args": [3.5, 0.5, 3.5],
-      "isTaken": false
+      "position": [-12, 16, -180],
+      "isTaken": false,
+      "isCollected": false
+
     },
     {
       "id": "2",
       "name": "DiamondCone 3",
-      "position": [-12.5, 14, 38],
-      "args": [3.5, 0.5, 3.5],
-      "isTaken": false
+      "position": [12, 22, -170],
+      "isTaken": false,
+      "isCollected": false
     },
     {
       "id": "3",
       "name": "DiamondCone 4",
-      "position": [12.5, 21.5, 49],        
+      "position": [-8, 34.5, -120],        
       "isCollected": false,
       "isTaken": false
     },
     {
       "id": "4",
       "name": "DiamondCone 5",
-      "position": [-5, 35, 65],        
+      "position": [-12, 34.5, -60],        
       "isCollected": false,
       "isTaken": false
     },
     {
       "id": "5",
       "name": "DiamondCone 6",
-      "position": [-4, 35, 110],        
+      "position": [0, 38, -20],        
       "isCollected": false,
       "isTaken": false
     },
     {
       "id": "6",
       "name": "DiamondCone 7",
-      "position": [0, 35, 170],        
+      "position": [-2, 34.5, 20],        
       "isCollected": false,
       "isTaken": false
     },
     {
       "id": "7",
       "name": "DiamondCone 8",
-      "position": [0, 35, 200],        
+      "position": [-15, 34.5, 78],        
       "isCollected": false,
       "isTaken": false
     },
     {
       "id": "8",
       "name": "DiamondCone 9",
-      "position": [0, 35, 250],        
+      "position": [0, 34.5, 110],        
       "isCollected": false,
       "isTaken": false
     },
     {
       "id": "9",
       "name": "DiamondCone 10",
-      "position": [0, 35, 270],        
+      "position": [0, 34.5, 150],        
       "isCollected": false,
       "isTaken": false
     }
