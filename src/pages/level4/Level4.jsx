@@ -29,6 +29,9 @@ import FallingBalls from './obstacles/FallingBall'
 import { Button_Circle } from './abstractions/Button'
 import { useNavigate } from 'react-router-dom'
 import ZoneSensors from './world/ZoneSensors'
+import Player2 from './world/Player2'
+import Player1 from './world/Player1'
+import { RigidBody, quat, vec3 } from "@react-three/rapier";
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
@@ -120,17 +123,10 @@ export default function Level4 () {
             <Button_Circle position={[0,33.5,200]} ruta={'/profile'}/>
             <>
             {displayLife && actualPosition && !isLoading &&(
-                <Ecctrl
-                  camInitDis={-2}
-                  camMaxDis={-2}
-                  maxVelLimit={6}
-                  jumpVel={6}
-                  position={actualPosition}
-                  onPositionChange={setActualPosition}
-                  
-                >
-                  <Avatar />
-                </Ecctrl>
+              <>
+                <Player1 actualPosition={actualPosition} />
+                <Player2 actualPosition={[actualPosition[0], actualPosition[1], actualPosition[2] + 2]} />
+              </>
               )}
               {isLoading && <Instructive />}
             </>
