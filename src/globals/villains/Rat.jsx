@@ -5,6 +5,7 @@ import { useFrame } from '@react-three/fiber'
 import { useLifeState } from '../../utils/components/controller/CharacterLife'
 import { useCharacterBasicAttack } from '../../utils/components/controller/CharacterAttackState'
 import { applyPattern } from './Patterns'
+import useGameStore from '../../utils/components/controller/CharacterStatsState'
 
 const debug = true
 
@@ -28,8 +29,13 @@ export default function Rat(props) {
   const [life, setLife] = useState(1) // Vida de la rata
   const [pattern, setPattern] = useState(props.pattern) // Patrón de movimiento actual
 
+  const incrementEnemiesDefeated = useGameStore(state => state.incrementEnemiesDefeated);
+
   useEffect(() => {
-    if (life < 0) characterBasickAttackState.clear()
+    if (life < 0) {
+      characterBasickAttackState.clear()
+      incrementEnemiesDefeated();
+    }
   }, [life])
 
   const handleIntersectionEnter = (event) => {

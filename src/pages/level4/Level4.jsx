@@ -1,7 +1,7 @@
 import { Perf } from 'r3f-perf'
 import { KeyboardControls } from '@react-three/drei'
 import { Physics } from '@react-three/rapier'
-import { Suspense, useState, useEffect, useCallback } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
 import Instructive from '../../utils/components/layouts/instructive/Instructive'
 import useMovements from '../../utils/key-movements'
@@ -21,18 +21,23 @@ import Collectables from '../../globals/collectables/CollectablesGenerator'
 import collectablesData from './collectables/CollectablesData.json'
 import Villains from '../../globals/villains/VillainsGenerator'
 import VillainsData from './villains/VillainsData.json'
-import GameOverScene from '../../utils/components/layouts/GameOverScene/GameOverScene'
 import { usePlayer } from '../../context/PlayerContext'
 import { editUser, readUSer } from '../../utils/db/users-collection'
 import {Model} from './world/Level4World'
 import Obstacle from './obstacles/Obstacles'
 import FallingBalls from './obstacles/FallingBall'
 import { Button_Circle } from './abstractions/Button'
+import { useNavigate } from 'react-router-dom'
+import ZoneSensors from './world/ZoneSensors'
+import Player2 from './world/Player2'
+import Player1 from './world/Player1'
+import { RigidBody, quat, vec3 } from "@react-three/rapier";
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
 export default function Level4 () {
   const map = useMovements()
+  const navigate = useNavigate()
 
   const {playerData} = usePlayer()
   const [isLoading, setIsLoading] = useState(true)
@@ -63,7 +68,8 @@ export default function Level4 () {
 
   useEffect(() => {
     if (lifeState.value <= 0) {
-      resetActualPosition()
+      // resetActualPosition()
+      navigate('/gameOver')
       setDisplayLife(false)
     } else {
       setDisplayLife(true)
@@ -117,27 +123,20 @@ export default function Level4 () {
             <Button_Circle position={[0,33.5,200]} ruta={'/profile'}/>
             <>
             {displayLife && actualPosition && !isLoading &&(
-                <Ecctrl
-                  camInitDis={-2}
-                  camMaxDis={-2}
-                  maxVelLimit={6}
-                  jumpVel={6}
-                  position={actualPosition}
-                  onPositionChange={setActualPosition}
-                  
-                >
-                  <Avatar />
-                </Ecctrl>
+              <>
+                <Player1 actualPosition={actualPosition} />
+                <Player2 actualPosition={[actualPosition[0], actualPosition[1], actualPosition[2] + 2]} />
+              </>
               )}
               {isLoading && <Instructive />}
             </>
             <Villains villainsData={VillainsData} />
+            <ZoneSensors/>
           </Physics>
           <Texts position={[0, 20, -220]} />
         </Suspense>
         <Controls />
-      </Canvas>
-      {!displayLife && <GameOverScene reloadLevel='/level4' />}      
+      </Canvas>    
       <GameUI />
       {debug &&
         <NextLevelButton to='/profile' />}

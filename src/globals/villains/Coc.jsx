@@ -4,6 +4,7 @@ import { useGLTF, useAnimations, Sparkles } from '@react-three/drei'
 import { CuboidCollider, RigidBody } from '@react-three/rapier'
 import { useLifeState } from '../../utils/components/controller/CharacterLife'
 import { useCharacterBasicAttack } from '../../utils/components/controller/CharacterAttackState'
+import useGameStore from '../../utils/components/controller/CharacterStatsState'
 
 export default function Coc({ onDeath, ...props }) {
   const group = useRef()
@@ -22,6 +23,9 @@ export default function Coc({ onDeath, ...props }) {
 
   const [showSparkles, setShowSparkles] = useState(false)
 
+  const incrementEnemiesDefeated = useGameStore(state => state.incrementEnemiesDefeated);
+
+
   useEffect(() => {
     if (actions) {
       actions.Dancing.play()
@@ -30,7 +34,8 @@ export default function Coc({ onDeath, ...props }) {
 
   useEffect(() => {
     if (life <= 0) {
-      onDeath()
+      onDeath();
+      incrementEnemiesDefeated();
     }
   }, [life, onDeath])
 

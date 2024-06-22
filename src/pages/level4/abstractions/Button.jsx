@@ -19,7 +19,7 @@ export function Button_Circle ({ ruta, ...props }) {
     actions.ButtonAction.play()
     setTimeout(() => {
       actions.ButtonAction.stop()
-      navigate(ruta)
+      navigate(ruta, { replace: true })
     }, 1000)
   }
   return (

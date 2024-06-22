@@ -36,12 +36,12 @@ export default function Checkpoint (props) {
           displayName: playerData.displayName,
           email: playerData.email,
           vidas: 3,
-          diamantes: 0, 
+          diamantes: playerData.diamantes, 
+          level: playerData.level,
           position: props.position }
         positionState.setActualPosition(props.position)
         const actualUser = await editUser(playerData.email, user)
-        console.log("Usuario actualizado: ", actualUser)
-        guardarEnLocalStorage('actualPosition', props.position)
+        console.log("Usuario actualizado: ", user.diamantes)
         print_debug(`${props.name} reached`)
       } catch (error) {
         console.error('Error al editar el usuario:', error)

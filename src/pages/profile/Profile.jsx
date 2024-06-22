@@ -1,33 +1,46 @@
-import React, { useState } from 'react'
-import './profile.css'
+import React from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import './profile.css';
+import { usePlayer } from '../../context/PlayerContext';
+import useGameStore from '../../utils/components/controller/CharacterStatsState';
 
 const Profile = () => {
-  const [gamesPlayed, setGamesPlayed] = useState(0)
-  const [wins, setWins] = useState(0)
-  const [losses, setLosses] = useState(0)
-  const [draws, setDraws] = useState(0)
-
-  // Función para actualizar las estadísticas después de una partida
-  const updateStats = (result) => {
-    setGamesPlayed(gamesPlayed + 1)
-    if (result === 'win') {
-      setWins(wins + 1)
-    } else if (result === 'loss') {
-      setLosses(losses + 1)
-    }
-  }
+  const {playerData} = usePlayer();
+  const { losses, enemiesDefeated, livesCollected } = useGameStore();
+  const data = [
+    { name: 'Losses', value: losses },
+    { name: 'Diamonds Collected', value: playerData.diamantes },
+    { name: 'Enemies Defeated', value: enemiesDefeated },
+    { name: 'Lives Collected', value: livesCollected },
+  ];
 
   return (
-    <div className='user-profile'>
-      <h2 className='profile-heading'>User Profile</h2>
-      <div className='profile-info'>
-        <p className='username'>Username: ejemplo</p>
-        <p className='stat'>Games Played: {gamesPlayed}</p>
-        <p className='stat'>Wins: {wins}</p>
-        <p className='stat'>Losses: {losses}</p>
+    <div className="statistics-page">
+      <div className='statistics-title'>
+        <h1>Game Statistics</h1>
+        <h2>{playerData.displayName}</h2>
+      </div>
+      <div className="statistics-container">
+        <BarChart width={600} height={400} data={data} >
+          <CartesianGrid strokeDasharray="3 3" stroke='#33FFA5 ' />
+          <XAxis dataKey="name" tick={{
+            fill: '#e5e6c9', 
+            fontSize: 14,
+            fontWeight: 'bold'
+          }} />
+          <YAxis tick={{
+            fill: '#e5e6c9',
+            fontSize: 12,
+            fontWeight: 'bold',
+            textAnchor: 'end',
+          }} />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="value" fill="#33A2FF" />
+        </BarChart>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;
