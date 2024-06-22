@@ -1,6 +1,7 @@
 import { RigidBody, quat, vec3 } from "@react-three/rapier";
 import { useEffect, useRef } from "react";
 import { socket } from "../../../socket/socket-manager";
+import SecondPlayerAvatar from '../../../utils/avatar/SecondPlayerAvatar'
 
 /**
  * Player2 component controls a player character in a 3D environment.
@@ -43,10 +44,7 @@ export default function Player2(actualPosition) {
 
   return (
     <RigidBody ref={rbPlayer2Ref} position={actualPosition}>
-      <mesh ref={player2Ref}>
-        <sphereGeometry args={[1, 10, 10]} />
-        <meshPhongMaterial color={0x960056} />
-      </mesh>
+      <SecondPlayerAvatar />
     </RigidBody>
   );
 }

@@ -28,14 +28,14 @@ export default function Player1( {actualPosition, setActualPosition} ) {
         const { forward, backward, leftward, rightward} = get();
 
         // If any movement keys are pressed, emit the players movement data to the server
-        if (forward || backward || leftward || rightward) {
+        //if (forward || backward || leftward || rightward) {
             window.setTimeout(() => {
                 socket.emit("player-moving", {
                   translation: rbPlayer1Ref.current?.translation(),
                   rotation: rbPlayer1Ref.current?.rotation(),
                 });
               }, 100);
-            }
+            //}
     });
 
     return (
