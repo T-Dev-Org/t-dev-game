@@ -39,7 +39,7 @@ export default function Player1( {actualPosition, setActualPosition} ) {
     });
 
     return (
-        <Ecctrl
+      <Ecctrl ref={rbPlayer1Ref}
         camInitDis={-2}
         camMaxDis={-2}
         maxVelLimit={6}

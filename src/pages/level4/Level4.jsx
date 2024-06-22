@@ -30,6 +30,7 @@ import FallingBalls from './obstacles/FallingBall'
 import { Button_Circle } from './abstractions/Button'
 import Player2 from './world/Player2'
 import Player1 from './world/Player1'
+import { RigidBody, quat, vec3 } from "@react-three/rapier";
 
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
@@ -121,13 +122,8 @@ export default function Level4 () {
             <>
             {displayLife && actualPosition && !isLoading &&(
               <>
-                <Player1 
-                  actualPosition={actualPosition} 
-                  onPositionChange={setActualPosition}
-                />
-                <Player2 
-                  actualPosition={[actualPosition[0], actualPosition[1], actualPosition[2] + 2]}
-                />
+                <Player1 actualPosition={actualPosition} />
+                <Player2 actualPosition={[actualPosition[0], actualPosition[1], actualPosition[2] + 2]} />
               </>
               )}
               {isLoading && <Instructive />}
