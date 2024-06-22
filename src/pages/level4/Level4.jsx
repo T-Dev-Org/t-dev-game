@@ -28,6 +28,7 @@ import Obstacle from './obstacles/Obstacles'
 import FallingBalls from './obstacles/FallingBall'
 import { Button_Circle } from './abstractions/Button'
 import { useNavigate } from 'react-router-dom'
+import ZoneSensors from './world/ZoneSensors'
 import Player2 from './world/Player2'
 import Player1 from './world/Player1'
 import { RigidBody, quat, vec3 } from "@react-three/rapier";
@@ -130,6 +131,7 @@ export default function Level4 () {
               {isLoading && <Instructive />}
             </>
             <Villains villainsData={VillainsData} />
+            <ZoneSensors/>
           </Physics>
           <Texts position={[0, 20, -220]} />
         </Suspense>
