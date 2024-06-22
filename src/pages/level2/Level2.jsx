@@ -37,7 +37,7 @@ import SpecialVillans from './villains/SpecialVillans'
 import { editUser, readUSer } from '../../utils/db/users-collection'
 import { usePlayer } from '../../context/PlayerContext'
 import { useNavigate } from 'react-router-dom'
-import {initializerUser} from '../level3/Level3'
+import { initializerUser } from '../level3/Level3'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
@@ -82,9 +82,9 @@ export default function Level2() {
   }, [])
 
   const handleNextLevel = async () => {
-    await initializerUser(playerData, setPlayerData); 
-    navigate('/level3', { replace: true });
-  };
+    await initializerUser(playerData, setPlayerData)
+    navigate('/level3', { replace: true })
+  }
 
   return (
     <>
@@ -94,7 +94,7 @@ export default function Level2() {
           <Suspense fallback={<Instructive />}>
             <Lights />
             <Environments />
-            <Physics debug={true}>
+            <Physics debug={debug}>
               <Checkpoints checkpointsData={checkpointsData} />
               <Collectables collectablesData={collectablesData} />
               <Level2World />
@@ -126,7 +126,7 @@ export default function Level2() {
                   <PortalNextWorld
                     position={[-24, 20, -102]}
                     rotation={[0, Math.PI / 2, 0]}
-                    nextLevel= {handleNextLevel}
+                    nextLevel={handleNextLevel}
                   />
                 )}
               </>
