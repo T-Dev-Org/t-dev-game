@@ -28,6 +28,9 @@ import {Model} from './world/Level4World'
 import Obstacle from './obstacles/Obstacles'
 import FallingBalls from './obstacles/FallingBall'
 import { Button_Circle } from './abstractions/Button'
+import Player2 from './world/Player2'
+import Player1 from './world/Player1'
+
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
@@ -117,17 +120,15 @@ export default function Level4 () {
             <Button_Circle position={[0,33.5,200]} ruta={'/profile'}/>
             <>
             {displayLife && actualPosition && !isLoading &&(
-                <Ecctrl
-                  camInitDis={-2}
-                  camMaxDis={-2}
-                  maxVelLimit={6}
-                  jumpVel={6}
-                  position={actualPosition}
+              <>
+                <Player1 
+                  actualPosition={actualPosition} 
                   onPositionChange={setActualPosition}
-                  
-                >
-                  <Avatar />
-                </Ecctrl>
+                />
+                <Player2 
+                  actualPosition={[actualPosition[0], actualPosition[1], actualPosition[2] + 2]}
+                />
+              </>
               )}
               {isLoading && <Instructive />}
             </>
