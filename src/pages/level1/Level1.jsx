@@ -67,7 +67,8 @@ export default function Level1() {
 
   useEffect(() => {
     if (lifeState.value <= 0) {
-      resetActualPosition();
+      // resetActualPosition();
+      navigate('/gameOver')
       setDisplayLife(false)
     } else {
       setDisplayLife(true)
@@ -123,7 +124,6 @@ export default function Level1() {
           </Suspense>
           <Controls />
         </Canvas>
-        {!displayLife && <GameOverScene reloadLevel='/level1' />}
         {debug && <NextLevelButton to='/level2' />}
         <GameUI />
       </KeyboardControls>

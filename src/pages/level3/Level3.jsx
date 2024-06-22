@@ -66,7 +66,8 @@ export default function Level3 () {
 
   useEffect(() => {
     if (lifeState.value <= 0) {
-      resetActualPosition()
+      // resetActualPosition()
+      navigate('/gameOver')
       setDisplayLife(false)
     } else {
       setDisplayLife(true)
@@ -125,8 +126,7 @@ export default function Level3 () {
           <Texts />
         </Suspense>
         <Controls />
-      </Canvas>
-      {!displayLife && <GameOverScene reloadLevel='/level3' />}      
+      </Canvas>  
       <GameUI />
       {debug &&
         <NextLevelButton to='/level4' />}
@@ -134,7 +134,7 @@ export default function Level3 () {
   )
 }
 
-export async function initializeUser(playerData, setPlayerData) {
+export async function initializerUser(playerData, setPlayerData) {
   const user = {
     diamantes: playerData.diamantes,
     displayName: playerData.displayName,

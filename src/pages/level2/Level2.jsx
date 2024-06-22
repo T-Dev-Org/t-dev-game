@@ -37,6 +37,7 @@ import SpecialVillans from './villains/SpecialVillans'
 import { editUser, readUSer } from '../../utils/db/users-collection'
 import { usePlayer } from '../../context/PlayerContext'
 import { useNavigate } from 'react-router-dom'
+import {initializerUser} from '../level3/Level3'
 
 const debug = process.env.REACT_APP_DEBUG === 'true'
 
@@ -68,7 +69,8 @@ export default function Level2() {
 
   useEffect(() => {
     if (lifeState.value <= 0) {
-      resetActualPosition()
+      // resetActualPosition()
+      navigate('/gameOver')
       setDisplayLife(false)
     } else {
       setDisplayLife(true)
@@ -80,8 +82,9 @@ export default function Level2() {
   }, [])
 
   const handleNextLevel = async () => {
-    await initializeUser(playerData, setPlayerData); 
-    navigate('/level4');
+    console.log("handle next level")
+    await initializerUser(playerData, setPlayerData); 
+    navigate('/level3');
   };
 
   return (
@@ -135,7 +138,6 @@ export default function Level2() {
           </Suspense>
           <Controls />
         </Canvas>
-        {!displayLife && <GameOverScene reloadLevel='/level2' />}
         <GameUI />
         {debug && <NextLevelButton to='/level3' />}
       </KeyboardControls>
@@ -148,7 +150,7 @@ export async function initializeUser(playerData, setPlayerData) {
     diamantes: playerData.diamantes,
     displayName: playerData.displayName,
     email: playerData.email,
-    level: '/level3',
+    level: '/level2',
     position: [0, 10, -2],
     vidas: playerData.vidas
   }
